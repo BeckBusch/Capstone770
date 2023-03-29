@@ -8,3 +8,22 @@
 **/business.pdf
 **/technical.pdf
 **/anonymous.pdf
+
+# Various Altium files
+*.PrjPCBStructure
+*.SchDocPreview
+*.PcbDocPreview
+__Previews
+*.PrjPcbStructure
+*.Dat
+*.REP 
+*.TLT
+*.LOG
+*.log
+*.htm
+*.$$$
+
+# Useless Altium dirs
+Project\ Outputs
+Project\ Logs
+Project Outputs for*
