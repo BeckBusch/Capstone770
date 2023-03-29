@@ -66,6 +66,23 @@ GenerateClassCluster=0
 DocumentUniqueId=IGXGYVYP
 
 [Document2]
+DocumentPath=libraries\RPi_Pico.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=DCMMUOMN
+
+[Document3]
 DocumentPath=libraries\EE311_footprints.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -82,7 +99,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=IORIPEOY
 
-[Document3]
+[Document4]
 DocumentPath=libraries\EE311_symbols.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
