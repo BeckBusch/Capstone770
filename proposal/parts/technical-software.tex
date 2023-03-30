@@ -4,4 +4,120 @@
 
 \chapter{Software Components}
 
-TODO: What are the software components for this project.
+\section{Prior Art}
+There are several existing products available that store data of animals and present it as a web-based application. These products are designed for use in veterinary clinics, animal shelters, and pet stores to track animal health and behaviour over time. 
+
+A popular example of a veterinary practice software is EzyVet. EzyVet is a veterinary practice management software designed to help staff manage animal health data through a web-based application. The data can be accessed from any device with internet access, making it easy for veterinarians to access patient data from anywhere and saving time by automating manual processes. EzyVet allows staff to schedule appointments with patients easily with features to communicate with clients via SMS and streamline billing processes. EzyVet is hosted on cloud-based infrastructure provided by Amazon Web Services and is designed with the features two-factor authentication and SSL encryption to increase security and protect user data.
+
+\section{Embedded}
+The embedded systems code will be running on the Pico W and will control the main operation of the scale. The three main parts will be the ADC controller, the state machine, and the network interface.
+The ADC controller will read the input signal from the electrical sensors and filters. It will be designed to read ADC values until it has calculated a steady and reliable value for the weight.
+After reaching this steady value it will be sent to the network interface. It will be submitted to the database along with other useful information such as the ID of the current scale or the time of measurement. This data request will also include the authentication needed to access the database, and possibly authentication to link the measurement to a user's account.
+All of these functions will be handled by the control system. The control system will receive input from the user in the form of buttons to tare the scale or to send the data. It will show the current status of the system to the user through 4 leds; power, wifi connectivity, steady weight, and tare active.
+
+Possible state machine implementations include:
+\begin{enumerate}
+\item \textbf{Idle}
+\\The Pico W is waiting for either a data input from the weighing scale pins or input from the user
+\item \textbf{Not ready}: Display ON LED
+\\Power is turned on, however WiFi is not enabled
+\item \textbf{Ready}: Connected to WiFi, display WiFi LED
+\\Both power and WiFi is enabled
+\item \textbf{Tare Initialized}: Display tare LED
+\\Tare button press is detected, turns on TARE LED
+\item \textbf{Receive Data}: Display steady weight LED
+\\Wait/poll until a steady state is of data input reached (e.g. could be achieved through another function call), then displays the STEADY WEIGHT LED
+\item \textbf{Send Data}: Send data to server, return to idle
+\\Data packet is sent to predetermined back-end server (may be more data processing before being sent)
+\end{enumerate}
+
+
+\section{Back-end}
+MongoDB will be used for the database where data will be stored in collections. In the scope of this project, the collections would be dog, user, scale and chat. Each new entry is a document and includes the relevant information required for that collection. The required data for each collection is shown in \textit{Figure B.1}.
+
+The following endpoints are required for the \textit{Dashboard} and \textit{Dog Detail} view.
+
+\begin{tabular}{l|l}
+POST dog & Adds new dog to collection for a given ID\\
+GET dog & Retrieves dog information for a given ID\\
+DELETE dog & Removes dog from collection for a given ID\\
+\end{tabular}
+
+The following endpoints are required for the \textit{Account Settings} and the \textit{Manage Users} view for admins.
+
+\begin{tabular}{l|l}
+POST user & Adds new user to collection for a given ID\\
+PUT user & Edits user information for a given ID\\
+DELETE user & Removes user from collection for a given ID\\
+\end{tabular}
+
+The following endpoints are required to update and retrieve the most recent weight for a given scale.
+
+\begin{tabular}{l|l}
+PUT weight & Updates weight for a given ID\\
+GET weight & Retrieves the weight for a given ID\\
+\end{tabular}
+
+The following endpoints are required for the \textit{Chat} functionality.
+
+\begin{tabular}{l|l}
+POST chat & Adds new chat to the collection for a given ID\\
+PUT chat & Updates chat information for a given ID\\
+GET chat & Retrieves chat information for a given ID\\
+\end{tabular}
+
+The following endpoint is required for the correct interface to be displayed to the user.
+
+\begin{tabular}{l|l}
+GET userType & Retrieves user type (vet, volunteer, admin) for a given ID\\
+\end{tabular}
+
+The following endpoints are required for the dashboard filter.
+
+\newlength\q
+\newlength\qq
+\setlength\q{\dimexpr .4\textwidth -1\tabcolsep}
+\setlength\qq{\dimexpr .6\textwidth -1\tabcolsep}
+\begin{tabular}{p{\q}|p{\qq}}
+GET dog breed, age, sex, location & Retrieves dog breed, age, sex and location for a given ID\\
+\end{tabular}
+
+Firebase will be used for authentication. Firebase Authentication provides backend services that help with secure creation and management of accounts.
+
+\section{Front-end}
+For the user interface, a web platform will be developed using JavaScript and React Native. The platform should be compatible with both Windows and iOS and accessible via both desktop and mobile. A prototype of what the web platform will look like and its flow can be found in  Appendix C.
+
+All users can log in using their email and password (Figure C.1). New users can request to create an account by clicking the \textit{Sign Up} button and will receive a confirmation mail once their request is approved (Figure C.3). Upon login, users are directed to the dashboard (Figure C.4). Users can search for a dog or filter by breed, age, sex and location (Figure C.5). Selecting a dog directs the user to the dog's details page which displays the dog's basic information, including previous weights. (Figures C.6, C.7). New data can be added by clicking the \textit{Start Weighing} button on the top right corner of the detail view. The scale ID must be selected (Figure C.8) and once the data is processed (Figure C.9), the user can add the new data for the dog. If the data seems inaccurate, users can reweigh (Figure C.10). An in-app chat functionality is also provided (Figure C.12). Users can also edit their name, email, password and/or account photo by clicking on their account profile (Figure C.11). Admins have an additional \textit{Manage Users} functionality where they can approve or decline pending sign up requests, change user roles, remove existing accounts and create new accounts (Figure C.13). 
+
+\subsection{User Flow}
+Below are some possible user flows.
+
+
+
+\newlength\qqq
+\newlength\qqqq
+\setlength\qqq{\dimexpr .28\textwidth -1\tabcolsep}
+\setlength\qqqq{\dimexpr .72\textwidth -1\tabcolsep}
+\begin{tabular}{p{\qqq}|p{\qqqq}}
+% \begin{tabular}{l|l} 
+View Dog Information & Login $\rightarrow$ Select Dog $\rightarrow$ Dog Details\\\\
+Filter Dog Dashboard & Login $\rightarrow$ Click Filter $\rightarrow$ Select Filters to Apply\\\\
+Add Weight & Login $\rightarrow$ Select Dog $\rightarrow$ Dog Details $\rightarrow$ Click \textit{Start Weighing} Button $\rightarrow$ Select Scale ID $\rightarrow$ Start Weighing\\\\
+Chat & Login $\rightarrow$ Select \textit{Chat} in Navigation Bar $\rightarrow$ Chat\\\\
+Edit Password & Login $\rightarrow$ Click on Account in Navigation Bar $\rightarrow$ Select \textit{Edit}\\\\
+Remove User (Admin) & Login $\rightarrow$ Click on Account in Navigation Bar $\rightarrow$ Select \textit{Edit} on Password row 
+\end{tabular}
+
+% \section{Compilation}
+% The required tools that are needed in order to reproduce this design:
+
+% \begin{tabular}{|l|l|}
+% \hline
+% Hardware & Software \\
+% \hline
+% ARM GCC Embedded Toolchain & Javascript \\
+% CMake Tools & ReactNative \\
+% Visual Studio Code and related Build Tools & FireBase\\
+% PicoW SDK & \\
+% \hline
+% \end{tabular}
