@@ -11,8 +11,8 @@ A popular example of a veterinary practice software is EzyVet. EzyVet is a veter
 
 \section{Embedded}
 The embedded systems code will be running on the Pico W and will control the main operation of the scale. The three main parts will be the ADC controller, the state machine, and the network interface.
-The ADC controller will read the input signal from the electrical sensors and filters. It will be designed to read ADC values until it has calculated a steady and reliable value for the weight.
-After reaching this steady value it will be sent to the network interface. It will be submitted to the database along with other useful information such as the ID of the current scale or the time of measurement. This data request will also include the authentication needed to access the database, and possibly authentication to link the measurement to a user's account.
+The ADC controller will sample the input signal from the electrical sensors and filters. It will continue sampling ADC values until it has calculated a steady and reliable value for the weight.
+After reaching this steady value it will be then be converted back into digital information that will be  sent to the network interface. It will then be submitted to the database along with other useful information such as the ID of the current scale or the time of measurement. This data request will also include the authentication needed to access the database, and possibly authentication to link the measurement to a user's account.
 All of these functions will be handled by the control system. The control system will receive input from the user in the form of buttons to tare the scale or to send the data. It will show the current status of the system to the user through 4 leds; power, wifi connectivity, steady weight, and tare active.
 
 Possible state machine implementations include:
@@ -33,7 +33,7 @@ Possible state machine implementations include:
 
 
 \section{Back-end}
-MongoDB will be used for the database where data will be stored in collections. In the scope of this project, the collections would be dog, user, scale and chat. Each new entry is a document and includes the relevant information required for that collection. The required data for each collection is shown in \textit{Figure B.1}.
+MongoDB will be used for the database where data will be stored in collections. In the scope of this project, the collections would be dog, user, scale and chat. Each new entry is a document and includes the relevant information required for that collection. The required data for each collection is shown in Figure \ref{figure:database}.
 
 The following endpoints are required for the \textit{Dashboard} and \textit{Dog Detail} view.
 
@@ -85,14 +85,12 @@ GET dog breed, age, sex, location & Retrieves dog breed, age, sex and location f
 Firebase will be used for authentication. Firebase Authentication provides backend services that help with secure creation and management of accounts.
 
 \section{Front-end}
-For the user interface, a web platform will be developed using JavaScript and React Native. The platform should be compatible with both Windows and iOS and accessible via both desktop and mobile. A prototype of what the web platform will look like and its flow can be found in  Appendix C.
+For the user interface, a web platform will be developed using JavaScript and React Native. The platform should be compatible with both Windows and iOS and accessible via both desktop and mobile. A prototype of what the web platform will look like and its flow can be found in Appendix F.
 
-All users can log in using their email and password (Figure C.1). New users can request to create an account by clicking the \textit{Sign Up} button and will receive a confirmation mail once their request is approved (Figure C.3). Upon login, users are directed to the dashboard (Figure C.4). Users can search for a dog or filter by breed, age, sex and location (Figure C.5). Selecting a dog directs the user to the dog's details page which displays the dog's basic information, including previous weights. (Figures C.6, C.7). New data can be added by clicking the \textit{Start Weighing} button on the top right corner of the detail view. The scale ID must be selected (Figure C.8) and once the data is processed (Figure C.9), the user can add the new data for the dog. If the data seems inaccurate, users can reweigh (Figure C.10). An in-app chat functionality is also provided (Figure C.12). Users can also edit their name, email, password and/or account photo by clicking on their account profile (Figure C.11). Admins have an additional \textit{Manage Users} functionality where they can approve or decline pending sign up requests, change user roles, remove existing accounts and create new accounts (Figure C.13). 
+All users can log in using their email and password (Figure \ref{figure:login}). New users can request to create an account by clicking the \textit{Sign Up} button (Figure \ref{figure:sign up}) and will receive a confirmation mail once their request is approved (Figure \ref{figure:sign up message}). Upon login, users are directed to the dashboard (Figure \ref{figure:dashboard}). Users can search for a dog or filter by breed, age, sex and location (Figure \ref{figure:dashboard filter}). Selecting a dog directs the user to the dog's details page which displays the dog's basic information, including previous weights. (Figures \ref{figure:dog detail table}, \ref{figure:dog detail graph}). New data can be added by clicking the \textit{Start Weighing} button on the top right corner of the detail view. The scale ID must be selected (Figure \ref{figure:add data 1} and once the data is processed (Figure \ref{figure:add data 2}), the user can add the new data for the dog. If the data seems inaccurate, users can reweigh (Figure \ref{figure:add data 3}). Users can edit their name, email, password and/or account photo by clicking on their account profile (Figure \ref{figure:account}). An in-app chat functionality is also provided (Figure \ref{figure: chat}). Admins have an additional \textit{Manage Users} functionality where they can approve or decline pending sign up requests, change user roles, remove existing accounts and create new accounts (Figures \ref{figure:manage users}, \ref{figure:add user}).
 
 \subsection{User Flow}
 Below are some possible user flows.
-
-
 
 \newlength\qqq
 \newlength\qqqq
@@ -108,16 +106,3 @@ Edit Password & Login $\rightarrow$ Click on Account in Navigation Bar $\rightar
 Remove User (Admin) & Login $\rightarrow$ Click on Account in Navigation Bar $\rightarrow$ Select \textit{Edit} on Password row 
 \end{tabular}
 
-% \section{Compilation}
-% The required tools that are needed in order to reproduce this design:
-
-% \begin{tabular}{|l|l|}
-% \hline
-% Hardware & Software \\
-% \hline
-% ARM GCC Embedded Toolchain & Javascript \\
-% CMake Tools & ReactNative \\
-% Visual Studio Code and related Build Tools & FireBase\\
-% PicoW SDK & \\
-% \hline
-% \end{tabular}
