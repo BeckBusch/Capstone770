@@ -1,14 +1,23 @@
 # Project folder
+All the practical work and resources for the project are stored here, separated into the different sections.
 
-Use this folder to store all code and other artifacts for your project.
+***
+## Backend
+This folder contains work done for the backend server and database
+- pico-sdk: software development kit for the pico that is stored in the repo for compatibility
+- Pico Project: The working folder for the pico C code.
+***
+## Electronics
+This folder contains work done for the electrical circuit and PCB
 
-You should divide this folder into sub-folders to store the specific components of your project. A suggested structure is:
+***
+## Embedded
+This folder contains the files for the code running on the Pico W
 
-- hardware
-- embedded
-- backend
-- frontend 1 *(use the actual frontend type, eg mobile, desktop, web)*
-- frontend 2
-- media
+***
+## Frontend
+This folder contains the files for the front end of our application
 
-However, you can organise this folder anyway that your team decides.
+***
+## Media
+This folder contains shared content useful for the whole project
