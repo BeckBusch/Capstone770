@@ -150,12 +150,138 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
+[Document7]
+DocumentPath=CAMtastic1.Cam
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
+[Document8]
+DocumentPath=CAMtastic2.Cam
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
 [GeneratedDocument1]
 DocumentPath=Project Outputs for dog_scale_pcb\Design Rule Check - pcb.html
 DItemRevisionGUID=
 
 [GeneratedDocument2]
 DocumentPath=..\..\..\dog_scale_pcb.xlsx
+DItemRevisionGUID=
+
+[GeneratedDocument3]
+DocumentPath=Project Outputs for dog_scale_pcb\Gerber\pcb.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=Project Outputs for dog_scale_pcb\pcb.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=Project Outputs for dog_scale_pcb\Gerber\pcb.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument6]
+DocumentPath=Project Outputs for dog_scale_pcb\pcb.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=Project Outputs for dog_scale_pcb\Gerber\pcb.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Project Outputs for dog_scale_pcb\pcb.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Project Outputs for dog_scale_pcb\Gerber\pcb.GBP
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for dog_scale_pcb\pcb.GBP
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for dog_scale_pcb\Gerber\pcb.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for dog_scale_pcb\pcb.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Project Outputs for dog_scale_pcb\Gerber\pcb.GM
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for dog_scale_pcb\pcb.GM
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=Project Outputs for dog_scale_pcb\Gerber\pcb.GM4
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Project Outputs for dog_scale_pcb\Gerber\pcb.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=Project Outputs for dog_scale_pcb\pcb.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=Project Outputs for dog_scale_pcb\Gerber\pcb.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument19]
+DocumentPath=Project Outputs for dog_scale_pcb\pcb.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument20]
+DocumentPath=Project Outputs for dog_scale_pcb\Gerber\pcb.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument21]
+DocumentPath=Project Outputs for dog_scale_pcb\pcb.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument22]
+DocumentPath=Project Outputs for dog_scale_pcb\Gerber\pcb.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument23]
+DocumentPath=Project Outputs for dog_scale_pcb\pcb.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument24]
+DocumentPath=Project Outputs for dog_scale_pcb\Gerber\pcb.REP
+DItemRevisionGUID=
+
+[GeneratedDocument25]
+DocumentPath=Project Outputs for dog_scale_pcb\pcb.REP
 DItemRevisionGUID=
 
 [Configuration1]
@@ -276,12 +402,22 @@ OutputName20=WireList Netlist
 OutputDocumentPath20=
 OutputVariantName20=
 OutputDefault20=0
+OutputType21=XSpiceNetlist
+OutputName21=Mixed Sim Netlist
+OutputDocumentPath21=
+OutputVariantName21=
+OutputDefault21=0
 
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
 TargetPrinter=HP68598A (HP Officejet Pro 8620)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
+OutputType1=AdvSimNetlist
+OutputName1=Mixed Sim
+OutputDocumentPath1=
+OutputVariantName1=
+OutputDefault1=0
 
 [OutputGroup3]
 Name=Documentation Outputs
@@ -291,7 +427,7 @@ PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate
 OutputType1=Composite
 OutputName1=Composite Drawing
 OutputDocumentPath1=
-OutputVariantName1=
+OutputVariantName1=[No Variations]
 OutputDefault1=0
 PageOptions1=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
 OutputType2=PCB 3D Print
@@ -309,7 +445,7 @@ PageOptions3=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintS
 OutputType4=PCB Print
 OutputName4=PCB Prints
 OutputDocumentPath4=
-OutputVariantName4=
+OutputVariantName4=[No Variations]
 OutputDefault4=0
 PageOptions4=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
 OutputType5=PCBDrawing
@@ -321,7 +457,7 @@ PageOptions5=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintS
 OutputType6=PCBLIB Print
 OutputName6=PCBLIB Prints
 OutputDocumentPath6=
-OutputVariantName6=
+OutputVariantName6=[No Variations]
 OutputDefault6=0
 PageOptions6=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
 OutputType7=PDF3D
@@ -330,30 +466,36 @@ OutputDocumentPath7=
 OutputVariantName7=[No Variations]
 OutputDefault7=0
 PageOptions7=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType8=PDF3D MBA
-OutputName8=PDF3D MBA
+OutputType8=Report Print
+OutputName8=Report Prints
 OutputDocumentPath8=
 OutputVariantName8=
 OutputDefault8=0
 PageOptions8=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType9=Report Print
-OutputName9=Report Prints
+OutputType9=Schematic Print
+OutputName9=Schematic Prints
 OutputDocumentPath9=
 OutputVariantName9=
 OutputDefault9=0
 PageOptions9=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType10=Schematic Print
-OutputName10=Schematic Prints
+OutputType10=SimView Print
+OutputName10=SimView Prints
 OutputDocumentPath10=
 OutputVariantName10=
 OutputDefault10=0
 PageOptions10=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType11=SimView Print
-OutputName11=SimView Prints
+OutputType11=Harness Layout Drawing Print
+OutputName11=Harness Layout Drawing Prints
 OutputDocumentPath11=
 OutputVariantName11=
 OutputDefault11=0
 PageOptions11=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
+OutputType12=Harness Wiring Diagram Print
+OutputName12=Harness Wiring Diagram Prints
+OutputDocumentPath12=
+OutputVariantName12=
+OutputDefault12=0
+PageOptions12=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
 
 [OutputGroup4]
 Name=Assembly Outputs
@@ -382,20 +524,20 @@ Name=Fabrication Outputs
 Description=
 TargetPrinter=HP68598A (HP Officejet Pro 8620)
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
-OutputType1=Board Stack Report
-OutputName1=Report Board Stack
+OutputType1=CompositeDrill
+OutputName1=Composite Drill Drawing
 OutputDocumentPath1=
-OutputVariantName1=
+OutputVariantName1=[No Variations]
 OutputDefault1=0
 PageOptions1=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType2=CompositeDrill
-OutputName2=Composite Drill Drawing
+OutputType2=Drill
+OutputName2=Drill Drawing/Guides
 OutputDocumentPath2=
-OutputVariantName2=
+OutputVariantName2=[No Variations]
 OutputDefault2=0
 PageOptions2=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType3=Drill
-OutputName3=Drill Drawing/Guides
+OutputType3=Board Stack Report
+OutputName3=Report Board Stack
 OutputDocumentPath3=
 OutputVariantName3=
 OutputDefault3=0
@@ -406,48 +548,52 @@ OutputDocumentPath4=
 OutputVariantName4=[No Variations]
 OutputDefault4=0
 PageOptions4=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType5=Gerber
-OutputName5=Gerber Files
+OutputType5=Gerber X2
+OutputName5=Gerber X2 Files
 OutputDocumentPath5=
 OutputVariantName5=[No Variations]
 OutputDefault5=0
-OutputType6=Gerber X2
-OutputName6=Gerber X2 Files
+OutputType6=ODB
+OutputName6=ODB++ Files
 OutputDocumentPath6=
-OutputVariantName6=
+OutputVariantName6=[No Variations]
 OutputDefault6=0
-OutputType7=IPC2581
-OutputName7=IPC-2581 Files
+OutputType7=Mask
+OutputName7=Solder/Paste Mask Prints
 OutputDocumentPath7=
-OutputVariantName7=
+OutputVariantName7=[No Variations]
 OutputDefault7=0
-OutputType8=Mask
-OutputName8=Solder/Paste Mask Prints
+PageOptions7=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
+OutputType8=NC Drill
+OutputName8=NC Drill Files
 OutputDocumentPath8=
 OutputVariantName8=
 OutputDefault8=0
-PageOptions8=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType9=NC Drill
-OutputName9=NC Drill Files
+OutputType9=IPC2581
+OutputName9=IPC-2581 Files
 OutputDocumentPath9=
-OutputVariantName9=
+OutputVariantName9=[No Variations]
 OutputDefault9=0
-OutputType10=ODB
-OutputName10=ODB++ Files
+OutputType10=Plane
+OutputName10=Power-Plane Prints
 OutputDocumentPath10=
 OutputVariantName10=[No Variations]
 OutputDefault10=0
-OutputType11=Plane
-OutputName11=Power-Plane Prints
+PageOptions10=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
+OutputType11=Test Points
+OutputName11=Test Point Report
 OutputDocumentPath11=
 OutputVariantName11=
 OutputDefault11=0
-PageOptions11=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
-OutputType12=Test Points
-OutputName12=Test Point Report
+OutputType12=Gerber
+OutputName12=Gerber Files
 OutputDocumentPath12=
-OutputVariantName12=
+OutputVariantName12=[No Variations]
 OutputDefault12=0
+Configuration12_Name1=ForceUpdateSettings
+Configuration12_Item1=False
+Configuration12_Name2=OutputConfigurationParameter1
+Configuration12_Item2=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|BoardID=TUPKNSGD|CentrePlots=False|DrillDrawingSymbol=GraphicsSymbol|DrillDrawingSymbolSize=500000|EmbeddedApertures=True|FilmBorderSize=10000000|FilmXSize=200000000|FilmYSize=160000000|FlashAllFills=False|FlashPadShapes=True|G54OnApertureChange=False|GenerateDRCRulesFile=False|GenerateDRCRulesFile=False|GenerateReliefShapes=True|GenerateReports=True|GerberUnit=Metric|GerberUnit=Metric|IncludeUnconnectedMidLayerPads=True|LayerClassesMirror.Set= |LayerClassesPlot.Set= |LeadingAndTrailingZeroesMode=SuppressLeadingZeroes|MaxApertureSize=2500000|MergePadAndRegion=False|MinusApertureTolerance=50|MinusApertureTolerance=50|Mirror.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray|MirrorDrillDrawingPlots=False|MirrorDrillGuidePlots=False|NoRegularPolygons=False|NumberOfDecimals=4|NumberOfDecimals=4|OptimizeChangeLocationCommands=True|OptimizeChangeLocationCommands=True|OriginPosition=Relative|Panelize=False|Plot.Set=SerializeLayerHash.Version~2,ClassName~TPlotLayerStateArray,16777217~1,16842751~1,16973830~1,16973831~1,16973834~1,16973835~1,16973832~1,16973833~1|PlotBoardProfile=True|PlotBoardProfileFileName=pcb.GM|PlotPositivePlaneLayers=False|PlotUsedDrillDrawingLayerPairs=False|PlotUsedDrillGuideLayerPairs=False|PlusApertureTolerance=50|PlusApertureTolerance=50|Record=GerberView|SoftwareArcs=False|Sorted=False|Sorted=False|UncheckPlotDrillDrawingLayerPair0_Backdrill=False|UncheckPlotDrillDrawingLayerPair0_Checked=False|UncheckPlotDrillDrawingLayerPair0_DrillType=Regular|UncheckPlotDrillDrawingLayerPair0_FileName=pcb.GD1|UncheckPlotDrillDrawingLayerPair0_HighLayer=Bottom Layer|UncheckPlotDrillDrawingLayerPair0_LowLayer=Top Layer|UncheckPlotDrillGuideLayerPair0_Backdrill=False|UncheckPlotDrillGuideLayerPair0_Checked=False|UncheckPlotDrillGuideLayerPair0_DrillType=Regular|UncheckPlotDrillGuideLayerPair0_FileName=pcb.GG1|UncheckPlotDrillGuideLayerPair0_HighLayer=Bottom Layer|UncheckPlotDrillGuideLayerPair0_LowLayer=Top Layer|UserLayerName.Caption0=pcb.GBO|UserLayerName.Caption1=pcb.GTP|UserLayerName.Caption10=pcb.GPB|UserLayerName.Caption11=pcb.GBP|UserLayerName.Caption12=pcb.GBS|UserLayerName.Caption13=pcb.GM16|UserLayerName.Caption14=pcb.GM1|UserLayerName.Caption15=pcb.GBL|UserLayerName.Caption16=pcb.GM5|UserLayerName.Caption17=pcb.GM15|UserLayerName.Caption18=pcb.GM24|UserLayerName.Caption19=pcb.GM3|UserLayerName.Caption2=pcb.GTO|UserLayerName.Caption20=pcb.GM20|UserLayerName.Caption21=pcb.GTL|UserLayerName.Caption22=pcb.GKO|UserLayerName.Caption3=pcb.GTS|UserLayerName.Caption4=pcb.GM4|UserLayerName.Caption5=pcb.GM2|UserLayerName.Caption6=pcb.GM13|UserLayerName.Caption7=pcb.GM21|UserLayerName.Caption8=pcb.GM23|UserLayerName.Caption9=pcb.GPT|UserLayerName.Count=23|UserLayerName.Layer0=16973831|UserLayerName.Layer1=16973832|UserLayerName.Layer10=16973849|UserLayerName.Layer11=16973833|UserLayerName.Layer12=16973835|UserLayerName.Layer13=16908304|UserLayerName.Layer14=16908289|UserLayerName.Layer15=16842751|UserLayerName.Layer16=16908293|UserLayerName.Layer17=16908303|UserLayerName.Layer18=16908312|UserLayerName.Layer19=16908291|UserLayerName.Layer2=16973830|UserLayerName.Layer20=16908308|UserLayerName.Layer21=16777217|UserLayerName.Layer22=16973837|UserLayerName.Layer3=16973834|UserLayerName.Layer4=16908292|UserLayerName.Layer5=16908290|UserLayerName.Layer6=16908301|UserLayerName.Layer7=16908309|UserLayerName.Layer8=16908311|UserLayerName.Layer9=16973848|DocumentPath=C:\Users\antho\OneDrive\Documents\GitHub\capstone-project-team-10\project\dog_scale_pcb\pcb.PcbDoc
 
 [OutputGroup6]
 Name=Report Outputs
@@ -509,6 +655,12 @@ OutputName8=Report Single Pin Nets
 OutputDocumentPath8=
 OutputVariantName8=[No Variations]
 OutputDefault8=0
+OutputType9=Project History
+OutputName9=Project History
+OutputDocumentPath9=
+OutputVariantName9=[No Variations]
+OutputDefault9=0
+PageOptions9=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=A4|PaperIndex=9
 
 [OutputGroup7]
 Name=Other Outputs
@@ -697,31 +849,26 @@ OutputName6=Export VRML
 OutputDocumentPath6=
 OutputVariantName6=[No Variations]
 OutputDefault6=0
-OutputType7=MBAExportPARASOLID
-OutputName7=Export PARASOLID
+OutputType7=Save As/Export PCB
+OutputName7=Save As/Export PCB
 OutputDocumentPath7=
 OutputVariantName7=
 OutputDefault7=0
-OutputType8=MBAExportSTEP
-OutputName8=Export STEP
+OutputType8=Save As/Export Schematic
+OutputName8=Save As/Export Schematic
 OutputDocumentPath8=
 OutputVariantName8=
 OutputDefault8=0
-OutputType9=Save As/Export PCB
-OutputName9=Save As/Export PCB
+OutputType9=Specctra Design PCB
+OutputName9=Specctra Design PCB
 OutputDocumentPath9=
 OutputVariantName9=
 OutputDefault9=0
-OutputType10=Save As/Export Schematic
-OutputName10=Save As/Export Schematic
+OutputType10=Web ReviewOutputName
+OutputName10=Web Review Data
 OutputDocumentPath10=
 OutputVariantName10=
 OutputDefault10=0
-OutputType11=Specctra Design PCB
-OutputName11=Specctra Design PCB
-OutputDocumentPath11=
-OutputVariantName11=
-OutputDefault11=0
 
 [OutputGroup10]
 Name=PostProcess Outputs
@@ -854,6 +1001,7 @@ Type116=1
 Type117=1
 Type118=1
 Type119=1
+Type120=1
 
 [Difference Levels]
 Type1=1
@@ -1045,13 +1193,13 @@ Type116=2
 Type117=3
 Type118=3
 Type119=3
-MultiChannelAlternate=2
 AlternateItemFail=3
 Type122=2
 Type123=1
 Type124=1
 Type125=1
 Type126=1
+Type127=1
 
 [ERC Connection Matrix]
 L1=NNNNNNNNNNNWNNNWW
