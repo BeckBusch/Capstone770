@@ -14,9 +14,6 @@
 
 // Code
 int main() {
-    
-
-
     // Code Init
     stdio_init_all();
 
@@ -27,8 +24,8 @@ int main() {
         return 1;
     }
     cyw43_arch_enable_sta_mode();
-    
-    while(cyw43_arch_wifi_connect_timeout_ms("UoA-Capstone", "cap5Ton3", CYW43_AUTH_WPA2_AES_PSK, 30000)){
+
+    while (cyw43_arch_wifi_connect_timeout_ms("UoA-Capstone", "cap5Ton3", CYW43_AUTH_WPA2_AES_PSK, 30000)) {
         printf("connection failed, retrying\n");
     }
 
@@ -37,7 +34,7 @@ int main() {
 
     // Code Main 
     while (1) {
-        
+
         cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
         printf("LED ON!\n");
         sleep_ms(1000); // 0.5s delay

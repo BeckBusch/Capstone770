@@ -1,15 +1,16 @@
 #include "network.h"
 
-
+char request_body[64];
+char request_msg[1024];
 typedef struct TLS_CLIENT_T_ {
-    struct altcp_pcb *pcb;
+    struct altcp_pcb* pcb;
     bool complete;
 } TLS_CLIENT_T;
 
-static struct altcp_tls_config *tls_config = NULL;
+static struct altcp_tls_config* tls_config = NULL;
 
-static err_t tls_client_close(void *arg) {
-    TLS_CLIENT_T *state = (TLS_CLIENT_T*)arg;
+static err_t tls_client_close(void* arg) {
+    TLS_CLIENT_T* state = (TLS_CLIENT_T*)arg;
     err_t err = ERR_OK;
 
     state->complete = true;
@@ -29,15 +30,15 @@ static err_t tls_client_close(void *arg) {
     return err;
 }
 
-static err_t tls_client_connected(void *arg, struct altcp_pcb *pcb, err_t err) {
-    TLS_CLIENT_T *state = (TLS_CLIENT_T*)arg;
+static err_t tls_client_connected(void* arg, struct altcp_pcb* pcb, err_t err) {
+    TLS_CLIENT_T* state = (TLS_CLIENT_T*)arg;
     if (err != ERR_OK) {
         printf("connect failed %d\n", err);
         return tls_client_close(state);
     }
 
     printf("connected to server, sending request\n");
-    err = altcp_write(state->pcb, TLS_CLIENT_HTTP_REQUEST, strlen(TLS_CLIENT_HTTP_REQUEST), TCP_WRITE_FLAG_COPY);
+    err = altcp_write(state->pcb, request_msg, strlen(request_msg), TCP_WRITE_FLAG_COPY);
     if (err != ERR_OK) {
         printf("error writing data, err=%d", err);
         return tls_client_close(state);
@@ -46,26 +47,26 @@ static err_t tls_client_connected(void *arg, struct altcp_pcb *pcb, err_t err) {
     return ERR_OK;
 }
 
-static err_t tls_client_poll(void *arg, struct altcp_pcb *pcb) {
+static err_t tls_client_poll(void* arg, struct altcp_pcb* pcb) {
     printf("timed out");
     return tls_client_close(arg);
 }
 
-static void tls_client_err(void *arg, err_t err) {
-    TLS_CLIENT_T *state = (TLS_CLIENT_T*)arg;
+static void tls_client_err(void* arg, err_t err) {
+    TLS_CLIENT_T* state = (TLS_CLIENT_T*)arg;
     printf("tls_client_err %d\n", err);
     state->pcb = NULL; /* pcb freed by lwip when _err function is called */
 }
 
-static err_t tls_client_recv(void *arg, struct altcp_pcb *pcb, struct pbuf *p, err_t err) {
-    TLS_CLIENT_T *state = (TLS_CLIENT_T*)arg;
+static err_t tls_client_recv(void* arg, struct altcp_pcb* pcb, struct pbuf* p, err_t err) {
+    TLS_CLIENT_T* state = (TLS_CLIENT_T*)arg;
     if (!p) {
         printf("connection closed\n");
         return tls_client_close(state);
     }
 
     if (p->tot_len > 0) {
-        /* For simplicity this examples creates a buffer on stack the size of the data pending here, 
+        /* For simplicity this examples creates a buffer on stack the size of the data pending here,
            and copies all the data to it in one go.
            Do be aware that the amount of data can potentially be a bit large (TLS record size can be 16 KB),
            so you may want to use a smaller fixed size buffer and copy the data to it using a loop, if memory is a concern */
@@ -83,39 +84,33 @@ static err_t tls_client_recv(void *arg, struct altcp_pcb *pcb, struct pbuf *p, e
     return ERR_OK;
 }
 
-static void tls_client_connect_to_server_ip(const ip_addr_t *ipaddr, TLS_CLIENT_T *state)
-{
+static void tls_client_connect_to_server_ip(const ip_addr_t* ipaddr, TLS_CLIENT_T* state) {
     err_t err;
     u16_t port = 443;
 
     printf("connecting to server IP %s port %d\n", ipaddr_ntoa(ipaddr), port);
     err = altcp_connect(state->pcb, ipaddr, port, tls_client_connected);
-    if (err != ERR_OK)
-    {
+    if (err != ERR_OK) {
         fprintf(stderr, "error initiating connect, err=%d\n", err);
         tls_client_close(state);
     }
 }
 
-static void tls_client_dns_found(const char* hostname, const ip_addr_t *ipaddr, void *arg)
-{
-    if (ipaddr)
-    {
+static void tls_client_dns_found(const char* hostname, const ip_addr_t* ipaddr, void* arg) {
+    if (ipaddr) {
         printf("DNS resolving complete\n");
-        tls_client_connect_to_server_ip(ipaddr, (TLS_CLIENT_T *) arg);
-    }
-    else
-    {
+        tls_client_connect_to_server_ip(ipaddr, (TLS_CLIENT_T*)arg);
+    } else {
         printf("error resolving hostname %s\n", hostname);
         tls_client_close(arg);
     }
 }
 
 
-static bool tls_client_open(const char *hostname, void *arg) {
+static bool tls_client_open(const char* hostname, void* arg) {
     err_t err;
     ip_addr_t server_ip;
-    TLS_CLIENT_T *state = (TLS_CLIENT_T*)arg;
+    TLS_CLIENT_T* state = (TLS_CLIENT_T*)arg;
 
     state->pcb = altcp_tls_new(tls_config, IPADDR_TYPE_ANY);
     if (!state->pcb) {
@@ -140,13 +135,10 @@ static bool tls_client_open(const char *hostname, void *arg) {
     cyw43_arch_lwip_begin();
 
     err = dns_gethostbyname(hostname, &server_ip, tls_client_dns_found, state);
-    if (err == ERR_OK)
-    {
+    if (err == ERR_OK) {
         /* host is in DNS cache */
         tls_client_connect_to_server_ip(&server_ip, state);
-    }
-    else if (err != ERR_INPROGRESS)
-    {
+    } else if (err != ERR_INPROGRESS) {
         printf("error initiating DNS resolving, err=%d\n", err);
         tls_client_close(state->pcb);
     }
@@ -158,7 +150,7 @@ static bool tls_client_open(const char *hostname, void *arg) {
 
 // Perform initialisation
 static TLS_CLIENT_T* tls_client_init(void) {
-    TLS_CLIENT_T *state = calloc(1, sizeof(TLS_CLIENT_T));
+    TLS_CLIENT_T* state = calloc(1, sizeof(TLS_CLIENT_T));
     if (!state) {
         printf("failed to allocate state\n");
         return NULL;
@@ -168,17 +160,28 @@ static TLS_CLIENT_T* tls_client_init(void) {
 }
 
 void run_tls_client_test(void) {
+    int recording = 50;
+    sprintf(request_body, "{\"%s\":\"%d\"}", "Weight", recording);
+    sprintf(request_msg,
+        "PUT /Measurements/Dog3.json HTTP/1.1\r\n" \
+        "Host: %s \r\n" \
+        "Connection: close\r\n" \
+        "Content-Type: application/json\r\n" \
+        "Content-Length:%d\r\n" \
+        "\r\n" \
+        "%s", TLS_CLIENT_SERVER, strlen(request_body), request_body);
+
     /* No CA certificate checking */
     tls_config = altcp_tls_create_config_client(NULL, 0);
 
-    TLS_CLIENT_T *state = tls_client_init();
+    TLS_CLIENT_T* state = tls_client_init();
     if (!state) {
         return;
     }
     if (!tls_client_open(TLS_CLIENT_SERVER, state)) {
         return;
     }
-    while(!state->complete) {
+    while (!state->complete) {
         // the following #ifdef is only here so this same example can be used in multiple modes;
         // you do not need it in your code
 #if PICO_CYW43_ARCH_POLL
