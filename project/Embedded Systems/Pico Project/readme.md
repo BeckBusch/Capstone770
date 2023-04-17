@@ -12,3 +12,10 @@ This is a bash file that rebuilds the sdk, builds the c code, and programs the b
 
 **lwipopts.h & picp_sdk_import.cmake**<br>
 These are required files for compiliation and can't be changed.
+
+
+
+
+
+**Datasheets**<br>
+Pico:  https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf
