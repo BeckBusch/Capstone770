@@ -7,14 +7,15 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import LoginPage from './pages/login-page';
 import SignInPage from './pages/sign-in-page';
-import DashboardPage from './pages/dashboard';
+import DashboardPage from './pages/dashboard-page';
 
 const router = createBrowserRouter([
   {
     path: "/",
     // element: <div>Hello world!</div>,
-    element: <App/>,
+    element: <LoginPage/>,
   },
   {
     path: "sign-in",
