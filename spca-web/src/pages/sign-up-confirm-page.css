@@ -1,0 +1,25 @@
+.sign-up-confirm-page {
+    width: 100%;
+    height: 100vh;
+    background-color: #3479C0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left top;
+}
+
+.align-center {
+    margin: auto;
+    width: 50%;
+    /* position: absolute; */
+    padding: 100px;
+}
+
+.sign-up-confirm-container {
+    width: 500px;
+    height: fit-content;
+    background-color: white;
+    text-align: center;
+    border-radius: 40px;
+    padding: 50px;
+    border: #3479C0 10px solid;
+}
