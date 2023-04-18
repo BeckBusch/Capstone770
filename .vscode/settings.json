@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.c": "c",
+        "stdio.h": "c",
+        "cyw43_arch.h": "c",
+        "adc.h": "c"
+    }
+}

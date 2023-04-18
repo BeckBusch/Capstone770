@@ -9,6 +9,7 @@
 
  // Includes
 #include <stdio.h>
+#include "hardware/adc.h"
 #include "pico/stdlib.h"
 #include "pico/cyw43_arch.h"
 
@@ -42,7 +43,13 @@ int main() {
     // Code Main 
     while (1) {
 
-        int weightReading=adcConvert();
+        /*
+        //Wait Function conditions//
+        1.  flag to check if weight measurement is needed
+        2.  Sample until adc reading becomes stable, every .5s
+        /////*/
+        
+        int weightReading = adcConvert();
         printf("Weight reading: %d\n", weightReading);
 
 

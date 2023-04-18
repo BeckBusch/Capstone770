@@ -9,3 +9,7 @@
 **/technical.pdf
 **/anonymous.pdf
 project/Embedded Systems/pico-sdk/
+.vscode/**
+.vscode/c_cpp_properties.json
+.vscode/c_cpp_properties.json
+.vscode/settings.json
