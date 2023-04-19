@@ -51,16 +51,18 @@ function SignUpPage() {
                             </form>
                         </div>
                     </div>
-                    <div>
+
+                    <div class="buttons">
                         <Link to="/">
                             <button type="submit" id="cancelBtn" className="cancel-btn">Cancel</button>
                         </Link>
-                    </div>
-                    <div>
                         <Link to="/sign-up-confirm">
                             <button type="submit" id="signUpBtn" className="sign-up-btn">Sign Up</button>
                         </Link>
                     </div>
+
+                    
+
                 </div>
             </div>
         </div>

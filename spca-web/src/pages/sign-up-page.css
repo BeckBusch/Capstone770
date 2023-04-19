@@ -18,10 +18,11 @@
     width: 700px;
     height: fit-content;
     background-color: white;
-    text-align: left;
+    /* text-align: left; */
     border-radius: 40px;
     padding: 50px;
     border: #3479C0 10px solid;
+    position: relative;
 }
 
 .spca-logo {
@@ -41,7 +42,7 @@ input{
 }
 
 .cancel-btn {
-    width: 100%;
+    width: 100px;
     height: 40px;
     color: #999999;
     background-color: white;
@@ -50,10 +51,11 @@ input{
     border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    margin-right: 20px;
 }
 
 .sign-up-btn {
-    width: 100%;
+    width: 100px;
     height: 40px;
     color: white;
     background-color: #3479C0;
@@ -62,6 +64,7 @@ input{
     border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    /* margin-right: 20px; */
 }
 
 .cancel-btn:hover {
@@ -161,3 +164,10 @@ input{
     margin-bottom: 10px;
     text-align: center;
 }
+
+.buttons {
+    width: 200px;
+    /* margin: 0 auto; */
+    display: inline;
+}
+
