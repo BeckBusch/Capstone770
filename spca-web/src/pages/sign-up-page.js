@@ -17,37 +17,46 @@ function SignUpPage() {
                     <h1>Sign Up</h1>
                     <p>An admin will review and approve your sign up request.</p>
                     <p>Completing this sign up form does not automatically create your account.</p>
-                    <div class="three-columns-grid">
+                    <div class="two-columns-grid">
                         <div>
-                            <p className="add-photo-msg"><Link to="/dashboard">Add Photo</Link> </p>
-                        </div>
-                        <div>
-                            <div class="input-label">Name</div>
-                            <div class="input-label">Email</div>
-                            <div>
-                                <label for="Password">Password</label>
+                            <div class="profile-container">
+                                <img className="profile-img" src={require("../images/my-account-icon.png")} alt="Profile Image" />
                             </div>
-                            <div>
-                                <label for="ConfirmPassword">Confirm Password</label>
-                            </div>
-                            <div>
-                                <label for="Role">Role</label>
-                            </div>
+                            <p className="add-photo-msg"><Link to="/dashboard">+ Add Photo</Link> </p>
                         </div>
                         <div>
                             <form>
-                                <input type="text" placeholder="Name" />
-                                <input type="text" placeholder="Email" />
-                                <input type="password" placeholder="Password" />
-                                <input type="password" placeholder="Confirm Password" />
-                                <div class="dropdown">
-                                    <button class="dropbtn"><i class="arrow down"></i></button>
+                                <div>
+                                    <label for="Name">Name</label>
+                                    <input type="text" id="name" placeholder="Name" />
+                                </div>
+
+                                <div>
+                                    <label for="Email">Email</label>
+                                    <input type="text" id="email" placeholder="Email" />
+                                </div>
+
+                                <div>
+                                    <label for="Password">Password</label>
+                                    <input type="password" id="password" placeholder="Password" />
+                                </div>
+
+                                <div>
+                                    <label for="ConfirmPassword">Confirm Password</label>
+                                    <input type="password" id="confirmPassword" placeholder="Confirm Password" />
+                                </div>
+
+                                <div>
+                                    <label for="Role">Role</label>
+                                    <div class="dropdown">
+                                        <button class="dropbtn"><i class="arrow down"></i></button>
                                         <div class="dropdown-content">
                                             <a href="#">Admin</a>
                                             <a href="#">Staff</a>
                                             <a href="#">Volunteer</a>
                                         </div>
-                                </div>
+                                    </div> 
+                                </div>     
                             </form>
                         </div>
                     </div>
