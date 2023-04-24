@@ -1,58 +1,36 @@
 .dashboard-page {
     width: 100%;
     height: 100vh;
-}
-/* 
-.align-right {
-    position: absolute;
-    right: 0;
-    padding: 100px;
-}
-
-.login-container {
-    width: 250px;
-    height: fit-content;
-    background-color: white;
     text-align: center;
-    border-radius: 40px;
-    padding: 50px;
-    border: #3479C0 10px solid;
 }
 
-.spca-logo {
-    width: 100%;
+.search-div {
+    display: flex;
 }
 
-input{
-    width: 90%;
+.dashboard-search {
+    width: 50%;
     height: 40px;
     font-size: 16px;
-    border: 1px solid #999999;
-    border-radius: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-button {
-    width: 100%;
-    height: 40px;
-    color: #3479C0;
-    background-color: #BDD3E8;
-    font-size: 16px;
+    background-color: #DBDBDB;
     border: none;
-    border-radius: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 0 20px 0 20px;
+    margin: 30px 0 30px 0;
 }
 
-button:hover {
-    color: white;
-    background-color: #3479C0;
+.search-btn {
+    height: 40px;
+    margin: 30px 0 30px 30px;
 }
 
-p {
-    margin-top: 20px;
-    margin-bottom: 0;
+.dashboard-panel {
+    display:flex;
+    max-width: 100%;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+/* @media (max-width: 700px) {
+
 } */

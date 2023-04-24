@@ -1,0 +1,44 @@
+{
+    "dogs": [
+        {
+            "name": "Cookie",
+            "breed": "Maltese",
+            "age": 1,
+            "gender": "Male",
+            "location": "Auckland",
+            "id": "00001"
+        },
+        {
+            "name": "Cookie",
+            "breed": "Maltese",
+            "age": 2,
+            "gender": "Male",
+            "location": "Auckland",
+            "id": "00002"
+        },
+        {
+            "name": "Cookie",
+            "breed": "Maltese",
+            "age": 3,
+            "gender": "Male",
+            "location": "Auckland",
+            "id": "00003"
+        },
+        {
+            "name": "Cookie",
+            "breed": "Maltese",
+            "age": 4,
+            "gender": "Male",
+            "location": "Auckland",
+            "id": "00004"
+        },
+        {
+            "name": "Cookie",
+            "breed": "Maltese",
+            "age": 5,
+            "gender": "Male",
+            "location": "Auckland",
+            "id": "00005"
+        }
+    ]
+}
