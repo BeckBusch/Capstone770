@@ -2,16 +2,15 @@
     width: 100%;
     height: 100vh;
     background-color: #3479C0;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: left top;
 }
 
-.align-center {
+.align-center2 {
     margin: auto;
-    width: 50%;
-    /* position: absolute; */
-    padding: 100px;
+    width: 100%;
+    position: absolute;   
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
 }
 
 .sign-up-confirm-container {
@@ -21,5 +20,9 @@
     text-align: center;
     border-radius: 40px;
     padding: 50px;
-    border: #3479C0 10px solid;
+    border: white 10px solid;
+    position: absolute;   
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
 }

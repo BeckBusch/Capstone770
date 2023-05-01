@@ -11,7 +11,7 @@ function SignUpConfirmPage() {
                     {/* <Link to="/sign-in">Sign In</Link> */}
                 </div>
             </div>    
-            <div className="align-center">
+            <div className="align-center2">
                 <div className="sign-up-confirm-container">
                     <p>Your request has been sent to an admin for approval.</p>
                     <p>A confirmation email will be sent once your request has been approved.</p>
