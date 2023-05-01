@@ -8,7 +8,6 @@
 }
 
 .align-center {
-    background-color: red;
     margin: auto;
     width: 100%;
     position: absolute;   
@@ -28,7 +27,7 @@
     position: absolute;   
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
 }
 
 input{
@@ -83,11 +82,8 @@ input{
 }
 
 .add-photo-msg {
-    margin-top: 20px;
-    margin-bottom: 0;
     text-align: center;
 }
-
 
 .dropbtn {
     cursor: pointer;
@@ -103,7 +99,7 @@ input{
 }
   
 .dropdown {
-    position: relative;
+    /* position: relative; */
     display: inline-block;
     width: 200px;
 }
@@ -168,8 +164,10 @@ input{
 
 .buttons {
     width: 200px;
-    /* margin: 0 auto; */
     display: inline;
+}
+
+.button-container {
     text-align: right;
 }
 
@@ -180,6 +178,8 @@ input{
     border: 5px solid #BDD3E8;
     overflow: hidden;    
     border-radius: 50%;
+    margin: auto;
+    margin-top: 20px;
 }
 
 .profile-img {
@@ -196,4 +196,3 @@ label {
 input { 
     width: 200px;
 }
-

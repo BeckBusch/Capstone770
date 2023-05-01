@@ -60,17 +60,16 @@ function SignUpPage() {
                             </form>
                         </div>
                     </div>
-
-                    <div class="buttons">
-                        <Link to="/">
-                            <button type="submit" id="cancelBtn" className="cancel-btn">Cancel</button>
-                        </Link>
-                        <Link to="/sign-up-confirm">
-                            <button type="submit" id="signUpBtn" className="sign-up-btn">Sign Up</button>
-                        </Link>
+                    <div class="button-container">
+                        <div class="buttons">
+                            <Link to="/">
+                                <button type="submit" id="cancelBtn" className="cancel-btn">Cancel</button>
+                            </Link>
+                            <Link to="/sign-up-confirm">
+                                <button type="submit" id="signUpBtn" className="sign-up-btn">Sign Up</button>
+                            </Link>
+                        </div>
                     </div>
-
-                    
 
                 </div>
             </div>
