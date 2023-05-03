@@ -10,6 +10,7 @@ import {
 import LoginPage from './pages/login-page';
 import SignInPage from './pages/sign-in-page';
 import DashboardPage from './pages/dashboard-page';
+import MyAccountPage from './pages/my-account-page';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: <DashboardPage/>,
+  },
+  {
+    path: "my-account",
+    element: <MyAccountPage/>,
   },
 ]);
 
