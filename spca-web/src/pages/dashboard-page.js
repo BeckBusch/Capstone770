@@ -1,9 +1,15 @@
 import React from "react";
-import "./dashboard.css";
+import "./dashboard-page.css";
 import NavBar from "../components/nav-bar";
 import DashboardCard from "../components/dashboard-card";
 
+
+import Data from "../mock.json";
+
 function DashboardPage() {
+
+    let data = Data;
+
     return (
         // <div>Successfully Logged In! This is where the dashboard should be</div> 
 
@@ -17,16 +23,14 @@ function DashboardPage() {
 
 
             <div className="dashboard-panel">
-            <DashboardCard/>
-            <DashboardCard/>
-            <DashboardCard/>
-            <DashboardCard/>
+
+            {data.Dogs.map((dog: Dogs) => {
+                return <DashboardCard name={dog.name} breed={dog.breed} age={dog.age}/>
+            })}
+
+
             </div>
-
-
-
         </div>
-
     );
 }
 

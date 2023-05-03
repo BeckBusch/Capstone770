@@ -1,5 +1,5 @@
 {
-    "dogs": [
+    "Dogs": [
         {
             "name": "Cookie",
             "breed": "Maltese",
@@ -9,7 +9,7 @@
             "id": "00001"
         },
         {
-            "name": "Cookie",
+            "name": "Rocky",
             "breed": "Maltese",
             "age": 2,
             "gender": "Male",
@@ -17,7 +17,7 @@
             "id": "00002"
         },
         {
-            "name": "Cookie",
+            "name": "Cooper",
             "breed": "Maltese",
             "age": 3,
             "gender": "Male",
@@ -25,20 +25,21 @@
             "id": "00003"
         },
         {
-            "name": "Cookie",
+            "name": "Lola",
             "breed": "Maltese",
             "age": 4,
-            "gender": "Male",
+            "gender": "Female",
             "location": "Auckland",
             "id": "00004"
         },
         {
-            "name": "Cookie",
+            "name": "Daisy",
             "breed": "Maltese",
             "age": 5,
-            "gender": "Male",
+            "gender": "Female",
             "location": "Auckland",
             "id": "00005"
         }
     ]
 }
+
