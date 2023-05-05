@@ -11,6 +11,8 @@ import LoginPage from './pages/login-page';
 import SignInPage from './pages/sign-in-page';
 import DashboardPage from './pages/dashboard-page';
 import MyAccountPage from './pages/my-account-page';
+import DogDetailPage from './pages/dog-detail-page';
+
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "my-account",
     element: <MyAccountPage/>,
+  },
+  {
+    path: "chat",
+    element: <DogDetailPage/>,
   },
 ]);
 
