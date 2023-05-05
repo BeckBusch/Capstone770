@@ -19,7 +19,7 @@ function AddDataProcessingPage() {
                         </div>
                     </div>
                 </div>
-                <Link to="/dog-detail">
+                <Link to="/add-data-results">
                     <button type="submit" id="cancelBtn" className="next-btn">Next</button>
                 </Link>
         </div>

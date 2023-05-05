@@ -14,6 +14,7 @@ import MyAccountPage from './pages/my-account-page';
 import DogDetailPage from './pages/dog-detail-page';
 import AddDataPage from './pages/add-data-page';
 import AddDataProcessingPage from './pages/add-data-processing-page';
+import AddDataResultsPage from './pages/add-data-results-page';
 
 
 const router = createBrowserRouter([
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "add-data-processing",
     element: <AddDataProcessingPage/>,
+  },
+  {
+    path: "add-data-results",
+    element: <AddDataResultsPage/>,
   },
   {
     path: "dog-detail",
