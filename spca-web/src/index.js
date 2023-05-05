@@ -12,6 +12,7 @@ import SignInPage from './pages/sign-in-page';
 import DashboardPage from './pages/dashboard-page';
 import MyAccountPage from './pages/my-account-page';
 import DogDetailPage from './pages/dog-detail-page';
+import AddDataPage from './pages/add-data-page';
 
 
 const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "chat",
     element: <DogDetailPage/>,
+  },
+  {
+    path: "add-data",
+    element: <AddDataPage/>,
   },
 ]);
 

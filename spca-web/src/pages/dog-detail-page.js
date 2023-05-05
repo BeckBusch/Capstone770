@@ -10,7 +10,7 @@ function DogDetailPage() {
                 <NavBar/>
                 <div class="button-container">
                         <div class="buttons">
-                            <Link to="/">
+                            <Link to="/add-data">
                                 <button type="submit" id="startWeighingBtn" className="start-weighing-btn">
                                 <img className="start-img" src={require("../images/start-icon.png")} alt="start Image" />Start Weighing</button>
                             </Link>
