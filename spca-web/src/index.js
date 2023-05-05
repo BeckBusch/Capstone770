@@ -13,6 +13,7 @@ import DashboardPage from './pages/dashboard-page';
 import MyAccountPage from './pages/my-account-page';
 import DogDetailPage from './pages/dog-detail-page';
 import AddDataPage from './pages/add-data-page';
+import AddDataProcessingPage from './pages/add-data-processing-page';
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,15 @@ const router = createBrowserRouter([
     path: "add-data",
     element: <AddDataPage/>,
   },
+  {
+    path: "add-data-processing",
+    element: <AddDataProcessingPage/>,
+  },
+  {
+    path: "dog-detail",
+    element: <DogDetailPage/>,
+  },
+
 ]);
 
 

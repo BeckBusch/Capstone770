@@ -37,10 +37,10 @@ function AddDataPage() {
                         </div>
                         <div class="button-container">
                             <div class="buttons">
-                                <Link to="/">
+                                <Link to="/dog-detail">
                                     <button type="submit" id="cancelBtn" className="cancel-btn">Cancel</button>
                                 </Link>
-                                <Link to="/">
+                                <Link to="/add-data-processing">
                                     <button type="submit" id="saveBtn" className="save-btn">Save</button>
                                 </Link>
                             </div>
