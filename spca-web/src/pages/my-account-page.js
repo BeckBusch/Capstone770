@@ -20,43 +20,53 @@ function MyAccountPage() {
                         <p className="edit-photo-msg"><Link to="/dashboard">Edit</Link> </p>
                     </div>
                     <div>
-                        <form>
-                            <div>
-                                <label for="Name">Name</label>
-                                <input type="text" id="name" placeholder="Name" />
-                                <p><Link to="/dashboard">Edit</Link> </p>
-                            </div>
+                        <div class="edit-container">
+                            <form>
+                                <div class="details-spacing">
+                                    <label for="Name">Name</label>
+                                    <input type="text" id="name" placeholder="Name" />
+                                    {/* <p className="edit-details-msg"><Link to="/dashboard">Edit</Link> </p> */}
+                                </div>
 
-                            <div>
-                                <label for="ID">ID</label>
-                                <input type="text" id="id" placeholder="Id" />
-                            </div>
+                                <div class="details-spacing"> 
+                                    <label for="ID">ID</label>
+                                    <input type="text" id="id" placeholder="Id" />
+                                </div>
 
-                            <div>
-                                <label for="Email">Email</label>
-                                <input type="text" id="email" placeholder="Email" />
-                                <p><Link to="/dashboard">Edit</Link> </p>
-                            </div>
+                                <div class="details-spacing">
+                                    <label for="Email">Email</label>
+                                    <input type="text" id="email" placeholder="Email" />
+                                    {/* <p className="edit-details-msg"><Link to="/dashboard">Edit</Link> </p> */}
+                                </div>
 
-                            <div>
-                                <label for="Password">Password</label>
-                                <input type="password" id="password" placeholder="Password" />
-                                <p><Link to="/dashboard">Edit</Link> </p>
-                            </div>
+                                <div class="details-spacing">
+                                    <label for="Password">Password</label>
+                                    <input type="password" id="password" placeholder="Password" />
+                                    {/* <p className="edit-details-msg"><Link to="/dashboard">Edit</Link> </p> */}
+                                </div>
 
-                            <div>
-                                <label for="Role">Role</label>
-                                <input type="role" id="role" placeholder="Role" />
-                            </div>
+                                <div class="details-spacing">
+                                    <label for="Role">Role</label>
+                                    <input type="role" id="role" placeholder="Role" />
+                                </div>
 
-                            <div>
-                                <label for="Joined">Joined</label>
-                                <input type="joined" id="joined" placeholder="Joined" />
-                            </div>
-
-                             
-                        </form>
+                                <div class="details-spacing">
+                                    <label for="Joined">Joined</label>
+                                    <input type="joined" id="joined" placeholder="Joined" />
+                                </div>
+                            </form>
+                        </div>
                     </div>
+                </div>
+                <div class="button-container">
+                        <div class="buttons">
+                            <Link to="/">
+                                <button type="submit" id="cancelBtn" className="cancel-btn">Cancel</button>
+                            </Link>
+                            <Link to="/">
+                                <button type="submit" id="saveBtn" className="save-btn">Save</button>
+                            </Link>
+                        </div>
                 </div>
             </div>
 
