@@ -1,0 +1,98 @@
+.add-dog-processing-page {
+    width: 100%;
+    height: 100vh;
+    background-color: #3479C0;
+    /* background-color: blue; */
+}
+
+.circle {
+    width: 380px;
+    height: 380px;
+    background-color: white;
+    border-radius: 50%;
+    /* margin: 0; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* text-align: center; */
+    /* vertical-align: middle; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-container {
+    /* background-color: aqua; */
+    width: 200px;
+    height: 240px;
+    position: absolute;
+    /* position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center; */   
+}
+
+.footprint-container {
+    /* width: 183px;
+    height: 220px; */
+    width: 100%;
+    height: 80%;
+    /* background-color: orange; */
+    position: relative;
+    /* margin: auto; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* opacity: 0.8; */
+}
+
+.text-container {
+    width: 100%;
+    padding-top: 10px;
+    /* height: 20%; */
+    /* height: 220px;
+    width: fit-content; */
+    text-align: center;
+    height: fit-content;
+    /* background-color: orange; */
+    position: absolute;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* opacity: 0.8; */
+}
+
+.processing-text {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.dog-footprint-img {
+    width: 77px;
+    height: 82px;
+}
+
+.one {
+    /* background-color: red; */
+    position: absolute;
+    top: 100%;
+    transform: translateY(-100%);
+}
+
+.two {
+    /* background-color: purple; */
+    z-index: 9;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.three {
+    /* background-color: pink; */
+    z-index: 9;
+    position: absolute;
+    top: 70%;
+    left: 100%;
+    transform: translateX(-100%) translateY(-70%);
+}

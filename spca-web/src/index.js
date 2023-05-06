@@ -11,6 +11,11 @@ import LoginPage from './pages/login-page';
 import SignInPage from './pages/sign-in-page';
 import DashboardPage from './pages/dashboard-page';
 import MyAccountPage from './pages/my-account-page';
+import DogDetailPage from './pages/dog-detail-page';
+import AddDataPage from './pages/add-data-page';
+import AddDataProcessingPage from './pages/add-data-processing-page';
+import AddDataResultsPage from './pages/add-data-results-page';
+
 
 const router = createBrowserRouter([
   {
@@ -30,6 +35,27 @@ const router = createBrowserRouter([
     path: "my-account",
     element: <MyAccountPage/>,
   },
+  {
+    path: "chat",
+    element: <DogDetailPage/>,
+  },
+  {
+    path: "add-data",
+    element: <AddDataPage/>,
+  },
+  {
+    path: "add-data-processing",
+    element: <AddDataProcessingPage/>,
+  },
+  {
+    path: "add-data-results",
+    element: <AddDataResultsPage/>,
+  },
+  {
+    path: "dog-detail",
+    element: <DogDetailPage/>,
+  },
+
 ]);
 
 
