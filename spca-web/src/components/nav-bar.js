@@ -7,8 +7,9 @@ function NavBar() {
         <div className="nav-bar">
 
             <div className="col col-left">
+            <Link to="/manage-users">
                 <img className="navbar-logo" src={require("../images/dashboard-logo.png")} alt="SPCA Logo" />
-                {/* <Link to="/sign-in">Sign In</Link> */}
+            </Link>
             </div>
 
             <div className="col col-mid">
