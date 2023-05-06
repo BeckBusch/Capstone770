@@ -1,0 +1,148 @@
+.manage-users-page {
+    width: 100%;
+    height: 100vh;
+    /* background-color: blue; */
+}
+
+.header-container {
+    /* height:fit-content;
+    width:fit-content; */
+    display: inline-block;
+    /* background-color: red; */
+    /* padding: 20px; */
+    padding-left: 50px;
+}
+
+.manage-users-header {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.settings-icon-align {
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.pending-users-container {
+    width: 90%;
+    height: fit-content;
+    /* background-color: red; */
+    display: inline-block;
+    position: relative;   
+    left: 50%;
+    transform: translate(-50%);
+} 
+
+.p-users-container {
+    width: 100%;
+    height: fit-content;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    /* background-color: orange; */
+}
+
+.options-container {
+    width: 90%;
+    height: fit-content;
+    background-color: red;
+    position: relative;   
+    left: 50%;
+    transform: translate(-50%);
+    display: inline-block;
+}
+
+.select-container {
+    width: 250px;
+    height: 40px;
+    background-color: purple;
+    position: relative;
+    display: inline-block;
+}
+
+.search-container {
+    width: 250px;
+    height: 100px;
+    background-color: orange;
+    position: relative;
+    display: inline-block;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.search-user-div {
+    display: flex;
+    justify-content: center;
+}
+
+.user-email-search {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    background-color: #DBDBDB;
+    border: none;
+    border-radius: 20px;
+    padding: 0 20px 0 20px;
+    margin: 30px 0 30px 0;
+}
+
+.search-button {
+    background-color: red;
+    border-color: black;
+    border-radius: 50%;
+    text-align: center;
+    /* margin: 35px 0 30px 15px; */
+}
+
+.search-icon {
+    height: 24px;
+    width: 24px;
+}
+
+
+.type-container {
+    width: 250px;
+    height: 100%;
+    background-color: pink;
+    position: absolute;
+    display: inline-block;
+}
+
+.users-container {
+
+}
+
+tr {
+    /* https://github.com/w3c/csswg-drafts/issues/1899 */
+    transform: scale(1);
+    position: relative;
+  }
+    
+.pending-users-table {
+    width: 100%;
+    height: 70%;
+    border-radius: 22px;
+    background-color: #DBDBDB;
+  }
+  
+  th {
+    height: 50px;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+
+  }
+  
+  td {
+    height: 50px;
+    /* width: 130px; */
+  }
+
+.profile-image {
+    /* text-align: center; */
+    width: 100px;
+}
+
+.profile-image-align {
+    position: relative;   
+    left: 50%;
+    transform: translate(-50%);
+}
