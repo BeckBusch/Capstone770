@@ -12,96 +12,35 @@ function AddDataResultsPage() {
                 <h1 className="start-weighing-header">Start Weighing</h1>
             </div>
             <div className="results-container">
-            {/* <h1>Custom Radio Buttons</h1>
-            <label class="container">One
-            <input type="radio" checked="checked" name="radio"/>
-            <span class="checkmark"></span>
-            </label>
-            <label class="container">Two
-            <input type="radio" name="radio"/>
-            <span class="checkmark"></span>
-            </label>
-            <label class="container">Three
-            <input type="radio" name="radio"/>
-            <span class="checkmark"></span>
-            </label>
-            <label class="container">Four
-            <input type="radio" name="radio"/>
-            <span class="checkmark"></span>
-            </label> */}
-            <div class="board-grid">
-                <div class="rowGrid">
-                <div class="board-label">
-                    <label class="container">
-                        <input type="radio" checked="checked" name="radio"/>
-                        <span class="checkmark"></span>
-                    </label>
+                <div>
+                    <table class="resultsTable" id="resultsTable">
+                        <thead>
+                            <th></th>
+                            <th>Weight (kg)</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td className="radio-button"><input type="radio" name="radio" value="radio1" required/></td>
+                                <td>6.25</td>
+                                <td>01/03/2023</td>
+                                <td>10:49 AM</td>
+                            </tr>
+                            <tr>
+                                <td className="radio-button"><input type="radio" name="radio" value="radio2" required/></td>
+                                <td>6.03</td>
+                                <td>02/03/2023</td>
+                                <td>3:10 PM</td>        
+                            </tr>
+                            <tr>
+                                <td className="radio-button"><input type="radio" name="radio" value="radio3" required/></td>
+                                <td>8.08</td>
+                                <td>03/03/2023</td>
+                                <td>10:30 AM</td>        </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="board-label">
-                    <label>Weight (kg)</label>
-                </div>
-                <div class="board-label">
-                    <label>Date</label>
-                </div>
-                <div class="board-label">
-                    <label>Time</label>
-                </div>
-                </div>
-
-                <div class="rowGrid">
-                <div class="board-labe">
-                    <label class="container">
-                        <input type="radio" name="radio"/>
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
-                <div class="board__item"></div>
-                <div class="board__item"></div>
-                <div class="board__item"></div>
-                </div>
-                <div class="rowGrid">
-                <div class="board__item"></div>
-                <div class="board__item"></div>
-                <div class="board__item"></div>
-                <div class="board__item"></div>
-                </div>
-                <div class="rowGrid">
-                <div class="board__item"></div>
-                <div class="board__item"></div>
-                <div class="board__item"></div>
-                <div class="board__item"></div>
-                </div>
-                <div class="rowGrid">
-                <div class="board__item"></div>
-                <div class="board__item"></div>
-                <div class="board__item"></div>
-                <div class="board__item"></div>
-                </div>
-            </div>
-
-            <div>
-                <table id="table" border="1">
-                    <tr id="first-tr">
-                        <th>Select</th>
-                        <th>Weight (kg)</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                    </tr>
-                    <tr>
-                        <td><input type="radio" name="select"></input></td>
-                        <td>AAAA</td>
-                        <td>BBBB</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio" name="select"></input></td>
-                        <td>CCCC</td>
-                        <td>DDDD</td>
-                        <td>20</td>
-                    </tr>
-                </table>
-            </div>
-                
                 <div class="button-container">
                     <div class="buttons">
                         <Link to="/add-data-processing">

@@ -24,7 +24,7 @@
 }
 
 .results-container {
-    background-color: lightblue;
+    /* background-color: blue; */
     width: 60%;
     height: fit-content;
     /* text-align: left; */
@@ -41,7 +41,7 @@
     background-color: white;
     font-size: 16px;
     border: #999999 1px solid;
-    border-radius: 10px;
+    border-radius: 22px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 20px;
@@ -54,7 +54,7 @@
     background-color: #3479C0;
     font-size: 16px;
     border: none;
-    border-radius: 10px;
+    border-radius: 22px;
     margin-top: 10px;
     margin-bottom: 10px;
     /* margin-right: 20px; */
@@ -79,7 +79,9 @@
 }
 
 .button-container {
-    text-align: right;
+  /* background-color: red; */
+  padding-top: 20px;
+  text-align: right;
 }
 
 /* .col1 {
@@ -90,86 +92,49 @@
     background-color: purple;
 } */
 
-.board-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 116px);
-      grid-template-rows: repeat(15, 42px);
-      grid-row-gap: 1px;
-      grid-column-gap: 1px;
-  }
 
-  .board-label {
-    background: transparent;
-  }
-  
-  .board__item {
-    background: #eee;
-    opacity: 1;
-  }
-  .rowGrid {
-    display: contents;
-  }
-
-
-.container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+tr {
+  /* https://github.com/w3c/csswg-drafts/issues/1899 */
+  transform: scale(1);
+  position: relative;
 }
 
-/* Hide the browser's default radio button */
-.container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
+/* The highlight magic is here (webkit only) */
+:checked::before {
+  content: ' ';
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #BDD3E8;
+  /* opacity: .5; */
+  z-index: -1;
+  border-radius: 22px;
+}
 
-/* Create a custom radio button */
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-    border-radius: 50%;
-  }
-  
-  /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-  
-  /* When the radio button is checked, add a blue background */
-  .container input:checked ~ .checkmark {
-    background-color: #2196F3;
-  }
-  
-  /* Create the indicator (the dot/circle - hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  /* Show the indicator (dot/circle) when checked */
-  .container input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the indicator (dot/circle) */
-  .container .checkmark:after {
-       top: 9px;
-      left: 9px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: white;
-  }
+table {
+  width: 100%;
+  height: 70%;
+}
+
+th {
+  height: 50px;
+  text-align: left;
+}
+
+td {
+  height: 50px;
+  /* width: 130px; */
+}
+
+input[type='radio']{
+  width: 25px;
+  height: 25px;
+  /* margin: 0; */
+}
+
+.radio-button {
+  text-align: center;
+}
