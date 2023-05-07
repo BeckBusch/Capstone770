@@ -103,7 +103,7 @@
 
 .search-button {
     background-color: red;
-    border-color: black;
+    border:1px solid black;
     border-radius: 50%;
     text-align: center;
     /* margin: 35px 0 30px 15px; */
@@ -273,7 +273,7 @@ tr {
     width: 100px;
     height: 35px;
     color: #FF0000;
-    border-color: #FF0000;
+    border:1px solid #FF0000;
     border-radius: 22px;
     background-color: white;
 }
@@ -290,7 +290,7 @@ tr {
     height: 35px;
     color: #2DAD00;
     background-color: white;
-    border-color: #2DAD00;
+    border:1px solid #2DAD00;
     border-radius: 50%;
     margin-right: 10px;
 }
@@ -300,7 +300,7 @@ tr {
     height: 35px;
     color: #FF0000;
     background-color: white;
-    border-color: #FF0000;
+    border:1px solid #FF0000;
     border-radius: 50%;
 }
 

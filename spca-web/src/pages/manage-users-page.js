@@ -1,5 +1,5 @@
 import React from "react"
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import NavBarAdmin from "../components/nav-bar-admin";
 import "./manage-users-page.css";
 
@@ -78,8 +78,11 @@ function ManageUsersPage() {
                         <div>
                             <label></label>
                         </div>
-                        <div><button className="add-user-btn">Add User</button></div>
-
+                        <div>
+                        <Link to="/add-user">
+                            <button type="submit" id="AddUserBtn" className="add-user-btn">Add User</button>
+                        </Link>
+                        </div>
                     </div>
                 </div>
             </div>
