@@ -7,9 +7,9 @@ function ManageUsersPage() {
     return (
         <div className="manage-users-page">
             <NavBarAdmin/>   
-            <div className="header-container">
+            <div className="manage-header-container">
                 <img src={require("../images/settings-black-icon.png")} className="settings-icon-align" alt="start" />
-                <h1 className="start-weighing-header">Start Weighing</h1>
+                <h1 className="manage-users-header">Manage Users</h1>
             </div>        
             <div className="pending-users-container">
                 <label>Pending Users (1)</label>
@@ -56,16 +56,20 @@ function ManageUsersPage() {
             </div>
             <div className="options-container">
                 <div class="three-columns-grid">
-                    <div>
+                    <div className="col-one">
                         <div>
                             <label for="Username/Email">Username/Email</label>
                         </div>
-                        <div>
+                        <div className="search-user-div">
                             <input type="text" placeholder="Search" className="user-email-search"/>
+                            <button className="search-button"><img className="search-icon" src={require("../images/search-icon.png")} alt="Search" /></button>
                         </div>
+                        {/* <div>
+                            <input type="text" placeholder="Search" className="user-email-search"/>
+                        </div> */}
                     </div>
 
-                    <div>
+                    <div className="col-two">
                         <div>
                             <label for="UserType">User Type</label>
                         </div>
@@ -80,7 +84,7 @@ function ManageUsersPage() {
                         </div>
                     </div>
 
-                    <div>
+                    <div className="col-three">
                         <div>
                             <label></label>
                         </div>

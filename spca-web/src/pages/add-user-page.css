@@ -4,13 +4,15 @@
     /* background-color: blue; */
 }
 
-.header-container {
-    /* height:fit-content;
-    width:fit-content; */
-    display: inline-block;
+.add-user-header-container {
+    /* display: inline-block; */
     /* background-color: red; */
-    /* padding: 20px; */
-    padding-left: 50px;
+    width: 90%;
+    position: relative;   
+    left: 50%;
+    transform: translate(-50%);
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .add-user-header {
@@ -23,7 +25,7 @@
     margin-right: 20px;
 }
 
-.details-container {
+.add-user-details-container {
     /* background-color: lightblue; */
     width: 80%;
     height: fit-content;

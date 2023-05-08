@@ -7,11 +7,11 @@ function AddUserPage() {
     return (
         <div className="add-user-page">
             <NavBarAdmin/>   
-            <div className="header-container">
+            <div className="add-user-header-container">
                 <img src={require("../images/add-user-black-icon.png")} className="add-user-icon-align" alt="start" />
                 <h1 className="add-user-header">Add User</h1>
             </div> 
-            <div className="details-container">
+            <div className="add-user-details-container">
                 <div class="two-columns">
                     <div className="user-container">
                         <div class="p-container">
