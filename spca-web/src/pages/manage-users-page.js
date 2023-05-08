@@ -38,8 +38,14 @@ function ManageUsersPage() {
                                         </div>   
                                     </td>
                                     <td>
-                                        <button className="yes-btn">yes</button>
-                                        <button className="no-btn">no</button>
+                                        <button className="yes-btn">
+                                            <img src={require("../images/yes-icon.png")} className="yes-no-btn-align" alt="start" />
+                                            <img src={require("../images/yes-hover-icon.png")} className="yes-img-top" alt="Card Front" /> 
+                                        </button>
+                                        <button className="no-btn">
+                                            <img src={require("../images/no-icon.png")} className="yes-no-btn-align" alt="start" />
+                                            <img src={require("../images/no-hover-icon.png")} className="no-img-top" alt="start" />
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -80,7 +86,10 @@ function ManageUsersPage() {
                         </div>
                         <div>
                         <Link to="/add-user">
-                            <button type="submit" id="AddUserBtn" className="add-user-btn">Add User</button>
+                            <button type="submit" id="AddUserBtn" className="add-user-btn">
+                            <img src={require("../images/add-user-icon.png")} className="add-user-align" alt="start" />
+                            <img src={require("../images/add-user-icon.png")} className="img-top" alt="Card Front" /> 
+                            Add User</button>
                         </Link>
                         </div>
                     </div>
@@ -116,7 +125,10 @@ function ManageUsersPage() {
                                     </td>
                                     <td>27/04/2023</td>
                                     <td>
-                                        <button className="remove-btn">Remove X</button>
+                                        <button className="remove-btn">Remove
+                                            <img src={require("../images/no-icon.png")} className="remove-btn-align" alt="start" />
+                                            <img src={require("../images/no-hover-icon.png")} className="remove-img-top" alt="start" />
+                                        </button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -134,7 +146,10 @@ function ManageUsersPage() {
                                     </td>
                                     <td>03/04/2023</td>
                                     <td>
-                                        <button className="remove-btn">Remove X</button>
+                                        <button className="remove-btn">Remove 
+                                            <img src={require("../images/no-icon.png")} className="remove-btn-align" alt="start" />
+                                            <img src={require("../images/no-hover-icon.png")} className="remove-img-top" alt="start" />
+                                        </button>
                                     </td>
                                 </tr>
                                 {/* <tr>
