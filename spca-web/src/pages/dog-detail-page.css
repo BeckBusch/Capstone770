@@ -31,6 +31,7 @@
 }
 
 .two-columns-grid {
+    position: absolute;
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
@@ -105,8 +106,8 @@ p {
     border: none;
     padding: 10px;
     border-radius: 22px;
-    margin-top: 20px;
-    margin-right: 10px;
+    /* margin-top: 20px; */
+    /* margin-right: 10px; */
     /* margin-right: 20px; */
 }
 
@@ -118,12 +119,25 @@ p {
 }
 
 .buttons {
+    /* background-color: pink; */
     width: 200px;
 }
 
-.button-container {
+.dog-detail-button-container {
     text-align: right;
     /* background-color: black; */
+    width: 90%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    padding-top: 20px;
+}
+
+.outer-button-container {
+    position: relative;
+    /* background-color: blue; */
+    width: 100%;
+    height: 90px;
 }
 
 .start-img {

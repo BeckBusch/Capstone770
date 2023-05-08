@@ -8,14 +8,17 @@ function DogDetailPage() {
         <div className="dog-detail-page">
             <div className="dog-detail-container">
                 <NavBar/>
-                <div class="button-container">
+                <div className="outer-button-container">
+                    <div class="dog-detail-button-container">
                         <div class="buttons">
                             <Link to="/add-data">
                                 <button type="submit" id="startWeighingBtn" className="start-weighing-btn">
                                 <img className="start-img" src={require("../images/start-icon.png")} alt="start Image" />Start Weighing</button>
                             </Link>
                         </div>
-                </div> 
+                    </div> 
+                </div>
+                
                 <div class="two-columns-grid">
                     <div>
                         <div class="dog-image-align">
