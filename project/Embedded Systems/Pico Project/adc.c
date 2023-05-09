@@ -25,13 +25,34 @@ double adcConvert() {
     // 0.033 * (4.25/0.25)= 0.561 V sent from analogue to pin
     //  0.561/ vCount=696 adc count.
     // 696/scalefactor = 4.248kg = close enough?
+//----------------------------------------------------------------------
 
+    /*
+        Round 2 Notes
+        ADC range is 0-3.3V, 12 bit.
+        This means that each count is 8.0566404625e-4V
+
+        Because our range is from 0.2-1.89 this limits our adc count from
+        248-2345,           Voltage/voltage per count = count.
+        ADC range is now 2097 counts and thus, 83.88 counts per kg
+
+        Scalefactor is then 83.88 but you need to take in the initial 248 counts which would mean that
+        248/83.88= 2.956 is the offset.
+        the equation would then become 
+        conversion = reading/scalefactor - offset.
+
+
+        Given that the voltage does not exceed 1.89V
+
+    
+    */
 
     int reading = adc_read(); // read ADC value
-    double scaleFactor = 163.84;
+    double scaleFactor = 83.88;
+    double offSet = 2.956;
     printf("check: %d", reading); //PRINTER
 
-    double conversion = (double)reading / scaleFactor; //which equates to 5kg
+    double conversion = ((double)reading / scaleFactor)- offSet; //which equates to 5kg
 
     return conversion;
 }
