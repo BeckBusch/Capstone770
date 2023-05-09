@@ -8,8 +8,11 @@ pico_sdk_init()
 
 add_executable(capstonepico 
     pico_c.c
+    pico_c.h
     network.c
     network.h
+    adc.c
+    adc.h
     )
 
 pico_enable_stdio_usb(capstonepico 1)
@@ -31,6 +34,7 @@ target_link_libraries(capstonepico
     pico_lwip_mbedtls
     pico_mbedtls
     pico_stdlib
+    hardware_adc
     )
 
 pico_add_extra_outputs(capstonepico)

@@ -1,7 +1,17 @@
+/**
+ * Capstone 770 Project
+ * Team 10
+ * 
+ * network.c
+ * TLS Network functionality
+ */
+
 #include "network.h"
 
-char request_body[64];
+void run_tls_client_test(void); // pre declaration
+
 char request_msg[1024];
+
 typedef struct TLS_CLIENT_T_ {
     struct altcp_pcb* pcb;
     bool complete;
@@ -158,19 +168,28 @@ static TLS_CLIENT_T* tls_client_init(void) {
 
     return state;
 }
+// /Measurements/Dog3.json
+void sendRequest(char* uri, char* body) {
 
-void run_tls_client_test(void) {
-    int recording = 50;
-    sprintf(request_body, "{\"%s\":\"%d\"}", "Weight", recording);
     sprintf(request_msg,
-        "PUT /Measurements/Dog3.json HTTP/1.1\r\n" \
+        "PUT %s HTTP/1.1\r\n" \
         "Host: %s \r\n" \
         "Connection: close\r\n" \
         "Content-Type: application/json\r\n" \
         "Content-Length:%d\r\n" \
         "\r\n" \
-        "%s", TLS_CLIENT_SERVER, strlen(request_body), request_body);
+        "%s", uri, TLS_CLIENT_SERVER, strlen(body), body);
 
+        run_tls_client_test();
+}
+
+void wifi_connect(void) {
+    while (cyw43_arch_wifi_connect_timeout_ms("UoA-Capstone", "cap5Ton3", CYW43_AUTH_WPA2_AES_PSK, 30000)) {
+        printf("connection failed, retrying\n");
+    }
+}
+
+void run_tls_client_test(void) {
     /* No CA certificate checking */
     tls_config = altcp_tls_create_config_client(NULL, 0);
 
@@ -195,7 +214,7 @@ void run_tls_client_test(void) {
         // if you are not using pico_cyw43_arch_poll, then WiFI driver and lwIP work
         // is done via interrupt in the background. This sleep is just an example of some (blocking)
         // work you might be doing.
-        sleep_ms(1000);
+        //sleep_ms(1000);
 #endif
     }
     free(state);
