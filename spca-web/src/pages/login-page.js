@@ -24,7 +24,7 @@ function LoginPage() {
                     </form>
 
                     <div>
-                        <p className="sign-up-msg"> Don"t have an account? <Link to="/sign-in">Sign In</Link> </p>
+                        <p className="sign-up-msg"> Don"t have an account? <Link to="/sign-up">Sign Up</Link> </p>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,28 @@
+.sign-up-confirm-page {
+    width: 100%;
+    height: 100vh;
+    background-color: #3479C0;
+}
+
+.align-center2 {
+    margin: auto;
+    width: 100%;
+    position: absolute;   
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.sign-up-confirm-container {
+    width: 500px;
+    height: fit-content;
+    background-color: white;
+    text-align: center;
+    border-radius: 40px;
+    padding: 50px;
+    border: white 10px solid;
+    position: absolute;   
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+}
