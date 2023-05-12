@@ -8,7 +8,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import LoginPage from './pages/login-page';
-import SignInPage from './pages/sign-in-page';
+import SignUpPage from './pages/sign-up-page';
 import DashboardPage from './pages/dashboard-page';
 import MyAccountPage from './pages/my-account-page';
 import DogDetailPage from './pages/dog-detail-page';
@@ -17,7 +17,7 @@ import AddDataProcessingPage from './pages/add-data-processing-page';
 import AddDataResultsPage from './pages/add-data-results-page';
 import ManageUsersPage from './pages/manage-users-page';
 import AddUserPage from './pages/add-user-page';
-
+import SignUpConfirmPage from './pages/sign-up-confirm-page';
 
 const router = createBrowserRouter([
   {
@@ -26,8 +26,8 @@ const router = createBrowserRouter([
     element: <LoginPage/>,
   },
   {
-    path: "sign-in",
-    element: <SignInPage/>,
+    path: "sign-up",
+    element: <SignUpPage/>,
   },
   {
     path: "dashboard",
@@ -64,6 +64,10 @@ const router = createBrowserRouter([
   {
     path: "add-user",
     element: <AddUserPage/>,
+  },
+  {
+    path: "sign-up-confirm",
+    element: <SignUpConfirmPage/>,
   },
 ]);
 
