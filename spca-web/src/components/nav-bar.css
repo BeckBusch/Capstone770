@@ -48,6 +48,12 @@
     padding: 10px;
 }
 
+@media (max-width: 700px) {
+    .navbar-link {
+        display: none;
+    }     
+}
+
 .navbar-link:hover {
     color: white;
     cursor: pointer;

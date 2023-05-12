@@ -11,10 +11,10 @@ function LoginPage() {
 
                     <form>
                         <div>
-                            <input type="text" placeholder="Username" />
+                            <input type="text" placeholder="Username" className="login-input"/>
                         </div>
                         <div>
-                            <input type="password" placeholder="Password" />
+                            <input type="password" placeholder="Password" className="login-input"/>
                         </div>
                         <div>
                             <Link to="/dashboard">
