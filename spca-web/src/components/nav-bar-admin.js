@@ -2,14 +2,13 @@ import React from "react";
 import "./nav-bar.css";
 import { Link } from "react-router-dom";
 
-function NavBar() {
+function NavBarAdmin() {
     return (
         <div className="nav-bar">
 
             <div className="col col-left">
-            <Link to="/manage-users">
                 <img className="navbar-logo" src={require("../images/dashboard-logo.png")} alt="SPCA Logo" />
-            </Link>
+                {/* <Link to="/sign-in">Sign In</Link> */}
             </div>
 
             <div className="col col-mid">
@@ -26,6 +25,13 @@ function NavBar() {
                 </Link>
             </div>
 
+            <div className="col col-mid">
+                <Link to="/manage-users">
+                    <img className="navbar-icon" src={require("../images/settings-icon.png")} alt="Dashboard" />
+                    <button type="submit" id="logInBtn" className="navbar-link">Manage Users</button>
+                </Link>
+            </div>
+
             <div className="col col-right">
                 <Link to="/my-account">
                     <button type="submit" id="logInBtn" className="navbar-link">My Account</button>
@@ -37,4 +43,4 @@ function NavBar() {
     );
 }
 
-export default NavBar;
+export default NavBarAdmin;

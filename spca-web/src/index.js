@@ -15,6 +15,8 @@ import DogDetailPage from './pages/dog-detail-page';
 import AddDataPage from './pages/add-data-page';
 import AddDataProcessingPage from './pages/add-data-processing-page';
 import AddDataResultsPage from './pages/add-data-results-page';
+import ManageUsersPage from './pages/manage-users-page';
+import AddUserPage from './pages/add-user-page';
 
 
 const router = createBrowserRouter([
@@ -55,7 +57,14 @@ const router = createBrowserRouter([
     path: "dog-detail",
     element: <DogDetailPage/>,
   },
-
+  {
+    path: "manage-users",
+    element: <ManageUsersPage/>,
+  },
+  {
+    path: "add-user",
+    element: <AddUserPage/>,
+  },
 ]);
 
 

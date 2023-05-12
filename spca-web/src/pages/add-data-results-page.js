@@ -8,8 +8,8 @@ function AddDataResultsPage() {
         <div className="add-data-results-page">
             <NavBar/>
             <div className="header-container">
-                <img src={require("../images/start-black-icon.png")} className="start-icon-align" alt="start" />
-                <h1 className="start-weighing-header">Start Weighing</h1>
+                <img src={require("../images/start-black-icon.png")} className="settings-icon-align" alt="start" />
+                <h1 className="manage-users-header">Manage Users</h1>
             </div>
             <div className="results-container">
                 <div>
