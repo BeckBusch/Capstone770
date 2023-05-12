@@ -61,12 +61,9 @@ function ManageUsersPage() {
                             <label for="Username/Email">Username/Email</label>
                         </div>
                         <div className="search-user-div">
-                            <input type="text" placeholder="Search" className="user-email-search"/>
+                            <input type="text" placeholder="Search" className="search-input"/>
                             <button className="search-button"><img className="search-icon" src={require("../images/search-icon.png")} alt="Search" /></button>
                         </div>
-                        {/* <div>
-                            <input type="text" placeholder="Search" className="user-email-search"/>
-                        </div> */}
                     </div>
 
                     <div className="col-two">
@@ -92,7 +89,6 @@ function ManageUsersPage() {
                         <Link to="/add-user">
                             <button type="submit" id="AddUserBtn" className="add-user-btn">
                             <img src={require("../images/add-user-icon.png")} className="add-user-align" alt="start" />
-                            <img src={require("../images/add-user-icon.png")} className="img-top" alt="Card Front" /> 
                             Add User</button>
                         </Link>
                         </div>
