@@ -8,43 +8,72 @@ h1 {
     font-size: 32px;
 }
 
-.header-container {
+.my-account-header-container {
     /* background-color: red; */
-    /* height:fit-content;
-    width:fit-content; */
-    display: inline-block;
-    padding: 20px;
+    width: 90%;
+    position: relative;   
+    left: 50%;
+    transform: translate(-50%);
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-.details-container {
-    /* background-color: lightblue; */
-    width: 80%;
+.my-account-icon-align {
+    vertical-align: middle;
+    margin-right: 20px;
+    /* background-color: pink; */
+}
+
+.my-account-header {
+    display: inline-block;
+    vertical-align: middle;
+    /* background-color: purple; */
+}
+
+.my-account-details-container {
+    /* padding: 50px;
+    position: absolute;    */
+
+    width: 90%;
     height: fit-content;
-    /* text-align: left; */
-    padding: 50px;
-    position: absolute;   
+    /* background-color: lightblue; */
+    display: inline-block;
+    position: relative;   
     left: 50%;
     transform: translate(-50%);
 }
 
-.two-columns-grid {
+.my-account-two-columns-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
+    /* background-color: green; */
 }
 
 .two-columns-grid > * {
     padding:1rem;
 }
 
-.profile-container {
-    width: 200px;
-    height: 200px;
+.my-account-col-one {
+    /* background-color: aliceblue; */
+    text-align: center;
+    /* margin-top: 100px; */
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-account-col-two {
+    /* background-color:antiquewhite; */
+}
+
+.my-account-profile-container {
+    width: 280px;
+    height: 280px;
     background-color: #BDD3E8;
     border: 5px solid #BDD3E8;
     overflow: hidden;    
     border-radius: 50%;
-    margin: auto;
-    margin-top: 20px;
 }
 
 .profile-img {
@@ -54,7 +83,8 @@ h1 {
 }
 
 .edit-photo-msg {
-    text-align: center;
+    padding-top: 20px;
+    /* background-color: blue; */
 }
 
 label {
@@ -63,22 +93,21 @@ label {
   }
 
 input { 
-    width: 200px;
+    width: 400px;
 }
 
 .edit-container {
-    padding: 40px 0;
+    /* padding: 40px 0; */
+    /* background-color: lavender; */
 }
 
-.details-spacing {
+.edit-link {
+    text-align:right;
+}
+
+
+/* .details-spacing {
     margin-bottom: 10px;
-}
-
-/* .edit-details-msg {
-    text-align: left;
-    display: inline-block;
-    margin-left: 80px;
-    font-size: 12px;
 } */
 
 .cancel-btn {

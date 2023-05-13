@@ -7,51 +7,57 @@ function MyAccountPage() {
     return (
         <div className="my-account-page">
             <NavBar/>
-            <div className="header-container">
-                <img src={require("../images/my-account-icon-black.png")} alt="my-account" />
-                <h1>My Account</h1>
+            <div className="my-account-header-container">
+                <img src={require("../images/my-account-icon-black.png")} className="my-account-icon-align" alt="my-account" />
+                <h1 className="my-account-header">My Account</h1>
             </div>
-            <div className="details-container">
-                <div class="two-columns-grid">
-                    <div>
-                        <div class="profile-container">
+            <div className="my-account-details-container">
+                <div class="my-account-two-columns-grid">
+                    <div className="my-account-col-one">
+                        <div>
+                        <div class="my-account-profile-container">
                             <img className="profile-img" src={require("../images/my-account-icon.png")} alt="Profile Image" />
                         </div>
                         <p className="edit-photo-msg"><Link to="/dashboard">Edit</Link> </p>
+                        </div>
                     </div>
-                    <div>
+                    <div className="my-account-col-two">
                         <div class="edit-container">
                             <form>
-                                <div class="details-spacing">
+                                <div>
                                     <label for="Name">Name</label>
+                                    {/* <p>Name</p> */}
                                     <input type="text" id="name" placeholder="Name" />
-                                    {/* <p className="edit-details-msg"><Link to="/dashboard">Edit</Link> </p> */}
+                                    <label className="edit-link">Edit</label>
                                 </div>
 
-                                <div class="details-spacing"> 
+                                <div> 
                                     <label for="ID">ID</label>
+                                    {/* <p>ID</p> */}
                                     <input type="text" id="id" placeholder="Id" />
                                 </div>
 
-                                <div class="details-spacing">
+                                <div>
                                     <label for="Email">Email</label>
+                                    {/* <p>Email</p> */}
                                     <input type="text" id="email" placeholder="Email" />
-                                    {/* <p className="edit-details-msg"><Link to="/dashboard">Edit</Link> </p> */}
                                 </div>
 
-                                <div class="details-spacing">
+                                <div>
                                     <label for="Password">Password</label>
+                                    {/* <p>Password</p> */}
                                     <input type="password" id="password" placeholder="Password" />
-                                    {/* <p className="edit-details-msg"><Link to="/dashboard">Edit</Link> </p> */}
                                 </div>
 
-                                <div class="details-spacing">
+                                <div>
                                     <label for="Role">Role</label>
+                                    {/* <p>Role</p> */}
                                     <input type="role" id="role" placeholder="Role" />
                                 </div>
 
-                                <div class="details-spacing">
+                                <div>
                                     <label for="Joined">Joined</label>
+                                    {/* <p>Joined</p> */}
                                     <input type="joined" id="joined" placeholder="Joined" />
                                 </div>
                             </form>
