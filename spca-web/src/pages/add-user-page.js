@@ -13,13 +13,15 @@ function AddUserPage() {
             </div> 
             <div className="add-user-details-container">
                 <div class="two-columns">
-                    <div className="user-container">
-                        <div class="p-container">
-                            <img className="profile-img" src={require("../images/my-account-icon.png")} alt="Profile Image" />
+                    <div className="two-columns-col-1">
+                        <div>
+                            <div class="p-container">
+                                <img className="profile-img" src={require("../images/my-account-icon.png")} alt="Profile Image" />
+                            </div>
+                            <p className="add-photo-msg"><Link to="/dashboard">+ Add Photo</Link> </p>
                         </div>
-                        <p className="add-photo-msg"><Link to="/dashboard">+ Add Photo</Link> </p>
                     </div>
-                    <div class="edit-container">
+                    <div class="two-columns-col-2">
                         <form>
                             <div class="details-spacing">
                                 <label for="Name">Name</label>

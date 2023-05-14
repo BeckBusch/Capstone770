@@ -27,27 +27,31 @@
 
 .add-user-details-container {
     /* background-color: lightblue; */
-    width: 80%;
-    height: fit-content;
+    width: 90%;
+    /* height: fit-content; */
     /* text-align: left; */
-    padding: 0;
     position: absolute;   
     left: 50%;
     transform: translate(-50%);
 }
 
-.user-container {
+.two-columns-col-1 {
     /* background-color: pink; */
-    text-align: center;
+    width: fit-content;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 }
 
 .two-columns {
     display: grid;
-    grid-template-columns: 0.5fr 2fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    /* background-color: green; */
 }
 
 .two-columns > * {
-    padding:3rem;
+    /* background-color: orange; */
 }
 
 .p-container {
@@ -86,9 +90,9 @@ label {
     border-radius: 10px;
 }
 
-.edit-container {
-    /* background-color: purple; */
-    padding: 70px 40px;
+.two-columns-col-2 {
+    background-color: purple;
+    /* padding: 70px 40px; */
 }
 
 .details-spacing {
