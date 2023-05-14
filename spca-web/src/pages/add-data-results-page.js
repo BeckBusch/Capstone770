@@ -7,7 +7,7 @@ function AddDataResultsPage() {
     return (
         <div className="add-data-results-page">
             <NavBar/>
-            <div className="header-container">
+            <div className="add-data-results-header-container">
                 <img src={require("../images/start-black-icon.png")} className="settings-icon-align" alt="start" />
                 <h1 className="manage-users-header">Manage Users</h1>
             </div>
