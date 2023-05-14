@@ -47,10 +47,33 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 2fr;
     /* background-color: green; */
+    grid-gap: 10px;
+    /* padding: 10px; */
 }
 
-.two-columns-grid > * {
-    padding:1rem;
+.my-account-two-columns-grid > div {
+    /* background-color: orange; */
+    /* padding:1rem; */
+    /* text-align: center;
+    padding: 20px 0;
+    font-size: 30px; */
+  }
+
+  .user-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 0.5fr;
+    grid-gap: 5px;
+    /* background-color: pink; */
+    padding: 5px;
+}
+
+.user-details-grid > div {
+    /* background-color: purple; */
+    /* padding: 10px 0; */
+    display: flex;
+    align-items: center;
+    /* text-align: center; */
+    height: 40px;
 }
 
 .my-account-col-one {
@@ -88,12 +111,14 @@ h1 {
 }
 
 label {
-    display: inline-block;
-    width: 150px;
+    /* display: inline-block; */
+    /* width: 150px; */
   }
 
 input { 
-    width: 400px;
+    width: 200px;
+    margin: 0;
+    /* padding: 0; */
 }
 
 .edit-container {
@@ -103,6 +128,7 @@ input {
 
 .edit-link {
     text-align:right;
+    background-color:darkcyan;
 }
 
 
