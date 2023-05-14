@@ -2,56 +2,81 @@
     width: 100%;
     height: 100vh;
 }
-
+/* 
 .dog-detail-container {
-    /* background-color: lightblue; */
+    background-color: lightblue;
     width: 100%;
     height: 40%;
-    /* text-align: left; */
     position: relative;   
     left: 50%;
     transform: translate(-50%);
-    /* padding-bottom: 50px; */
-}
+} */
 
 .dog-info-container {
-    /* background-color: aqua; */
-    /* position: absolute;   
+    /* position: relative;
     top: 50%;
-    transform: translate(0, -50%); */
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); */
+    /* display: inline-block; */
+    /* background-color: red; */
 }
 
 .name-header {
-    /* background-color: orange; */
+    /* background-color: blue; */
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .two-columns-grid {
-    position: absolute;
+    /* position: absolute; */
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 80px;
+    /* background-color: red; */
 }
 
 .two-columns-grid > * {
-    padding:0rem;
+    /* background-color: orange; */
 }
 
-.two-columns-grid2 {
+.detail-col-one {
+    /* background-color: green; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.detail-col-two {
+    /* background-color: orange; */
+}
+
+.container-div {
+    height: fit-content;
+    width: 90%;
+    position: relative;   
+    left: 50%;
+    transform: translate(-50%);
+    /* background-color: aqua; */
+}
+
+.four-columns-grid {
+    /* background-color: green; */
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-gap: 1px;
+    row-gap: 10px;
+    padding: 1px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.two-columns-grid2 > * {
-    padding-right:10rem;
+.four-columns-grid > * {
+    /* background-color: lightblue; */
+    height: 30px;
+    display: flex;
+    align-items: center;
 }
 
 .dog-image-container {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     background-color: #BDD3E8;
     border: 5px solid #BDD3E8;
     overflow: hidden;    
@@ -66,11 +91,6 @@
     object-fit: cover;
 }
 
-.dog-image-align {
-    /* background-color: beige; */
-    margin-left: 80px;
-}
-
 label {
     display: inline-block;
     font-weight: bold;
@@ -80,20 +100,6 @@ label {
 .details-spacing {
     margin-bottom: 10px;
 }  
-
-/* .column1 {
-    background-color: pink;
-}
-
-.column2 {
-    background-color: purple;
-} */
-
-p {
-    display: inline-block;
-    margin: 5px;
-    /* text-align: left; */
-}
 
 .start-weighing-btn {
     width: fit-content;
@@ -125,19 +131,22 @@ p {
 
 .dog-detail-button-container {
     text-align: right;
-    /* background-color: black; */
-    width: 90%;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    padding-top: 20px;
+    /* background-color: black;    */
 }
 
 .outer-button-container {
-    position: relative;
-    /* background-color: blue; */
+    /* position: relative; */
+    /* background-color: blue;
     width: 100%;
-    height: 90px;
+    height: 90px; */
+
+    /* background-color: red; */
+    width: 90%;
+    position: relative;   
+    left: 50%;
+    transform: translate(-50%);
+    padding-top: 32px;
+    /* padding-bottom: 20px; */
 }
 
 .start-img {
@@ -146,18 +155,23 @@ p {
 }
 
 .graph-container {
-    /* background-color: blue; */
-    width: 100%;
-    height: 60%;
-    position: absolute;
+    /* background-color: rebeccapurple; */
+    /* width: 100%; */
+    margin-top: 30px;
+    height: 500px;
+    /* position: absolute; */
+    width: 90%;
+    position: relative;   
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .table-chart-container {
     /* background-color: aqua; */
-    width: 90%;
+    width: 100%;
     position: absolute;
-    left: 50%;
-    transform: translate(-50%);
+    /* left: 50%;
+    transform: translate(-50%); */
 }
 
 
@@ -234,8 +248,8 @@ p {
 
 .weight-header {
     text-align: center;
-    margin-top: 60px;
-    margin-bottom: 0;
+    /* margin-top: 60px;
+    margin-bottom: 0; */
     font-size: 20px;
     /* background-color: red; */
 }
@@ -282,8 +296,6 @@ p {
 .extra-msg {
     font-size: 16px;
     position: absolute;
-    width: 90%;
-    left: 50%;
     bottom: 10%;
-    transform: translate(-50%);
+    /* background-color: white; */
 }
