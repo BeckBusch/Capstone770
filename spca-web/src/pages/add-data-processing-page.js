@@ -7,15 +7,17 @@ function AddDataProcessingPage() {
     return (
         <div className="add-dog-processing-page">
                 <NavBar/>
-                <div className="circle">
-                    <div className="circle-container">
-                        <div className="footprint-container">
-                            <img className="dog-footprint-img one" src={require("../images/dog-footprint-image.png")} alt="Dog Footprint Image" />
-                            <img className="dog-footprint-img two" src={require("../images/dog-footprint-image.png")} alt="Dog Footprint Image" />
-                            <img className="dog-footprint-img three" src={require("../images/dog-footprint-image.png")} alt="Dog Footprint Image" />
-                        </div>
-                        <div className="text-container">
-                            <p className="processing-text">Processing...</p>
+                <div className="outer-circle">
+                    <div className="circle">
+                        <div className="circle-container">
+                            <div className="footprint-container">
+                                <img className="dog-footprint-img one" src={require("../images/dog-footprint-image.png")} alt="Dog Footprint Image" />
+                                <img className="dog-footprint-img two" src={require("../images/dog-footprint-image.png")} alt="Dog Footprint Image" />
+                                <img className="dog-footprint-img three" src={require("../images/dog-footprint-image.png")} alt="Dog Footprint Image" />
+                            </div>
+                            <div className="text-container">
+                                <p className="processing-text">Processing...</p>
+                            </div>
                         </div>
                     </div>
                 </div>

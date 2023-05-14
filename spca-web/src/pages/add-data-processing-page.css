@@ -1,8 +1,20 @@
 .add-dog-processing-page {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     background-color: #3479C0;
-    /* background-color: blue; */
+}
+
+.outer-circle {
+    width: 100%;
+    position: relative;   
+    left: 50%;
+    transform: translate(-50%);
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .circle {
@@ -10,13 +22,6 @@
     height: 380px;
     background-color: white;
     border-radius: 50%;
-    /* margin: 0; */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* text-align: center; */
-    /* vertical-align: middle; */
     display: flex;
     justify-content: center;
     align-items: center;
