@@ -1,37 +1,49 @@
 .sign-up-page {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     background-color: #3479C0;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: left top;
 }
 
 .align-center {
-    margin: auto;
     width: 100%;
-    position: absolute;   
-    top: 50%;
+    position: relative;   
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%);
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
+
 .sign-up-container {
-    width: 700px;
+    width: 80%;
     height: fit-content;
     background-color: white;
     /* text-align: left; */
     border-radius: 40px;
     padding: 50px;
     border: white 10px solid;
-    position: absolute;   
+    position: relative;   
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%);
 }
 
-input{
-    width: 90%;
+.sign-up-header-container {
+    /* background-color: red; */
+}
+
+.sign-up-header {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.sign-up-icon {
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.input-styling {
+    width: 280px;
     height: 40px;
     font-size: 16px;
     border: 1px solid #999999;
@@ -85,7 +97,7 @@ input{
     text-align: center;
 }
 
-.dropbtn {
+.role-dropbtn {
     cursor: pointer;
     width: 100%;
     height: 40px;
@@ -96,36 +108,43 @@ input{
     border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    text-align: right;
+    padding-right: 10px;
 }
   
-.dropdown {
+.role-dropdown {
     /* position: relative; */
     display: inline-block;
-    width: 200px;
+    width: 300px;
 }
   
-.dropdown-content {
+.role-dropdown-content {
     display: none;
     position: absolute;
     background-color: white;
-    min-width: 160px;
+    min-width: 300px;
     z-index: 1;
+    border-radius: 10px;
+    border: #999999 1px solid;
 }
   
-  .dropdown-content a {
-    color: black;
+  .role-dropdown-content a {
+    color: #999999;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
   }
   
-  .dropdown-content a:hover {background-color: #f1f1f1}
+  .role-dropdown-content a:hover {
+    background-color: #f1f1f1;
+    border-radius: 10px;    
+}
   
-  .dropdown:hover .dropdown-content {
+  .role-dropdown:hover .role-dropdown-content {
     display: block;
   }
 
-  .arrow {
+  .role-arrow {
     border: solid #999999;
     border-width: 0 1px 1px 0;
     display: inline-block;
@@ -138,28 +157,42 @@ input{
   }
 
 /* container */
-.two-columns-grid {
+.sign-two-columns-grid {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1fr 2fr;
+    /* grid-gap: 40px; */
+    /* background-color: red; */
+    padding-top: 30px;
 }
 
 /* columns */
-.two-columns-grid > * {
-    padding:1rem;
+.sign-two-columns-grid > * {
+    /* padding:1rem; */
 }
 
+.sign-up-col-1 {
+    /* background-color: pink; */
+    width: fit-content;
+}
 
-.input-label{
-    width: 90%;
+.sign-up-col-2 {
+    /* background-color: purple; */
+}
+
+.sign-up-two-columns-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* background-color: green; */
+    grid-gap:1px;
+    row-gap: 10px;
+    padding: 1px;
+}
+
+.sign-up-two-columns-grid > * {
+    /* background-color: orange; */
     height: 40px;
-    font-size: 16px;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
+    display: flex;
+    align-items: center;
 }
 
 .buttons {
@@ -188,11 +221,3 @@ input{
     object-fit: cover;
 }
 
-label {
-    display: inline-block;
-    width: 150px;
-  }
-
-input { 
-    width: 200px;
-}
