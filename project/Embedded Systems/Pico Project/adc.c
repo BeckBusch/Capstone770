@@ -49,7 +49,8 @@ double adcConvert() {
     int reading = adc_read(); // read ADC value
     double scaleFactor = 83.88;
     double offSet = 2.956;
-    printf("check: %d", reading); //PRINTER
+    
+    printf("adc reading check: %f\n", reading); //PRINTER
 
     double conversion = ((double)reading / scaleFactor)- offSet; //which equates to 5kg
 
