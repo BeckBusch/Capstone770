@@ -29,7 +29,7 @@ int tare_flag = 0;
 double weight_mean_average = 0.0;
 
 
-double weight_value_array[5] = {0};     // used to store weight readings
+double weight_value_array[5] = {0, 0, 0, 0, 0};     // used to store weight readings
 int array_full_flag = 0;                // set to 1 once array full
 
 // declare functions
@@ -133,11 +133,14 @@ int connect_wifi() {
 double *save_weight_to_array() {
     for (int counter = 0; counter < 5; counter++) {
         double weightReading = adcConvert();
-        weight_value_array[counter] = weightReading;
+        weight_value_array[counter] = weightReading + 5; // +5 added for testing purposes only
+        // weight_value_array[counter] = weightReading
         printf("Weight reading: %f\n", weightReading);
-        sleep_ms(500); // take a reading every 0.5 second
+        sleep_ms(250); // take a reading every 0.25 second
     }
     array_full_flag = 1;
+    printf("\nArray full\n");
+    sleep_ms(500);
     return weight_value_array;
 }
 
@@ -157,14 +160,14 @@ int check_weights(double * weight_value_array) {
 
     // stability check
     if (last_index*0.90 < first_index < last_index*1.10) {
-        stable_flag == 1;
+        stable_flag = 1;
         for (int i = 0; i < 5; i++) {
             sum = sum + weight_value_array[i];
         }
-        average = sum/5;
+        average = (double)sum/5;
         weight_mean_average = average;  // update global variable
     } else {
-        stable_flag == 0;
+        stable_flag = 0;
     }
 
     // reset array so it can filled with new values
@@ -173,13 +176,21 @@ int check_weights(double * weight_value_array) {
         array_full_flag = 0;
     }
 
+    printf("\nfirst index: %f\n", first_index);
+    printf("\nlast index: %f", last_index);
+    printf("\nsum: %f", sum);
+    printf("\naverage: %f\n", weight_mean_average);
+
     if (stable_flag == 1) {
         // stable
         return 1;
     } else if (stable_flag = 0) {
         // not stable
         return 0;
+    } else {
+        return 0;
     }
+
 }
 
 
@@ -214,7 +225,7 @@ int main() {
     //sendRequest("/Measurements/Dog1.json", request_body);
 
 
-    sleep_ms(1000);
+    sleep_ms(2000);
     
 
     while(1) {
@@ -223,14 +234,16 @@ int main() {
 
             // idle state - pico w is waiting for user input
             case idle:
-                printf("Current state: idle\n");
+                printf("========== Current state: idle ==========\n");
                 sleep_ms(1000);
                 // polling until set amount of weight is reached or other inputs
                 while(1) {
                     int check = 0;
 
                     check = check_weights(save_weight_to_array());           // take 5 readings and save to global array and ensure weight readings are stable
-                    
+
+                    printf("Check value: %d\n", check);
+
                     if (check == 1) {   // stable reading reached
                         FSM = receive_data; // once steady amount of data is received
                         break;
@@ -246,7 +259,7 @@ int main() {
 
             // not ready state - power is on but WiFi is disconnected
             case not_ready:
-                printf("Current state: not_ready\n");
+                printf("========== Current state: not_ready ==========\n");
                 sleep_ms(1000);
                 enable_power_LED();
                 // attempt to connect to WiFi
@@ -260,7 +273,7 @@ int main() {
 
             // ready state - both power and WiFi is on
             case ready:
-                printf("Current state: ready\n");
+                printf("========== Current state: ready ==========\n");
                 sleep_ms(1000);
                 enable_wifi_LED();
                 FSM = idle; // poll for inputs
@@ -269,18 +282,19 @@ int main() {
 
             // tare_initialized state - tare button press detected, enable tare LED
             case tare_initialized:
-                printf("Current state: tare_initialized\n");
+                printf("========== Current state: tare_initialized ==========\n");
                 sleep_ms(1000);
                 // update tare weight calculation here
                 tare_flag = 0; // reset tare flag
                 FSM = receive_data; // go back to receive_data state to keep receiving data
-                disable_tare_LED();
+                // disable_tare_LED();
                 break;
 
 
             // receive data state - wait until set amount of data reached, enable steady weight LED
             case receive_data:
-                printf("Current state: receive_data\n");
+                printf("========== Current state: receive_data ==========\n");
+                disable_tare_LED();
                 sleep_ms(1000);
                 // add code
                 enable_steady_LED();
@@ -292,7 +306,7 @@ int main() {
 
             // send data state - send data packet to server 
             case send_data:
-                printf("Current state: send_data\n");
+                printf("========== Current state: send_data ==========\n");
                 sleep_ms(1000);
 
                 disable_stable_LED();
