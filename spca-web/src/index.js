@@ -18,6 +18,8 @@ import AddDataResultsPage from './pages/add-data-results-page';
 import ManageUsersPage from './pages/manage-users-page';
 import AddUserPage from './pages/add-user-page';
 import SignUpConfirmPage from './pages/sign-up-confirm-page';
+import ChatPage from './pages/chat-page';
+
 
 const router = createBrowserRouter([
   {
@@ -39,7 +41,7 @@ const router = createBrowserRouter([
   },
   {
     path: "chat",
-    element: <DogDetailPage/>,
+    element: <ChatPage/>,
   },
   {
     path: "add-data",
