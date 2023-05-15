@@ -1,4 +1,4 @@
-import { User } from './schema';
+import { User } from '../model/schema';
 
 async function createUser(user) {
 

@@ -9,7 +9,7 @@ import {
     retrieveDogList,
     updateDog,
     deleteDog
-} from '../../data/dogs-dao';
+} from '../../service/dogs-dao';
 
 // const HTTP_OK = 200; // Not really needed; this is the default if you don't set something else.
 const HTTP_CREATED = 201;

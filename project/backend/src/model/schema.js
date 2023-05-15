@@ -8,18 +8,19 @@ const dogSchema = new Schema({
     gender: { type: String, required: true },
     location: { type: String, required: true },
     currentWeight: { type: Array, items: [{ type: Number}, {type: Date}, {type: String}], additionalItems: false },
-    prevWeights: { type: Array, items: [{ prevWeight: Array }], additionalItems: true }
+    prevWeights: { type: Array, items: [{ prevWeight: Array }], additionalItems: true },
+    image: { type: String}
 }, {
     timestamps: {}
 });
 
 const userSchema = new Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
-    role: { type: String, required: true },
-    joined: { type: Array, required: true },
-    imageUrl: { type: String, required: false}
+    name: { type: String},
+    email: { type: String},
+    password: { type: String},
+    role: { type: String},
+    joined: { type: Date},
+    image: { type: String}
 }, {
     timestamps: {}
 });

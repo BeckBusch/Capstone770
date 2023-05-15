@@ -1,4 +1,4 @@
-import { Dog } from './schema';
+import { Dog } from '../model/schema';
 
 async function createDog(dog) {
 

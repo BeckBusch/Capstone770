@@ -6,6 +6,7 @@ import path from 'path';
 import mongoose from 'mongoose';
 import * as url from 'url';
 import cors from 'cors';
+import { main } from './model/init-db'
 
 // Setup Express
 const app = express();
@@ -41,3 +42,5 @@ if (process.env.NODE_ENV === 'production') {
 // Start the DB running. Then, once it's connected, start the server.
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true })
     .then(() => app.listen(port, () => console.log(`App server listening on port ${port}!`)));
+
+main();
