@@ -25,7 +25,6 @@ char request_body[64];
 #define TARE_LED 19
 #define TARE_BUTTON 20
 
-int led_value = 1;
 int tare_flag = 0;
 double weight_mean_average = 0.0;
 
@@ -33,16 +32,26 @@ double weight_mean_average = 0.0;
 double weight_value_array[5] = {0};     // used to store weight readings
 int array_full_flag = 0;                // set to 1 once array full
 
+// declare functions
+void enable_tare_LED();
+void enable_wifi_LED();
+void enable_power_LED();
+void enable_stable_LED();
+
+void disable_tare_LED();
+void disable_wifi_LED();
+void disable_power_LED();
+void disable_stable_LED();
+
 // initialize states for the FSM
 enum states {idle, not_ready, ready, tare_initialized, receive_data, send_data};
 
 // define FSM functions here, can extract to a separate functions.c file later
 void enable_power_LED() {
-    int led_value = 1;
     // GP16
     gpio_init(POWER_LED);               // initialize pin
     gpio_set_dir(POWER_LED, GPIO_OUT);  // set pin to output
-    gpio_put(POWER_LED, led_value);     // set LED to on
+    gpio_put(POWER_LED, 1);     // set LED to on
     printf("Power LED toggled\n");
 
 }
@@ -51,7 +60,7 @@ void enable_wifi_LED() {
     // GP17
     gpio_init(WIFI_LED);               // initialize pin
     gpio_set_dir(WIFI_LED, GPIO_OUT);  // set pin to output
-    gpio_put(WIFI_LED, led_value);     // set LED to on
+    gpio_put(WIFI_LED, 1);     // set LED to on
     printf("Wi-Fi LED toggled\n");
 }
 
@@ -59,7 +68,7 @@ void enable_tare_LED() {
     // GP19
     gpio_init(TARE_LED);               // initialize pin
     gpio_set_dir(TARE_LED, GPIO_OUT);  // set pin to output
-    gpio_put(TARE_LED, led_value);     // set LED to on
+    gpio_put(TARE_LED, 1);     // set LED to on
     printf("Tare LED toggled\n");
 }
 
@@ -67,9 +76,32 @@ void enable_steady_LED() {
     // GP18
     gpio_init(STABLE_LED);               // initialize pin
     gpio_set_dir(STABLE_LED, GPIO_OUT);  // set pin to output
-    gpio_put(STABLE_LED, led_value);     // set LED to on
+    gpio_put(STABLE_LED, 1);     // set LED to on
     printf("Stable LED toggled\n");
 }
+
+
+void disable_power_LED() {
+    gpio_put(POWER_LED, 0);     // set LED to on
+    printf("Power LED disabled\n");
+}
+
+void disable_wifi_LED() {
+    gpio_put(WIFI_LED, 0);      // set LED to on
+    printf("Wi-Fi LED disabled\n");
+}
+
+void disable_tare_LED() {
+    gpio_put(TARE_LED, 0);     // set LED to off
+    printf("Tare LED disabled\n");
+}
+
+void disable_stable_LED() {
+    gpio_put(STABLE_LED, 0);    // set LED to off
+    printf("Tare LED disabled\n");
+}
+
+
 
 // ISR for tare button GP20 -> tare switch
 void tare_ISR(unsigned int gpio, uint32_t events) {
@@ -102,15 +134,6 @@ double *save_weight_to_array() {
         double weightReading = adcConvert();
         weight_value_array[counter] = weightReading;
         printf("Weight reading: %f\n", weightReading);
-
-        // cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
-        // printf("LED ON!\n");
-        // sleep_ms(1000); // 0.5s delay
-
-        // cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 0);
-        // printf("LED OFF!\n");
-        // sleep_ms(1000); // 0.5s delay
-
         sleep_ms(500); // take a reading every 0.5 second
     }
     array_full_flag = 1;
