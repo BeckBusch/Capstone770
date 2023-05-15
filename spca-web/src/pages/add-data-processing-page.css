@@ -25,6 +25,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* animation-name: footprint-appear;
+    animation-duration: 4s;
+    animation-iteration-count: infinite; */
 }
 
 .circle-container {
@@ -51,6 +54,13 @@
     align-items: center; */
     /* opacity: 0.8; */
 }
+
+@keyframes footprint-appear {
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+  }
 
 .text-container {
     width: 100%;
@@ -83,6 +93,8 @@
     position: absolute;
     top: 100%;
     transform: translateY(-100%);
+    animation: image-appear 3s linear infinite 1.25s;
+
 }
 
 .two {
@@ -91,6 +103,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    animation: image-appear 3s linear infinite 1.75s;
 }
 
 .three {
@@ -100,4 +113,12 @@
     top: 70%;
     left: 100%;
     transform: translateX(-100%) translateY(-70%);
+    animation: image-appear 3s linear infinite 1.5s;
+}
+
+@keyframes image-appear {
+  /* appear */
+  25%  {opacity: 1;}
+  /* disappear */
+  100% {opacity: 0;}
 }
