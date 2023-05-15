@@ -82,7 +82,7 @@ void init_button() {
     gpio_init(TARE_BUTTON);
     gpio_set_dir(TARE_BUTTON, GPIO_IN); // bit 2 is set falling edge, edge low so == 4 and bit 3 set for rising edge == 8
     gpio_pull_up(TARE_BUTTON);
-    gpio_set_irq_enable_with_callback(TARE_BUTTON, 0x04, 1, tare_ISR);  // attach interrupt to tare button pin
+    gpio_set_irq_enabled_with_callback(TARE_BUTTON, 0x04, 1, tare_ISR);  // attach interrupt to tare button pin
 }
 
 
@@ -159,8 +159,8 @@ int check_weights(double * weight_value_array) {
 }
 
 
-// Code
-int main(void) {
+// // Code
+int main() {
     // initialize everything
     stdio_init_all();   
     adc_init();
@@ -289,5 +289,5 @@ int main(void) {
 
 //     }
 //     cyw43_arch_deinit();
-//     return 0;
+//     return 0; // test
 // }

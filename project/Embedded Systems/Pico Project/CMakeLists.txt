@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 include(pico_sdk_import.cmake)
-
+set(PICO_BOARD pico_w)
 project(capstone)
 
 pico_sdk_init()
@@ -26,10 +26,11 @@ target_compile_definitions(capstonepico PRIVATE
 
 target_include_directories(capstonepico PRIVATE 
     ${CMAKE_CURRENT_LIST_DIR} 
-    #${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts
+    ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts
     )
 
 target_link_libraries(capstonepico 
+    # pico_cyw43_arch_lwip_threadsafe_background
     pico_cyw43_arch_lwip_poll
     pico_lwip_mbedtls
     pico_mbedtls
