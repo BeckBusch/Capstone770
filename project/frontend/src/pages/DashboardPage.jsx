@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 // import './App.css'
-import { AppContext } from '../AppContextProvider'
+import { AppContext } from "../AppContextProvider";
 
 function DashboardPage() {
     const [count, setCount] = useState(0)

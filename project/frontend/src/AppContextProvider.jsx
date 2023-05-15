@@ -63,26 +63,26 @@ function AppContextProvider({ children }) {
 
 
     async function addUser(name, email, password, role, image) {
-        
-        const imgUploadConfig = {
-            headers: {
-                'content-encoding': 'base64',
-                'content-type': 'image/png'
-            }
-        };
 
-        const imgFormData = new FormData();
-        imgFormData.append('image', image);
-        const imgUploadResponse = await axios.post(`${API_BASE_URL}/api/images`, imgFormData, imgUploadConfig);
+        // const imgUploadConfig = {
+        //     headers: {
+        //         'content-encoding': 'base64',
+        //         'content-type': 'image/png'
+        //     }
+        // };
 
-        const imageUrl = imgUploadResponse.headers['location'];
+        // const imgFormData = new FormData();
+        // imgFormData.append('image', image);
+        // const imgUploadResponse = await axios.post(`${API_BASE_URL}/api/images`, imgFormData, imgUploadConfig);
+
+        // const imageUrl = imgUploadResponse.headers['location'];
 
         const userToUpload = {
             name,
             email,
             password,
             role,
-            image: imageUrl,
+            image,
         };
 
         const userResponse = await axios.post(`${API_BASE_URL}/api/users`, userToUpload);
