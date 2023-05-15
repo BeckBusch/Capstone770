@@ -283,14 +283,28 @@ tr {
     display: inline-block;
     width: 134px;
 }
+
+.custom-select {
+    width: 134px;
+    height: 40px;
+    background-color: white;
+    border-radius: 22px;
+    border: #999999 1px solid;
+    padding: 10px;
+}
+
+.custom-select select {
+    display: none; 
+  }
+  
   
 .type-dropdown-content {
     display: none;
     position: absolute;
     background-color: white;
-    min-width: 200px;
+    min-width: 134px;
     z-index: 1;
-    border-radius: 10px;
+    border-radius: 22px;
     border: #999999 1px solid;
 }
   
@@ -303,7 +317,12 @@ tr {
   
   .type-dropdown-content a:hover {
     background-color: #f1f1f1;
-    border-radius: 10px;
+    border-radius: 22px;
+}
+
+.type-dropdown-content a:active {
+    background-color: red;
+    border-radius: 22px;
 }
   
   .type-dropdown:hover .type-dropdown-content {
@@ -442,7 +461,7 @@ tr {
     display: none;
     position: absolute;
     background-color: white;
-    min-width: 200px;
+    min-width: 134px;
     z-index: 1;
     border-radius: 10px;
     border: #999999 1px solid;
