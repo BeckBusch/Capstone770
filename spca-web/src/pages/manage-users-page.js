@@ -15,13 +15,15 @@ function ManageUsersPage() {
                 <label>Pending Users (1)</label>
                 <div className="p-users-container">
                     <div>
-                        <table class="pending-users-table" id="pendingUsersTable">
+                        <table className="pending-users-table" id="pendingUsersTable">
                             <thead>
-                                <th></th>
-                                <th>Users</th>
-                                <th>Email</th>
-                                <th>User Type</th>
-                                <th></th>
+                                <tr>
+                                    <th></th>
+                                    <th>Users</th>
+                                    <th>Email</th>
+                                    <th>User Type</th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr>
@@ -29,13 +31,19 @@ function ManageUsersPage() {
                                     <td>Jess Mo</td>
                                     <td>jessmo76@gmail.com</td>
                                     <td>
-                                        <div class="type-dropdown">
-                                            <button class="dropdownbtn"><i class="type-arrow type-down"></i></button>
-                                            <div class="type-dropdown-content">
+                                    <select className="custom-select" id="language" >
+                                        <option value="English">English</option>
+                                        <option value="Spanish">Spanish</option>
+                                        <option value="French">French</option> 
+                                    </select>
+                                        {/* <div className="type-dropdown">
+                                            <button className="dropdownbtn"><i className="type-arrow type-down"></i></button>
+                                            <div className="type-dropdown-content">
                                                 <a href="#">Vet</a>
                                                 <a href="#">Volunteer</a>
+                                                <a href="#">Admin</a>
                                             </div>
-                                        </div>   
+                                        </div>    */}
                                     </td>
                                     <td>
                                         <button className="yes-btn">
@@ -55,10 +63,10 @@ function ManageUsersPage() {
                 </div>
             </div>
             <div className="options-container">
-                <div class="three-columns-grid">
+                <div className="three-columns-grid">
                     <div className="col-one">
                         <div>
-                            <label for="Username/Email">Username/Email</label>
+                            <label htmlFor="Username/Email">Username/Email</label>
                         </div>
                         <div className="search-user-div">
                             <input type="text" placeholder="Search" className="search-input"/>
@@ -68,12 +76,12 @@ function ManageUsersPage() {
 
                     <div className="col-two">
                         <div>
-                            <label for="UserType">User Type</label>
+                            <label htmlFor="UserType">User Type</label>
                         </div>
                         <div className="type">
-                            <div class="option-type-dropdown">
-                                <button class="dropdownbutton"><i class="option-type-arrow option-type-down"></i></button>
-                                <div class="option-type-dropdown-content">
+                            <div className="option-type-dropdown">
+                                <button className="dropdownbutton"><i className="option-type-arrow option-type-down"></i></button>
+                                <div className="option-type-dropdown-content">
                                     <a href="#">Vet</a>
                                     <a href="#">Volunteer</a>
                                 </div>
@@ -100,14 +108,16 @@ function ManageUsersPage() {
                 <label>Users (2)</label>
                 <div className="p-users-container">
                     <div>
-                        <table class="pending-users-table" id="pendingUsersTable">
+                        <table className="pending-users-table" id="pendingUsersTable">
                             <thead>
-                                <th></th>
-                                <th>Users</th>
-                                <th>Email</th>
-                                <th>User Type</th>
-                                <th>Joined</th>
-                                <th></th>
+                                <tr>
+                                    <th></th>
+                                    <th>Users</th>
+                                    <th>Email</th>
+                                    <th>User Type</th>
+                                    <th>Joined</th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr>
@@ -115,9 +125,9 @@ function ManageUsersPage() {
                                     <td>Jess Mo</td>
                                     <td>jessmo76@gmail.com</td>
                                     <td>
-                                        <div class="type-dropdown">
-                                            <button class="dropdownbtn"><i class="type-arrow type-down"></i></button>
-                                            <div class="type-dropdown-content">
+                                        <div className="type-dropdown">
+                                            <button className="dropdownbtn"><i className="type-arrow type-down"></i></button>
+                                            <div className="type-dropdown-content">
                                                 <a href="#">Vet</a>
                                                 <a href="#">Volunteer</a>
                                             </div>
@@ -136,9 +146,9 @@ function ManageUsersPage() {
                                     <td>Matthew Adamas</td>
                                     <td>obleee88@gmail.com</td>
                                     <td>
-                                        <div class="type-dropdown">
-                                            <button class="dropdownbtn"><i class="type-arrow type-down"></i></button>
-                                            <div class="type-dropdown-content">
+                                        <div className="type-dropdown">
+                                            <button className="dropdownbtn"><i className="type-arrow type-down"></i></button>
+                                            <div className="type-dropdown-content">
                                                 <a href="#">Vet</a>
                                                 <a href="#">Volunteer</a>
                                             </div>

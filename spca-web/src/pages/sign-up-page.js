@@ -19,32 +19,32 @@ function SignUpPage() {
                     </div>
                     <p>An admin will review and approve your sign up request.</p>
                     <p>Completing this sign up form does not automatically create your account.</p>
-                    <div class="sign-two-columns-grid">
-                        <div class="sign-up-col-1">
-                            <div class="profile-container">
+                    <div className="sign-two-columns-grid">
+                        <div className="sign-up-col-1">
+                            <div className="profile-container">
                                 <img className="profile-img" src={require("../images/my-account-icon.png")} alt="Profile Image" />
                             </div>
                             <p className="add-photo-msg"><Link to="/dashboard">+ Add Photo</Link> </p>
                         </div>
-                        <div class="sign-up-col-2">
+                        <div className="sign-up-col-2">
                             <form>
-                            <div class="sign-up-two-columns-grid">
-                                <div><label for="Name">Name</label></div>
-                                <div><input class="input-styling" type="text" id="name" placeholder="Name" /></div>
+                            <div className="sign-up-two-columns-grid">
+                                <div><label htmlFor="Name">Name</label></div>
+                                <div><input className="input-styling" type="text" id="name" placeholder="Name" /></div>
 
-                                <div><label for="Email">Email</label></div>
-                                <div><input class="input-styling" type="text" id="email" placeholder="Email" /></div>
+                                <div><label htmlFor="Email">Email</label></div>
+                                <div><input className="input-styling" type="text" id="email" placeholder="Email" /></div>
 
-                                <div><label for="Password">Password</label></div>
-                                <div><input class="input-styling" type="password" id="password" placeholder="Password" /></div>
+                                <div><label htmlFor="Password">Password</label></div>
+                                <div><input className="input-styling" type="password" id="password" placeholder="Password" /></div>
 
-                                <div><label for="ConfirmPassword">Confirm Password</label></div>
-                                <div><input class="input-styling" type="password" id="confirmPassword" placeholder="Confirm Password" /></div>
+                                <div><label htmlFor="ConfirmPassword">Confirm Password</label></div>
+                                <div><input className="input-styling" type="password" id="confirmPassword" placeholder="Confirm Password" /></div>
 
-                                <div><label for="Role">Role</label></div>
-                                <div class="role-dropdown">
-                                    <button class="role-dropbtn"><i class="role-arrow down"></i></button>
-                                    <div class="role-dropdown-content">
+                                <div><label htmlFor="Role">Role</label></div>
+                                <div className="role-dropdown">
+                                    <button className="role-dropbtn"><i className="role-arrow down"></i></button>
+                                    <div className="role-dropdown-content">
                                         <a href="#">Admin</a>
                                         <a href="#">Staff</a>
                                         <a href="#">Volunteer</a>
@@ -54,8 +54,8 @@ function SignUpPage() {
                             </form>
                         </div>
                     </div>
-                    <div class="button-container">
-                        <div class="buttons">
+                    <div className="button-container">
+                        <div className="buttons">
                             <Link to="/">
                                 <button type="submit" id="cancelBtn" className="cancel-btn">Cancel</button>
                             </Link>

@@ -16,9 +16,9 @@ function DashboardCard(props) {
 
                 <div className="div-dog-details">
 
-                    <h1>{props.name}</h1>
-                    <h3>{props.breed}</h3>
-                    <h3>{props.age} Years Old</h3>
+                    <h1>{props.name}Cookie</h1>
+                    <h3 className="breed-header">{props.breed}Golden Retriever</h3>
+                    <h3 className="age-header">{props.age}3 Years Old</h3>
                     {/* <h1>DOG NAME</h1> */}
                 </div>
             </div>
