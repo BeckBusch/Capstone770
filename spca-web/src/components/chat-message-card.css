@@ -1,0 +1,39 @@
+.chat-message-card-section {
+    width: 100%;
+}
+
+.chat-message-card {
+    width: 100%;
+    height: fit-content;
+    /* border: 1px solid #DBDBDB; */
+}
+
+
+.chat-message-card-user {
+    width: fit-content;
+    height: fit-content;
+    /* background-color: red; */
+    padding-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.chat-message-card-user-icon {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.chat-message-card-text {
+    width: 300px;
+    height: fit-content;
+    background-color: #DBDBDB;
+    padding: 5px;
+    border-radius: 10px;
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.paragraph-text {
+    margin: 0;
+}
