@@ -107,6 +107,7 @@ void disable_stable_LED() {
 void tare_ISR(unsigned int gpio, uint32_t events) {
     // write code for ISR for tare button press
     tare_flag = 1;
+    enable_tare_LED();
     printf("Tare interrupt occurred at PIN %d with event %d\n", gpio, events);
 }
 
@@ -182,22 +183,39 @@ int check_weights(double * weight_value_array) {
 }
 
 
+
 // // Code
 int main() {
     // initialize everything
     stdio_init_all();   
     adc_init();
     adc_select_input(ADC_CHANNEL);
-    cyw43_arch_enable_sta_mode();
     init_button();  // initialize button ISR
+
+    enum states FSM = not_ready;    // set intial FSM state
+
+    if (cyw43_arch_init()) {
+        printf("Wi-Fi init failed");
+        return 1;
+    }
+
+    cyw43_arch_enable_sta_mode();
+
+    FSM = not_ready;    // set intial FSM state
+
+
+    // adc_init();
+    // adc_select_input(ADC_CHANNEL);
+
+    // cyw43_arch_enable_sta_mode();
 
     //wifi_connect();
     //sprintf(request_body, "{\"%s\":\"%d\"}", "Weight", 15);
     //sendRequest("/Measurements/Dog1.json", request_body);
 
-    enum states FSM = not_ready;    // set intial FSM state
 
-    sleep_ms(100);
+    sleep_ms(1000);
+    
 
     while(1) {
         // FSM switch cases
@@ -205,9 +223,12 @@ int main() {
 
             // idle state - pico w is waiting for user input
             case idle:
+                printf("Current state: idle\n");
+                sleep_ms(1000);
                 // polling until set amount of weight is reached or other inputs
                 while(1) {
                     int check = 0;
+
                     check = check_weights(save_weight_to_array());           // take 5 readings and save to global array and ensure weight readings are stable
                     
                     if (check == 1) {   // stable reading reached
@@ -225,17 +246,22 @@ int main() {
 
             // not ready state - power is on but WiFi is disconnected
             case not_ready:
+                printf("Current state: not_ready\n");
+                sleep_ms(1000);
                 enable_power_LED();
                 // attempt to connect to WiFi
-                if (connect_wifi()) {
-                    // once connection is succesful
-                    FSM = ready;
-                }
+                // if (connect_wifi()) {
+                //     // once connection is succesful
+                //     FSM = ready;
+                // }
+                FSM = ready;
                 break;
 
 
             // ready state - both power and WiFi is on
             case ready:
+                printf("Current state: ready\n");
+                sleep_ms(1000);
                 enable_wifi_LED();
                 FSM = idle; // poll for inputs
                 break;
@@ -243,15 +269,19 @@ int main() {
 
             // tare_initialized state - tare button press detected, enable tare LED
             case tare_initialized:
-                enable_tare_LED();
+                printf("Current state: tare_initialized\n");
+                sleep_ms(1000);
                 // update tare weight calculation here
                 tare_flag = 0; // reset tare flag
                 FSM = receive_data; // go back to receive_data state to keep receiving data
+                disable_tare_LED();
                 break;
 
 
             // receive data state - wait until set amount of data reached, enable steady weight LED
             case receive_data:
+                printf("Current state: receive_data\n");
+                sleep_ms(1000);
                 // add code
                 enable_steady_LED();
                 // weight_mean_average contains the average of the last 5 (stable) readings
@@ -262,12 +292,17 @@ int main() {
 
             // send data state - send data packet to server 
             case send_data:
+                printf("Current state: send_data\n");
+                sleep_ms(1000);
+
+                disable_stable_LED();
                 // add code
                 FSM = idle;
                 break;
         }
     }
     cyw43_arch_deinit();
+    return 0;
 }
 
 // original code
