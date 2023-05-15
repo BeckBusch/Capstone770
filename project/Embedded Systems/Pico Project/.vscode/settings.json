@@ -1,3 +1,14 @@
 {
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "cSpell.words": [
+        "decrypion",
+        "ETHARP",
+        "LWIPOPTS",
+        "MEMP",
+        "NETCONN",
+        "NETIF",
+        "pico",
+        "PICO",
+        "QUEUELEN"
+    ]
 }
