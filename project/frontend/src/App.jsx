@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
+import SignUpConfirmPage from './pages/SignUpConfirmPage';
+import DashboardPage from './pages/DashboardPage';
+import DogDetailPage from './pages/DogDetailPage';
+import AddDataPage from './pages/AddDataPage';
+import AddDataProcessingPage from './pages/AddDataProcessingPage';
+import AddDataResultsPage from './pages/AddDataResultsPage';
+import ChatPage from './pages/ChatPage';
+import ManageUsersPage from './pages/ManageUsersPage';
+import AddUserPage from './pages/AddUserPage';
+import AccountSettingsPage from './pages/AccountSettingsPage';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/*" element={<LoginPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="sign-up/done" element={<SignUpConfirmPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/dog/:id" element={<DogDetailPage />} />
+          <Route path="/dog/:id/add-data" element={<AddDataPage />} />
+          <Route path="/dog/:id/add-data/processing" element={<AddDataProcessingPage />} />
+          <Route path="/dog/:id/add-data/done" element={<AddDataResultsPage />} />
+          <Route path="/chat" element={<ChatPage />} />
+          <Route path="/manage-users" element={<ManageUsersPage />} />
+          <Route path="/add-user" element={<AddUserPage />} />
+          <Route path="/account-settings/:id" element={<AccountSettingsPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App
