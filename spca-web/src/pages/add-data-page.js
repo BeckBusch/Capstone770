@@ -13,21 +13,21 @@ function AddDataPage() {
             </div>
             <div className="align-center-div">
                 <div className="details-container">
-                    <div class="two-col-grid">
+                    <div className="two-col-grid">
                         <div className="col1">
-                            <div class="profile-container">
+                            <div className="profile-container">
                                 <img className="profile-img" src={require("../images/my-account-icon.png")} alt="Profile Image" />
                             </div>
                         </div>
                         <div className="col2">
-                            {/* <div class="edit-container"> */}
+                            {/* <div className="edit-container"> */}
                                 <h1>Name</h1>
-                                <div class="scale-id-container">
+                                <div className="scale-id-container">
                                     <label>Scale ID</label>
 
-                                    <div class="dropdown">
-                                            <button class="dropbtn"><i class="arrow down"></i></button>
-                                            <div class="dropdown-content">
+                                    <div className="dropdown">
+                                            <button className="dropbtn"><i className="arrow down"></i></button>
+                                            <div className="dropdown-content">
                                                 <a href="#">A-1</a>
                                                 <a href="#">A-2</a>
                                                 <a href="#">A-3</a>
@@ -35,8 +35,8 @@ function AddDataPage() {
                                     </div> 
                                 </div>
                             {/* </div> */}
-                            <div class="button-container">
-                                <div class="buttons">
+                            <div className="button-container">
+                                <div className="buttons">
                                     <Link to="/dog-detail">
                                         <button type="submit" id="cancelBtn" className="cancel-btn">Cancel</button>
                                     </Link>

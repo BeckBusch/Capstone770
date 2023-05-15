@@ -9,16 +9,18 @@ function AddDataResultsPage() {
             <NavBar/>
             <div className="add-data-results-header-container">
                 <img src={require("../images/start-black-icon.png")} className="settings-icon-align" alt="start" />
-                <h1 className="manage-users-header">Manage Users</h1>
+                <h1 className="start-weighing-header">Start Weighing</h1>
             </div>
             <div className="results-container">
                 <div>
-                    <table class="resultsTable" id="resultsTable">
+                    <table className="resultsTable" id="resultsTable">
                         <thead>
-                            <th></th>
-                            <th>Weight (kg)</th>
-                            <th>Date</th>
-                            <th>Time</th>
+                            <tr>
+                                <th></th>
+                                <th>Weight (kg)</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>
@@ -37,12 +39,13 @@ function AddDataResultsPage() {
                                 <td className="radio-button"><input type="radio" name="radio" value="radio3" required/></td>
                                 <td>8.08</td>
                                 <td>03/03/2023</td>
-                                <td>10:30 AM</td>        </tr>
+                                <td>10:30 AM</td>        
+                            </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="button-container">
-                    <div class="buttons">
+                <div className="button-container">
+                    <div className="buttons">
                         <Link to="/add-data-processing">
                             <button type="submit" id="reweighBtn" className="reweigh-btn">Reweigh</button>
                         </Link>
