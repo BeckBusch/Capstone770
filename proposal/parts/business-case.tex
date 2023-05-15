@@ -3,30 +3,93 @@
 %----------------------------------------------------------------------------------------
 
 \chapter{Overview}
+%Business case
+%TODO: Introduce the project and what it will deliver
+The project involves designing an intelligent system that will be used to measure the weight of dogs for use at the SPCA rescue centres. This is intended to improve the health and well being of the animals under the care of the SPCA and assist the SPCA staff in their day-to-day jobs.
 
-TODO: Introduce the project and what it will deliver
+The system will provide real-time data on the weight and growth of the dogs, allowing staff to monitor the physical health of the dogs, and to identify and respond to any issues. The system will be designed with a combination of electronics and digital technology to measure, record and display the weight of the dogs and reduce the amount of stress on animals and staff. 
 
 \chapter{Deliverables}
 
-TODO: What are the main deliverables, how will they be achieved, how does it meet the project requirements
+%TODO: What are the main deliverables, how will they be achieved, how does it meet the project requirements
+The main deliverables for the project are listed as follows: an electronic circuitry used to measure dogs' weight, a software for SPCA staff to see and manage all stored data, and an embedded software acting as the interface to transfer data between hardware and software. The circuitry will provide a stable and accurate weight measurement when dogs are on the scale and an LED will light up to inform the staff a stable measurement has been taken. The weight data will then be transferred to the software wirelessly, along with other useful information such as scale ID and time of measurement, and a digital copy is stored automatically. The automation process reduces human input when weighing dogs, SPCA staff can focus on the stressed dogs without losing weight data, and the job of weighing animals is more efficient than manually recording the reading. The tare function in the system also allows SPCA staff to weigh dogs while holding them, making it easier to weigh animals that are exciting and constantly moving, an LED will indicate whether the tare button has been pushed. The digital copy of all data can be accessed via a user account, preventing unauthorised access from anyone outside the organization. Admins will have the authority to manage all user accounts and their accesses. Since the digital copy of data is automatically stored by the software, data across all centers are in the same format and the vet will no longer need to adjust the data manually. The software could also show trends of a dog's weight and provide statistical analysis of data that the vet could view and download at any time, eliminating the need to send emails by SPCA staff.
+
+
 
 \chapter{Requirements}
 
-TODO: This chapter should review the different areas and explain how they are met
+% TODO: This chapter should review the different areas and explain how they are met
 
 \section{Te Tiriti o Waitangi}
 
-TODO: How are the Te Tiriti o Waitangi goals met
+Our main consideration of Te Tiriti o Waitangi centers around data sovereignty. The treaty and associated laws state that any data or information relating to the Maori peoples should be treated fairly and be open to oversight and control. The main way that our project will interact with these values would be the storage of data generated from Maori owned farms and vet practices. It would be important to consult with the relevant owners and authorities on how this data is managed and used.
 
 \section{Sustaintability and Environmental}
 
-TODO: How are the sustaintability goals met
+For the design of our weight scale prototype, it is important to take into consideration any potential sustainability issues that we may come across. This includes both technical and ethical implications. Sustainability can be viewed at 3 different points: Environment, Economy, and Equity. Ideally our solution should benefit all 3 areas equally, however it can be quite difficult to achieve. Therefore, if there is one area to focus on it would be the environment (biosphere). We can look at the product life cycle (from the initial resources, manufacturing, storage and use, and ultimately disposal) in order to gauge its impacts.
+
+\subsection{Resources}
+
+The prototype should be made from sustainable materials where possible, however we acknowledge that the current materials used to make PCB boards are not very biodegradable. The sourcing of the other materials should be sustainable, minimizing the environmental impact of resource extraction and transportation. It is important to ensure to not order excessive amount of components to reduce waste, therefore the design should outline clearly what is needed with only vital components having extra parts in case of failures.
+
+\subsection{Energy Consumption}
+
+The weighing scale prototype should be designed to consume the least amount of energy possible. Ideally the power source should be renewable, such as solar energy but due to the scale of our prototype and available resources, this is not possible. Therefore in order to reduce the carbon footprint, we will attempt to optimize the design so it uses the least amount of power possible to reduce the frequency of the batteries needing to be replaced.
+
+\subsection{Durability and Maintenance}
+
+The durability of a product correlates to the amount of waste that may be contributed to the environment. The prototype should be designed to be long-lasting and easy to maintain, especially components that are more susceptible to breakages. This reduces the need for frequent replacements, saving on resources and minimizing E-waste (electronic waste). We will endeavour to make sure that the materials used to manufacture the PCB are of high quality as well as utilizing various PCB designing tools to make the boards last longer, more serviceable and ultimately reduce the need for frequent replacements. Another consideration is to make the prototype design modular, as this allows certain smaller parts to be replaced (in the event they are not serviceable) instead of wasting entire sections. 
+
+\subsection{Product End-of-life Stage}
+
+Although a lot of effort may be out into ensuring that the product is durable, modular, and easily serviceable, all products have an end-of-life stage which needs to be considered. Therefore our prototype should be designed with a plan for disposal or recycling in mind. Hazardous materials such as batteries should be disposed of properly such as hazardous waste collection sites. Electronic waste (such as PCB and related components) may be recycled at E-waste collection sites. This will reduce the amount of waste that ends up in landfills. Another consideration is re-purposing or reusing the some parts or the entire prototype after its initial use.
+
 
 \section{Legal and Privacy}
 
-TODO: How are the legal and privacy goals met
+% TODO: How are the legal and privacy goals met
+% In this section we address the concerns of privacy regarding the data collected and the handling of legal concerns.
+
+\subsection{Collecting Data}
+The information we collect when you use our product falls into three categories. 
+
+\\
+\textbf{Information you provide us.}
+These are necessary in order to provide our services to you. This includes and is not limited to personal emails,account credentials,historical weight of dog and other information.
+\\
+\textbf{Information we collect}.
+When you use our services, we collect information about how you use our product and services.We use the information to provide you with an efficient and reliable product that is bug free.
+\\
+\textbf{Information we receive from third parties.}
+When you use our online product and service third parties may share information about that usage with us. This is limited to information from third parties that help us to identify the holder of the account when accessing the online service via a third party login.
+
+\subsection{Holding Data}
+Our responsibility to holding your data is that it will be kept in a secure online database and to ensure that there is no risk of exposure or leakage. 
+
+As a general policy only those that are authorised will have access to any personal details this includes account holders,customer service teams and legal authorities.
+
+Our organization will hold data of a consumer account for ten years from the last instance of accessing services for that consumer. Afterwards data collected will be securely disposed of.
+
+\subsection{Disclosing Data}
+Our organization will not disclose any personal data unless it is requested or authorised by the individual holder of their account.However there are exceptions to this policy when required by the law or legal authorities.
 
 \section{Other Ethical Issues}
 
-TODO: How are the ethical goals met
+% TODO: How are the ethical goals met
+
+To ensure that our group meets ethical goals, we have outlined several requirements in our team charter. These requirements include:
+
+\begin{enumerate}
+  \item Each member must commit sufficient time and effort to completing their assigned work to a high standard. 
+  \item All team members must collaborate with integrity and show respect to each other.
+  \item Communication should be open, and all members should be receptive to giving and receiving constructive feedback.
+  \item There should be an even distribution of workload among team members.
+  \item Members should manage their time efficiently, completing their assigned work before the agreed upon deadlines.
+\end{enumerate}
+ 
+
+
+
+
+
 
