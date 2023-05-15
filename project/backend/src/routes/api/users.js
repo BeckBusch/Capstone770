@@ -1,15 +1,15 @@
 /**
- * This is a simple RESTful API for dealing with dogs.
+ * This is a simple RESTful API for dealing with users.
  */
 
 import express from 'express';
 import {
-    createDog,
-    retrieveDog,
-    retrieveDogList,
-    updateDog,
-    deleteDog
-} from '../../data/dogs-dao';
+    createUser,
+    retrieveUser,
+    retrieveUserList,
+    updateUser,
+    deleteUser
+} from '../../data/users-dao';
 
 // const HTTP_OK = 200; // Not really needed; this is the default if you don't set something else.
 const HTTP_CREATED = 201;
@@ -18,55 +18,55 @@ const HTTP_NO_CONTENT = 204;
 
 const router = express.Router();
 
-// Create new dog
+// Create new user
 router.post('/', async (req, res) => {
-    const newDog = await createDog(req.body);
+    const newUser = await createUser(req.body);
 
-    if (newDog) return res.status(HTTP_CREATED)
-        .header('Location', `/api/dogs/${newDog._id}`)
-        .json(newDog);
+    if (newUser) return res.status(HTTP_CREATED)
+        .header('Location', `/api/users/${newUser._id}`)
+        .json(newUser);
 
     return res.sendStatus(422);
 })
 
-// Retrieve all dogs
+// Retrieve all users
 router.get('/', async (req, res) => {
 
     // Uncomment the following code to introduce an artificial delay before the response
     // is sent back to the client.
     // setTimeout(() => {
-    //     res.json(retrieveDogList());
+    //     res.json(retrieveUserList());
     // }, 2000);
 
 
     // When introducing the artificial delay, also comment this line. It's an error to send
     // two responses.
-    res.json(await retrieveDogList());
+    res.json(await retrieveUserList());
 });
 
-// Retrieve single dog
+// Retrieve single user
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
 
-    const dog = await retrieveDog(id);
+    const user = await retrieveUser(id);
 
-    if (dog) return res.json(dog);
+    if (user) return res.json(user);
     return res.sendStatus(HTTP_NOT_FOUND);
 });
 
-// Update dog
+// Update user
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    const dog = req.body;
-    dog._id = id;
-    const success = await updateDog(dog);
+    const user = req.body;
+    user._id = id;
+    const success = await updateUser(user);
     res.sendStatus(success ? HTTP_NO_CONTENT : HTTP_NOT_FOUND);
 });
 
-// Delete dog
+// Delete user
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
-    await deleteDog(id);
+    await deleteUser(id);
     res.sendStatus(HTTP_NO_CONTENT);
 });
 
