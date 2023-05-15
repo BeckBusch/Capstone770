@@ -43,6 +43,11 @@ void disable_wifi_LED();
 void disable_power_LED();
 void disable_stable_LED();
 
+int check_weights(double * weight_value_array);
+double *save_weight_to_array();
+
+
+
 // initialize states for the FSM
 enum states {idle, not_ready, ready, tare_initialized, receive_data, send_data};
 
@@ -102,6 +107,8 @@ void disable_stable_LED() {
 }
 
 
+double tare_offset = 0.0;
+int check = 0;
 
 // ISR for tare button GP20 -> tare switch
 void tare_ISR(unsigned int gpio, uint32_t events) {
@@ -136,7 +143,7 @@ double *save_weight_to_array() {
         weight_value_array[counter] = weightReading + 5; // +5 added for testing purposes only
         // weight_value_array[counter] = weightReading
         printf("Weight reading: %f\n", weightReading);
-        sleep_ms(250); // take a reading every 0.25 second
+        sleep_ms(500); // take a reading every 0.5 second
     }
     array_full_flag = 1;
     printf("\nArray full\n");
@@ -165,7 +172,7 @@ int check_weights(double * weight_value_array) {
             sum = sum + weight_value_array[i];
         }
         average = (double)sum/5;
-        weight_mean_average = average;  // update global variable
+        weight_mean_average = average - tare_offset;  // update global variable
     } else {
         stable_flag = 0;
     }
@@ -244,15 +251,16 @@ int main() {
 
                     printf("Check value: %d\n", check);
 
+                    if (tare_flag == 1) {   // ISR will set tare_flag to 1
+                        FSM = tare_initialized;
+                        break;
+                    }
+
                     if (check == 1) {   // stable reading reached
                         FSM = receive_data; // once steady amount of data is received
                         break;
                     } 
 
-                    if (tare_flag == 1) {   // ISR will set tare_flag to 1
-                        FSM = tare_initialized;
-                        break;
-                    }
                 }
                 break;
 
@@ -285,6 +293,17 @@ int main() {
                 printf("========== Current state: tare_initialized ==========\n");
                 sleep_ms(1000);
                 // update tare weight calculation here
+                check = check_weights(save_weight_to_array());           // take 5 readings and save to global array and ensure weight readings are stable
+                if (check == 1) {   // stable reading reached
+                    tare_offset = weight_mean_average;
+                } 
+
+                printf("\nTARE OFFSET VALUE = %f\n", tare_offset);
+                disable_tare_LED();
+
+                // update the weight
+                // weight_mean_average = weight_mean_average - tare_offset;
+
                 tare_flag = 0; // reset tare flag
                 FSM = receive_data; // go back to receive_data state to keep receiving data
                 // disable_tare_LED();
@@ -294,10 +313,9 @@ int main() {
             // receive data state - wait until set amount of data reached, enable steady weight LED
             case receive_data:
                 printf("========== Current state: receive_data ==========\n");
-                disable_tare_LED();
+                enable_steady_LED();
                 sleep_ms(1000);
                 // add code
-                enable_steady_LED();
                 // weight_mean_average contains the average of the last 5 (stable) readings
                 // add code to prepare data to send to server
                 FSM = send_data;
