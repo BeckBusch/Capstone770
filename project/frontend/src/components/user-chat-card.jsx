@@ -1,6 +1,7 @@
 import React from "react";
 import "./user-chat-card.css";
 // import { Link } from "react-router-dom";
+import MyAccountBlackIcon from "../assets/my-account-icon-black.png"
 
 function UserChatCard() {
     return (            
@@ -10,7 +11,7 @@ function UserChatCard() {
             <div className="user-chat-card">
 
                 <div className="user-chat-image">
-                    <img src={require("../images/my-account-icon-black.png")} className="user-image" alt="User"/>
+                    <img src={MyAccountBlackIcon} className="user-image" alt="User"/>
                 </div>
 
                 <div className="user-chat-card-details">
