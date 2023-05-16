@@ -9,6 +9,7 @@
 #include "pico_c.h"
 #include "network.h"
 #include "adc.h"
+#include "led.h"
 
 char request_body[64];
 
