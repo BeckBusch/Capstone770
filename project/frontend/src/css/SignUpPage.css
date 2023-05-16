@@ -30,12 +30,15 @@
 }
 
 .sign-up-container {
-    width: fit-content;
-    height: 70%;
+    width: 800px;
+    height: 550px;
     background-color: white;
     border-radius: 50px;
     border: white 10px solid;
     padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Sign Up Heading */
@@ -53,9 +56,8 @@
 }
 
 .sign-up-info {
-    padding: 20px 0;
+    padding: 30px 0;
     color: black;
-    line-height: 2;
 }
 
 /* Sign Up Form Content */
@@ -126,7 +128,6 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
 
 /* Role Dropdown */
 .role-dropbtn {

@@ -13,14 +13,17 @@ function SignUpPage() {
 
       <div className="sign-up-container-flex">
         <div className="sign-up-container">
-          <img src={MyAccountBlack} className="sign-up-icon" alt="sign-up" />
-          <h1 className="sign-up-header">Sign Up</h1>
-          <div className="sign-up-info">
-            <p>An admin will review and approve your sign up request.</p>
-            <p>
-              Completing this sign up form does not automatically create your
-              account.
-            </p>
+          <div className="sign-up-header">
+            <img src={MyAccountBlack} className="sign-up-icon" alt="sign-up" />
+            <h1 className="sign-up-header">Sign Up</h1>
+          </div>
+
+            <div className="sign-up-info">
+              <p>An admin will review and approve your sign up request.</p>
+              <p>
+                Completing this sign up form does not automatically create your
+                account.
+              </p>
           </div>
 
           <div className="sign-up-form">
@@ -113,7 +116,7 @@ function SignUpPage() {
                   Cancel
                 </button>
               </Link>
-              <Link to="/sign-up-confirm">
+              <Link to="/sign-up/confirm">
                 <button type="submit" id="signUpBtn" className="sign-up-btn">
                   Sign Up
                 </button>
