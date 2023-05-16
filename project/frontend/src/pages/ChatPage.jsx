@@ -1,3 +1,5 @@
+import "../css/ChatPage.css";
+
 function ChatPage() {  
     return (
       <div>

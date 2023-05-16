@@ -1,3 +1,5 @@
+import "../css/AddDataPage.css";
+
 function AddDataPage() {  
     return (
       <div>

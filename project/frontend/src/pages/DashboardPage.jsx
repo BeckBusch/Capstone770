@@ -1,3 +1,4 @@
+import "../css/DashboardPage.css";
 import { useState, useContext } from 'react'
 // import './App.css'
 import { AppContext } from "../AppContextProvider";

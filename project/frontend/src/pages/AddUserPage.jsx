@@ -1,3 +1,4 @@
+import "../css/AddUserPage.css";
 
 function AddUserPage() {  
     return (
