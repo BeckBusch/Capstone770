@@ -183,10 +183,12 @@ void sendRequest(char* uri, char* body) {
         run_tls_client_test();
 }
 
-void wifi_connect(void) {
+
+int wifi_connect() {
     while (cyw43_arch_wifi_connect_timeout_ms("UoA-Capstone", "cap5Ton3", CYW43_AUTH_WPA2_AES_PSK, 30000)) {
         printf("connection failed, retrying\n");
     }
+    return 1;   // return 1 upon successful Wi-Fi connection
 }
 
 void run_tls_client_test(void) {
