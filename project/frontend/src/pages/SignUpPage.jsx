@@ -1,4 +1,5 @@
 import "../css/SignUpPage.css";
+
 import { Link } from "react-router-dom";
 
 import DashboardLogo from "../assets/dashboard-logo.png";
@@ -14,7 +15,6 @@ function SignUpPage() {
       {/* Sign Up Container*/}
       <div className="sign-up-container-flex">
         <div className="sign-up-container">
-
           {/* Sign Up Headind */}
           <div className="sign-up-header">
             <img src={MyAccountBlack} className="sign-up-icon" alt="sign-up" />
@@ -32,7 +32,6 @@ function SignUpPage() {
 
           {/* Sign Up Form */}
           <div className="sign-up-form">
-
             {/* Profile Column */}
             <div className="sign-up-form-col-1">
               <div className="profile-container">

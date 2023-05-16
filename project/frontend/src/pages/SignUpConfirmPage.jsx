@@ -1,8 +1,24 @@
 import "../css/SignUpConfirmPage.css";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import DashboardLogo from "../assets/dashboard-logo.png";
 
 function SignUpConfirmPage() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/");
+    }, 10500);
+  }, []);
+
+  const [counter, setCounter] = useState(10);
+
+  useEffect(() => {
+    counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+  }, [counter]);
+
   return (
     <div className="sign-up-page">
       {/* Corner Logo */}
@@ -11,7 +27,6 @@ function SignUpConfirmPage() {
       {/* Confirmation Container */}
       <div className="sign-up-container-flex">
         <div className="sign-up-container">
-
           {/* Confirmation Message */}
           <div className="sign-up-confirm-msg">
             <p>
@@ -22,9 +37,9 @@ function SignUpConfirmPage() {
           </div>
           {/* Back to Home Link */}
           <div className="back-to-home-msg">
+            <p>Redirecting back to Home Page in {counter}</p>
             <Link to="/">Back to Home</Link>
           </div>
-
         </div>
       </div>
     </div>
