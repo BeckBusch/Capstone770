@@ -6,7 +6,7 @@ import DashboardLogo from "../assets/dashboard-logo.png";
 import DashboardIcon from "../assets/dashboard-icon.png";
 import ChatIcon from "../assets/chat-icon.png";
 import MyAccountIcon from "../assets/my-account-icon.png";
-import ManageUsersIcon from "../images/settings-icon.png";
+import ManageUsersIcon from "../assets/settings-icon.png";
 
 function NavBarAdmin() {
     return (
