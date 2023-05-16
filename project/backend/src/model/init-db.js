@@ -15,11 +15,11 @@ export async function main() {
     await clearDatabase();
     console.log();
 
-    await addDogs();
-    console.log();
+    // await addDogs();
+    // console.log();
 
-    await addUsers();
-    console.log();
+    // await addUsers();
+    // console.log();
 
     // Disconnect when complete
     // await mongoose.disconnect();
@@ -32,26 +32,26 @@ async function clearDatabase() {
     console.log(`Cleared database (removed ${dogsDeleted.deletedCount} dogs and ${usersDeleted.deletedCount} users ).`);
 }
 
-const dogs = [
-    { name: "Daisy", breed: "Maltese", gender: "Female", location: "Auckland", currentWeight:  [7.00, "2023-05-15", "Juwon Jung"], prevWeights: [] },
-    { name: "Cookie", breed: "Beagle", gender: "Male", location: "Whangarei", currentWeight:  [10.00, "2023-02-16", "MinSun Kim"] },
-]
+// const dogs = [
+//     { name: "Daisy", breed: "Maltese", gender: "Female", location: "Auckland", currentWeight:  [7.00, "2023-05-15", "Juwon Jung"], prevWeights: [] },
+//     { name: "Cookie", breed: "Beagle", gender: "Male", location: "Whangarei", currentWeight:  [10.00, "2023-02-16", "MinSun Kim"] },
+// ]
   
-async function addDogs() {
-    for (let dog of dogs) {
-        const dbDog = await createDog(dog);
-        console.log(`Dog '${dbDog.name}' added to database (_id = ${dbDog._id})`);
-    }
-}
+// async function addDogs() {
+//     for (let dog of dogs) {
+//         const dbDog = await createDog(dog);
+//         console.log(`Dog '${dbDog.name}' added to database (_id = ${dbDog._id})`);
+//     }
+// }
 
-const users = [
-    { name: "Juwon Jung", email: "juwon@mail.com", password: "juwon", role: "Vet", joined: "2023-05-15", image: "" },
-    { name: "Min Sun Kim", email: "minsun@mail.com", password: "minsun", role: "Volunteer", joined: "2023-02-16", image: "" },
-]
+// const users = [
+//     { name: "Juwon Jung", email: "juwon@mail.com", password: "juwon", role: "Vet", joined: "2023-05-15", image: "" },
+//     { name: "Min Sun Kim", email: "minsun@mail.com", password: "minsun", role: "Volunteer", joined: "2023-02-16", image: "" },
+// ]
 
-async function addUsers() {
-    for (let user of users) {
-        const dbUser = await createUser(user);
-        console.log(`User '${dbUser.name}' added to database (_id = ${dbUser._id})`);
-    }
-}
+// async function addUsers() {
+//     for (let user of users) {
+//         const dbUser = await createUser(user);
+//         console.log(`User '${dbUser.name}' added to database (_id = ${dbUser._id})`);
+//     }
+// }
