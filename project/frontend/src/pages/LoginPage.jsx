@@ -1,5 +1,6 @@
 import "../css/LoginPage.css";
 import { Link } from "react-router-dom";
+
 import SPCALogo from "../assets/spca-logo.png";
 import BackgroundImage from "../assets/login-image.png";
 
@@ -10,7 +11,7 @@ function LoginPage() {
       <img className="background-image" src={BackgroundImage} alt="SPCA Logo" />
 
       {/* Login Container */}
-      <div className="align-right">
+      <div className="login-container-flex">
         <div className="login-container">
           <img className="spca-logo" src={SPCALogo} alt="SPCA Logo" />
           <form>

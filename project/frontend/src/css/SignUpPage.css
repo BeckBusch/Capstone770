@@ -1,0 +1,237 @@
+.sign-up-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Logo */
+.corner-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    max-width: 100px;
+}
+
+.corner-logo:hover {
+    cursor: pointer;
+}
+
+/* Sign Up Form Container */
+.sign-up-container-flex {
+    position: relative;
+    width: 100vw;
+    height: fit-content;
+    /* padding-top: 5vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up-container {
+    width: fit-content;
+    height: 70%;
+    background-color: white;
+    border-radius: 50px;
+    border: white 10px solid;
+    padding: 20px 30px;
+}
+
+/* Sign Up Heading */
+.sign-up-icon {
+    vertical-align: middle;
+    margin-right: 20px;
+    height: 50px;
+}
+
+.sign-up-header {
+    display: inline-block;
+    vertical-align: middle;
+    color: black;
+    font-size: 40px;
+}
+
+.sign-up-info {
+    padding: 20px 0;
+    color: black;
+    line-height: 2;
+}
+
+/* Sign Up Form Content */
+.sign-up-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.sign-up-form-col-1 {
+    width: fit-content;
+    padding: 0 50px 0 0;
+}
+
+.sign-up-form-col-2 {
+    width: 500px;
+}
+
+/* Profile Column */
+.profile-container {
+    width: 200px;
+    height: 200px;
+    background-color: #BDD3E8;
+    border: 5px solid #BDD3E8;
+    overflow: hidden;    
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.add-photo-msg {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Form Input */
+.sign-up-two-columns-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* background-color: green; */
+    grid-gap:1px;
+    row-gap: 10px;
+    padding: 1px;
+}
+
+.sign-up-two-columns-grid > * {
+    /* background-color: orange; */
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.input-styling {
+    width: 280px;
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #999999;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+/* Role Dropdown */
+.role-dropbtn {
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    color: #999999;
+    background-color: white;
+    font-size: 16px;
+    border: #999999 1px solid;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: right;
+    padding-right: 10px;
+}
+  
+.role-dropdown {
+    display: inline-block;
+    width: 300px;
+}
+  
+.role-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 300px;
+    z-index: 1;
+    border-radius: 10px;
+    border: #999999 1px solid;
+}
+  
+  .role-dropdown-content a {
+    color: #999999;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .role-dropdown-content a:hover {
+    background-color: #f1f1f1;
+    border-radius: 10px;    
+}
+  
+  .role-dropdown:hover .role-dropdown-content {
+    display: block;
+  }
+
+  .role-arrow {
+    border: solid #999999;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+/* Buttons */
+
+.sign-up-page label {
+    color: black;
+}
+
+.buttons {
+    width: 200px;
+    display: inline;
+    margin: 0 30px 0 0;
+}
+
+.button-container {
+    text-align: right;
+}
+
+.cancel-btn {
+    width: 105px;
+    height: 40px;
+    color: #999999;
+    background-color: white;
+    border: #999999 1px solid;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.cancel-btn:hover {
+    color: white;
+    background-color: #999999;
+    border: 1px solid #999999;
+}
+
+.sign-up-btn {
+    width: 105px;
+    height: 40px;
+    color: white;
+    background-color: #3479C0;
+    border: #3479C0 1px solid;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sign-up-btn:hover {
+    color: #3479C0;
+    background-color: #BDD3E8;
+    border: 1px solid #BDD3E8;
+}
