@@ -12,7 +12,7 @@
 #define TLS_CLIENT_TIMEOUT_SECS  15
 #define TLS_CLIENT_SERVER "capstone770-team-10-default-rtdb.firebaseio.com"
 
-void wifi_connect(void);
+int wifi_connect();
 void sendRequest(char* uri, char* body);
 
 #endif /* NETWORK_H */
