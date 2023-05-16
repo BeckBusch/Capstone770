@@ -130,7 +130,7 @@ void init_button() {
 double *save_weight_to_array() {
     for (int counter = 0; counter < 5; counter++) {
         double weightReading = adcConvert();
-        weight_value_array[counter] = weightReading + 5; // +5 added for testing purposes only
+        weight_value_array[counter] = weightReading + 5; // +5 added for testing purposes only, REMEMBER TO REMOVE THIS!
         // weight_value_array[counter] = weightReading
         printf("Weight reading: %f\n", weightReading);
         sleep_ms(500); // take a reading every 0.5 second
@@ -200,26 +200,16 @@ int main() {
     adc_select_input(ADC_CHANNEL);
     init_button();  // initialize button ISR
 
-    enum states FSM = not_ready;    // set intial FSM state
-
     if (cyw43_arch_init()) {
         printf("Wi-Fi init failed");
         return 1;
     }
 
     cyw43_arch_enable_sta_mode();
-
-    FSM = not_ready;    // set intial FSM state
-
-
-    // adc_init();
-    // adc_select_input(ADC_CHANNEL);
-
-    // cyw43_arch_enable_sta_mode();
+    enum states FSM = not_ready;    // set intial FSM state
 
     //sprintf(request_body, "{\"%s\":\"%d\"}", "Weight", 15);
     //sendRequest("/Measurements/Dog1.json", request_body);
-
 
     sleep_ms(2000);
     
@@ -235,14 +225,13 @@ int main() {
                 while(1) {
                     int check = 0;
 
-                    check = check_weights(save_weight_to_array());           // take 5 readings and save to global array and ensure weight readings are stable
-
-                    printf("Check value: %d\n", check);
-
                     if (tare_flag == 1) {   // ISR will set tare_flag to 1
                         FSM = tare_initialized;
                         break;
                     }
+
+                    check = check_weights(save_weight_to_array());           // take 5 readings and save to global array and ensure weight readings are stable
+                    printf("Check value: %d\n", check);
 
                     if (check == 1) {   // stable reading reached
                         FSM = receive_data; // once steady amount of data is received
@@ -312,8 +301,8 @@ int main() {
             case send_data:
                 printf("========== Current state: send_data ==========\n");
                 sleep_ms(1000);
-
                 disable_stable_LED();
+
                 // add code
                 FSM = idle;
                 break;

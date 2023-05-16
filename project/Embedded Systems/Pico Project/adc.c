@@ -50,7 +50,7 @@ double adcConvert() {
 
     if ((reading>2048) || (reading<298))
     {
-        printf("faulty reading");
+        printf("Faulty reading\n");
     }
 
     else{
