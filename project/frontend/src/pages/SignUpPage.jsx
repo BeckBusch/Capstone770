@@ -1,12 +1,43 @@
 import "../css/SignUpPage.css";
 
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "../AppContextProvider";
 
 import DashboardLogo from "../assets/dashboard-logo.png";
 import MyAccountBlack from "../assets/my-account-icon-black.png";
 import MyAccount from "../assets/my-account-icon.png";
 
 function SignUpPage() {
+  const {
+    addUser
+  } = useContext(AppContext);
+
+  async function handleAddUser() {
+    var name = document.getElementById("name").value;
+    console.log("name = ", name);
+    var email = document.getElementById("email").value;
+    console.log("email = ", email);
+    var password = document.getElementById("password").value;
+    console.log("password = ", password);
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    console.log("confirmPassword = ", confirmPassword);
+    var role = document.getElementById("role").value;
+    console.log("role = ", role);   
+
+    addUser(name, email, password, role, "");
+    console.log("newUser");
+  }
+
+  // function confirmPassword() {
+  //   var password = document.getElementById("password").value;
+  //   var confirmPassword = document.getElementById("confirmPassword").value;
+  //   if (password != confirmPassword) {
+
+  //   }
+  // }
+
+
   return (
     <div className="sign-up-page">
       {/* Corner Logo */}
@@ -44,6 +75,9 @@ function SignUpPage() {
               <p className="add-photo-msg">
                 <Link to="/dashboard"> + Add Photo </Link>
               </p>
+              <label className="input-label" htmlFor="inputTag">
+                  <input className="add-file-input" type="file" accept="image/png, image/jpg, image/gif, image/jpeg" id="file-selector"></input>
+              </label>
             </div>
 
             {/* Form Contend */}
@@ -59,6 +93,7 @@ function SignUpPage() {
                       type="text"
                       id="name"
                       placeholder="Name"
+                      // onChange={(e) => handleNameChange(e.target.value)}
                     />
                   </div>
 
@@ -101,7 +136,8 @@ function SignUpPage() {
                   <div>
                     <label htmlFor="Role">Role</label>
                   </div>
-                  <div className="role-dropdown">
+
+                  {/* <div className="role-dropdown">
                     <button className="role-dropbtn">
                       <i className="role-arrow down"></i>
                     </button>
@@ -110,7 +146,17 @@ function SignUpPage() {
                       <a href="#">Staff</a>
                       <a href="#">Volunteer</a>
                     </div>
+                  </div> */}
+                  <div>
+                  <select className="select-style" name="role-types" id="role" defaultValue={"none"}>
+                    <option value="none" disabled hidden>Select an Option</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Staff">Staff</option>
+                    <option value="Volunteer">Volunteer</option>
+                  </select>
                   </div>
+
+                  
                 </div>
               </form>
             </div>
@@ -125,8 +171,15 @@ function SignUpPage() {
                 </button>
               </Link>
               <Link to="/sign-up/confirm">
-                <button type="submit" id="signUpBtn" className="sign-up-btn">
-                  Sign Up
+                <button 
+                type="submit" 
+                id="signUpBtn" 
+                className="sign-up-btn" 
+                onClick={() => {
+                  // confirmPassword();
+                  handleAddUser();
+                }}
+                >Sign Up
                 </button>
               </Link>
             </div>
