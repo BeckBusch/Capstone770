@@ -8,25 +8,32 @@ import MyAccount from "../assets/my-account-icon.png";
 function SignUpPage() {
   return (
     <div className="sign-up-page">
+      {/* Corner Logo */}
       <img className="corner-logo" src={DashboardLogo} alt="SPCA Logo" />
-      {/* <Link to="/sign-in">Sign In</Link> */}
 
+      {/* Sign Up Container*/}
       <div className="sign-up-container-flex">
         <div className="sign-up-container">
+
+          {/* Sign Up Headind */}
           <div className="sign-up-header">
             <img src={MyAccountBlack} className="sign-up-icon" alt="sign-up" />
             <h1 className="sign-up-header">Sign Up</h1>
           </div>
 
-            <div className="sign-up-info">
-              <p>An admin will review and approve your sign up request.</p>
-              <p>
-                Completing this sign up form does not automatically create your
-                account.
-              </p>
+          {/* Sign Up Information */}
+          <div className="sign-up-info">
+            <p>An admin will review and approve your sign up request.</p>
+            <p>
+              Completing this sign up form does not automatically create your
+              account.
+            </p>
           </div>
 
+          {/* Sign Up Form */}
           <div className="sign-up-form">
+
+            {/* Profile Column */}
             <div className="sign-up-form-col-1">
               <div className="profile-container">
                 <img
@@ -40,6 +47,7 @@ function SignUpPage() {
               </p>
             </div>
 
+            {/* Form Contend */}
             <div className="sign-up-form-col-2">
               <form>
                 <div className="sign-up-two-columns-grid">
@@ -109,6 +117,7 @@ function SignUpPage() {
             </div>
           </div>
 
+          {/* Buttons */}
           <div className="button-container">
             <div className="buttons">
               <Link to="/">

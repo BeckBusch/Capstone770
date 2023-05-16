@@ -5,10 +5,14 @@ import DashboardLogo from "../assets/dashboard-logo.png";
 function SignUpConfirmPage() {
   return (
     <div className="sign-up-page">
+      {/* Corner Logo */}
       <img className="corner-logo" src={DashboardLogo} alt="SPCA Logo" />
 
+      {/* Confirmation Container */}
       <div className="sign-up-container-flex">
         <div className="sign-up-container">
+
+          {/* Confirmation Message */}
           <div className="sign-up-confirm-msg">
             <p>
               Your request has been sent to an admin for approval.
@@ -16,25 +20,13 @@ function SignUpConfirmPage() {
               approved.
             </p>
           </div>
+          {/* Back to Home Link */}
           <div className="back-to-home-msg">
             <Link to="/">Back to Home</Link>
           </div>
 
         </div>
       </div>
-
-      {/* <div className="align-center2">
-        <div className="sign-up-confirm-container">
-          <p>Your request has been sent to an admin for approval.</p>
-          <p>
-            A confirmation email will be sent once your request has been
-            approved.
-          </p>
-          <p className="back-to-login-msg">
-            <Link to="/">Back to Log In Page</Link>{" "}
-          </p>
-        </div>
-      </div> */}
     </div>
   );
 }
