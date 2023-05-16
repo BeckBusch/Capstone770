@@ -127,16 +127,6 @@ void init_button() {
 
 
 
-int connect_wifi() {
-    if (cyw43_arch_init()) {
-        printf("Wi-Fi init failed");
-        return -1;
-    } else {
-        return 1;   // connection successful
-    }
-}
-
-
 double *save_weight_to_array() {
     for (int counter = 0; counter < 5; counter++) {
         double weightReading = adcConvert();
@@ -227,14 +217,12 @@ int main() {
 
     // cyw43_arch_enable_sta_mode();
 
-    //wifi_connect();
     //sprintf(request_body, "{\"%s\":\"%d\"}", "Weight", 15);
     //sendRequest("/Measurements/Dog1.json", request_body);
 
 
     sleep_ms(2000);
     
-
     while(1) {
         // FSM switch cases
         switch(FSM) {
@@ -270,13 +258,11 @@ int main() {
                 printf("========== Current state: not_ready ==========\n");
                 sleep_ms(1000);
                 enable_power_LED();
-                // attempt to connect to WiFi
-                // if (connect_wifi()) {
-                //     // once connection is succesful
-                //     FSM = ready;
-                // }
-                FSM = ready;
-                break;
+                if (wifi_connect()) {
+                    // once connection is succesful
+                    FSM = ready;
+                    break;
+                }
 
 
             // ready state - both power and WiFi is on
