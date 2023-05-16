@@ -86,9 +86,31 @@ label {
 
 .input-style { 
     width: 400px;
-    height: 35px;
+    height: 40px;
     border:1px solid #999999;
+    font-size: 16px;
     border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.select-role-style  {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #999999;
+    font-size: 16px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #8e8e8e;
+}
+
+.select-role-style > option {
+    color: #8e8e8e;
 }
 
 .two-columns-col-2 {
