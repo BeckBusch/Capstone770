@@ -1,6 +1,8 @@
 import "../css/ManageUsersPage.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 import { AppContext } from "../AppContextProvider";
+import React,  { useEffect } from 'react';
 
 import NavBarAdmin from "../components/nav-bar-admin";
 import SettingsBlackIcon from "../assets/settings-black-icon.png";
@@ -13,6 +15,58 @@ import AddUserIcon from "../assets/add-user-icon.png";
 
 
 function ManageUsersPage() {  
+    const {
+        users
+      } = useContext(AppContext);
+
+    const renderBoard = () => { 
+        const table = document.createElement('table');
+
+        let num = users.length;
+        console.log("users.length = ", num);
+
+        var customers = new Array();
+        customers.push(["", "Name", "Email", "User Type", "Joined", ""]);
+        for (let i = 0; i < users.length; i++) {
+            customers.push([users[i]["image"], users[i]["name"], users[i]["email"], users[i]["role"], users[i]["createdAt"], ""]);
+        }        
+ 
+        //Get the count of columns.
+        var columnCount = customers[0].length;
+        console.log("columnCOunt = ", columnCount);
+ 
+        //Add the header row.
+        var row = table.insertRow(-1);
+        for (var i = 0; i < columnCount; i++) {
+            var headerCell = document.createElement("TH");
+            headerCell.innerHTML = customers[0][i];
+            row.appendChild(headerCell);
+        }
+
+        console.log("customers: ", customers);
+
+        console.log("customers.length = ", customers.length);
+ 
+        //Add the data rows.
+        for (var i = 1; i < customers.length; i++) {
+            row = table.insertRow(-1);
+            for (var j = 0; j < columnCount; j++) {
+                var cell = row.insertCell(-1);
+                cell.innerHTML = customers[i][j];
+            }
+        }
+
+        return table;
+    };
+
+    useEffect(() => {
+        const renderBoardDiv = document.querySelector('.renderBoard');
+        if (renderBoardDiv.children.length === 0) {
+        const table = renderBoard();
+        renderBoardDiv.appendChild(table);
+        }
+    }, []);
+
     return (
       <div className="manage-users-page">
           <NavBarAdmin/>   
@@ -21,7 +75,7 @@ function ManageUsersPage() {
               <h1 className="manage-users-header">Manage Users</h1>
           </div>        
           <div className="pending-users-container">
-              <label>Pending Users (1)</label>
+              <label>Pending Users ({users.length})</label>
               <div className="p-users-container">
                   <div>
                       <table className="pending-users-table" id="pendingUsersTable">
@@ -114,78 +168,11 @@ function ManageUsersPage() {
           </div>
 
           <div className="pending-users-container">
-              <label>Users (2)</label>
+              <label id="num-of-users">Users ({users.length})</label>
               <div className="p-users-container">
-                  <div>
-                      <table className="pending-users-table" id="pendingUsersTable">
-                          <thead>
-                              <tr>
-                                  <th></th>
-                                  <th>Users</th>
-                                  <th>Email</th>
-                                  <th>User Type</th>
-                                  <th>Joined</th>
-                                  <th></th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <td className="profile-image"><img src={SettingsBlackIcon} className="profile-image-align" alt="start" /></td>
-                                  <td>Jess Mo</td>
-                                  <td>jessmo76@gmail.com</td>
-                                  <td>
-                                      <div className="type-dropdown">
-                                          <button className="dropdownbtn"><i className="type-arrow type-down"></i></button>
-                                          <div className="type-dropdown-content">
-                                              <a href="#">Vet</a>
-                                              <a href="#">Volunteer</a>
-                                          </div>
-                                      </div>                                     
-                                  </td>
-                                  <td>27/04/2023</td>
-                                  <td>
-                                      <button className="remove-btn">Remove
-                                          <img src={NoIcon} className="remove-btn-align" alt="start" />
-                                          <img src={NoHoverIcon} className="remove-img-top" alt="start" />
-                                      </button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td className="profile-image"><img src={SettingsBlackIcon} className="profile-image-align" alt="start" /></td>
-                                  <td>Matthew Adamas</td>
-                                  <td>obleee88@gmail.com</td>
-                                  <td>
-                                      <div className="type-dropdown">
-                                          <button className="dropdownbtn"><i className="type-arrow type-down"></i></button>
-                                          <div className="type-dropdown-content">
-                                              <a href="#">Vet</a>
-                                              <a href="#">Volunteer</a>
-                                          </div>
-                                      </div> 
-                                  </td>
-                                  <td>03/04/2023</td>
-                                  <td>
-                                      <button className="remove-btn">Remove 
-                                          <img src={NoIcon} className="remove-btn-align" alt="start" />
-                                          <img src={NoHoverIcon} className="remove-img-top" alt="start" />
-                                      </button>
-                                  </td>
-                              </tr>
-                              {/* <tr>
-                                  <td><img src={require("../images/settings-black-icon.png")} className="settings-icon-align" alt="start" /></td>
-                                  <td>6.03</td>
-                                  <td>02/03/2023</td>
-                                  <td>3:10 PM</td>        
-                              </tr>
-                              <tr>
-                                  <td><img src={require("../images/settings-black-icon.png")} className="settings-icon-align" alt="start" /></td>
-                                  <td>8.08</td>
-                                  <td>03/03/2023</td>
-                                  <td>10:30 AM</td>        
-                              </tr> */}
-                          </tbody>
-                      </table>
-                  </div>
+
+                <table className="renderBoard"></table>
+
               </div>
           </div>
       </div>
