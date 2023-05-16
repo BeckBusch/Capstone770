@@ -1,30 +1,47 @@
 import "../css/SignUpPage.css";
 
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../AppContextProvider";
 
 import DashboardLogo from "../assets/dashboard-logo.png";
 import MyAccountBlack from "../assets/my-account-icon-black.png";
 import MyAccount from "../assets/my-account-icon.png";
 
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+
 function SignUpPage() {
-  const {
-    addUser
-  } = useContext(AppContext);
+
+  const { addUser } = useContext(AppContext);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const signUp = (e) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      console.log("Successfully created user: " + userCredential)
+      handleAddUser();
+    })
+    .catch((error) => {
+      console.log("Error: " + error)
+    });
+  }
+
 
   async function handleAddUser() {
     var name = document.getElementById("name").value;
-    console.log("name = ", name);
+    // console.log("name = ", name);
     var email = document.getElementById("email").value;
-    console.log("email = ", email);
+    // console.log("email = ", email);
     var password = document.getElementById("password").value;
-    console.log("password = ", password);
+    // console.log("password = ", password);
     var confirmPassword = document.getElementById("confirmPassword").value;
-    console.log("confirmPassword = ", confirmPassword);
+    // console.log("confirmPassword = ", confirmPassword);
     var role = document.getElementById("role").value;
-    console.log("role = ", role);   
-
+    // console.log("role = ", role);
     addUser(name, email, password, role, "");
     console.log("newUser");
   }
@@ -36,7 +53,6 @@ function SignUpPage() {
 
   //   }
   // }
-
 
   return (
     <div className="sign-up-page">
@@ -76,13 +92,18 @@ function SignUpPage() {
                 <Link to="/dashboard"> + Add Photo </Link>
               </p>
               <label className="input-label" htmlFor="inputTag">
-                  <input className="add-file-input" type="file" accept="image/png, image/jpg, image/gif, image/jpeg" id="file-selector"></input>
+                <input
+                  className="add-file-input"
+                  type="file"
+                  accept="image/png, image/jpg, image/gif, image/jpeg"
+                  id="file-selector"
+                ></input>
               </label>
             </div>
 
             {/* Form Contend */}
             <div className="sign-up-form-col-2">
-              <form>
+              <form onSubmit={signUp}>
                 <div className="sign-up-two-columns-grid">
                   <div>
                     <label htmlFor="Name">Name</label>
@@ -106,6 +127,8 @@ function SignUpPage() {
                       type="text"
                       id="email"
                       placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
 
@@ -118,6 +141,8 @@ function SignUpPage() {
                       type="password"
                       id="password"
                       placeholder="Password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
 
@@ -136,28 +161,27 @@ function SignUpPage() {
                   <div>
                     <label htmlFor="Role">Role</label>
                   </div>
-
-                  {/* <div className="role-dropdown">
-                    <button className="role-dropbtn">
-                      <i className="role-arrow down"></i>
-                    </button>
-                    <div className="role-dropdown-content">
-                      <a href="#">Admin</a>
-                      <a href="#">Staff</a>
-                      <a href="#">Volunteer</a>
-                    </div>
-                  </div> */}
                   <div>
-                  <select className="select-style" name="role-types" id="role" defaultValue={"none"}>
-                    <option value="none" disabled hidden>Select an Option</option>
-                    <option value="Admin">Admin</option>
-                    <option value="Staff">Staff</option>
-                    <option value="Volunteer">Volunteer</option>
-                  </select>
+                    <select
+                      className="select-style"
+                      name="role-types"
+                      id="role"
+                      defaultValue={"none"}
+                    >
+                      <option value="none" disabled hidden>
+                        Select an Option
+                      </option>
+                      <option value="Admin">Admin</option>
+                      <option value="Staff">Staff</option>
+                      <option value="Volunteer">Volunteer</option>
+                    </select>
                   </div>
-
-                  
                 </div>
+                <button
+                  type="submit"
+                  id="signUpBtn"
+                  className="sign-up-btn"/>
+
               </form>
             </div>
           </div>
@@ -170,18 +194,19 @@ function SignUpPage() {
                   Cancel
                 </button>
               </Link>
-              <Link to="/sign-up/confirm">
-                <button 
-                type="submit" 
-                id="signUpBtn" 
-                className="sign-up-btn" 
-                onClick={() => {
-                  // confirmPassword();
-                  handleAddUser();
-                }}
-                >Sign Up
+              {/* <Link to="/sign-up/confirm"> */}
+                <button
+                  type="submit"
+                  id="signUpBtn"
+                  className="sign-up-btn"
+                  // onClick={() => {
+                    // confirmPassword();
+                  //   handleAddUser();
+                  // }}
+                >
+                  Sign Up
                 </button>
-              </Link>
+              {/* </Link> */}
             </div>
           </div>
         </div>
