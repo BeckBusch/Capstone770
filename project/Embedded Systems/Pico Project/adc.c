@@ -48,7 +48,7 @@ double adcConvert() {
     double reading = adc_read(); // read ADC value
     
 
-    if ((reading>2048) || (reading<298))
+    if ((reading>2048) || (reading<298))    // lowest seen is 210 for 25kg; highest vlaue seen is 1921
     {
         printf("Faulty reading\n");
     }

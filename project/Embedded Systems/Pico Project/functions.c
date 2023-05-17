@@ -30,7 +30,7 @@ double get_tare_offset() {
 double *save_weight_to_array() {
     for (int counter = 0; counter < 5; counter++) {
         double weightReading = adcConvert();
-        weight_value_array[counter] = weightReading + 5; // +5 added for testing purposes only, REMEMBER TO REMOVE THIS!
+        weight_value_array[counter] = weightReading;
         // weight_value_array[counter] = weightReading
         printf("Weight reading: %f\n", weightReading);
         sleep_ms(500); // take a reading every 0.5 second

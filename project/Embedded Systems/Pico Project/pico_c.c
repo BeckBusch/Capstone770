@@ -17,6 +17,16 @@ int tare_flag = 0;
 int check = 0;
 enum states {idle, not_ready, ready, tare_initialized, receive_data, send_data};    // initialize states for the FSM
 
+#define REGEN_PIN 28
+
+
+void init_reg();
+
+void init_reg() {
+    gpio_init(REGEN_PIN);
+    gpio_set_dir(REGEN_PIN, GPIO_OUT); 
+    gpio_put(REGEN_PIN, 1); 
+}
 
 // ISR for tare button GP20 -> tare switch
 void tare_ISR(unsigned int gpio, uint32_t events) {
@@ -40,6 +50,7 @@ int main() {
     adc_init();
     adc_select_input(ADC_CHANNEL);
     init_button();  // initialize button ISR
+    init_reg();
 
     if (cyw43_arch_init()) {
         printf("Wi-Fi init failed");
