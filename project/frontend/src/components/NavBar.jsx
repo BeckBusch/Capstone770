@@ -10,16 +10,13 @@ import MyAccountIcon from "../assets/my-account-icon.png";
 import ManageUsersIcon from "../assets/settings-icon.png";
 
 function NavBar() {
-    const {userRole, setUserRole, userEmail, setUserEmail} = useContext(AppContext);
-
-    console.log("userrole "  + userRole);
+    const {userRole} = useContext(AppContext);
 
     return (userRole == "Admin") ? (
         <div className="nav-bar">
 
             <div className="col col-left">
                 <img className="navbar-logo" src={DashboardLogo} alt="SPCA Logo" />
-                {/* <Link to="/sign-in">Sign In</Link> */}
             </div>
 
             <div className="col col-mid">

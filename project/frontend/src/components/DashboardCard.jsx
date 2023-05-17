@@ -1,6 +1,4 @@
-import React from "react";
 import "../css/DashboardCard.css";
-// import { Link } from "react-router-dom";
 
 import DogImage from "../assets/dog-image.png";
 
@@ -18,10 +16,9 @@ function DashboardCard(props) {
 
                 <div className="div-dog-details">
 
-                    <h1>{props.name}Cookie</h1>
-                    <h3 className="breed-header">{props.breed}Golden Retriever</h3>
-                    <h3 className="age-header">{props.age}3 Years Old</h3>
-                    {/* <h1>DOG NAME</h1> */}
+                    <h1 className="dog-name">{props.name}</h1>
+                    <h3 className="dog-breed">{props.breed}</h3>
+                    <h3 className="dog-age">{props.age} Years</h3>
                 </div>
             </div>
         </div>
