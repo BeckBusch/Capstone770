@@ -28,6 +28,7 @@
 .settings-icon-align {
     vertical-align: middle;
     margin-right: 20px;
+    height: 40px;
     /* background-color: pink; */
 }
 
@@ -245,6 +246,7 @@ tr {
     position: relative;   
     left: 50%;
     transform: translate(-50%);
+    height: 30px;
 }
 
 .three-columns-grid {
