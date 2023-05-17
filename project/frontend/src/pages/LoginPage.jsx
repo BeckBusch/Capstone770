@@ -9,7 +9,8 @@ import SPCALogo from "../assets/spca-logo.png";
 import BackgroundImage from "../assets/login-image.png";
 
 function LoginPage() {
-  const { users, loggedIn, setLoggedIn, userRole, setUserRole } = useContext(AppContext);
+  const { users, loggedIn, setLoggedIn, userName, setUserName, userID, setUserID, userEmail, setUserEmail, 
+    userPassword, setUserPassword, userRole, setUserRole, userJoined, setUserJoined, userImage, setUserImage } = useContext(AppContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,7 +59,14 @@ function LoginPage() {
     for (let user of users) {
       console.log(user["email"])
       if (user["email"] == email) {
-        setUserRole(user["role"])}
+        setUserName(user["name"])
+        setUserID(user["_id"])
+        setUserEmail(user["email"])
+        setUserPassword(user["password"])
+        setUserRole(user["role"])
+        setUserJoined(user["createdAt"])
+        setUserImage(user["image"])
+      }
     }
   }
 

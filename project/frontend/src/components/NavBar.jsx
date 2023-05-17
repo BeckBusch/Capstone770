@@ -10,9 +10,9 @@ import MyAccountIcon from "../assets/my-account-icon.png";
 import ManageUsersIcon from "../assets/settings-icon.png";
 
 function NavBar() {
-    const {userRole, setUserRole} = useContext(AppContext);
+    const {userRole, setUserRole, userEmail, setUserEmail} = useContext(AppContext);
 
-    console.log("userrole "  + userRole)
+    console.log("userrole "  + userRole);
 
     return (userRole == "Admin") ? (
         <div className="nav-bar">
