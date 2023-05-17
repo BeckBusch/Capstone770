@@ -55,7 +55,7 @@ double adcConvert() {
 
     else{
         // equation  = abs(x-2048)/70 = weight
-        conversion = abs(reading - 2048) / 70  ;
+        conversion = abs(reading - 2048) / 70.0f  ;
 
 
     }
