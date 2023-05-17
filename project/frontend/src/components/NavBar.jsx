@@ -12,6 +12,7 @@ import SignOutIcon from "../assets/exit.png";
 
 
 function NavBar() {
+  
     const {userRole, setUserRole, userEmail, setUserEmail, userName, setUserName} = useContext(AppContext);
 
     console.log("userrole "  + userRole);
@@ -44,7 +45,6 @@ function NavBar() {
 
             <div className="col col-left">
                 <img className="navbar-logo" src={DashboardLogo} alt="SPCA Logo" />
-                {/* <Link to="/sign-in">Sign In</Link> */}
             </div>
 
             <div className="col col-mid">

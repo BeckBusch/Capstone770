@@ -1,6 +1,6 @@
 .card-section {
-    width: 100%;
-    /* padding: 15px; */
+    width: 90%;
+    padding: 15px;
 }
 
 .dashboard-card {
@@ -9,8 +9,8 @@
     border: 1px solid #DBDBDB;
     border-radius: 20px;
     padding: 30px 0 20px 0;
+    color: black;
 }
-
 
 @media (max-width: 700px) {
     .card-section {
@@ -39,13 +39,23 @@
 
 .div-dog-details {
     text-align: center;
+    margin: 15px 0;
 }
 
-.breed-header {
+.dog-name{
+    padding-top: 30px 0;
+    font-size: 24px;
+}
+
+.dog-breed {
     font-style: italic;
     font-weight: normal;
+    padding: 10px;
+    font-size: 18px;
+
 }
 
-.age-header {
+.dog-age {
     font-weight: normal;
+    font-size: 16px;
 }

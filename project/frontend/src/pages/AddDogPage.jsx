@@ -129,7 +129,7 @@ function AddDogPage() {
                 <div>
                   <input
                     className="input-styling"
-                    type="text"
+                    type="number"
                     id="age"
                     placeholder="Age"
                     value={age}
