@@ -1,119 +1,224 @@
-import "../css/AddUserPage.css";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { AppContext } from "../AppContextProvider";
 
+import "../css/AddUserPage.css";
 import NavBar from "../components/NavBar";
-import MyAccountIcon from "../assets/my-account-icon.png";
-import AddUserBlackIcon from "../assets/add-user-black-icon.png";
+import AddUserBlack from "../assets/add-user-black-icon.png";
+import MyAccount from "../assets/my-account-icon.png";
 
 
-function AddUserPage() {  
-    const {
-        addUser
-    } = useContext(AppContext);
+function AddUserPage() {
+  const { addUser } = useContext(AppContext);
 
-    async function handleAddUser() {
-    var name = document.getElementById("name").value;
-    console.log("name = ", name);
-    var email = document.getElementById("email").value;
-    console.log("email = ", email);
-    var password = document.getElementById("password").value;
-    console.log("password = ", password);
-    var confirmPassword = document.getElementById("confirmPassword").value;
-    console.log("confirmPassword = ", confirmPassword);
-    var role = document.getElementById("role").value;
-    console.log("role = ", role);   
+  const [validCredentials, setvalidCredentials] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [role, setRole] = useState("none");
+  const [image, setImage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-    addUser(name, email, password, role, "");
-    console.log("newUser");
+  const navigate = useNavigate();
+
+  const addNewUser = (e) => {
+    e.preventDefault();
+
+    checkValidForm();
+
+    if (validCredentials) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          console.log("Successfully created user: " + userCredential);
+          handleAddUser();
+          navigate("/manage-users");
+        })
+        .catch((error) => {
+          console.log("Error: " + error);
+        });
+    }
+  };
+
+  function checkValidForm() {
+    if (!isValidEmail()) {
+      setErrorMessage("Provided email is invalid.");
+    } else if (!isValidPassword()) {
+      setErrorMessage("Password must be at least 6 characters long.");
+    } else if (!confrimPasswordMatchPassword()) {
+      setErrorMessage("Passwords do not match.");
+    } else if (!isRoleSelected()) {
+      setErrorMessage("Please select a role.");
+    } else {
+      setvalidCredentials(true);
+    }
   }
 
-    return (
-      <div className="add-user-page">
-            <NavBar/>   
-            <div className="add-user-header-container">
-                <img src={AddUserBlackIcon} className="add-user-icon-align" alt="start" />
-                <h1 className="add-user-header">Add User</h1>
-            </div> 
-            <div className="add-user-details-container">
-                <div className="two-columns">
-                    <div className="two-columns-col-1">
-                        <div>
-                            <div className="p-container">
-                                <img className="profile-img" src={MyAccountIcon} alt="Profile Image" />
-                            </div>
-                            <p className="add-photo-msg"><Link to="/dashboard">+ Add Photo</Link> </p>
-                        </div>
-                    </div>
-                    <div className="two-columns-col-2">
-                        <form>
-                            <div className="sign-up-two-columns-grid">
-                                <div>
-                                    <label htmlFor="Name">Name</label>
-                                </div>
-                                <div>
-                                    <input className="input-style" type="text" id="name" placeholder="Name" />
-                                    {/* <p className="edit-details-msg"><Link to="/dashboard">Edit</Link> </p> */}
-                                </div>
+  function isValidEmail() {
+    return email.includes("@") ? true : false;
+  }
 
-                                <div> 
-                                    <label htmlFor="Email">Email</label>
-                                </div>
-                                <div>
-                                    <input className="input-style" type="text" id="email" placeholder="Email" />
-                                </div>
+  function isValidPassword() {
+    return password.length >= 6 ? true : false;
+  }
 
-                                <div>
-                                    <label htmlFor="Password">Password</label>
-                                </div>
-                                <div>
-                                    <input className="input-style" type="password" id="password" placeholder="Password" />
-                                </div>
+  function confrimPasswordMatchPassword() {
+    return password == confirmPassword ? true : false;
+  }
 
-                                <div>
-                                    <label htmlFor="ConfirmPassword">Confirm Password</label>
-                                </div>
-                                <div>
-                                    <input className="input-style" type="password" id="confirmPassword" placeholder="Confirm Password" />
-                                </div>
+  function isRoleSelected() {
+    getSelectedRole();
+    return role != "none" ? true : false;
+  }
 
-                                <div>
-                                    <label htmlFor="Role">Role</label>
-                                </div>
-                                <div>
-                                    <select className="select-role-style" name="role-types" id="role" defaultValue={"none"}>
-                                        <option value="none" disabled hidden>Select an Option</option>
-                                        <option value="Admin">Admin</option>
-                                        <option value="Staff">Staff</option>
-                                        <option value="Volunteer">Volunteer</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div className="button-container">
-                        <div className="buttons">
-                            <Link to="/manage-users">
-                                <button type="submit" id="cancelBtn" className="cancel-btn">Cancel</button>
-                            </Link>
-                            <Link to="/manage-users">
-                                <button 
-                                type="submit" 
-                                id="saveBtn" 
-                                className="save-btn"
-                                onClick={() => {
-                                    handleAddUser();
-                                }}
-                                >Save</button>
-                            </Link>
-                        </div>
-                </div>
-            </div>       
+  function getSelectedRole() {
+    const x = document.getElementById("role");
+    setRole(x.options[x.selectedIndex].value);
+    // console.log(role)
+  }
+
+  async function handleAddUser() {
+    addUser(name, email, password, role, image);
+    console.log("newUser successfully added to database");
+  }
+
+  return (
+    <div className="add-user-page">
+      <NavBar />
+
+      <div className="add-user-container">
+        {/* Add User Heading */}
+        <div className="add-user-header">
+          <img src={AddUserBlack} className="add-user-icon" alt="add-user" />
+          <h1 className="add-user-header">Add User</h1>
         </div>
-    )
-  }
-  
-  export default AddUserPage
-  
+
+        {/* Form */}
+        <div className="add-user-form">
+          {/* Profile Column */}
+          <div className="add-user-form-col-1">
+            <div className="profile-container">
+              <img
+                className="profile-img"
+                src={MyAccount}
+                alt="Profile Image"
+              />
+            </div>
+            <p className="add-photo-msg"></p>
+            <div className="add-file-input">
+              <input
+                type="file"
+                accept="image/png, image/jpg, image/gif, image/jpeg"
+                id="file-selector"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              ></input>
+            </div>
+          </div>
+
+          {/* Form Content */}
+          <div className="add-user-form-col-2">
+            <form onSubmit={addNewUser}>
+              <div className="add-user-two-columns-grid">
+                <div>
+                  <label htmlFor="Name">Name</label>
+                </div>
+                <div>
+                  <input
+                    className="input-styling"
+                    type="text"
+                    id="name"
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="Email">Email</label>
+                </div>
+                <div>
+                  <input
+                    className="input-styling"
+                    type="text"
+                    id="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="Password">Password</label>
+                </div>
+                <div>
+                  <input
+                    className="input-styling"
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="ConfirmPassword">Confirm Password</label>
+                </div>
+                <div>
+                  <input
+                    className="input-styling"
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="Role">Role</label>
+                </div>
+                <div>
+                  <select
+                    className="select-style"
+                    name="role-types"
+                    id="role"
+                    defaultValue={role}
+                  >
+                    <option value="none" disabled hidden>
+                      Select an Option
+                    </option>
+                    <option value="Admin">Admin</option>
+                    <option value="Vet">Vet</option>
+                    <option value="Volunteer">Volunteer</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="add-user-error-msg text-align-right">
+                <p>{errorMessage}</p>
+              </div>
+
+              {/* Buttons */}
+              <div className="buttons-div">
+                <div className="buttons">
+                  <Link to="/manage-users">
+                    <button className="cancel-btn">Cancel</button>
+                  </Link>
+                  <button type="submit" id="signUpBtn" className="add-btn">
+                    + Add
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default AddUserPage;
