@@ -12,6 +12,7 @@ import ChatPage from "./pages/ChatPage";
 import ManageUsersPage from "./pages/ManageUsersPage";
 import AddUserPage from "./pages/AddUserPage";
 import AccountSettingsPage from "./pages/AccountSettingsPage";
+import AddDogPage from "./pages/AddDogPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="sign-up/confirm" element={<SignUpConfirmPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/add-dog" element={<AddDogPage />} />
           <Route path="/dog/:id" element={<DogDetailPage />} />
           <Route path="/dog/:id/add-data" element={<AddDataPage />} />
           <Route

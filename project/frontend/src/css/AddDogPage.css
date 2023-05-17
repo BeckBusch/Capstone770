@@ -1,0 +1,114 @@
+.add-dog-page {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background-color: white;
+    color: black;
+}
+
+.add-dog-header-container {
+    width: 90%;
+    position: relative;   
+    left: 50%;
+    transform: translate(-50%);
+    padding-top: 30px;
+    padding-bottom: 30px;
+    /* background-color: red; */
+}
+
+.add-dog-icon-align {
+    vertical-align: middle;
+    margin-right: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.add-dog-header {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.add-dog-details-container {
+    /* background-color: lightblue; */
+    width: 90%;
+    position: absolute;   
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.two-columns-add-dog {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+
+.two-columns-add-dog > * {
+    /* background-color: orange; */
+}
+
+.add-dog-profile-container {
+    width: 270px;
+    height: 270px;
+    background-color: #BDD3E8;
+    border: 5px solid #BDD3E8;
+    overflow: hidden;    
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.add-photo-msg {
+    text-align: center;
+}
+
+.two-columns-add-dog-col-1 {
+    /* background-color: pink; */
+    width: fit-content;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.two-columns-add-dog-col-2 {
+    /* background-color: purple; */
+    /* padding: 70px 40px; */
+}
+
+.add-dog-details-two-columns-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* background-color: green; */
+    grid-gap:1px;
+    row-gap: 10px;
+    padding: 1px;
+}
+
+.add-dog-details-two-columns-grid > * {
+    /* background-color: orange; */
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.add-dog-select-style  {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #999999;
+    font-size: 16px;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #8e8e8e;
+}
+
+.add-dog-select-style > option {
+    color: #8e8e8e;
+}

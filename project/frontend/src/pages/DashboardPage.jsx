@@ -46,6 +46,10 @@ function DashboardPage() {
     <NavBar />
 
     <div className="search-div">
+        
+        <div className="add-dog-container-div">
+            <Link to="/add-dog"><button className="add-dog-btn">+ Add Dog</button></Link>
+        </div>
         <div className="search-container-div">
             <input type="text" placeholder="Search by name, breed etc." className="dashboard-search" />
             <button className="dashboard-search-button"></button>
