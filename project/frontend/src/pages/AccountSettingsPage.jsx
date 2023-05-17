@@ -12,6 +12,16 @@ function AccountSettingsPage() {
     const {userName, setUserName, userID, setUserID, userEmail, setUserEmail, 
         userPassword, setUserPassword, userRole, setUserRole, userJoined, setUserJoined} = useContext(AppContext);
 
+        console.log("userrole = "  + userRole);
+        console.log("userEmail "  + userEmail);
+        console.log("userpassword length = ", userPassword.length)
+
+        var password = "";
+        for (let i = 0; i < userPassword.length; i++) {
+            password = password + "*";
+        }
+        console.log("password = ", password);
+
     return (
       <div className="my-account-page">
           <NavBar/>
@@ -35,10 +45,13 @@ function AccountSettingsPage() {
                               <div className="user-details-grid">
                                   <div><label htmlFor="Name">Name</label></div>
                                   <div>
-                                      <p>{userName}</p>
+                                      <p id="name-text">{userName}</p>
                                       {/* <input type="text" id="name" placeholder="Name" /> */}
                                   </div>
-                                  <div className="edit-align-right"><p><Link to="/dashboard">Edit</Link> </p></div>
+                                  <div className="edit-align-right">
+                                    {/* <p><Link to="/dashboard">Edit</Link> </p> */}
+                                    <button className="edit-button">edit</button>
+                                    </div>
 
                                   <div><label htmlFor="ID">ID</label></div>
                                   <div>
@@ -56,7 +69,7 @@ function AccountSettingsPage() {
 
                                   <div><label htmlFor="Password">Password</label></div>
                                   <div>
-                                      <p>{userPassword}</p>
+                                      <p>{password}</p>
                                       {/* <input type="password" id="password" placeholder="Password" /> */}
                                   </div>
                                   <div className="edit-align-right"><p><Link to="/dashboard">Edit</Link> </p></div>
