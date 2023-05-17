@@ -1,5 +1,6 @@
 import "../css/DogDetailPage.css";
 import { Link } from "react-router-dom";
+import { useEffect, useContext, useState } from "react";
 import { AppContext } from "../AppContextProvider";
 
 import NavBar from "../components/NavBar";
@@ -7,6 +8,28 @@ import StartIcon from "../assets/start-icon.png";
 import MyAccountIcon from "../assets/my-account-icon.png";
 
 function DogDetailPage() {  
+    const { dogs, dogID } = useContext(AppContext);
+
+    // const [dogBreed, setDogBreed] = useState("");
+
+    console.log("inside dog detail page");
+    console.log("dog id is ", dogID);
+
+    for (let i = 0; i < dogs.length; i++) {
+        if (dogs[i]["_id"] == dogID) {
+            var name = dogs[i]["name"];
+            var breed = dogs[i]["breed"];
+            var age = dogs[i]["age"];
+            var gender = dogs[i]["gender"];
+            var location = dogs[i]["location"];
+            console.log("name = ", name);
+            console.log("breed = ", breed);
+            console.log("age = ", age);
+            console.log("gender = ", breed);
+            console.log("location = ", breed);
+        }
+    }
+
     return (
       <div className="dog-detail-page">
           <NavBar/>
@@ -32,31 +55,31 @@ function DogDetailPage() {
                 </div>
                 <div className="detail-col-two">
                     <div className="dog-info-container">
-                        <h1 className="name-header">Name</h1>
+                        <h1 className="name-header">{name}</h1>
                         <div className="four-columns-grid">
                             <div><label htmlFor="Breed">Breed:</label></div>
-                            <div><p>Maltese</p></div>
+                            <div><p>{breed}</p></div>
 
                             <div><label htmlFor="Id">ID:</label></div>
-                            <div><p>123456</p></div>
+                            <div><p>{dogID}</p></div>
 
 
                             <div><label htmlFor="Age">Age:</label></div>
-                            <div><p>3 Years Old</p></div>
+                            <div><p>{age} Years Old</p></div>
 
                             <div><label htmlFor="last-weight">Last Weight:</label></div>
                             <div><p>7.00kg</p></div>
 
 
                             <div><label htmlFor="Gender">Gender:</label></div>
-                            <div><p>Male</p></div>
+                            <div><p>{gender}</p></div>
 
                             <div><label htmlFor="weighed-on">Weighed on:</label></div>
                             <div><p>03/03/2023</p></div>
 
 
                             <div><label htmlFor="Location">Location:</label></div>
-                            <div><p>Auckland</p></div>
+                            <div><p>{location}</p></div>
 
                             <div><label htmlFor="weighed-by">Weighed by:</label></div>
                             <div><p>Juwon Jung (Vet)</p></div>

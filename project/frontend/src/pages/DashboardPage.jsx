@@ -1,5 +1,5 @@
 import "../css/DashboardPage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useContext, useState } from "react";
 // import './App.css'
 import { AppContext } from "../AppContextProvider";
@@ -8,7 +8,15 @@ import NavBar from "../components/NavBar";
 import DashboardCard from "../components/DashboardCard";
 
 function DashboardPage() {
-  const { dogs } = useContext(AppContext);
+  const { dogs, dogID, setDogID } = useContext(AppContext);
+
+  const navigate = useNavigate();
+
+  const handleClick = (str) => {
+    setDogID(str);
+    console.log("dog id = ", str);
+    navigate("/dog/:id");
+  }
 
   return (
     <div className="dashboard-page">
@@ -37,13 +45,18 @@ function DashboardPage() {
       <div className="dog-cards-flex">
         {dogs.map(function (dog, i) {
           return (
-            <DashboardCard
-              key={i}
-              className="dog-card"
-              name={dog["name"]}
-              breed={dog["breed"]}
-              age={dog["age"]}
-            />
+            // <Link to="/dog/:id">
+              <button className="dashboard-card-btn"
+              onClick={() => handleClick(dog["_id"])}>
+                <DashboardCard
+                  key={i}
+                  className="dog-card"
+                  name={dog["name"]}
+                  breed={dog["breed"]}
+                  age={dog["age"]}
+                />
+              </button>
+            // </Link>
           );
         })}
       </div>

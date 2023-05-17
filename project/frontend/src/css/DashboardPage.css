@@ -144,3 +144,9 @@
         display: flex;
         justify-content: center;
     }
+
+.dashboard-card-btn {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
