@@ -69,15 +69,26 @@ function NavBar() {
             </div>
 
             <div className="col col-right">
-                <Link to="/account-settings/:id">
                 <div className="account-settings-align">
-                    <button type="submit" id="logInBtn" className="navbar-link-account">
-                        <span className="line-1">{userName}</span>
-                        <span className="line-2">{userRole}</span>
-                    </button>
-                    <img className="navbar-icon" src={MyAccountIcon} alt="Dashboard" />
+                    <div className="dropdown">
+                        <button onClick={myFunction()} className="sign-out-dropbtn">
+                            <div className="b-container">
+                                <div>
+                                    <span className="line-1">{userName}</span>
+                                    <span className="line-2">{userRole}</span>
+                                </div>
+                                <div className="my-account-icon-align-2"> 
+                                    <img className="navbar-icon" src={MyAccountIcon} alt="Dashboard" /> 
+                                </div>
+                            </div>
+                        </button>
+                        <div id="mySignOutDropdown" className="dropdown-content">
+                            <a href="/*">
+                            <img className="sign-out-icon" src={SignOutIcon} alt="Dashboard" />
+                            Sign Out</a>
+                        </div>
+                    </div>
                 </div>
-                </Link>
             </div>
 
         </div>
@@ -108,8 +119,8 @@ function NavBar() {
                         <button onClick={myFunction()} className="sign-out-dropbtn">
                             <div className="b-container">
                                 <div>
-                                    <span className="line-1">userName</span>
-                                    <span className="line-2">userRole</span>
+                                    <span className="line-1">{userName}</span>
+                                    <span className="line-2">{userRole}</span>
                                 </div>
                                 <div className="my-account-icon-align-2"> 
                                     <img className="navbar-icon" src={MyAccountIcon} alt="Dashboard" /> 
