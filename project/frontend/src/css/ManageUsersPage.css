@@ -169,11 +169,14 @@
     color: white;
     background-color: #3479C0;
     font-size: 16px;
-    border: none;
+    border: 1px solid #3479C0;
     border-radius: 22px;
     margin-top: 20px;
     margin-bottom: 50px;
     text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /* margin-top: 10px;
     margin-bottom: 10px; */
     /* margin-right: 20px; */
@@ -181,24 +184,9 @@
 
 .add-user-btn:hover {
     color: #3479C0;
-    border: #3479C0 1px solid;
+    border: #BDD3E8 1px solid;
     background-color: #BDD3E8;
     cursor: pointer;
-}
-
-.add-user-btn .img-top {
-    display: none;
-}
-
-.add-user-btn:hover .img-top {
-    /* display: inline; */
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 5px;
-}
-
-.add-user-btn:hover .add-user-align {
-    display: none;
 }
 
 .users-container {
@@ -270,7 +258,8 @@ tr {
 }
 
 .col-three {
-    text-align: right;
+    display: flex;
+    justify-content: right;
     /* background-color: aqua; */
 }
 
@@ -531,6 +520,7 @@ tr {
     display: inline-block;
     vertical-align: middle;
     margin-right: 5px;
+    height: 30px;
   }
 
   .yes-no-btn-align {

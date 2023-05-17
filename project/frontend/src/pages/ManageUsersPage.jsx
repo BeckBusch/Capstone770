@@ -22,34 +22,34 @@ function ManageUsersPage() {
         let num = users.length;
         console.log("users.length = ", num);
 
-        var customers = new Array();
-        customers.push(["", "Name", "Email", "User Type", "Joined", ""]);
-        for (let i = 0; i < users.length; i++) {
-            customers.push([users[i]["image"], users[i]["name"], users[i]["email"], users[i]["role"], users[i]["createdAt"], ""]);
-        }        
+        const allUsers = new Array();
+        allUsers.push(["", "Name", "Email", "User Type", "Joined", ""]);
+        for (const user of users) {
+            allUsers.push([user["image"], user["name"], user["email"], user["role"], user["createdAt"], ""]);
+        }
  
         //Get the count of columns.
-        var columnCount = customers[0].length;
+        const columnCount = allUsers[0].length;
         console.log("columnCOunt = ", columnCount);
  
         //Add the header row.
-        var row = table.insertRow(-1);
-        for (var i = 0; i < columnCount; i++) {
-            var headerCell = document.createElement("TH");
-            headerCell.innerHTML = customers[0][i];
+        let row = table.insertRow(-1);
+        for (let i = 0; i < columnCount; i++) {
+            const headerCell = document.createElement("TH");
+            headerCell.innerHTML = allUsers[0][i];
             row.appendChild(headerCell);
         }
 
-        console.log("customers: ", customers);
+        console.log("allUsers: ", allUsers);
 
-        console.log("customers.length = ", customers.length);
+        console.log("allUsers.length = ", allUsers.length);
  
         //Add the data rows.
-        for (var i = 1; i < customers.length; i++) {
+        for (let i = 1; i < allUsers.length; i++) {
             row = table.insertRow(-1);
-            for (var j = 0; j < columnCount; j++) {
-                var cell = row.insertCell(-1);
-                cell.innerHTML = customers[i][j];
+            for (let j = 0; j < columnCount; j++) {
+                const cell = row.insertCell(-1);
+                cell.innerHTML = allUsers[i][j];
             }
         }
 
@@ -71,43 +71,6 @@ function ManageUsersPage() {
               <img src={SettingsBlackIcon} className="settings-icon-align" alt="start" />
               <h1 className="manage-users-header">Manage Users</h1>
           </div>        
-          <div className="pending-users-container">
-              <label>Pending Users ({users.length})</label>
-              <div className="p-users-container">
-                  <div>
-                      <table className="pending-users-table" id="pendingUsersTable">
-                          <thead>
-                              <tr>
-                                  <th></th>
-                                  <th>Users</th>
-                                  <th>Email</th>
-                                  <th>User Type</th>
-                                  <th></th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <td className="profile-image"><img src={MyAccountIcon} className="profile-image-align" alt="start" /></td>
-                                  <td>Jess Mo</td>
-                                  <td>jessmo76@gmail.com</td>
-                                  <td>
-                                  <select className="custom-select" id="language" >
-                                      <option value="English">English</option>
-                                      <option value="Spanish">Spanish</option>
-                                      <option value="French">French</option> 
-                                  </select>
-                                  </td>
-                                  <td>
-                                      <button className="yes-btn" />
-                                      <button className="no-btn" />
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </div>
-
-              </div>
-          </div>
           <div className="options-container">
               <div className="three-columns-grid">
                   <div className="col-one">

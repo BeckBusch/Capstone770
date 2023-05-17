@@ -1,4 +1,4 @@
-.sign-up-page {
+/* .sign-up-page {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -6,7 +6,6 @@
     align-items: center;
 }
 
-/* Logo */
 .corner-logo {
     position: absolute;
     top: 20px;
@@ -18,12 +17,10 @@
     cursor: pointer;
 }
 
-/* Sign Up Form Container */
 .sign-up-container-flex {
     position: relative;
     width: 100vw;
     height: fit-content;
-    /* padding-top: 5vh; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,7 +38,6 @@
     justify-content: center;
 }
 
-/* Sign Up Heading */
 .sign-up-icon {
     vertical-align: middle;
     margin-right: 20px;
@@ -60,7 +56,6 @@
     color: black;
 }
 
-/* Sign Up Form Content */
 .sign-up-form {
     display: flex;
     justify-content: center;
@@ -77,7 +72,6 @@
     width: 500px;
 }
 
-/* Profile Column */
 .profile-container {
     width: 200px;
     height: 200px;
@@ -127,7 +121,6 @@ input[type=file]::file-selector-button:hover {
     border: #3479C0 1px solid;
 }
 
-/* Form Input */
 .sign-up-page label {
     color: black;
 }
@@ -135,14 +128,12 @@ input[type=file]::file-selector-button:hover {
 .sign-up-two-columns-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* background-color: green; */
     grid-gap:1px;
     row-gap: 10px;
     padding: 1px;
 }
 
 .sign-up-two-columns-grid > * {
-    /* background-color: orange; */
     height: 40px;
     display: flex;
     align-items: center;
@@ -177,7 +168,6 @@ input[type=file]::file-selector-button:hover {
     color: #8e8e8e;
 }
 
-/* Buttons */
 .buttons {
     width: 200px;
     display: inline;
@@ -185,7 +175,6 @@ input[type=file]::file-selector-button:hover {
 
 .buttons-div {
     text-align: right;
-    /* padding: 0; */
 }
 
 .cancel-btn {
@@ -229,4 +218,4 @@ input[type=file]::file-selector-button:hover {
     font-size: 12px;
     margin: 5px 0 10px 0 ;
     text-align: right;
-}
+} */
