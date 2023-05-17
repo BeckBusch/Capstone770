@@ -9,7 +9,6 @@ import NavBar from "../components/NavBar";
 import AddUserBlack from "../assets/add-user-black-icon.png";
 import MyAccount from "../assets/my-account-icon.png";
 
-
 function AddUserPage() {
   const { addUser } = useContext(AppContext);
 
@@ -24,16 +23,16 @@ function AddUserPage() {
 
   const navigate = useNavigate();
 
-  const addNewUser = (e) => {
+  const handleAddUser = (e) => {
     e.preventDefault();
-
+    getSelectedRole();
     checkValidForm();
 
     if (validCredentials) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           console.log("Successfully created user: " + userCredential);
-          handleAddUser();
+          addUser(name, email, password, role, image);
           navigate("/manage-users");
         })
         .catch((error) => {
@@ -69,7 +68,6 @@ function AddUserPage() {
   }
 
   function isRoleSelected() {
-    getSelectedRole();
     return role != "none" ? true : false;
   }
 
@@ -77,11 +75,6 @@ function AddUserPage() {
     const x = document.getElementById("role");
     setRole(x.options[x.selectedIndex].value);
     // console.log(role)
-  }
-
-  async function handleAddUser() {
-    addUser(name, email, password, role, image);
-    console.log("newUser successfully added to database");
   }
 
   return (
@@ -120,7 +113,7 @@ function AddUserPage() {
 
           {/* Form Content */}
           <div className="add-user-form-col-2">
-            <form onSubmit={addNewUser}>
+            <form onSubmit={handleAddUser}>
               <div className="add-user-two-columns-grid">
                 <div>
                   <label htmlFor="Name">Name</label>
