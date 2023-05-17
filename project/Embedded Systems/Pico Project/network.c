@@ -185,7 +185,9 @@ void sendRequest(char* uri, char* body) {
 
 
 int wifi_connect() {
-    while (cyw43_arch_wifi_connect_timeout_ms("UoA-Capstone", "cap5Ton3", CYW43_AUTH_WPA2_AES_PSK, 30000)) {
+    // for hotspot
+    while (cyw43_arch_wifi_connect_timeout_ms("picoTest", "PicoTest7", CYW43_AUTH_WPA2_AES_PSK, 30000)) {
+    // while (cyw43_arch_wifi_connect_timeout_ms("UoA-Capstone", "cap5Ton3", CYW43_AUTH_WPA2_AES_PSK, 30000)) {
         printf("connection failed, retrying\n");
     }
     return 1;   // return 1 upon successful Wi-Fi connection
