@@ -192,7 +192,7 @@ function AddUserPage() {
                       Select an Option
                     </option>
                     <option value="Admin">Admin</option>
-                    <option value="Staff">Staff</option>
+                    <option value="Vet">Vet</option>
                     <option value="Volunteer">Volunteer</option>
                   </select>
                 </div>
