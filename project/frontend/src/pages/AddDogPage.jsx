@@ -1,127 +1,196 @@
-import "../css/AddDogPage.css";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
+import "../css/AddDogPage.css";
 import NavBar from "../components/NavBar";
-import MyAccountIcon from "../assets/my-account-icon.png";
-import AddDogIcon from "../assets/dog-footprint-image.png";
+import MyAccount from "../assets/my-account-icon.png";
+import AddDog from "../assets/dog-footprint-image.png";
 
+function AddDogPage() {
+  const { addDog } = useContext(AppContext);
 
-function AddDogPage() {  
-    const {
-        addDog
-    } = useContext(AppContext);
+  const [validCredentials, setvalidCredentials] = useState(false);
+  const [name, setName] = useState("");
+  const [breed, setBreed] = useState("");
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("none");
+  const [location, setLocation] = useState("");
+  const [image, setImage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-    async function handleAddDog() {
-    var name = document.getElementById("name").value;
-    console.log("name = ", name);
-    var breed = document.getElementById("breed").value;
-    console.log("breed = ", breed);
-    var age = document.getElementById("age").value;
-    console.log("age = ", age);
-    var gender = document.getElementById("gender").value;
-    console.log("gender = ", gender);
-    var location = document.getElementById("location").value;
-    console.log("location = ", location);   
+  const navigate = useNavigate();
 
-    addDog(name, breed, age, gender, location, "");
-
-    console.log("newDog");
+  const handleAddDog = (e) => {
+    e.preventDefault();
+    getSelectedGender();
+    checkValidForm();
+    if (validCredentials) {
+        console.log("VALID CRED")
+      addDog(name, breed, age, gender, location, image);
+      navigate("/dashboard");
+      console.log("newDog");
+    } else {
+        console.log("Error: " + errorMessage);
+    }
   }
 
-    return (
-      <div className="add-dog-page">
-            <NavBar/>   
-            <div className="add-dog-header-container">
-                <img src={AddDogIcon} className="add-dog-icon-align" alt="start" />
-                <h1 className="add-dog-header">Add Dog</h1>
-            </div> 
-            <div className="add-dog-details-container">
-                <div className="two-columns-add-dog">
-                    <div className="two-columns-add-dog-col-1">
-                        <div>
-                            <div className="add-dog-profile-container">
-                                <img className="profile-img" src={MyAccountIcon} alt="Profile Image" />
-                            </div>
-                            <p className="add-photo-msg"><Link to="/dashboard">+ Add Photo</Link> </p>
-                        </div>
-                    </div>
-                    <div className="two-columns-add-dog-col-2">
-                        <form>
-                            <div className="add-dog-details-two-columns-grid">
-                                <div>
-                                    <label htmlFor="Name">Name</label>
-                                </div>
-                                <div>
-                                    <input className="input-style" type="text" id="name" placeholder="Name" />
-                                </div>
+  function getSelectedGender() {
+    const x = document.getElementById("gender");
+    setGender(x.options[x.selectedIndex].value);
+    console.log(gender)
+  }
 
-                                <div> 
-                                    <label htmlFor="Breed">Breed</label>
-                                </div>
-                                <div>
-                                    <input className="input-style" type="text" id="breed" placeholder="Breed" />
-                                </div>
+  function checkValidForm() {
+    if (name.length <= 0) {
+      setErrorMessage("Please provide a valid name.");
+    } else if (breed.length <= 0) {
+      setErrorMessage("Please provide a valid breed.");
+    } else if (age.length <= 0) {
+        setErrorMessage("Please provide a valid age.");
+    } else if (gender != "none") {
+      setErrorMessage("Please select a gender.");
+    } else if (location.length <= 0) {
+        setErrorMessage("Please provide a valid location.");
+    } else {
+      setvalidCredentials(true);
+    }
+  }
 
-                                <div>
-                                    <label htmlFor="Age">Age</label>
-                                </div>
-                                <div>
-                                    <input className="input-style" type="text" id="age" placeholder="Age" />
-                                </div>
+  return (
+    <div className="add-user-page">
+      <NavBar />
 
-                                <div>
-                                    <label htmlFor="Gender">Gender</label>
-                                </div>
-                                <div>
-                                    <select className="add-dog-select-style" name="gender-type" id="gender" defaultValue={"none"}>
-                                        <option value="none" disabled hidden>Select Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label htmlFor="Location">Location</label>
-                                </div>
-                                <div>
-                                    <input className="input-style" type="text" id="location" placeholder="Location" />
-                                </div>
-
-                                {/* <div>
-                                    <select className="select-role-style" name="role-types" id="role" defaultValue={"none"}>
-                                        <option value="none" disabled hidden>Select an Option</option>
-                                        <option value="Admin">Admin</option>
-                                        <option value="Staff">Staff</option>
-                                        <option value="Volunteer">Volunteer</option>
-                                    </select>
-                                </div> */}
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div className="button-container">
-                        <div className="buttons">
-                            <Link to="/dashboard">
-                                <button type="submit" id="cancelBtn" className="cancel-btn">Cancel</button>
-                            </Link>
-                            <Link to="/dashboard">
-                                <button 
-                                type="submit" 
-                                id="saveBtn" 
-                                className="save-btn"
-                                onClick={() => {
-                                    handleAddDog();
-                                }}
-                                >Save</button>
-                            </Link>
-                        </div>
-                </div>
-            </div>       
+      <div className="add-user-container">
+        {/* Add Dog Heading */}
+        <div className="add-user-header">
+          <img src={AddDog} className="add-user-icon" alt="add-user" />
+          <h1 className="add-user-header">Add Dog</h1>
         </div>
-    )
-  }
-  
-  export default AddDogPage
-  
+
+        {/* Form */}
+        <div className="add-user-form">
+          {/* Profile Column */}
+          <div className="add-user-form-col-1">
+            <div className="profile-container">
+              <img
+                className="profile-img"
+                src={MyAccount}
+                alt="Profile Image"
+              />
+            </div>
+            <p className="add-photo-msg"></p>
+            <div className="add-file-input">
+              <input
+                type="file"
+                accept="image/png, image/jpg, image/gif, image/jpeg"
+                id="file-selector"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              ></input>
+            </div>
+          </div>
+
+          {/* Form Content */}
+          <div className="add-user-form-col-2">
+            <form onSubmit={handleAddDog}>
+              <div className="add-user-two-columns-grid">
+                <div>
+                  <label htmlFor="Name">Name</label>
+                </div>
+                <div>
+                  <input
+                    className="input-styling"
+                    type="text"
+                    id="name"
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="Breed">Breed</label>
+                </div>
+                <div>
+                  <input
+                    className="input-styling"
+                    type="text"
+                    id="breed"
+                    placeholder="Breed"
+                    value={breed}
+                    onChange={(e) => setBreed(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="Age">Age</label>
+                </div>
+                <div>
+                  <input
+                    className="input-styling"
+                    type="text"
+                    id="age"
+                    placeholder="Age"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="Gender">Gender</label>
+                </div>
+                <div>
+                  <select
+                    className="select-style"
+                    name="gender-types"
+                    id="gender"
+                    defaultValue={gender}
+                  >
+                    <option value="none" disabled hidden>
+                      Select an Option
+                    </option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="Location">Location</label>
+                </div>
+                <div>
+                  <input
+                    className="input-styling"
+                    type="Location"
+                    id="location"
+                    placeholder="Location"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                  />
+                </div>
+              </div>
+
+              <div className="add-user-error-msg text-align-right">
+                <p>{errorMessage}</p>
+              </div>
+
+              {/* Buttons */}
+              <div className="buttons-div">
+                <div className="buttons">
+                  <Link to="/dashboard">
+                    <button className="cancel-btn">Cancel</button>
+                  </Link>
+                  <button type="submit" id="signUpBtn" className="add-btn">
+                    + Add
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default AddDogPage;
