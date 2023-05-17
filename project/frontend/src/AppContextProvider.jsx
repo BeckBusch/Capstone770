@@ -92,7 +92,13 @@ function AppContextProvider({ children }) {
     }
 
     const [loggedIn, setLoggedIn] = useState(false)
+    const [userName, setUserName] = useState("")
+    const [userID, setUserID] = useState("")
+    const [userEmail, setUserEmail] = useState("")
+    const [userPassword, setUserPassword] = useState("")
     const [userRole, setUserRole] = useState("")
+    const [userJoined, setUserJoined] = useState("")
+    const [userImage, setUserImage] = useState("")
 
     // The context value that will be supplied to any descendants of this component.
     const context = {
@@ -104,8 +110,20 @@ function AppContextProvider({ children }) {
         addUser,
         loggedIn,
         setLoggedIn,
+        userName,
+        setUserName,
+        userID,
+        setUserID,
+        userEmail,
+        setUserEmail,
+        userPassword,
+        setUserPassword,
         userRole,
-        setUserRole
+        setUserRole,
+        userJoined,
+        setUserJoined,
+        userImage,
+        setUserImage,
     }
 
     // Wraps the given child components in a Provider for the above context.

@@ -9,6 +9,9 @@ import MyAccountIcon from "../assets/my-account-icon.png";
 
 
 function AccountSettingsPage() {  
+    const {userName, setUserName, userID, setUserID, userEmail, setUserEmail, 
+        userPassword, setUserPassword, userRole, setUserRole, userJoined, setUserJoined} = useContext(AppContext);
+
     return (
       <div className="my-account-page">
           <NavBar/>
@@ -32,42 +35,42 @@ function AccountSettingsPage() {
                               <div className="user-details-grid">
                                   <div><label htmlFor="Name">Name</label></div>
                                   <div>
-                                      <p>Name</p>
+                                      <p>{userName}</p>
                                       {/* <input type="text" id="name" placeholder="Name" /> */}
                                   </div>
                                   <div className="edit-align-right"><p><Link to="/dashboard">Edit</Link> </p></div>
 
                                   <div><label htmlFor="ID">ID</label></div>
                                   <div>
-                                      <p>ID</p>
+                                      <p>{userID}</p>
                                       {/* <input type="text" id="id" placeholder="Id" /> */}
                                   </div>
                                   <div></div>
 
                                   <div><label htmlFor="Email">Email</label></div>
                                   <div>
-                                      <p>Email</p>
+                                      <p>{userEmail}</p>
                                       {/* <input type="text" id="email" placeholder="Email" /> */}
                                   </div>
                                   <div className="edit-align-right"><p><Link to="/dashboard">Edit</Link> </p></div>
 
                                   <div><label htmlFor="Password">Password</label></div>
                                   <div>
-                                      <p>Password</p>
+                                      <p>{userPassword}</p>
                                       {/* <input type="password" id="password" placeholder="Password" /> */}
                                   </div>
                                   <div className="edit-align-right"><p><Link to="/dashboard">Edit</Link> </p></div>
 
                                   <div><label htmlFor="Role">Role</label></div>
                                   <div>
-                                      <p>Role</p>
+                                      <p>{userRole}</p>
                                       {/* <input type="role" id="role" placeholder="Role" /> */}
                                   </div>
                                   <div></div>
 
                                   <div><label htmlFor="Joined">Joined</label></div>
                                   <div>
-                                      <p>Joined</p>
+                                      <p>{userJoined}</p>
                                       {/* <input type="joined" id="joined" placeholder="Joined" /> */}
                                   </div>
                                   <div></div>
