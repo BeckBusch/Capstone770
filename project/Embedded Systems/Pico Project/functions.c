@@ -7,14 +7,24 @@
  */
 
 #include "functions.h"
+#include "adc.h"
 
 double weight_mean_average = 0.0;
 double weight_value_array[5] = {0, 0, 0, 0, 0};     // used to store weight readings
 int array_full_flag = 0;                            // set to 1 once array full
+double tare_offset = 0.0;
 
 // getter for the weight mean average value
 double get_weight_mean_average() {
     return weight_mean_average;
+}
+
+void update_tare_offset() {
+    tare_offset = weight_mean_average;
+}
+
+double get_tare_offset() {
+    return tare_offset;
 }
 
 double *save_weight_to_array() {
@@ -52,7 +62,7 @@ int check_weights(double * weight_value_array) {
             sum = sum + weight_value_array[i];
         }
         average = (double)sum/5;
-        weight_mean_average = average - tare_offset;  // update global variable
+        weight_mean_average = average - tare_offset;
     } else {
         stable_flag = 0;
     }

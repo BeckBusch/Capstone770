@@ -13,20 +13,10 @@
 #include "functions.h"
 
 char request_body[64];
-
-// extract to relevant header folders later
-
-
-
 int tare_flag = 0;
-
-
-
-// initialize states for the FSM
-enum states {idle, not_ready, ready, tare_initialized, receive_data, send_data};
-
-double tare_offset = 0.0;
 int check = 0;
+enum states {idle, not_ready, ready, tare_initialized, receive_data, send_data};    // initialize states for the FSM
+
 
 // ISR for tare button GP20 -> tare switch
 void tare_ISR(unsigned int gpio, uint32_t events) {
@@ -44,10 +34,6 @@ void init_button() {
 }
 
 
-
-
-
-// // Code
 int main() {
     // initialize everything
     stdio_init_all();   
@@ -125,18 +111,13 @@ int main() {
                 // update tare weight calculation here
                 check = check_weights(save_weight_to_array());           // take 5 readings and save to global array and ensure weight readings are stable
                 if (check == 1) {   // stable reading reached
-                    tare_offset = weight_mean_average;
+                    update_tare_offset();   // update tare_offset value -> tare_offset = weight_mean_average;
                 } 
 
-                printf("\nTARE OFFSET VALUE = %f\n", tare_offset);
+                printf("\nTARE OFFSET VALUE = %f\n", get_tare_offset());
                 disable_tare_LED();
-
-                // update the weight
-                // weight_mean_average = weight_mean_average - tare_offset;
-
-                tare_flag = 0; // reset tare flag
+                tare_flag = 0;      // reset tare flag
                 FSM = receive_data; // go back to receive_data state to keep receiving data
-                // disable_tare_LED();
                 break;
 
 
