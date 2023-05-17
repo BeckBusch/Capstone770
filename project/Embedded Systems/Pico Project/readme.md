@@ -4,6 +4,11 @@
 **pico_c.c**<br>
 This is the main c code file that runs on our board.
 
+
+
+**network.c**<br>
+University wifi is unreliable so will be switching to hotspot communication with Visual Studio code to transmit data to the backend, and then from there to database.
+
 **CMakeLists.txt**<br>
 This tells cmake how to structure the build and what needs to be included. This file needs to be edited when adding different libraries and functionality.
 
