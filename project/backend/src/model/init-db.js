@@ -12,8 +12,8 @@ export async function main() {
     console.log('Connected to database!');
     console.log();
 
-    await clearDatabase();
-    console.log();
+    // await clearDatabase();
+    // console.log();
 
     // await addDogs();
     // console.log();
