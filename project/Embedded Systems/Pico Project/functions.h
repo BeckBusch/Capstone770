@@ -9,7 +9,8 @@
 
 #include "pico_c.h"
 
-
+int check_weights(double * weight_value_array);
+double *save_weight_to_array();
 
 #endif /* FUNCTIONS_H */
 /*** end of file ***/

@@ -21,6 +21,9 @@
 #include "lwip/altcp_tls.h"
 #include "lwip/dns.h"
 
+#include <stdlib.h>
+#include <stdint.h>
+#include "hardware/gpio.h"
 
 
 #endif /* PICO_C_H */
