@@ -1,28 +1,53 @@
-import "../css/LoginPage.css";
-
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
+import "../css/LoginPage.css";
 import SPCALogo from "../assets/spca-logo.png";
 import BackgroundImage from "../assets/login-image.png";
 
 function LoginPage() {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emptyCredentials, setEmptyCredentials] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(" ");
+
+  const navigate = useNavigate();
 
   const logIn = (e) => {
     e.preventDefault();
+
+    checkNonEmptyCredentials();
+
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      console.log("Successfully logged in user: " + userCredential)
-    })
-    .catch((error) => {
-      console.log("Error: " + error)
-    });
+      .then((userCredential) => {
+        console.log("Successfully logged in user: " + userCredential);
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        console.log("Error: " + error);
+      });
+  };
+
+  function checkNonEmptyCredentials() {
+    if (isEmailEmpty()) {
+      setErrorMessage("Please provide a valid email.");
+    } else if (isPasswordEmpty()) {
+      setErrorMessage("Please provide a valid password.");
+    } else {
+      setEmptyCredentials(false);
+    }
   }
+
+  function isEmailEmpty() {
+    return (email.length == 0 || !email.includes("@")) ? true : false
+  }
+
+  function isPasswordEmpty() {
+    return (password.length == 0) ? true : false
+  }
+
 
   return (
     <div className="login-page">
@@ -53,16 +78,20 @@ function LoginPage() {
               />
             </div>
             <div>
-              {/* <Link to="/dashboard"> */}
-                <button type="submit" id="logInBtn" className="login-btn">
-                  Log In
-                </button>
-              {/* </Link> */}
+              <button type="submit" id="logInBtn" className="login-btn">
+                Log In
+              </button>
             </div>
           </form>
+
+          <div className="login-error-msg">
+            <p>  {errorMessage} </p>
+          </div>
+
           <p className="sign-up-msg">
             Don't have an account? <Link to="/sign-up">Sign Up</Link>
           </p>
+
         </div>
       </div>
     </div>

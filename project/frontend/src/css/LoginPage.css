@@ -71,6 +71,12 @@
 
 .sign-up-msg {
     color: black;
-    margin-top: 20px;
     margin-bottom: 0;
+}
+
+.login-error-msg {
+    height: 15px;
+    color: red;
+    font-size: 12px;
+    margin: 5px 0 10px 0 ;
 }
