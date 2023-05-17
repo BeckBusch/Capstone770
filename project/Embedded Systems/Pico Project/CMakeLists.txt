@@ -15,6 +15,8 @@ add_executable(capstonepico
     adc.h
     led.c
     led.h
+    functions.c
+    functions.h
     )
 
 pico_enable_stdio_usb(capstonepico 1)

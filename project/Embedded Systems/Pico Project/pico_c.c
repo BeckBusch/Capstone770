@@ -10,6 +10,7 @@
 #include "network.h"
 #include "adc.h"
 #include "led.h"
+#include "functions.h"
 
 char request_body[64];
 
