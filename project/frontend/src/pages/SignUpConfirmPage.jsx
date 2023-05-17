@@ -1,7 +1,7 @@
-import "../css/SignUpConfirmPage.css";
-
-import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import "../css/SignUpConfirmPage.css";
 import DashboardLogo from "../assets/dashboard-logo.png";
 
 function SignUpConfirmPage() {
@@ -10,10 +10,10 @@ function SignUpConfirmPage() {
   useEffect(() => {
     setTimeout(() => {
       navigate("/");
-    }, 10500);
+    }, 5500);
   }, []);
 
-  const [counter, setCounter] = useState(10);
+  const [counter, setCounter] = useState(5);
 
   useEffect(() => {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
