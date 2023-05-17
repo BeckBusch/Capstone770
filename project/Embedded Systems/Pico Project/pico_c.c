@@ -150,6 +150,9 @@ int main() {
                 sleep_ms(1000);
                 disable_stable_LED();
 
+                sprintf(request_body, "{\"%s\":\"%f\"}", "Weight", get_weight_mean_average());
+                sendRequest("/Measurements/Dog1.json", request_body);
+
                 // add code
                 FSM = idle;
                 break;

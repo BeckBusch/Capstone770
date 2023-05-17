@@ -178,7 +178,8 @@ void sendRequest(char* uri, char* body) {
         "Content-Type: application/json\r\n" \
         "Content-Length:%d\r\n" \
         "\r\n" \
-        "%s", uri, TLS_CLIENT_SERVER, strlen(body), body);
+        "%s",
+        SERVER_URI, TLS_CLIENT_SERVER, strlen(body), body);
 
         run_tls_client_test();
 }
