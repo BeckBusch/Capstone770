@@ -55,9 +55,7 @@ function NavBar() {
         <div className="nav-bar">
 
             <div className="col col-left">
-            <Link to="/manage-users">
                 <img className="navbar-logo" src={DashboardLogo} alt="SPCA Logo" />
-            </Link>
             </div>
 
             <div className="col col-mid">
