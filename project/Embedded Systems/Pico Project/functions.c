@@ -63,6 +63,9 @@ int check_weights(double * weight_value_array) {
         }
         average = (double)sum/5.0f;
         weight_mean_average = average - tare_offset;
+        if (weight_mean_average < 0.0) {    // ensure weight is never negative
+            weight_mean_average = 0.0;
+        }
     } else {
         stable_flag = 0;
     }
