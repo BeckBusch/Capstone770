@@ -33,27 +33,28 @@ function AppContextProvider({ children }) {
      * 
      * TODO Error handling...
      */
-    async function addDog(name, breed, gender, location, image) {
+    async function addDog(name, breed, age, gender, location, image) {
 
-        const imgUploadConfig = {
-            headers: {
-                'content-encoding': 'base64',
-                'content-type': 'image/png'
-            }
-        };
+        // const imgUploadConfig = {
+        //     headers: {
+        //         'content-encoding': 'base64',
+        //         'content-type': 'image/png'
+        //     }
+        // };
 
-        const imgFormData = new FormData();
-        imgFormData.append('image', image);
-        const imgUploadResponse = await axios.post(`${API_BASE_URL}/api/images`, imgFormData, imgUploadConfig);
+        // const imgFormData = new FormData();
+        // imgFormData.append('image', image);
+        // const imgUploadResponse = await axios.post(`${API_BASE_URL}/api/images`, imgFormData, imgUploadConfig);
 
-        const imageUrl = imgUploadResponse.headers['location'];
+        // const imageUrl = imgUploadResponse.headers['location'];
 
         const dogToUpload = {
             name,
             breed,
+            age,
             gender,
             location,
-            image: imageUrl,
+            image,
         };
 
         const dogResponse = await axios.post(`${API_BASE_URL}/api/dogs`, dogToUpload);
