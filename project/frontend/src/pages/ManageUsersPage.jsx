@@ -2,14 +2,11 @@ import "../css/ManageUsersPage.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../AppContextProvider";
-import React,  { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import NavBar from "../components/NavBar";
 import SettingsBlackIcon from "../assets/settings-black-icon.png";
-import YesIcon from "../assets/yes-icon.png";
-import YesHoverIcon from "../assets/yes-hover-icon.png";
-import NoIcon from "../assets/no-icon.png";
-import NoHoverIcon from "../assets/no-hover-icon.png";
+import MyAccountIcon from "../assets/my-account-icon-black.png";
 import SearchIcon from "../assets/search-icon.png";
 import AddUserIcon from "../assets/add-user-icon.png";
 
@@ -90,7 +87,7 @@ function ManageUsersPage() {
                           </thead>
                           <tbody>
                               <tr>
-                                  <td className="profile-image"><img src={SettingsBlackIcon} className="profile-image-align" alt="start" /></td>
+                                  <td className="profile-image"><img src={MyAccountIcon} className="profile-image-align" alt="start" /></td>
                                   <td>Jess Mo</td>
                                   <td>jessmo76@gmail.com</td>
                                   <td>
@@ -99,24 +96,10 @@ function ManageUsersPage() {
                                       <option value="Spanish">Spanish</option>
                                       <option value="French">French</option> 
                                   </select>
-                                      {/* <div className="type-dropdown">
-                                          <button className="dropdownbtn"><i className="type-arrow type-down"></i></button>
-                                          <div className="type-dropdown-content">
-                                              <a href="#">Vet</a>
-                                              <a href="#">Volunteer</a>
-                                              <a href="#">Admin</a>
-                                          </div>
-                                      </div>    */}
                                   </td>
                                   <td>
-                                      <button className="yes-btn">
-                                          {/* <img src={YesIcon} className="yes-no-btn-align" alt="start" /> */}
-                                          {/* <img src={YesHoverIcon} className="yes-img-top" alt="Card Front" />  */}
-                                      </button>
-                                      <button className="no-btn">
-                                          {/* <img src={NoIcon} className="yes-no-btn-align" alt="start" /> */}
-                                          {/* <img src={NoHoverIcon} className="no-img-top" alt="start" /> */}
-                                      </button>
+                                      <button className="yes-btn" />
+                                      <button className="no-btn" />
                                   </td>
                               </tr>
                           </tbody>
@@ -149,7 +132,7 @@ function ManageUsersPage() {
                                   <a href="#">Volunteer</a>
                               </div>
                           </div> 
-                      </div>
+                      </div> 
                   </div>
 
                   <div className="col-three">
