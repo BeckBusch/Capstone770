@@ -2,7 +2,7 @@ import "../css/DogDetailPage.css";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
-import NavBar from "../components/nav-bar";
+import NavBar from "../components/NavBar";
 import StartIcon from "../assets/start-icon.png";
 import MyAccountIcon from "../assets/my-account-icon.png";
 

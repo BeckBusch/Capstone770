@@ -2,7 +2,7 @@ import "../css/AddDataProcessingPage.css";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
-import NavBar from "../components/nav-bar";
+import NavBar from "../components/NavBar";
 import DogFootprintOne from "../assets/dog-footprint-image.png";
 import DogFootprintTwo from "../assets/dog-footprint-image.png";
 import DogFootprintThree from "../assets/dog-footprint-image.png";
