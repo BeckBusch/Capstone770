@@ -61,8 +61,11 @@ int check_weights(double * weight_value_array) {
         for (int i = 0; i < 5; i++) {
             sum = sum + weight_value_array[i];
         }
-        average = (double)sum/5;
+        average = (double)sum/5.0f;
         weight_mean_average = average - tare_offset;
+        if (weight_mean_average < 0.0) {    // ensure weight is never negative
+            weight_mean_average = 0.0;
+        }
     } else {
         stable_flag = 0;
     }

@@ -36,8 +36,8 @@ double adcConvert() {
     }
 
     else{
-        //conversion = abs(reading - 2048) / 70  ;
-        conversion = abs(reading - 1930) / 68.8; //adjusted to match weighted tests.
+        //conversion = abs(reading - 2048) / 70.0f  ;
+        conversion = abs(reading - 1930) / 68.8f; //adjusted to match weighted tests.
     }
    
     printf("adc reading check: %f\n", reading); //PRINTER
