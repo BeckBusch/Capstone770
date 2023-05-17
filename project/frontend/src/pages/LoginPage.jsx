@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { AppContext } from "../AppContextProvider";
 
 import "../css/LoginPage.css";
 import SPCALogo from "../assets/spca-logo.png";
 import BackgroundImage from "../assets/login-image.png";
 
 function LoginPage() {
+  const { users, loggedIn, setLoggedIn, userRole, setUserRole } = useContext(AppContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emptyCredentials, setEmptyCredentials] = useState(true);
@@ -23,6 +26,8 @@ function LoginPage() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log("Successfully logged in user: " + userCredential);
+        setLoggedIn(true);
+        getRole();
         navigate("/dashboard");
       })
       .catch((error) => {
@@ -41,13 +46,21 @@ function LoginPage() {
   }
 
   function isEmailEmpty() {
-    return (email.length == 0 || !email.includes("@")) ? true : false
+    return email.length == 0 || !email.includes("@") ? true : false;
   }
 
   function isPasswordEmpty() {
-    return (password.length == 0) ? true : false
+    return password.length == 0 ? true : false;
   }
 
+  function getRole() {
+
+    for (let user of users) {
+      console.log(user["email"])
+      if (user["email"] == email) {
+        setUserRole(user["role"])}
+    }
+  }
 
   return (
     <div className="login-page">
@@ -85,13 +98,12 @@ function LoginPage() {
           </form>
 
           <div className="login-error-msg">
-            <p>  {errorMessage} </p>
+            <p> {errorMessage} </p>
           </div>
 
           <p className="sign-up-msg">
             Don't have an account? <Link to="/sign-up">Sign Up</Link>
           </p>
-
         </div>
       </div>
     </div>

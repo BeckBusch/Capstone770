@@ -3,9 +3,9 @@ import "../css/ChatPage.css";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
-import NavBar from "../components/nav-bar";
-import UserChatCard from "../components/user-chat-card";
-import ChatMessageCard from "../components/chat-message-card";
+import NavBar from "../components/NavBar";
+import UserChatCard from "../components/userChatCard";
+import ChatMessageCard from "../components/ChatMessageCard";
 import ChatBlackIcon from "../assets/chat-black-icon.png"
 
 import SearchIcon from "../assets/search-icon.png";

@@ -1,5 +1,5 @@
 import React from "react";
-import "./dashboard-card.css";
+import "../css/DashboardCard.css";
 // import { Link } from "react-router-dom";
 
 import DogImage from "../assets/dog-image.png";

@@ -4,8 +4,8 @@ import { useState, useContext } from 'react'
 // import './App.css'
 import { AppContext } from "../AppContextProvider";
 
-import NavBar from "../components/nav-bar";
-import DashboardCard from "../components/dashboard-card";
+import NavBar from "../components/NavBar";
+import DashboardCard from "../components/DashboardCard";
 import SearchIcon from "../assets/search-icon.png";
 import SortIcon from "../assets/sort-icon.png";
 import FilterIcon from "../assets/filter-icon.png";

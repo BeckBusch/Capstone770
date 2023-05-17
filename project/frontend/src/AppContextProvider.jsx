@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useGet from './hooks/useGet';
 import axios from 'axios';
 
@@ -64,31 +64,34 @@ function AppContextProvider({ children }) {
 
     async function addUser(name, email, password, role, image) {
 
-        // const imgUploadConfig = {
-        //     headers: {
-        //         'content-encoding': 'base64',
-        //         'content-type': 'image/png'
-        //     }
-        // };
+        const imgUploadConfig = {
+            headers: {
+                'content-encoding': 'base64',
+                'content-type': 'image/png'
+            }
+        };
 
-        // const imgFormData = new FormData();
-        // imgFormData.append('image', image);
-        // const imgUploadResponse = await axios.post(`${API_BASE_URL}/api/images`, imgFormData, imgUploadConfig);
+        const imgFormData = new FormData();
+        imgFormData.append('image', image);
+        const imgUploadResponse = await axios.post(`${API_BASE_URL}/api/images`, imgFormData, imgUploadConfig);
 
-        // const imageUrl = imgUploadResponse.headers['location'];
+        const imageUrl = imgUploadResponse.headers['location'];
 
         const userToUpload = {
             name,
             email,
             password,
             role,
-            image,
+            image: imageUrl,
         };
 
         const userResponse = await axios.post(`${API_BASE_URL}/api/users`, userToUpload);
         refreshUsers();
         return userResponse.data;
     }
+
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [userRole, setUserRole] = useState("")
 
     // The context value that will be supplied to any descendants of this component.
     const context = {
@@ -98,6 +101,10 @@ function AppContextProvider({ children }) {
         usersLoading,
         addDog,
         addUser,
+        loggedIn,
+        setLoggedIn,
+        userRole,
+        setUserRole
     }
 
     // Wraps the given child components in a Provider for the above context.

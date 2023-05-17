@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useContext } from 'react'
 import { AppContext } from "../AppContextProvider";
 
-import NavBar from "../components/nav-bar";
+import NavBar from "../components/NavBar";
 import MyAccountBlackIcon from "../assets/my-account-icon-black.png";
 import MyAccountIcon from "../assets/my-account-icon.png";
 

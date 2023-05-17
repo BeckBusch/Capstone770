@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 
-import NavBarAdmin from "../components/nav-bar-admin";
+import NavBar from "../components/NavBar";
 import MyAccountIcon from "../assets/my-account-icon.png";
 import AddUserBlackIcon from "../assets/add-user-black-icon.png";
 
@@ -31,7 +31,7 @@ function AddUserPage() {
 
     return (
       <div className="add-user-page">
-            <NavBarAdmin/>   
+            <NavBar/>   
             <div className="add-user-header-container">
                 <img src={AddUserBlackIcon} className="add-user-icon-align" alt="start" />
                 <h1 className="add-user-header">Add User</h1>

@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 import React,  { useEffect } from 'react';
 
-import NavBarAdmin from "../components/nav-bar-admin";
+import NavBar from "../components/NavBar";
 import SettingsBlackIcon from "../assets/settings-black-icon.png";
 import YesIcon from "../assets/yes-icon.png";
 import YesHoverIcon from "../assets/yes-hover-icon.png";
@@ -69,7 +69,7 @@ function ManageUsersPage() {
 
     return (
       <div className="manage-users-page">
-          <NavBarAdmin/>   
+          <NavBar/>   
           <div className="manage-header-container">
               <img src={SettingsBlackIcon} className="settings-icon-align" alt="start" />
               <h1 className="manage-users-header">Manage Users</h1>

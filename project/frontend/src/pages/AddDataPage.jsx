@@ -2,7 +2,7 @@ import "../css/AddDataPage.css";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
-import NavBar from "../components/nav-bar";
+import NavBar from "../components/NavBar";
 import StartBlackIcon from "../assets/start-black-icon.png";
 import MyAccountIcon from "../assets/my-account-icon.png";
 

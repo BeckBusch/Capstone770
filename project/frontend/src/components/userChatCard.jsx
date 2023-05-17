@@ -1,5 +1,5 @@
 import React from "react";
-import "./user-chat-card.css";
+import "../css/userChatCard.css";
 // import { Link } from "react-router-dom";
 import MyAccountBlackIcon from "../assets/my-account-icon-black.png"
 

@@ -2,7 +2,7 @@ import "../css/AddDataResultsPage.css";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
-import NavBar from "../components/nav-bar";
+import NavBar from "../components/NavBar";
 import StartBlackIcon from "../assets/start-black-icon.png";
 
 function AddDataResultsPage() {  
