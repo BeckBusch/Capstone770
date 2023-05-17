@@ -27,15 +27,18 @@ function AddDataPage() {
                               <h1>Name</h1>
                               <div className="scale-id-container">
                                   <label className="scale-label">Scale ID</label>
-
-                                  <div className="dropdown">
-                                          <button className="dropbtn"><i className="arrow down"></i></button>
-                                          <div className="dropdown-content">
-                                              <a href="#">A-1</a>
-                                              <a href="#">A-2</a>
-                                              <a href="#">A-3</a>
-                                          </div>
-                                  </div> 
+                                  <select
+                                    className="select-style"
+                                    name="scale-id"
+                                    id="scale"
+                                    defaultValue={"none"}>
+                                    <option value="none" disabled hidden>
+                                    Select scale ID
+                                    </option>
+                                    <option value="A-1">A-1</option>
+                                    <option value="A-2">A-2</option>
+                                    <option value="A-2">A-3</option>
+                                </select>
                               </div>
                           {/* </div> */}
                           <div className="button-container">
