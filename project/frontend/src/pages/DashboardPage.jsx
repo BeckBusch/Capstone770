@@ -10,13 +10,11 @@ function DashboardPage() {
   const { dogs, setDogID, getAllDogs, sortDogAToZ, sortDogZToA } =
     useContext(AppContext);
 
-  const [rollCount, setRollCount] = useState(0);
+  const [sort, setSort] = useState(true);
 
   const navigate = useNavigate();
 
-  function navigateToAddDog() {
-    navigate("/add-dog");
-  }
+  function navigateToAddDog() { navigate("/add-dog"); }
 
   function navigateToDogDetails(str) {
     setDogID(str);
@@ -24,17 +22,13 @@ function DashboardPage() {
   }
 
   function sortAlphabetically() {
-    setRollCount(rollCount + 1);
+    setSort(!sort);
     handleSortDogs();
   }
 
-  async function handleSortDogs() {
-    rollCount % 2 == 0 ? await sortDogAToZ() : await sortDogZToA();
-  }
+  async function handleSortDogs() { sort ? await sortDogAToZ() : await sortDogZToA(); }
 
-  async function handleGetAllDogs() {
-    await getAllDogs();
-  }
+  async function handleGetAllDogs() { await getAllDogs(); }
 
   return (
     <div className="dashboard-page">
