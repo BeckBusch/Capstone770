@@ -10,8 +10,10 @@
 #include "pico_c.h"
 
 #define TLS_CLIENT_TIMEOUT_SECS  15
-#define TLS_CLIENT_SERVER "capstone770-team-10-default-rtdb.firebaseio.com"
-#define SERVER_URI "/api/pico/new.json"
+//#define TLS_CLIENT_SERVER "capstone770-team-10-default-rtdb.firebaseio.com"
+//#define SERVER_URI "/api/pico/new/"
+#define TLS_CLIENT_SERVER "neverssl.com"
+#define SERVER_URI "/"
 
 int wifi_connect();
 void sendRequest(char* uri, char* body);
