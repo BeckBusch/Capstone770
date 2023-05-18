@@ -6,7 +6,8 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '';
 
 const AppContext = React.createContext({
     dogs: [],
-    users: []
+    users: [],
+    weights: []
 });
 
 function AppContextProvider({ children }) {
@@ -25,6 +26,13 @@ function AppContextProvider({ children }) {
         isLoading: usersLoading,
         refresh: refreshUsers
     } = useGet(`${API_BASE_URL}/api/users`, []);
+
+    // Sets up the app to fetch the weights from a REST API.
+    const {
+        data: weights,
+        isLoading: weightsLoading,
+        refresh: refreshWeights
+    } = useGet(`${API_BASE_URL}/api/weights`, []);
 
     /**
      * First, uploads the given image to the server, and retrieves the URL pointing to that image.
@@ -62,7 +70,6 @@ function AppContextProvider({ children }) {
         return dogResponse.data;
     }
 
-
     async function addUser(name, email, password, role, image) {
 
         // const imgUploadConfig = {
@@ -89,6 +96,22 @@ function AppContextProvider({ children }) {
         const userResponse = await axios.post(`${API_BASE_URL}/api/users`, userToUpload);
         refreshUsers();
         return userResponse.data;
+    }
+
+
+    async function addWeight(weight, scaleId, staff, staffRole) {
+
+        const weightToUpload = {
+            weight,
+            scaleId,
+            // dateWeighed,
+            staff,
+            staffRole
+        };
+
+        const weightResponse = await axios.post(`${API_BASE_URL}/api/weights`, weightToUpload);
+        refreshWeights();
+        return weightResponse.data;
     }
 
     async function getAllDogs() {
@@ -148,7 +171,11 @@ function AppContextProvider({ children }) {
         userImage,
         setUserImage,
         dogID,
-        setDogID
+        setDogID,
+        weights,
+        weightsLoading,
+        refreshWeights,
+        addWeight
     }
 
     // Wraps the given child components in a Provider for the above context.

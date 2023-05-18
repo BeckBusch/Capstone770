@@ -8,7 +8,7 @@ import StartIcon from "../assets/start-icon.png";
 import MyAccountIcon from "../assets/my-account-icon.png";
 
 function DogDetailPage() {  
-    const { dogs, dogID } = useContext(AppContext);
+    const { dogs, dogID, addWeight } = useContext(AppContext);
 
     // const [dogBreed, setDogBreed] = useState("");
 
@@ -30,6 +30,11 @@ function DogDetailPage() {
         }
     }
 
+    async function handleAddWeight() {
+        await addWeight(2.5, 2, "staffName", "staffRole");
+        console.log("addWeight")
+    }
+
     return (
       <div className="dog-detail-page">
           <NavBar/>
@@ -37,7 +42,7 @@ function DogDetailPage() {
               <div className="dog-detail-button-container">
                   <div className="buttons">
                       <Link to="/dog/:id/add-data">
-                          <button type="submit" id="startWeighingBtn" className="start-weighing-btn">
+                          <button type="submit" id="startWeighingBtn" className="start-weighing-btn" onClick={() => handleAddWeight()}>
                           <img className="start-img" src={StartIcon} alt="start Image" />Start Weighing</button>
                       </Link>
                   </div>
