@@ -172,7 +172,7 @@ static TLS_CLIENT_T* tls_client_init(void) {
 void sendRequest(char* uri, char* body) {
 
     sprintf(request_msg,
-        "PUT %s HTTP/1.1\r\n" \
+        "POST %s HTTP/1.1\r\n" \
         "Host: %s \r\n" \
         "Connection: close\r\n" \
         "Content-Type: application/json\r\n" \

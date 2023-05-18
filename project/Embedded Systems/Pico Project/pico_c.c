@@ -12,7 +12,7 @@
 #include "led.h"
 #include "functions.h"
 
-char request_body[64];
+char request_body[256];
 int tare_flag = 0;
 int check = 0;
 enum states {idle, not_ready, ready, tare_initialized, receive_data, send_data};    // initialize states for the FSM
@@ -99,8 +99,8 @@ int main() {
                 printf("========== Current state: not_ready ==========\n");
                 sleep_ms(1000);
                 enable_power_LED();
-                // if (wifi_connect()) {
-                if (1) {    // for testing only
+                if (wifi_connect()) {
+                //if (1) {    // for testing only
                     // once connection is succesful
                     FSM = ready;
                     break;
@@ -158,8 +158,10 @@ int main() {
                 sleep_ms(1000);
                 disable_stable_LED();
 
-                // sprintf(request_body, "{\"%s\":\"%f\"}", "Weight", get_weight_mean_average());
-                // sendRequest("/Measurements/Dog1.json", request_body);
+                
+
+                sprintf(request_body, "{\"location\":\"Auckland\", \"gender\":\"Male\", \"age\":4, \"breed\":\"breedTest\", \"name\":\"nameTest\"}");
+                sendRequest("unused argument :)", request_body);
 
                 // add code
                 FSM = idle;
