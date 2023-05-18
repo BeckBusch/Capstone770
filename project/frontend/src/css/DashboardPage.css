@@ -15,7 +15,6 @@
 .search-container-div {
     width: 50%;
     height: 40px;
-    /* background-color: aqua; */
     display: flex;
     margin-left: 40%;
     transform: translate(-40%);
@@ -24,18 +23,16 @@
 .filter-container-div {
     width: fit-content;
     height: 40px;
-    /* background-color: beige; */
     display: flex;
     margin-left: auto;
 }
 
 .search-div {
-    /* background-color: red; */
     padding-top: 30px;
     padding-bottom: 30px;
     width: 90%;
     display: flex;
-    position: relative;   
+    position: relative;
     left: 50%;
     transform: translate(-50%);
 }
@@ -55,13 +52,18 @@
     height: 40px;
     width: 40px;
     border: none;
-    border-radius: 50%;
+    border-radius: 0;
     margin-left: 10px;
     background-color: transparent;
     background-image: url("../assets/search-icon.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size:contain;
+    background-size: 80%;
+}
+
+.dashboard-search-button:hover {
+    border: none;
+    background-color: transparent;
 }
 
 .sort-btn {
@@ -69,12 +71,11 @@
     width: 40px;
     border-radius: 50%;
     background-color: #DBDBDB;
-    border: none;
-
-    background-image: url("../assets/sort2.png");
+    border: 1px solid #DBDBDB;
+    background-image: url("../assets/sort-icon.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: 80%;
 }
 
 .filter-btn {
@@ -82,22 +83,24 @@
     width: 40px;
     border-radius: 50%;
     background-color: #DBDBDB;
-    border: none;
+    border: 1px solid #DBDBDB;
     margin-left: 10px;
     background-image: url("../assets/filter-icon.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size:auto;
+    background-size: 60%;
 }
 
 .add-dog-btn {
     width: 120px;
     height: 40px;
     background-color: #3479C0;
+    border: 1px solid #3479C0;
     border-radius: 22px;
     color: #ffffff;
-    font-size: 14px;
+    font-size: 16px;
     border: none;
+    padding: 0;
 }
 
 .add-dog-btn:hover {
@@ -114,39 +117,45 @@
 
 .dashboard-panel {
     width: 90%;
-    position: relative;   
+    position: relative;
     left: 50%;
-    transform: translate(-50%);    
+    transform: translate(-50%);
 }
 
 
-.table, th, td {
+.table,
+th,
+td {
     padding: 10px;
-  }
-
-.dashboard-card-link { 
-    color: inherit; 
 }
 
-.dashboard-card-link:link { 
+.dashboard-card-link {
+    color: inherit;
+}
+
+.dashboard-card-link:link {
     text-decoration: none;
 }
 
 .dog-cards-flex {
-        display: grid;
-        margin: 0 15px;
-        grid-template-rows: repeat(2, fit-content);
-        grid-template-columns: repeat(4, 25%);    
+    display: grid;
+    margin: 0 15px;
+    padding: 0 15px 50px 15px;
+    grid-template-rows: repeat(2, fit-content);
+    grid-template-columns: repeat(4, 25%);
+    row-gap: 25px;
 }
 
 
 .dog-cards-flex .dog-card {
-        display: flex;
-        justify-content: center;
-    }
+    display: flex;
+    justify-content: center;
+}
 
 .dashboard-card-btn {
+    width: 90%;
     background-color: transparent;
-    border: none;
+    border: 1px solid #DBDBDB;
+    border-radius: 20px;
     padding: 0;
 }
