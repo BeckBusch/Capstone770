@@ -10,7 +10,7 @@
 #include "adc.h"
 
 double weight_mean_average = 0.0;
-double weight_value_array[5] = {0, 0, 0, 0, 0};     // used to store weight readings
+double weight_value_array[25] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,};     // used to store weight readings
 int array_full_flag = 0;                            // set to 1 once array full
 double tare_offset = 0.0;
 
@@ -28,16 +28,16 @@ double get_tare_offset() {
 }
 
 double *save_weight_to_array() {
-    for (int counter = 0; counter < 5; counter++) {
+    for (int counter = 0; counter < 25; counter++) {
         double weightReading = adcConvert();
         weight_value_array[counter] = weightReading;
         // weight_value_array[counter] = weightReading
         printf("Weight reading: %f\n", weightReading);
-        sleep_ms(500); // take a reading every 0.5 second
+        sleep_ms(100); // take a reading every 0.1 seconds
     }
     array_full_flag = 1;
     printf("\nArray full\n");
-    sleep_ms(500);
+    sleep_ms(1000);
     return weight_value_array;
 }
 
@@ -53,15 +53,17 @@ int check_weights(double * weight_value_array) {
     // calculation to check here
     // update the stable_flag based on calculation
     first_index = weight_value_array[0];
-    last_index = weight_value_array[4];
+    last_index = weight_value_array[24];
 
     // stability check
     if (last_index*0.90 < first_index < last_index*1.10) {
         stable_flag = 1;
-        for (int i = 0; i < 5; i++) {
+
+        // sum all values in array
+        for (int i = 0; i < 25; i++) {
             sum = sum + weight_value_array[i];
         }
-        average = (double)sum/5.0f;
+        average = (double)sum/25.0f;
         weight_mean_average = average - tare_offset;
         if (weight_mean_average < 0.0) {    // ensure weight is never negative
             weight_mean_average = 0.0;
@@ -80,6 +82,7 @@ int check_weights(double * weight_value_array) {
     printf("\nlast index: %f", last_index);
     printf("\nsum: %f", sum);
     printf("\naverage: %f\n", weight_mean_average);
+    sleep_ms(3000);
 
     if (stable_flag == 1) {
         // stable

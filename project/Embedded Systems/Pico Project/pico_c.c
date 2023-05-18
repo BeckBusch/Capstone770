@@ -99,7 +99,8 @@ int main() {
                 printf("========== Current state: not_ready ==========\n");
                 sleep_ms(1000);
                 enable_power_LED();
-                if (wifi_connect()) {
+                // if (wifi_connect()) {
+                if (1) {    // for testing only
                     // once connection is succesful
                     FSM = ready;
                     break;
@@ -140,8 +141,15 @@ int main() {
                 // add code
                 // weight_mean_average contains the average of the last 5 (stable) readings
                 // add code to prepare data to send to server
+
+                // ensure the data received here is not faulty or zero (i.e. no weight on scale)
+                if (get_weight_mean_average() < 1.0) {
+                    FSM = idle;
+                    break;
+                } else {
                 FSM = send_data;
                 break;
+                }
 
 
             // send data state - send data packet to server 
@@ -150,8 +158,8 @@ int main() {
                 sleep_ms(1000);
                 disable_stable_LED();
 
-                sprintf(request_body, "{\"%s\":\"%f\"}", "Weight", get_weight_mean_average());
-                sendRequest("/Measurements/Dog1.json", request_body);
+                // sprintf(request_body, "{\"%s\":\"%f\"}", "Weight", get_weight_mean_average());
+                // sendRequest("/Measurements/Dog1.json", request_body);
 
                 // add code
                 FSM = idle;
