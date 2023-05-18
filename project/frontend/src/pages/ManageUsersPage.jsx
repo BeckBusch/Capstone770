@@ -12,6 +12,12 @@ import AddUserIcon from "../assets/add-user-icon.png";
 
 
 function ManageUsersPage() {  
+
+    var d = new Date();
+    console.log("d = ", d);
+    var date = d.toLocaleDateString('en-US');
+    console.log("date = ", date);
+    
     const {
         users
       } = useContext(AppContext);
@@ -22,11 +28,17 @@ function ManageUsersPage() {
         let num = users.length;
         console.log("users.length = ", num);
 
+        
+
         const allUsers = new Array();
         allUsers.push(["", "Name", "Email", "User Type", "Joined", ""]);
         for (const user of users) {
-            allUsers.push([user["image"], user["name"], user["email"], user["role"], user["createdAt"], ""]);
+            var d = new Date(user["createdAt"]);
+            var date = d.toLocaleDateString('en-GB');
+
+            allUsers.push([user["image"], user["name"], user["email"], user["role"], date, ""]);
         }
+    
  
         //Get the count of columns.
         const columnCount = allUsers[0].length;
