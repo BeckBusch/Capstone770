@@ -124,13 +124,19 @@ function AppContextProvider({ children }) {
         const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort-a-to-z`);
         refreshDogs();
         return dogSortResponse.data;
-      }
+    }
 
-      async function sortDogZToA() {
+    async function sortDogZToA() {
         const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort-z-to-a`);
         refreshDogs();
         return dogSortResponse.data;
-      }
+    }
+
+    async function searchDog(search) {
+        const dogSearchResponse = await axios.get(`${API_BASE_URL}/api/dogs/${search}`);
+        refreshDogs();
+        return dogSearchResponse.data;
+    }
 
     const [loggedIn, setLoggedIn] = useState(false)
     const [userName, setUserName] = useState("")
@@ -154,6 +160,7 @@ function AppContextProvider({ children }) {
         getAllDogs,
         sortDogAToZ,
         sortDogZToA,
+        searchDog,
         loggedIn,
         setLoggedIn,
         userName,

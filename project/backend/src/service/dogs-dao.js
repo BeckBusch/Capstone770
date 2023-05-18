@@ -12,27 +12,42 @@ async function retrieveDogList() {
 }
 
 async function sortAToZ() {
-    const sortDog = await Dog.find({}, {_id:0, name:1, breed:1, age:1, gender:1, location:1, currentWeight:1, prevWeights:1}).sort({"name": 1});
+    const sortDog = await Dog.find().sort({"name": 1});
     console.log("sorted dog list: ", sortDog);
 
-    const deleted = await Dog.deleteMany({});
-    console.log(`Cleared dog database`);
-    const userDeleted = await Dog.insertMany(sortDog);
-    console.log(`Dog database inserted`, userDeleted);
+    // const deleted = await Dog.deleteMany({});
+    // console.log(`Cleared dog database`);
+    // const userDeleted = await Dog.insertMany(sortDog);
+    // console.log(`Dog database inserted`, userDeleted);
 
     return await sortDog;
 }
 
 async function sortZToA() {
-    const sortDog = await Dog.find({}, {_id:0, name:1, breed:1, age:1, gender:1, location:1, currentWeight:1, prevWeights:1}).sort({"name": -1});
+    const sortDog = await Dog.find().sort({"name": -1});
     console.log("sorted dog list: ", sortDog);
 
-    const deleted = await Dog.deleteMany({});
-    console.log(`Cleared dog database`);
-    const userDeleted = await Dog.insertMany(sortDog);
-    console.log(`Dog database inserted`, userDeleted);
+    // const deleted = await Dog.deleteMany({});
+    // console.log(`Cleared dog database`);
+    // const userDeleted = await Dog.insertMany(sortDog);
+    // console.log(`Dog database inserted`, userDeleted);
 
     return await sortDog;
+}
+
+async function searchDog(searchValue) {
+    console.log("searchValue: ", searchValue);
+    console.log("searchInsensitiveCaseValue: ", searchValue.toLowerCase());
+
+    const searchedDog = await Dog.find({  $or: [
+        {name: {$regex: searchValue, $options: "i"}}, 
+        {breed: {$regex: searchValue, $options: "i"}},
+        // {gender: {$regex: searchValue, $options: "i"}}, 
+        {location: {$regex: searchValue, $options: "i"}}
+    ]});
+    console.log("searchDog = ", searchedDog);
+
+    return await searchedDog;
 }
 
 async function retrieveDog(id) {
@@ -56,5 +71,6 @@ export {
     updateDog,
     deleteDog,
     sortAToZ,
-    sortZToA
+    sortZToA,
+    searchDog
 }

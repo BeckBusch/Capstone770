@@ -15,8 +15,14 @@ function DashboardPage() {
     setDogID,
     getAllDogs,
     sortDogAToZ,
-    sortDogZToA
+    sortDogZToA,
+    searchDog
   } = useContext(AppContext);
+
+  const [searchValue, setSearchValue] = useState("");
+  const [currentDog, setcurrentDog] = useState(dogs);
+
+  console.log("currentDog = ", currentDog);
 
   AuthDetails();
 
@@ -35,9 +41,26 @@ function DashboardPage() {
     handleSortDogs();
   }
 
-  async function handleSortDogs() { sort ? await sortDogAToZ() : await sortDogZToA(); }
+  async function handleSortDogs() { 
+    sort ? setcurrentDog(await sortDogAToZ()) : setcurrentDog(await sortDogZToA()); 
+  }
   
   async function handleGetAllDogs() { await getAllDogs(); }
+
+  const handleSearch = (e) => {
+    console.log("inside search");
+    console.log("search value = ", searchValue);
+    e.preventDefault();
+    handleSearching();
+  }
+
+  async function handleSearching() {
+    console.log(searchValue);
+    const search = await searchDog(searchValue);
+    console.log("searchValue:: ", search);
+    setcurrentDog(search);
+    // console.log("search new dog = ", currentDog);
+  }
 
   return loggedIn ? (
     <div className="dashboard-page">
@@ -50,12 +73,18 @@ function DashboardPage() {
           </button>
         </div>
         <div className="search-container-div">
-          <input
-            type="text"
-            placeholder="Search by name, breed etc."
-            className="dashboard-search"
-          />
-          <button className="dashboard-search-button"></button>
+          <form className="form-styling" onSubmit={handleSearch}>
+            <div className="search-container-div-align">
+              <input
+                type="search"
+                id="mySearch"
+                placeholder="Search by name, breed etc."
+                className="dashboard-search"
+                onChange={(e) => setSearchValue(e.target.value)}
+              />
+              <button className="dashboard-search-button"></button>
+            </div>
+          </form>
         </div>
         <div className="filter-container-div">
           <button
@@ -70,7 +99,7 @@ function DashboardPage() {
       </div>
       {/* Dog Cards */}
       <div className="dog-cards-flex">
-        {dogs.map(function (dog, i) {
+        {currentDog.map(function (dog, i) {
           return (
             <button
               className="dashboard-card-btn"
