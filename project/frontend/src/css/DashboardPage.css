@@ -71,10 +71,10 @@
     background-color: #DBDBDB;
     border: none;
 
-    background-image: url("../assets/sort-icon.png");
+    background-image: url("../assets/sort.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size:auto;
+    background-size:cover;
 }
 
 .filter-btn {
