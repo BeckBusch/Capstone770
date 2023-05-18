@@ -120,14 +120,14 @@ function AppContextProvider({ children }) {
         return dogResponse.data;
     }
 
-    async function sortDog() {
-        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort`);
+    async function sortDogAToZ() {
+        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort-a-to-z`);
         refreshDogs();
         return dogSortResponse.data;
       }
 
-      async function sortDog2() {
-        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort2`);
+      async function sortDogZToA() {
+        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort-z-to-a`);
         refreshDogs();
         return dogSortResponse.data;
       }
@@ -152,8 +152,8 @@ function AppContextProvider({ children }) {
         addDog,
         addUser,
         getAllDogs,
-        sortDog,
-        sortDog2,
+        sortDogAToZ,
+        sortDogZToA,
         loggedIn,
         setLoggedIn,
         userName,

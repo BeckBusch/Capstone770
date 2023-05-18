@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { AppContext } from "../AppContextProvider";
@@ -9,8 +9,9 @@ import SPCALogo from "../assets/spca-logo.png";
 import BackgroundImage from "../assets/login-image.png";
 
 function LoginPage() {
-  const { users, setLoggedIn, setUserRole, setUserName} = useContext(AppContext);
-  
+  const { users, setLoggedIn, setUserRole, setUserName } =
+    useContext(AppContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(" ");
