@@ -8,7 +8,8 @@ import {
     retrieveDog,
     retrieveDogList,
     updateDog,
-    deleteDog
+    deleteDog,
+    sortDogList
 } from '../../service/dogs-dao';
 
 // const HTTP_OK = 200; // Not really needed; this is the default if you don't set something else.
@@ -42,6 +43,11 @@ router.get('/', async (req, res) => {
     // When introducing the artificial delay, also comment this line. It's an error to send
     // two responses.
     res.json(await retrieveDogList());
+});
+
+// Retrieve sort dogs
+router.get('/sort', async (req, res) => {
+    res.json(await sortDogList());
 });
 
 // Retrieve single dog

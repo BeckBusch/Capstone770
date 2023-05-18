@@ -91,6 +91,18 @@ function AppContextProvider({ children }) {
         return userResponse.data;
     }
 
+    async function getAllDogs() {
+        const dogResponse = await axios.get(`${API_BASE_URL}/api/dogs`);
+        refreshDogs();
+        return dogResponse.data;
+    }
+
+    async function sortDog() {
+        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort`);
+        refreshDogs();
+        return dogSortResponse.data;
+      }
+
     const [loggedIn, setLoggedIn] = useState(false)
     const [userName, setUserName] = useState("")
     const [userID, setUserID] = useState("")
@@ -110,6 +122,8 @@ function AppContextProvider({ children }) {
         usersLoading,
         addDog,
         addUser,
+        getAllDogs,
+        sortDog,
         loggedIn,
         setLoggedIn,
         userName,
