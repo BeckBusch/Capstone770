@@ -26,7 +26,18 @@ const userSchema = new Schema({
     timestamps: {}
 });
 
+const weightSchema = new Schema({
+    weight: { type: Number},
+    scaleId: { type: Number},
+    dateWeighed: { type: Date},
+    staff: { type: String},
+    staffRole: { type: String},
+}, {
+    timestamps: {}
+});
+
 const Dog = mongoose.model('Dog', dogSchema);
 const User = mongoose.model('User', userSchema);
+const Weight = mongoose.model('Weight', weightSchema);
 
-export { Dog, User };
+export { Dog, User, Weight };
