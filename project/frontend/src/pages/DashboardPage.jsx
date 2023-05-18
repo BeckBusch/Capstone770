@@ -8,7 +8,8 @@ import NavBar from "../components/NavBar";
 import DashboardCard from "../components/DashboardCard";
 
 function DashboardPage() {
-  const { dogs, dogID, setDogID, getAllDogs, sortDog } = useContext(AppContext);
+  const { dogs, dogID, setDogID, getAllDogs, sortDog, sortDog2} = useContext(AppContext);
+  const [rollCount, setRollCount] = useState(0);
 
   const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ function DashboardPage() {
   }
 
   const sortAlphabetically = () => {
-    console.log("sort button clicked");
+    console.log("filter button clicked");
     // dogs.find().sort({})
     handleGetDogs();
   }
@@ -30,13 +31,26 @@ function DashboardPage() {
   }
 
   const sortAlphabetically2 = () => {
-    console.log("filter button clicked");
+    console.log("sort button clicked");
+    console.log("rollCount = ", rollCount);
+    setRollCount(rollCount + 1);
+    console.log("rollCount = ", rollCount);
     handleGetSortDogs();
   }
 
   async function handleGetSortDogs() {
-    const allSortDogs = await sortDog();
-    console.log("Dog Sort List: ", allSortDogs[0]);
+    if ((rollCount % 2) == 0) {
+      console.log("EVEN");
+      const allSortDogs = await sortDog();
+      console.log("Dog: ", dogs);
+      console.log("Dog Sort List: ", allSortDogs);
+    } else {
+      console.log("ODD");
+      const allSortDogs2 = await sortDog2();
+      console.log("Dog2: ", dogs);
+      console.log("Dog Sort List2: ", allSortDogs2);
+    }
+    
   }
 
   return (
@@ -60,10 +74,10 @@ function DashboardPage() {
         <div className="filter-container-div">
           <button 
           className="sort-btn"
-          onClick={() => sortAlphabetically()}
+          onClick={() => sortAlphabetically2()}
           ></button>
           <button className="filter-btn"
-          onClick={() => sortAlphabetically2()}
+          onClick={() => sortAlphabetically()}
           ></button>
         </div>
       </div>

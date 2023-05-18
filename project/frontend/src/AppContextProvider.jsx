@@ -103,6 +103,12 @@ function AppContextProvider({ children }) {
         return dogSortResponse.data;
       }
 
+      async function sortDog2() {
+        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort2`);
+        refreshDogs();
+        return dogSortResponse.data;
+      }
+
     const [loggedIn, setLoggedIn] = useState(false)
     const [userName, setUserName] = useState("")
     const [userID, setUserID] = useState("")
@@ -124,6 +130,7 @@ function AppContextProvider({ children }) {
         addUser,
         getAllDogs,
         sortDog,
+        sortDog2,
         loggedIn,
         setLoggedIn,
         userName,
