@@ -9,8 +9,8 @@ import {
     retrieveDogList,
     updateDog,
     deleteDog,
-    sortDogList,
-    sortDogList2
+    sortAToZ,
+    sortZToA
 } from '../../service/dogs-dao';
 
 // const HTTP_OK = 200; // Not really needed; this is the default if you don't set something else.
@@ -47,12 +47,12 @@ router.get('/', async (req, res) => {
 });
 
 // Retrieve sort dogs
-router.get('/sort', async (req, res) => {
-    res.json(await sortDogList());
+router.get('/sort-a-to-z', async (req, res) => {
+    res.json(await sortAToZ());
 });
 
-router.get('/sort2', async (req, res) => {
-    res.json(await sortDogList2());
+router.get('/sort-z-to-a', async (req, res) => {
+    res.json(await sortZToA());
 });
 
 // Retrieve single dog

@@ -120,26 +120,26 @@ function AppContextProvider({ children }) {
         return dogResponse.data;
     }
 
-    async function sortDog() {
-        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort`);
+    async function sortDogAToZ() {
+        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort-a-to-z`);
         refreshDogs();
         return dogSortResponse.data;
       }
 
-      async function sortDog2() {
-        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort2`);
+      async function sortDogZToA() {
+        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort-z-to-a`);
         refreshDogs();
         return dogSortResponse.data;
       }
 
     const [loggedIn, setLoggedIn] = useState(false)
     const [userName, setUserName] = useState("")
-    const [userID, setUserID] = useState("")
-    const [userEmail, setUserEmail] = useState("")
-    const [userPassword, setUserPassword] = useState("")
+    // const [userID, setUserID] = useState("")
+    // const [userEmail, setUserEmail] = useState("")
+    // const [userPassword, setUserPassword] = useState("")
     const [userRole, setUserRole] = useState("")
-    const [userJoined, setUserJoined] = useState("")
-    const [userImage, setUserImage] = useState("")
+    // const [userJoined, setUserJoined] = useState("")
+    // const [userImage, setUserImage] = useState("")
     const [dogID, setDogID] = useState("")
 
 
@@ -152,24 +152,24 @@ function AppContextProvider({ children }) {
         addDog,
         addUser,
         getAllDogs,
-        sortDog,
-        sortDog2,
+        sortDogAToZ,
+        sortDogZToA,
         loggedIn,
         setLoggedIn,
         userName,
         setUserName,
-        userID,
-        setUserID,
-        userEmail,
-        setUserEmail,
-        userPassword,
-        setUserPassword,
+        // userID,
+        // setUserID,
+        // userEmail,
+        // setUserEmail,
+        // userPassword,
+        // setUserPassword,
         userRole,
         setUserRole,
-        userJoined,
-        setUserJoined,
-        userImage,
-        setUserImage,
+        // userJoined,
+        // setUserJoined,
+        // userImage,
+        // setUserImage,
         dogID,
         setDogID,
         weights,

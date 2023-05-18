@@ -1,8 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import LoginPage from "./pages/LoginPage";
-// import SignUpPage from "./pages/SignUpPage";
-// import SignUpConfirmPage from "./pages/SignUpConfirmPage";
 import DashboardPage from "./pages/DashboardPage";
 import DogDetailPage from "./pages/DogDetailPage";
 import AddDataPage from "./pages/AddDataPage";
@@ -20,8 +19,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/*" element={<LoginPage />} />
-          {/* <Route path="/sign-up" element={<SignUpPage />} />
-          <Route path="sign-up/confirm" element={<SignUpConfirmPage />} /> */}
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/add-dog" element={<AddDogPage />} />
           <Route path="/dog/:id" element={<DogDetailPage />} />

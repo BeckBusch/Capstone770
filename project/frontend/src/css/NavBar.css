@@ -6,22 +6,22 @@
     display: flex;
 }
 
-.col {
-    width: 25%;
-    height: inherit;
-    /* background-color: red; */
-}
-
 .col-left {
+    width: 100%;
     text-align: left;
     padding-left: 15px;
 }
 
 .col-mid {
+    width: 100%;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .col-right {
+    width: 100%;
     text-align: right;
     padding-right: 15px;
 }
@@ -36,9 +36,30 @@
 
 .navbar-icon {
     max-height: 30px;
+    padding-right: 10px;
+    padding-bottom: 5px;
 }
 
-.navbar-link {
+.navbar-link-text {
+    padding-top: 5px;
+    color: white;
+}
+
+.navbar-link-button {
+    width: fit-content;
+    height: fit-content;
+    color: white;
+    background-color: #3479C0;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-link-button:hover {
     width: fit-content;
     height: fit-content;
     color: white;
@@ -49,58 +70,23 @@
     padding: 0;
 }
 
-.navbar-link:hover {
-    width: fit-content;
-    height: fit-content;
-    color: white;
-    background-color: #3479C0;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    padding: 0;
-}
-
-.navbar-link-account {
-    width: fit-content;
-    height: fit-content;
-    color: white;
-    background-color: transparent;
-    font-weight: bold;
-    border: none;
-    padding: 0;
-    text-align: left;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.navbar-link-account:hover {
-    width: fit-content;
-    height: fit-content;
-    color: white;
-    background-color: transparent;
-    font-weight: bold;
-    border: none;
-    padding: 0;
-    text-align: left;
-}
 
 .account-settings-align {
-    /* background-color: orange; */
-    width: 340px;
+    width: 100%;
     height: fit-content;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
     float: right;
 }
 
 @media (max-width: 700px) {
-    .navbar-link {
+    .navbar-link-button {
         display: none;
-    }     
+    }
 }
 
-.navbar-link:hover {
+.navbar-link-button:hover {
     color: white;
     cursor: pointer;
     text-decoration: underline;
@@ -108,18 +94,16 @@
 }
 
 .line-1 {
-    display:block;
+    display: block;
     font-size: 16px;
-    width: 200px;
-    /* background-color: pink; */
+    /* width: 200px; */
     text-align: right;
 }
 
 .line-2 {
     display: block;
     font-size: 10px;
-    width: 200px;
-    /* background-color: purple; */
+    /* width: 200px; */
     text-align: right;
 }
 
@@ -146,10 +130,10 @@
     margin-right: 10px;
     cursor: pointer;
 }
-  
-  /* Dropdown button on hover & focus */
-.sign-out-dropbtn:hover, .sign-out-dropbtn:focus {
-    /* background-color: #2980B9; */
+
+/* Dropdown button on hover & focus */
+.sign-out-dropbtn:hover,
+.sign-out-dropbtn:focus {
     width: fit-content;
     height: fit-content;
     color: white;
@@ -159,52 +143,36 @@
     padding: 0;
     text-align: left;
 }
-  
-  /* The container <div> - needed to position the dropdown content */
+
+/* The container <div> - needed to position the dropdown content */
 .dropdown {
     position: relative;
     display: inline-block;
-    width: 340px;
-    /* background-color: purple; */
+    width: fit-content;
 }
-  
-  /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+
+/* Dropdown Content (Hidden by Default) */
+.sign-out-btn {
     display: none;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 20px;
     position: absolute;
+    color: black;
     background-color: #BDD3E8;
-    min-width: 150px;
+    border: 1px solid #BDD3E8;
     border-radius: 10px;
-    border: none;
-    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
     z-index: 1;
     right: 0;
     margin-top: 5px;
 }
 
-  /* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    text-align: center;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    border-radius: 10px;
-    background-color: #BDD3E8;
-}
-  
-  /* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    /* background-color: red; */
-    background-color: #BDD3E8;
-    border-radius: 10px;
-}
 
-.dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-.showing {display:block;}
+/* Dropdown Content (Hidden by Default) */
+.sign-out-btn:hover {
+    color: black;
+    text-decoration: underline;
+}
 
 .sign-out-icon {
     width: 20px;

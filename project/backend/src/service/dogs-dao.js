@@ -11,7 +11,7 @@ async function retrieveDogList() {
     return await Dog.find();
 }
 
-async function sortDogList() {
+async function sortAToZ() {
     const sortDog = await Dog.find({}, {_id:0, name:1, breed:1, age:1, gender:1, location:1, currentWeight:1, prevWeights:1}).sort({"name": 1});
     console.log("sorted dog list: ", sortDog);
 
@@ -23,7 +23,7 @@ async function sortDogList() {
     return await sortDog;
 }
 
-async function sortDogList2() {
+async function sortZToA() {
     const sortDog = await Dog.find({}, {_id:0, name:1, breed:1, age:1, gender:1, location:1, currentWeight:1, prevWeights:1}).sort({"name": -1});
     console.log("sorted dog list: ", sortDog);
 
@@ -55,6 +55,6 @@ export {
     retrieveDogList,
     updateDog,
     deleteDog,
-    sortDogList,
-    sortDogList2
+    sortAToZ,
+    sortZToA
 }

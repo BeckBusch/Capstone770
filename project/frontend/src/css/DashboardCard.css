@@ -1,12 +1,11 @@
 .card-section {
-    width: 90%;
-    padding: 15px;
+    width: 100%;
+    /* padding: 15px; */
 }
 
 .dashboard-card {
     width: 100%;
     height: fit-content;
-    border: 1px solid #DBDBDB;
     border-radius: 20px;
     padding: 30px 0 20px 0;
     color: black;
