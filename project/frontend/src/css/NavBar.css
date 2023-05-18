@@ -6,17 +6,14 @@
     display: flex;
 }
 
-.col {
-    width: 25%;
-    height: fit-content;
-}
-
 .col-left {
+    width: 100%;
     text-align: left;
     padding-left: 15px;
 }
 
 .col-mid {
+    width: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -24,6 +21,7 @@
 }
 
 .col-right {
+    width: 100%;
     text-align: right;
     padding-right: 15px;
 }
@@ -74,11 +72,11 @@
 
 
 .account-settings-align {
-    width: 340px;
+    width: 100%;
     height: fit-content;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
     float: right;
 }
 
@@ -98,14 +96,14 @@
 .line-1 {
     display: block;
     font-size: 16px;
-    width: 200px;
+    /* width: 200px; */
     text-align: right;
 }
 
 .line-2 {
     display: block;
     font-size: 10px;
-    width: 200px;
+    /* width: 200px; */
     text-align: right;
 }
 
@@ -150,45 +148,30 @@
 .dropdown {
     position: relative;
     display: inline-block;
-    width: 340px;
+    width: fit-content;
 }
 
 /* Dropdown Content (Hidden by Default) */
-.dropdown-content {
+.sign-out-btn {
     display: none;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 20px;
     position: absolute;
+    color: black;
     background-color: #BDD3E8;
-    min-width: 150px;
+    border: 1px solid #BDD3E8;
     border-radius: 10px;
-    border: none;
     z-index: 1;
     right: 0;
     margin-top: 5px;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
+
+/* Dropdown Content (Hidden by Default) */
+.sign-out-btn:hover {
     color: black;
-    text-align: center;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    border-radius: 10px;
-    background-color: #BDD3E8;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #BDD3E8;
-    border-radius: 10px;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.showing {
-    display: block;
+    text-decoration: underline;
 }
 
 .sign-out-icon {
