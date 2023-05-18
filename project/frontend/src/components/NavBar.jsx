@@ -45,29 +45,28 @@ function NavBar() {
       </div>
 
       <div className="col col-mid">
-        {/* <Link to="/dashboard">
-          <img className="navbar-icon" src={DashboardIcon} alt="Dashboard" /> */}
-        <button type="submit" id="logInBtn" className="navbar-link-button">
-          <img className="navbar-icon" src={DashboardIcon} alt="Dashboard" />
-          Dashboard
-        </button>
-        {/* </Link> */}
+        <Link to="/dashboard">
+          <button type="submit" id="logInBtn" className="navbar-link-button">
+              <img className="navbar-icon" src={DashboardIcon} alt="Dashboard" />
+                <p className="navbar-link-text">Dashboard</p>
+          </button>
+        </Link>
       </div>
 
       <div className="col col-mid">
         <Link to="/chat">
-          <img className="navbar-icon" src={ChatIcon} alt="Dashboard" />
           <button type="submit" id="logInBtn" className="navbar-link-button">
-            Chat
+          <img className="navbar-icon" src={ChatIcon} alt="Dashboard" />
+          <p className="navbar-link-text">Chat</p>
           </button>
         </Link>
       </div>
 
       <div className="col col-mid">
         <Link to="/manage-users">
-          <img className="navbar-icon" src={ManageUsersIcon} alt="Dashboard" />
           <button type="submit" id="logInBtn" className="navbar-link-button">
-            Manage Users
+          <img className="navbar-icon" src={ManageUsersIcon} alt="Dashboard" />
+          <p className="navbar-link-text">Manage Users</p>
           </button>
         </Link>
       </div>
@@ -90,8 +89,9 @@ function NavBar() {
                 </div>
               </div>
             </button>
+
             <div id="mySignOutDropdown" className="dropdown-content">
-              <a href="/*">
+              <a href="/">
                 <img
                   className="sign-out-icon"
                   src={SignOutIcon}
@@ -124,7 +124,6 @@ function NavBar() {
           <button type="submit" id="logInBtn" className="navbar-link-button">
           <img className="navbar-icon" src={ChatIcon} alt="Dashboard" />
           <p className="navbar-link-text">Chat</p>
-
           </button>
         </Link>
       </div>
