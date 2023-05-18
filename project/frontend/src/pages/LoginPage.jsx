@@ -9,8 +9,9 @@ import SPCALogo from "../assets/spca-logo.png";
 import BackgroundImage from "../assets/login-image.png";
 
 function LoginPage() {
-  const { users, setLoggedIn, setUserRole, setUserName } =
-    useContext(AppContext);
+  const {
+    setLoggedIn
+  } = useContext(AppContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,13 +19,12 @@ function LoginPage() {
 
   const navigate = useNavigate();
 
-  const logIn = (e) => {
+  const logInUser = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log("Successfully logged in user: " + userCredential);
-        setLoggedIn(true);
-        getRole();
+        setLoggedIn(true)
+        console.log("Successfully logged in user: " + userCredential["user"]["email"]);
         navigate("/dashboard");
       })
       .catch((error) => {
@@ -33,26 +33,16 @@ function LoginPage() {
       });
   };
 
-  function getRole() {
-    for (let user of users) {
-      if (user["email"] == email) {
-        setUserRole(user["role"]);
-        setUserName(user["name"]);
-      }
-    }
-  }
-
   return (
     <div className="login-page">
       {/* Background Image */}
       <img className="background-image" src={BackgroundImage} alt="SPCA Logo" />
-
       {/* Login Container */}
       <div className="login-container-flex">
         <div className="login-container">
           {/* SPCA Logo */}
           <img className="spca-logo" src={SPCALogo} alt="SPCA Logo" />
-          <form onSubmit={logIn}>
+          <form onSubmit={logInUser}>
             {/* Email */}
             <div>
               <input

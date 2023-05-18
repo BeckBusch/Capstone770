@@ -1,19 +1,26 @@
 import "../css/DashboardPage.css";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
+import AuthDetails from "../AuthDetails";
 import { AppContext } from "../AppContextProvider";
 
 import NavBar from "../components/NavBar";
 import DashboardCard from "../components/DashboardCard";
+import LoginPage from "./LoginPage";
 
 function DashboardPage() {
-  const { dogs, setDogID, getAllDogs, sortDogAToZ, sortDogZToA } =
-    useContext(AppContext);
+  const {
+    loggedIn,
+    dogs,
+    setDogID,
+    getAllDogs,
+    sortDogAToZ,
+    sortDogZToA
+  } = useContext(AppContext);
 
-  const [sort, setSort] = useState(true);
+  AuthDetails();
 
   const navigate = useNavigate();
-
   function navigateToAddDog() { navigate("/add-dog"); }
 
   function navigateToDogDetails(str) {
@@ -21,19 +28,21 @@ function DashboardPage() {
     navigate(`/dog/${str}`);
   }
 
+  const [sort, setSort] = useState(true);
+
   function sortAlphabetically() {
     setSort(!sort);
     handleSortDogs();
   }
 
   async function handleSortDogs() { sort ? await sortDogAToZ() : await sortDogZToA(); }
-
+  
   async function handleGetAllDogs() { await getAllDogs(); }
 
-  return (
+  return loggedIn ? (
     <div className="dashboard-page">
       <NavBar />
-
+      {/* Search / Filter Container */}
       <div className="search-div">
         <div className="add-dog-container-div">
           <button className="add-dog-btn" onClick={() => navigateToAddDog()}>
@@ -59,7 +68,7 @@ function DashboardPage() {
           ></button>
         </div>
       </div>
-
+      {/* Dog Cards */}
       <div className="dog-cards-flex">
         {dogs.map(function (dog, i) {
           return (
@@ -80,6 +89,8 @@ function DashboardPage() {
         })}
       </div>
     </div>
+  ) : (
+    <LoginPage />
   );
 }
 

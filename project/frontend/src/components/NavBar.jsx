@@ -12,12 +12,33 @@ import MyAccountIcon from "../assets/my-account-icon.png";
 import ManageUsersIcon from "../assets/settings-icon.png";
 import SignOutIcon from "../assets/exit.png";
 
+import AuthDetails from "../AuthDetails";
 
 function NavBar() {
-  const { userRole, userName } = useContext(AppContext);
+  const { users, userRole, setUserRole, userName, setUserName, setLoggedIn } = useContext(AppContext);
 
-  console.log("userrole " + userRole);
-  console.log("username " + userName);
+  // auth.onAuthStateChanged(function (user) {
+  //   if (user) {
+  //     setLoggedIn(true);
+  //     console.log("ONAUTHSTATE")
+  //     console.log(user)
+  //     getCurrentUser(user);
+
+  //   } else {
+  //     setLoggedIn(false);
+  //   }
+  // });
+
+  // function getCurrentUser(userImpl) {
+  //   for (const user of users) {
+  //     if (user["email"] == userImpl["email"]) {
+  //       setUserRole(user["role"]);
+  //       setUserName(user["name"]);
+  //     }
+  //   }
+  // }
+
+  AuthDetails();
 
   const [signOutPopUpVisible, setSignOutPopUpVisible] = useState(false);
 

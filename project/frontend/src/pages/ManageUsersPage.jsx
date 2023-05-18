@@ -10,8 +10,14 @@ import MyAccountIcon from "../assets/my-account-icon-black.png";
 import SearchIcon from "../assets/search-icon.png";
 import AddUserIcon from "../assets/add-user-icon.png";
 
+import AuthDetails from "../AuthDetails";
 
 function ManageUsersPage() {  
+    const { loggedIn } =
+    useContext(AppContext);
+
+
+    AuthDetails();
 
     var d = new Date();
     console.log("d = ", d);
