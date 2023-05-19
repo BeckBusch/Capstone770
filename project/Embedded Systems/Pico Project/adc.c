@@ -4,12 +4,21 @@
  *
  * adc.c
  * ADC and data analysis functions
+ * Improved version with a linear equation to calculate the weights from converted ADC data
  */
 
 #include "adc.h"
+#define ADC_RANGE (1 << 12)
+#define ADC_CONVERT (3.3 / (ADC_RANGE - 1))  // convert ADC value to voltage
+
+float voltage_to_weight(double x) {
+    float y = 0.0;
+    y = (1.66213 - x) / 0.0554958f;     // linear equation based on observed relationship between voltage and weight
+    return y;
+}
+
 
 double adcConvert() {
-
      /*
         Round 3 Notes
         ADC range is 0-3.3V, 12 bit.
@@ -23,24 +32,38 @@ double adcConvert() {
         Given that the voltage does not exceed the lower or upper bounds
         1930 -210
     */
-    double conversion=0;
-    double reading = adc_read(); // read ADC value
+    // double conversion=0;
+    // double reading = adc_read(); // read ADC value
    
-    if (reading>1930){    // lowest seen is 210 for 25kg; highest vlaue seen is 1916
-        printf("Hit maximum allocated weight");
-        conversion = 0.0;
-    }
-    else if(reading<210){
-        printf("Hit minimum allocated weight");
-        conversion = 25.0;
-    }
+    // if (reading>1930){    // lowest seen is 210 for 25kg; highest vlaue seen is 1916
+    //     printf("Hit maximum allocated weight");
+    //     conversion = 0.0;
+    // }
+    // else if(reading<210){
+    //     printf("Hit minimum allocated weight");
+    //     conversion = 25.0;
+    // }
 
 
-    else{
-        //conversion = abs(reading - 2048) / 70.0f;     // old values
-        conversion = abs(reading - 1930) / 68.8f;
-    }
-    printf("adc reading check: %f\n", reading); //PRINTER
+    // else{
+    //     conversion = abs(reading - 2048) / 70.0f;     // old values
+    //     // conversion = abs(reading - 1930) / 68.8f;
+    // }
 
-    return conversion;
+
+    uint32_t adc_raw;
+    double converted_adc;
+    double output_result;
+
+    adc_raw = adc_read();   // read the raw voltage from ADC
+    converted_adc = adc_raw * ADC_CONVERT;
+    printf("%.2f\n", adc_raw * ADC_CONVERT);    // print to terminal
+
+
+    // conversion = abs(reading - 2048) / 70.0f; 
+    // printf("adc reading check: %f\n", reading); //PRINTER
+    output_result = voltage_to_weight(converted_adc);
+
+
+    return output_result;
 }
