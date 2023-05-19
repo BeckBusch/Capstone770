@@ -8,7 +8,15 @@ async function createWeight(weight) {
 }
 
 async function retrieveWeightList() {
-    return await Weight.find();
+    const current = await Weight.find()
+    // console.log("Weight: ", current);
+    return await current;
+}
+
+async function retrieveWeightDateList() {
+    const current = await Weight.find({}, { _id:0, createdAt: 1})
+    // console.log("Weight Date: ", current);
+    return await current;
 }
 
 async function retrieveWeight(id) {
@@ -28,6 +36,7 @@ export {
     createWeight,
     retrieveWeight,
     retrieveWeightList,
+    retrieveWeightDateList,
     updateWeight,
     deleteWeight
 }

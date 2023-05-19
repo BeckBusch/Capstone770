@@ -138,6 +138,18 @@ function AppContextProvider({ children }) {
         return dogSearchResponse.data;
     }
 
+    async function getWeights() {
+        const weightResponse = await axios.get(`${API_BASE_URL}/api/weights`);
+        refreshWeights();
+        return weightResponse.data;
+    }
+
+    async function getWeightDate() {
+        const weightResponse = await axios.get(`${API_BASE_URL}/api/weights/date`);
+        refreshWeights();
+        return weightResponse.data;
+    }
+
     const [loggedIn, setLoggedIn] = useState(false)
     const [userName, setUserName] = useState("")
     // const [userID, setUserID] = useState("")
@@ -185,7 +197,9 @@ function AppContextProvider({ children }) {
         refreshWeights,
         addWeight,
         scaleID,
-        setscaleID
+        setscaleID,
+        getWeights,
+        getWeightDate
     }
 
     // Wraps the given child components in a Provider for the above context.

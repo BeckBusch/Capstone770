@@ -7,6 +7,7 @@ import {
     createWeight,
     retrieveWeight,
     retrieveWeightList,
+    retrieveWeightDateList,
     updateWeight,
     deleteWeight
 } from '../../service/weights-dao'
@@ -42,6 +43,11 @@ router.get('/', async (req, res) => {
     // When introducing the artificial delay, also comment this line. It's an error to send
     // two responses.
     res.json(await retrieveWeightList());
+});
+
+// Retrieve date weights
+router.get('/date', async (req, res) => {
+    res.json(await retrieveWeightDateList());
 });
 
 // Retrieve single weight
