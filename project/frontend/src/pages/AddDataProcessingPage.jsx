@@ -1,4 +1,5 @@
 import "../css/AddDataProcessingPage.css";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
@@ -9,6 +10,13 @@ import DogFootprintThree from "../assets/dog-footprint-image.png";
 
 
 function AddDataProcessingPage() {  
+    const {
+        scaleID,
+        setscaleID
+    } = useContext(AppContext);
+
+    console.log("ADD DATA PROCESSING PAGE: scaleID = ", scaleID);
+    
     return (
       <div className="add-dog-processing-page">
           <NavBar/>
