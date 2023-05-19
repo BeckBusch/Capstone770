@@ -7,8 +7,8 @@ function ChatPreviewCard(props) {
   return (
     <div className="chat-preview-card">
       <div className="chat-preview-details">
-        <h1 className="chat-title">{props.title}</h1>
-        <p className="chat-message">{props.message}</p>
+        <h1 className="chat-preview-title">{props.title}</h1>
+        <p className="chat-preview-message">{props.message}</p>
       </div>
     </div>
   );

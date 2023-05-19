@@ -7,20 +7,13 @@
     margin-bottom: 10px;
 }
 
-.user-chat-image {
-    width: fit-content;
-    display: inline-block;
-    padding-right: 30px;
-    vertical-align: middle;
-}
-
 .chat-preview-details {
     padding: 15px 20px;
     display: inline-block;
     vertical-align: middle;
 }
 
-.chat-title {
+.chat-preview-title {
     width: 100%;
     height: 20px;
     margin: 0;
@@ -28,7 +21,7 @@
     padding-bottom: 5px;
 }
 
-.chat-message {
+.chat-preview-message {
     width: 100%;
     height: fit-content;
     max-height: 45px;

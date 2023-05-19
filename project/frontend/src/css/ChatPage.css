@@ -25,24 +25,6 @@
 
 }
 
-.chat-panel-background {
-    width: 75%;
-    height: fit-content;
-    background-color: white;
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.chat-panel {
-    width: 100%;
-    height: fit-content;
-    background-color: #BDD3E8;
-    border-radius: 20px;
-    padding: 30px 50px;
-}
-
 .chat-header-div {
     padding: 10px 0 20px 20px;
 }
@@ -197,3 +179,15 @@
     width: 50%;
     flex: left;
 } */
+
+
+.chat-panel-background {
+    width: 75%;
+    height: fit-content;
+    background-color: white;
+    padding: 30px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

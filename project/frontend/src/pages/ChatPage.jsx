@@ -2,6 +2,7 @@ import "../css/ChatPage.css";
 import NavBar from "../components/NavBar";
 import ChatPreviewCard from "../components/ChatPreviewCard";
 import ChatBlackIcon from "../assets/chat-black-icon.png";
+import ChatPanel from "../components/ChatPanel";
 
 function ChatPage() {
   return (
@@ -32,7 +33,9 @@ function ChatPage() {
         </div>
 
         <div className="chat-panel-background">
-          <div className="chat-panel">Question</div>
+        <ChatPanel title="Chat Panel" user="Username" message="this is where the message content goes."/>
+        <ChatPanel title="Chat Panel" user="Username" message="this is where the message content goes. this is just to see how a long message would appear on the panel.
+        abcdefg hijklmnop qrs tuv wx yz abcdefg hijk lmfddfbnijd eariughruitgnfri fresiutbun aerjrjr rjhrhr airbgierbgierbe rhrh rrr wirghjabgibra"/>
         </div>
       </div>
     </div>
