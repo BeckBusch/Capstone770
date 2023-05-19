@@ -8,7 +8,7 @@ import StartIcon from "../assets/start-icon.png";
 import MyAccountIcon from "../assets/my-account-icon.png";
 
 function DogDetailPage() {
-  const { dogs, dogID, addWeight } = useContext(AppContext);
+  const { dogs, dogID, addWeight, userRole, userName } = useContext(AppContext);
 
   // const [dogBreed, setDogBreed] = useState("");
 
@@ -30,10 +30,10 @@ function DogDetailPage() {
     }
   }
 
-  // async function handleAddWeight() {
-  //     await addWeight(2.5, 2, "staffName", "staffRole");
-  //     console.log("addWeight")
-  // }
+  async function handleAddWeight() {
+      // await addWeight(2.5, 2, "staffName", "staffRole");
+      console.log("addWeight")
+  }
 
   return (
     <div className="dog-detail-page">
