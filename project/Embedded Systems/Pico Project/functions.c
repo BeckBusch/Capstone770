@@ -13,6 +13,19 @@ double weight_mean_average = 0.0;
 double weight_value_array[25] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,};     // used to store weight readings
 int array_full_flag = 0;                            // set to 1 once array full
 double tare_offset = 0.0;
+bool tare_status = false;
+
+bool get_tare_status() {
+    return tare_status;
+}
+
+void update_tare(bool status) {
+    tare_status = status;
+}
+
+void init_tare() {
+    tare_status = false;
+}
 
 // getter for the weight mean average value
 double get_weight_mean_average() {

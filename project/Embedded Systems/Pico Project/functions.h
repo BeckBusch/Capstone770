@@ -15,5 +15,9 @@ double get_weight_mean_average();
 void update_tare_offset();
 double get_tare_offset();
 
+bool get_tare_status();
+void update_tare(bool status);
+void init_tare();
+
 #endif /* FUNCTIONS_H */
 /*** end of file ***/

@@ -28,19 +28,6 @@ void init_reg() {
     gpio_put(REGEN_PIN, 1); 
 }
 
-bool tare_status = false;
-
-bool get_tare_status() {
-    return tare_status;
-}
-
-void update_tare(bool status) {
-    tare_status = status;
-}
-
-void init_tare() {
-    tare_status = false;
-}
 
 // ISR for tare button GP20 -> tare switch
 void tare_ISR(unsigned int gpio, uint32_t events) {
