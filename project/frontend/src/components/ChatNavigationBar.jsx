@@ -21,7 +21,7 @@ function ChatNavigationBar() {
     setCurrentChatID(id)
     navigate(`/chat/:${id}`);
   }
-
+  
   return (
     <div className="chat-navigation-bar">
         <div className="chat-header-div">
@@ -45,7 +45,7 @@ function ChatNavigationBar() {
         </div>
 
         <div className="scroll">
-        {chats.map(function (chat, i) {
+        {chats.slice(0).reverse().map(function (chat, i) {
           return (
             <button
               className="chat-preview-btn"
