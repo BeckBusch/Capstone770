@@ -17,8 +17,17 @@ function ChatNavigationBar() {
   }
 
   function handlePreviewClick(id, i) {
+    resetPreviewCards();
+    document.getElementById(`preview${i}`).style.backgroundColor = "#BDD3E8";
     setCurrentChatID(i);
     navigate(`/chat/${id}`);
+  }
+
+  function resetPreviewCards() {
+    for (let i = 0; i < chats.length; i++) {
+      document.getElementsByClassName("chat-preview-btn")[i].style =
+        "chat-preview-btn";
+    }
   }
 
   return (
@@ -48,11 +57,12 @@ function ChatNavigationBar() {
               <button
                 className="chat-preview-btn"
                 onClick={() => handlePreviewClick(chat["_id"], i)}
+                id={`preview${i}`}
                 key={i}
               >
                 <ChatPreviewCard
                   key={i}
-                  className="dog-card"
+                  className="chat-preview-btn"
                   summary={chat["summary"]}
                   discussion={chat["discussion"]}
                   user={chat["user"]}
