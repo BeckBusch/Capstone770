@@ -24,8 +24,8 @@ async function updateWeight(weight) {
   return dbWeight !== undefined;
 }
 
-async function deleteWeight(id) {
-  await Weight.deleteOne({ _id: id });
+async function deleteWeight(scaleID) {
+  await Weight.deleteMany({ scaleId: scaleID });
 }
 
 export {

@@ -61,9 +61,9 @@ router.put("/:id", async (req, res) => {
 });
 
 // Delete weight
-router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
-  await deleteWeight(id);
+router.delete("/:scaleID", async (req, res) => {
+  const { scaleID } = req.params;
+  await deleteWeight(scaleID);
   res.sendStatus(HTTP_NO_CONTENT);
 });
 

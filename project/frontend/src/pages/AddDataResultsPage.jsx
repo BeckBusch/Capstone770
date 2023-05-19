@@ -1,6 +1,6 @@
 import "../css/AddDataResultsPage.css";
-import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
 import NavBar from "../components/NavBar";
@@ -11,13 +11,20 @@ function AddDataResultsPage() {
         scaleID,
         weights,
         getWeights,
+        dogs,
+        updateDog,
+        getAllDogs,
+        dogID,
+        removeWeight,
     } = useContext(AppContext); 
+
+    const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
+
+    var select = document.createElement("input");
 
     const renderManageUserBoard = () => { 
         const table = document.createElement('table');
-
-        // var x = document.createElement("INPUT");
-        // x.setAttribute("type", "radio");
 
         const allScaleIDValues = new Array();
         allScaleIDValues.push(["", "Weight (kg)", "Date", "Time"]);
@@ -28,12 +35,7 @@ function AddDataResultsPage() {
                 var date = d.toLocaleDateString('en-GB');
                 var time = d.toLocaleString('en-GB', { hour: 'numeric', minute: 'numeric', hour12: true })
 
-                // var x = document.createElement("INPUT");
-                // x.setAttribute("type", "radio");
-                // const select = document.createElement("input");
-                // select.type("radio");
-
-                allScaleIDValues.push(["", weights[i]["weight"], date, time]);
+                allScaleIDValues.push(["", weights[i]["weight"], date, time, weights[i]["_id"]]);
             }
         } 
         console.log("allscaleidvalues: ", allScaleIDValues);
@@ -57,9 +59,10 @@ function AddDataResultsPage() {
                 const cell = row.insertCell(-1);
                 console.log("cell: ", allScaleIDValues[i][j])
                 if (j == 0) {
-                    let select = document.createElement("input")
+                    select = document.createElement("input")
                     select.setAttribute("type", "radio");
                     select.setAttribute("name", "radio");
+                    select.setAttribute("value", allScaleIDValues[i][columnCount]);
                     
                     cell.append(select);
                 } else {
@@ -78,6 +81,64 @@ function AddDataResultsPage() {
         renderManageUserBoardDiv.appendChild(table);
         }
     }, []);    
+
+
+    async function handleSelectedWeight() {
+        const radioButtons = document.querySelectorAll('input[name="radio"]');
+        let selectedValue;
+        radioButtons.forEach((radioButton) => {
+            if (radioButton.checked) {
+            selectedValue = radioButton.value;
+            }
+        });
+        
+        if (selectedValue) {
+            const newWeight = getNewWeight(selectedValue);
+            const previousCurrentWeight = getPreviousCurrentWeight();
+            previousCurrentWeight.push(newWeight)
+            const previousWeight = getPreviousWeight()
+            previousWeight.push(newWeight)
+            console.log("getnewweight: ", newWeight)
+            console.log("getprevouscurrentweight: ", previousCurrentWeight)
+            console.log("previouswegiht: ", previousWeight)
+            updateDog(dogID, previousCurrentWeight, previousWeight)
+            removeWeight(scaleID);
+            // console.log("weights: ", weights);
+            // const freshWeights = await getWeights()
+            // console.log("fresh weights: ", freshWeights);
+
+            navigate("/dog/:id");
+        } else {
+            setErrorMessage("No weight selected.");
+        }  
+    }
+
+    function getNewWeight(selectedValue) {
+        for (let i = 0; i < weights.length; i++) {
+            if (weights[i]["_id"] == selectedValue) {                
+                const newWeights = new Array(weights[i]["weight"], weights[i]["createdAt"], weights[i]["staff"])
+                return newWeights;
+            }
+        }
+    }
+
+    function getPreviousWeight() {
+        for (let i = 0; i < dogs.length; i++) {
+            if (dogs[i]["_id"] == dogID) {
+                const previousWeights = dogs[i]["prevWeights"]
+                return previousWeights
+            }
+        }
+    }
+
+    function getPreviousCurrentWeight() {
+        for (let i = 0; i < dogs.length; i++) {
+            if (dogs[i]["_id"] == dogID) {
+                const previousWeights = dogs[i]["currentWeight"]
+                return previousWeights
+            }
+        }
+    }
     
 
     return (
@@ -89,50 +150,22 @@ function AddDataResultsPage() {
           </div>
           <div className="results-container">
               <div>
-                  {/* <table className="resultsTable" id="resultsTable">
-                      <thead>
-                          <tr>
-                              <th></th>
-                              <th>Weight (kg)</th>
-                              <th>Date</th>
-                              <th>Time</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td className="radio-button"><input type="radio" name="radio" value="radio1" required/></td>
-                              <td>6.25</td>
-                              <td>01/03/2023</td>
-                              <td>10:49 AM</td>
-                          </tr>
-                          <tr>
-                              <td className="radio-button"><input type="radio" name="radio" value="radio2" required/></td>
-                              <td>6.03</td>
-                              <td>02/03/2023</td>
-                              <td>3:10 PM</td>        
-                          </tr>
-                          <tr>
-                              <td className="radio-button"><input type="radio" name="radio" value="radio3" required/></td>
-                              <td>8.08</td>
-                              <td>03/03/2023</td>
-                              <td>10:30 AM</td>        
-                          </tr>
-                      </tbody>
-                  </table> */}
-                <table className="renderManageUserBoard">
-                {/* <tbody><tr><td><input id="weight-select" type="radio" name="radio" value="radio1" required/></td></tr>
-                <tr><td><input id="weight-select" type="radio" name="radio" value="radio1" required/></td></tr></tbody> */}
-                </table>
-
+                <table className="renderManageUserBoard"></table>
               </div>
               <div className="button-container">
+                {/* Error Message */}
+                <div className="add-data-results-error-msg">
+                    <p> {errorMessage} </p>
+                </div>
                   <div className="buttons">
                       <Link to="/dog/:id/add-data/processing">
                           <button type="submit" id="reweighBtn" className="reweigh-btn">Reweigh</button>
                       </Link>
-                      <Link to="/dog/:id">
-                          <button type="submit" id="selectBtn" className="select-btn">Select</button>
-                      </Link>
+                      {/* <Link to="/dog/:id"> */}
+                          <button type="submit" id="selectBtn" className="select-btn"
+                          onClick={() => handleSelectedWeight()}
+                          >Select</button>
+                      {/* </Link> */}
                   </div>
               </div>
           </div>

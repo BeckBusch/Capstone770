@@ -160,6 +160,20 @@ function AppContextProvider({ children }) {
         return dogSearchResponse.data;
     }
 
+    async function updateDog(id, newWeight, previousWeight) {
+        const dogToUpdate = {
+            currentWeight: newWeight, 
+            prevWeights: previousWeight,
+        }
+
+        const dogResponse = await axios.put(
+            `${API_BASE_URL}/api/dogs/${id}`,
+            dogToUpdate
+        );
+        refreshDogs();
+        return dogResponse.data;
+    }
+
     async function getWeights() {
         const weightResponse = await axios.get(`${API_BASE_URL}/api/weights`);
         refreshWeights();
@@ -168,6 +182,14 @@ function AppContextProvider({ children }) {
 
     async function getWeightDate() {
         const weightResponse = await axios.get(`${API_BASE_URL}/api/weights/date`);
+        refreshWeights();
+        return weightResponse.data;
+    }
+
+    async function removeWeight(scaleID) {
+        const weightResponse = await axios.delete(
+            `${API_BASE_URL}/api/weights/${scaleID}`
+        );
         refreshWeights();
         return weightResponse.data;
     }
@@ -191,8 +213,6 @@ function AppContextProvider({ children }) {
         return chatResponse.data;
       }
     
-    
-
     const [loggedIn, setLoggedIn] = useState(false)
     const [userName, setUserName] = useState("")
     const [userRole, setUserRole] = useState("")
@@ -211,6 +231,7 @@ function AppContextProvider({ children }) {
         sortDogAToZ,
         sortDogZToA,
         searchDog,
+        updateDog,
 
         users,
         usersLoading,
@@ -227,6 +248,7 @@ function AppContextProvider({ children }) {
         addWeight,
         getWeights,
         getWeightDate,
+        removeWeight,
         scaleID,
         setscaleID,
       
