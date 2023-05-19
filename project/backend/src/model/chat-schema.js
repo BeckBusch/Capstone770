@@ -10,8 +10,8 @@ const replySchema = new Schema({
 });
 
 const chatSchema = new Schema({
-    title: { type: String},
-    message: { type: String},
+    summary: { type: String},
+    discussion: { type: String},
     user: { type: String},
 }, {
     timestamps: {}
