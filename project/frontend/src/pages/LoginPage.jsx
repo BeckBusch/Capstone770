@@ -29,7 +29,7 @@ function LoginPage() {
       })
       .catch((error) => {
         console.log("Error: " + error);
-        setErrorMessage(error.message);
+        setErrorMessage("Invalid username or password. Please try again.");
       });
   };
 
