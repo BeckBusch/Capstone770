@@ -1,14 +1,8 @@
 .reply-panel {
-    width: 100%;
+    width: calc(100% );
+    margin-right: 10px;
+    height: fit-content;
 }
-
-.reply-panel-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: start;
-}
-
 .reply-panel-right {
     display: flex;
     flex-direction: column;
@@ -20,20 +14,42 @@
     width: fit-content;
     height: fit-content;
     background-color: #DBDBDB;
+    border: 1px solid #DBDBDB;
     border-radius: 20px;
-    padding: 0 10px;
-    margin-bottom: 10px;
+    padding: 0;
+    margin: 10px 0;
 }
 
 .reply-panel-card {
     width: 100%;
     height: fit-content;
-    max-height: 100px;
     border-radius: 20px;
+    text-align: right;
 }
 
 .reply-panel-details {
     padding: 10px 20px;
     display: inline-block;
     vertical-align: middle;
+}
+
+.reply-user-info {
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+.reply-user {
+    line-height: 1;
+    padding-top: 5px;
+    height: fit-content;
+}
+
+.reply-date {
+    font-size: 14px;
+}
+
+.reply-message {
+    line-height: 1.2;
+    height: fit-content;
+    padding-bottom: 5px;
 }

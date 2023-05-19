@@ -6,7 +6,7 @@ function ReplyPanel() {
   const { chats, currentChatID } = useContext(AppContext);
 
   const chatsReverse = chats.slice(0).reverse();
-  const replies = chatsReverse[currentChatID]["replies"];
+  const replies = chatsReverse[currentChatID]["replies"].slice(0).reverse();
 
   return (
     <div className="reply-panel">
@@ -16,7 +16,13 @@ function ReplyPanel() {
             <div className="reply">
               <div className="reply-panel-card">
                 <div className="reply-panel-details">
-                  <p>{reply}</p>
+                  <div className="reply-user-info">
+                    <p className="reply-user">
+                      <b>{reply[1]}</b> <i>&#40;{reply[2]}</i>&#41;
+                    </p>
+                    <p className="reply-date">{chatsReverse[currentChatID]["updatedAt"]}</p>
+                  </div>
+                  <p className="reply-message">{reply[0]}</p>
                 </div>
               </div>
             </div>

@@ -6,7 +6,7 @@ import AuthDetails from "../AuthDetails";
 function AddReplyPanel() {
   AuthDetails();
 
-  const { chats, currentChatID, updateReplies } = useContext(AppContext);
+  const { chats, currentChatID, updateReplies, userName, userRole } = useContext(AppContext);
 
   const [reply, setReply] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -21,7 +21,7 @@ function AddReplyPanel() {
 
   async function handleUpdateReplies() {
     const replies = chats.slice(0).reverse()[currentChatID]["replies"];
-    replies.push(reply);
+    replies.push([[reply], userName, userRole]);
     await updateReplies(
       chats.slice(0).reverse()[currentChatID]["_id"],
       replies

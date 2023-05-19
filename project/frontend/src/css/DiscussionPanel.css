@@ -2,7 +2,6 @@
     height: 100%;
 }
 
-
 .chat-panel-question {
     width: calc(100% - 30px);
     height: fit-content;
@@ -90,5 +89,5 @@
     margin: 0;
 
     display: flex;
-    justify-content: right;
+    justify-content: center;
 }
