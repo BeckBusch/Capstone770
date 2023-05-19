@@ -1,6 +1,6 @@
 import "../css/AddDataProcessingPage.css";
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
 import NavBar from "../components/NavBar";
@@ -12,10 +12,36 @@ import DogFootprintThree from "../assets/dog-footprint-image.png";
 function AddDataProcessingPage() {  
     const {
         scaleID,
-        setscaleID
+        setscaleID,
+        weights,
+        getWeights,
+        getWeightDate,
+        addWeight
     } = useContext(AppContext);
 
-    console.log("ADD DATA PROCESSING PAGE: scaleID = ", scaleID);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        setInterval(function(){    
+            var currentDateTime = new Date().toISOString;    
+            checkUpdatedWeight(currentDateTime);
+        }, 10000);
+    }, []);
+    
+
+    async function checkUpdatedWeight(currentDateTime) {
+        // await addWeight(4.06, 5, "Amy", "Volunteer");
+
+        const updatedWeights = await getWeightDate();
+        for (let i=0; i<updatedWeights.length; i++) {
+            var updatedDateTime = updatedWeights[i]["createdAt"];
+
+            if (currentDateTime < updatedDateTime) {
+                navigate("/dog/:id/add-data/confirm");
+            }
+        }
+
+      }
     
     return (
       <div className="add-dog-processing-page">

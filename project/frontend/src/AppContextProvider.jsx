@@ -159,6 +159,18 @@ function AppContextProvider({ children }) {
         return dogSearchResponse.data;
     }
 
+    async function getWeights() {
+        const weightResponse = await axios.get(`${API_BASE_URL}/api/weights`);
+        refreshWeights();
+        return weightResponse.data;
+    }
+
+    async function getWeightDate() {
+        const weightResponse = await axios.get(`${API_BASE_URL}/api/weights/date`);
+        refreshWeights();
+        return weightResponse.data;
+    }
+
     const [loggedIn, setLoggedIn] = useState(false)
     const [userName, setUserName] = useState("")
     // const [userID, setUserID] = useState("")
@@ -196,9 +208,11 @@ function AppContextProvider({ children }) {
         weights,
         weightsLoading,
         addWeight,
+        getWeights,
+        getWeightDate
         scaleID,
         setscaleID,
-
+      
         chats,
         chatsLoading,
         addChat

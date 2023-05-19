@@ -66,9 +66,9 @@ function AddDataPage() {
                                     <option value="none" disabled hidden>
                                     Select scale ID
                                     </option>
-                                    <option value="A-1">A-1</option>
-                                    <option value="A-2">A-2</option>
-                                    <option value="A-3">A-3</option>
+                                    <option value={1}>1</option>
+                                    <option value={2}>2</option>
+                                    <option value={3}>3</option>
                                 </select>
                             </div>
                             {/* Error Message */}

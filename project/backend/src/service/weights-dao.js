@@ -10,6 +10,11 @@ async function retrieveWeightList() {
   return await Weight.find();
 }
 
+async function retrieveWeightDateList() {
+    const current = await Weight.find({}, { _id:0, createdAt: 1})
+    return await current;
+}
+
 async function retrieveWeight(id) {
   return await Weight.findById(id);
 }
@@ -24,9 +29,10 @@ async function deleteWeight(id) {
 }
 
 export {
-  createWeight,
-  retrieveWeight,
-  retrieveWeightList,
-  updateWeight,
-  deleteWeight,
-};
+    createWeight,
+    retrieveWeight,
+    retrieveWeightList,
+    retrieveWeightDateList,
+    updateWeight,
+    deleteWeight
+}

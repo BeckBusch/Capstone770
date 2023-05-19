@@ -4,12 +4,14 @@
 
 import express from "express";
 import {
-  createWeight,
-  retrieveWeight,
-  retrieveWeightList,
-  updateWeight,
-  deleteWeight,
-} from "../../service/weights-dao";
+    createWeight,
+    retrieveWeight,
+    retrieveWeightList,
+    retrieveWeightDateList,
+    updateWeight,
+    deleteWeight
+} from '../../service/weights-dao'
+
 
 const HTTP_CREATED = 201;
 const HTTP_NOT_FOUND = 404;
@@ -33,6 +35,11 @@ router.post("/", async (req, res) => {
 // Retrieve all weights
 router.get("/", async (req, res) => {
   res.json(await retrieveWeightList());
+});
+
+// Retrieve date weights
+router.get('/date', async (req, res) => {
+    res.json(await retrieveWeightDateList());
 });
 
 // Retrieve single weight
