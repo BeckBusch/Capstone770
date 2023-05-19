@@ -36,6 +36,18 @@
     font-size: 14px;
     /* font-weight: lighter; */
     font-style: italic;
+    padding: 10px 0 0 0;
+    line-height: 1;
+    /* background-color: beige; */
+}
+
+.chat-panel-date {
+    width: 100%;
+    height: fit-content;
+    margin: 0;
+    font-size: 14px;
+    /* font-weight: lighter; */
+    /* font-style: italic; */
     padding: 10px 0 20px 0;
     line-height: 1;
     /* background-color: beige; */

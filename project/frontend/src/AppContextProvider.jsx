@@ -7,7 +7,8 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '';
 const AppContext = React.createContext({
     dogs: [],
     users: [],
-    weights: []
+    weights: [],
+    chats: []
 });
 
 function AppContextProvider({ children }) {
@@ -134,7 +135,6 @@ function AppContextProvider({ children }) {
         return chatResponse.data;
     }
 
-
     async function getAllDogs() {
         const dogResponse = await axios.get(`${API_BASE_URL}/api/dogs`);
         refreshDogs();
@@ -185,17 +185,19 @@ function AppContextProvider({ children }) {
         return weightResponse.data;
     }
 
+
+    async function getCurrentChatData(id) {        
+        const chatResponse = await axios.get(`${API_BASE_URL}/api/chats/${id}`);
+        refreshChats();
+        return chatResponse.data;
+    }
+
     const [loggedIn, setLoggedIn] = useState(false)
     const [userName, setUserName] = useState("")
-    // const [userID, setUserID] = useState("")
-    // const [userEmail, setUserEmail] = useState("")
-    // const [userPassword, setUserPassword] = useState("")
     const [userRole, setUserRole] = useState("")
-    // const [userJoined, setUserJoined] = useState("")
-    // const [userImage, setUserImage] = useState("")
     const [dogID, setDogID] = useState("")
     const [scaleID, setscaleID] = useState("none")
-
+    const [currentChatID, setCurrentChatID] = useState(-1)
 
     // The context value that will be supplied to any descendants of this component.
     const context = {
@@ -230,7 +232,10 @@ function AppContextProvider({ children }) {
       
         chats,
         chatsLoading,
-        addChat
+        addChat,
+        currentChatID,
+        setCurrentChatID,
+        getCurrentChatData,
     }
 
     // Wraps the given child components in a Provider for the above context.
