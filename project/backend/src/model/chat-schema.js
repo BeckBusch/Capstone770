@@ -10,9 +10,9 @@ const replySchema = new Schema({
 });
 
 const chatSchema = new Schema({
+    title: { type: String},
     message: { type: String},
-    postedBy: { type: Number},
-    currentWeight: { type: Array, items: [{ type: replySchema}], additionalItems: true },
+    user: { type: String},
 }, {
     timestamps: {}
 });
