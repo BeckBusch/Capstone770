@@ -209,7 +209,7 @@ function AppContextProvider({ children }) {
         weightsLoading,
         addWeight,
         getWeights,
-        getWeightDate
+        getWeightDate,
         scaleID,
         setscaleID,
       
