@@ -2,6 +2,7 @@
     height: 100%;
 }
 
+
 .chat-panel-question {
     width: calc(100% - 30px);
     height: fit-content;
@@ -79,4 +80,15 @@
     color: #3479C0;
     border: #3479C0 1px solid;
     background-color: #ffffff;
+}
+
+.scroll-replies {
+    height: 40vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    margin: 0;
+
+    display: flex;
+    justify-content: right;
 }

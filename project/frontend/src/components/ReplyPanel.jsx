@@ -1,5 +1,5 @@
 import "../css/ReplyPanel.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../AppContextProvider";
 
 function ReplyPanel() {
@@ -9,14 +9,15 @@ function ReplyPanel() {
   const replies = chatsReverse[currentChatID]["replies"];
 
   return (
-    <div>
+    <div className="reply-panel">
       {replies.map(function (reply, i) {
-        console.log(reply);
         return (
-          <div className="reply-panel" key={i}>
-            <div className="reply-panel-card" >
-              <div className="reply-panel-details">
-                <p>{reply}</p>
+          <div className="reply-panel-right" key={i}>
+            <div className="reply">
+              <div className="reply-panel-card">
+                <div className="reply-panel-details">
+                  <p>{reply}</p>
+                </div>
               </div>
             </div>
           </div>
