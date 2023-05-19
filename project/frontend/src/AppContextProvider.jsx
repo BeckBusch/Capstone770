@@ -147,6 +147,7 @@ function AppContextProvider({ children }) {
     // const [userJoined, setUserJoined] = useState("")
     // const [userImage, setUserImage] = useState("")
     const [dogID, setDogID] = useState("")
+    const [scaleID, setscaleID] = useState("none")
 
 
     // The context value that will be supplied to any descendants of this component.
@@ -182,7 +183,9 @@ function AppContextProvider({ children }) {
         weights,
         weightsLoading,
         refreshWeights,
-        addWeight
+        addWeight,
+        scaleID,
+        setscaleID
     }
 
     // Wraps the given child components in a Provider for the above context.
