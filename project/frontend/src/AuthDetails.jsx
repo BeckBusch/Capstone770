@@ -4,27 +4,6 @@ import { auth } from "./firebase";
 import { AppContext } from "./AppContextProvider";
 
 function AuthDetails() {
-    // const [authUser, setAuthUser] = useState(null);
-
-    // useEffect(() => {
-    //     const listen = onAuthStateChanged(auth, (user) => {
-    //         if (user) {
-    //             setAuthUser(user);
-    //         } else {
-    //             setAuthUser(null);
-    //         }
-    //     });
-
-    //     return () => {
-    //         listen();
-    //     }
-    // }, []);
-
-    // const userSignOut = () => {
-    //     signOut(auth).then(() => {
-    //         console.log('sign out successful')
-    //     }).catch(error => console.log(error))
-    // }
 
     const { users, setUserRole, setUserName, setLoggedIn } = useContext(AppContext)
 

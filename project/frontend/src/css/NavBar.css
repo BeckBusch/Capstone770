@@ -148,7 +148,7 @@
 .dropdown {
     position: relative;
     display: inline-block;
-    width: fit-content;
+    width: 100%;
 }
 
 /* Dropdown Content (Hidden by Default) */
