@@ -6,7 +6,7 @@ import path from 'path';
 import mongoose from 'mongoose';
 import * as url from 'url';
 import cors from 'cors';
-import { main } from './model/init-db'
+import { main } from './init-db'
 
 // Setup Express
 const app = express();
