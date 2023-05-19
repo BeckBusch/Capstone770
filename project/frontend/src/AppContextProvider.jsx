@@ -162,7 +162,7 @@ function AppContextProvider({ children }) {
     async function updateDog(id, newWeight, previousWeight) {
         const dogToUpdate = {
             currentWeight: newWeight, 
-            prevWeights: previousWeight
+            prevWeights: previousWeight,
         }
 
         const dogResponse = await axios.put(
@@ -185,6 +185,13 @@ function AppContextProvider({ children }) {
         return weightResponse.data;
     }
 
+    async function removeWeight(scaleID) {
+        const weightResponse = await axios.delete(
+            `${API_BASE_URL}/api/weights/${scaleID}`
+        );
+        refreshWeights();
+        return weightResponse.data;
+    }
 
     async function getCurrentChatData(id) {        
         const chatResponse = await axios.get(`${API_BASE_URL}/api/chats/${id}`);
@@ -227,6 +234,7 @@ function AppContextProvider({ children }) {
         addWeight,
         getWeights,
         getWeightDate,
+        removeWeight,
         scaleID,
         setscaleID,
       

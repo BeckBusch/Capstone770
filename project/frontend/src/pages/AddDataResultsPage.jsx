@@ -14,7 +14,8 @@ function AddDataResultsPage() {
         dogs,
         updateDog,
         getAllDogs,
-        dogID
+        dogID,
+        removeWeight,
     } = useContext(AppContext); 
 
     const [errorMessage, setErrorMessage] = useState("");
@@ -93,9 +94,19 @@ function AddDataResultsPage() {
         
         if (selectedValue) {
             const newWeight = getNewWeight(selectedValue);
+            const previousCurrentWeight = getPreviousCurrentWeight();
+            previousCurrentWeight.push(newWeight)
             const previousWeight = getPreviousWeight()
             previousWeight.push(newWeight)
-            updateDog(dogID, newWeight, previousWeight)
+            console.log("getnewweight: ", newWeight)
+            console.log("getprevouscurrentweight: ", previousCurrentWeight)
+            console.log("previouswegiht: ", previousWeight)
+            updateDog(dogID, previousCurrentWeight, previousWeight)
+            removeWeight(scaleID);
+            // console.log("weights: ", weights);
+            // const freshWeights = await getWeights()
+            // console.log("fresh weights: ", freshWeights);
+
             navigate("/dog/:id");
         } else {
             setErrorMessage("No weight selected.");
@@ -104,8 +115,8 @@ function AddDataResultsPage() {
 
     function getNewWeight(selectedValue) {
         for (let i = 0; i < weights.length; i++) {
-            if (weights[i]["_id"] == selectedValue) {
-                const newWeights = [weights[i]["weight"], weights[i]["createdAt"], weights[i]["staffRole"]]
+            if (weights[i]["_id"] == selectedValue) {                
+                const newWeights = new Array(weights[i]["weight"], weights[i]["createdAt"], weights[i]["staff"])
                 return newWeights;
             }
         }
@@ -115,6 +126,15 @@ function AddDataResultsPage() {
         for (let i = 0; i < dogs.length; i++) {
             if (dogs[i]["_id"] == dogID) {
                 const previousWeights = dogs[i]["prevWeights"]
+                return previousWeights
+            }
+        }
+    }
+
+    function getPreviousCurrentWeight() {
+        for (let i = 0; i < dogs.length; i++) {
+            if (dogs[i]["_id"] == dogID) {
+                const previousWeights = dogs[i]["currentWeight"]
                 return previousWeights
             }
         }
