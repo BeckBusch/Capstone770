@@ -180,19 +180,10 @@ function AppContextProvider({ children }) {
 
     const [loggedIn, setLoggedIn] = useState(false)
     const [userName, setUserName] = useState("")
-    // const [userID, setUserID] = useState("")
-    // const [userEmail, setUserEmail] = useState("")
-    // const [userPassword, setUserPassword] = useState("")
     const [userRole, setUserRole] = useState("")
-    // const [userJoined, setUserJoined] = useState("")
-    // const [userImage, setUserImage] = useState("")
     const [dogID, setDogID] = useState("")
     const [scaleID, setscaleID] = useState("none")
-
-    // const [currentChatID, setCurrentChatID] = useState(1)
-    // const [currentChatSummary, setCurrentChatSummary] = useState("")
-    // const [currentChatID, setCurrentChatID] = useState(false)
-
+    const [currentChatID, setCurrentChatID] = useState(-1)
 
     // The context value that will be supplied to any descendants of this component.
     const context = {
@@ -227,8 +218,8 @@ function AppContextProvider({ children }) {
         chats,
         chatsLoading,
         addChat,
-        // currentChatID,
-        // setCurrentChatID,
+        currentChatID,
+        setCurrentChatID,
         getCurrentChatData,
     }
 
