@@ -10,7 +10,10 @@
 #include "pico_c.h"
 
 #define ADC_CHANNEL 0
+#define ADC_RANGE (1 << 12)
+#define ADC_CONVERT (3.3 / (ADC_RANGE - 1))  // convert ADC value to voltage
 
+float voltage_to_weight(double x);
 double adcConvert();
 
 

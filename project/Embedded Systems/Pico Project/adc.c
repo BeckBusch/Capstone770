@@ -8,8 +8,6 @@
  */
 
 #include "adc.h"
-#define ADC_RANGE (1 << 12)
-#define ADC_CONVERT (3.3 / (ADC_RANGE - 1))  // convert ADC value to voltage
 
 float voltage_to_weight(double x) {
     float y = 0.0;
