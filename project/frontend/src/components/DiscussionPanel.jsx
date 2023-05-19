@@ -12,11 +12,9 @@ function DiscussionPanel() {
 
   return currentChatID >= 0 ? (
     <div className="discussion-panel">
-    
       <ChatPanel />
       <ReplyPanel />
       <AddReplyPanel />
-
     </div>
   ) : (
     <AddChatPanel />

@@ -19,16 +19,13 @@ function AddReplyPanel() {
     }
   };
 
-  //  function handleUpdateReplies() {
-    async function handleUpdateReplies() {
-      console.log(chats.slice(0).reverse()[currentChatID]["replies"])
-
-      const replies = chats.slice(0).reverse()[currentChatID]["replies"];
-      replies.push(reply);
-
-      console.log(chats.slice(0).reverse()[currentChatID]["_id"])
-      console.log(chats.slice(0).reverse()[currentChatID]["replies"])
-    await updateReplies(chats.slice(0).reverse()[currentChatID]["_id"], replies);
+  async function handleUpdateReplies() {
+    const replies = chats.slice(0).reverse()[currentChatID]["replies"];
+    replies.push(reply);
+    await updateReplies(
+      chats.slice(0).reverse()[currentChatID]["_id"],
+      replies
+    );
   }
 
   function resetFields() {
