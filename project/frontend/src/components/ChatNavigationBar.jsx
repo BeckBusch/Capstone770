@@ -55,9 +55,9 @@ function ChatNavigationBar() {
               <ChatPreviewCard
                 key={i}
                 className="dog-card"
-                title={chat["title"]}
+                summary={chat["summary"]}
+                discussion={chat["discussion"]}
                 user={chat["user"]}
-                message={chat["message"]}
               />
             </button>
           );
