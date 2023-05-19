@@ -159,6 +159,19 @@ function AppContextProvider({ children }) {
         return dogSearchResponse.data;
     }
 
+    async function updateDog(id, newWeight) {
+        const dogToUpdate = {
+            prevWeights: newWeight
+        }
+
+        const dogResponse = await axios.put(
+            `${API_BASE_URL}/api/dogs/${id}`,
+            dogToUpdate
+        );
+        refreshDogs();
+        return dogResponse.data;
+    }
+
     async function getWeights() {
         const weightResponse = await axios.get(`${API_BASE_URL}/api/weights`);
         refreshWeights();
@@ -194,6 +207,7 @@ function AppContextProvider({ children }) {
         sortDogAToZ,
         sortDogZToA,
         searchDog,
+        updateDog,
 
         users,
         usersLoading,
