@@ -34,6 +34,13 @@ function AppContextProvider({ children }) {
         refresh: refreshWeights
     } = useGet(`${API_BASE_URL}/api/weights`, []);
 
+    // Sets up the app to fetch the chats from a REST API.
+    const {
+        data: chats,
+        isLoading: chatsLoading,
+        refresh: refreshChats
+    } = useGet(`${API_BASE_URL}/api/chats`, []);
+
     /**
      * First, uploads the given image to the server, and retrieves the URL pointing to that image.
      * Then, saves the article itself, and returns the server representation of the article which
@@ -114,6 +121,20 @@ function AppContextProvider({ children }) {
         return weightResponse.data;
     }
 
+    async function addChat(title, message, user) {
+
+        const chatToUpload = {
+            title,
+            message,
+            user
+        };
+
+        const chatResponse = await axios.post(`${API_BASE_URL}/api/chats`, chatToUpload);
+        refreshChats();
+        return chatResponse.data;
+    }
+
+
     async function getAllDogs() {
         const dogResponse = await axios.get(`${API_BASE_URL}/api/dogs`);
         refreshDogs();
@@ -165,41 +186,36 @@ function AppContextProvider({ children }) {
     // The context value that will be supplied to any descendants of this component.
     const context = {
         dogs,
-        users,
         dogsLoading,
-        usersLoading,
+        dogID,
+        setDogID,
         addDog,
-        addUser,
         getAllDogs,
         sortDogAToZ,
         sortDogZToA,
         searchDog,
+
+        users,
+        usersLoading,
+        addUser,
         loggedIn,
         setLoggedIn,
         userName,
         setUserName,
-        // userID,
-        // setUserID,
-        // userEmail,
-        // setUserEmail,
-        // userPassword,
-        // setUserPassword,
         userRole,
         setUserRole,
-        // userJoined,
-        // setUserJoined,
-        // userImage,
-        // setUserImage,
-        dogID,
-        setDogID,
+
         weights,
         weightsLoading,
-        refreshWeights,
         addWeight,
-        scaleID,
-        setscaleID,
         getWeights,
         getWeightDate
+        scaleID,
+        setscaleID,
+      
+        chats,
+        chatsLoading,
+        addChat
     }
 
     // Wraps the given child components in a Provider for the above context.

@@ -32,6 +32,8 @@ function App() {
             element={<AddDataResultsPage />}
           />
           <Route path="/chat" element={<ChatPage />} />
+          <Route path="/chat/:id" element={<ChatPage />} />
+          <Route path="/add-chat" element={<ChatPage />} />
           <Route path="/manage-users" element={<ManageUsersPage />} />
           <Route path="/add-user" element={<AddUserPage />} />
           <Route
