@@ -1,6 +1,10 @@
+.discussion-panel {
+    height: 100%;
+}
+
 .chat-panel-question {
     width: calc(100% - 30px);
-    height: 100%;
+    height: fit-content;
     background-color: #BDD3E8;
     border: 1px solid #BDD3E8;
     border-radius: 20px;
@@ -75,4 +79,15 @@
     color: #3479C0;
     border: #3479C0 1px solid;
     background-color: #ffffff;
+}
+
+.scroll-replies {
+    height: 40vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
 }

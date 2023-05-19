@@ -1,23 +1,15 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { AppContext } from "../AppContextProvider";
 import "../css/AddChatPanel.css";
 import AuthDetails from "../AuthDetails";
 
 function AddChatPanel() {
-
   AuthDetails();
 
-  const {
-    userName,
-    addChat
-  } = useContext(AppContext);
+  const { userName, userRole, addChat } = useContext(AppContext);
 
   const [summary, setSummary] = useState("");
   const [discussion, setDiscussion] = useState("");
-
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (e) => {
@@ -26,12 +18,12 @@ function AddChatPanel() {
       handleAddChat();
       resetFields();
     }
-  }
+  };
 
   async function handleAddChat() {
-    await addChat(summary, discussion, userName);
+    await addChat(summary, discussion, userName, userRole);
   }
-  
+
   function resetFields() {
     setSummary("");
     setDiscussion("");
@@ -85,15 +77,15 @@ function AddChatPanel() {
             onChange={(e) => setDiscussion(e.target.value)}
           />
 
-          <div className="add-user-error-msg text-align-right">
-            <p>{errorMessage}</p>
-          </div>
-
-          {/* Buttons */}
-          <div className="buttons-div">
+          <div className="chat-submit-div">
+            <div className="error-msg-div">
+              <p>{errorMessage}</p>
+            </div>
+            <div className="button-div">
               <button type="submit" id="postChatBtn" className="post-btn">
                 + Post
               </button>
+            </div>
           </div>
         </form>
       </div>

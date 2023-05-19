@@ -12,6 +12,7 @@ function ChatNavigationBar() {
   const navigate = useNavigate();
 
   function handleAddChat() {
+    resetPreviewCards();
     setCurrentChatID(-1);
     navigate("/add-chat");
   }

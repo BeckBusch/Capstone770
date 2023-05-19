@@ -52,6 +52,24 @@
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
+.chat-submit-div {
+    display: flex;
+}
+
+.error-msg-div {
+    width: 100%;
+    color: red;
+    font-size: 12px;
+    display: flex;
+    padding-top: 5px;
+}
+
+.button-div {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
 .post-btn {
     margin-top: 10px;
 }
