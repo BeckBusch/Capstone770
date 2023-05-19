@@ -1,11 +1,85 @@
 import "../css/AddDataResultsPage.css";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
 import NavBar from "../components/NavBar";
 import StartBlackIcon from "../assets/start-black-icon.png";
 
-function AddDataResultsPage() {  
+function AddDataResultsPage() { 
+    const {
+        scaleID,
+        weights,
+        getWeights,
+    } = useContext(AppContext); 
+
+    const renderManageUserBoard = () => { 
+        const table = document.createElement('table');
+
+        // var x = document.createElement("INPUT");
+        // x.setAttribute("type", "radio");
+
+        const allScaleIDValues = new Array();
+        allScaleIDValues.push(["", "Weight (kg)", "Date", "Time"]);
+
+        for (let i = 0; i < weights.length; i++) {
+            if (scaleID == weights[i]["scaleId"]) {
+                var d = new Date(weights[i]["createdAt"]);
+                var date = d.toLocaleDateString('en-GB');
+                var time = d.toLocaleString('en-GB', { hour: 'numeric', minute: 'numeric', hour12: true })
+
+                // var x = document.createElement("INPUT");
+                // x.setAttribute("type", "radio");
+                // const select = document.createElement("input");
+                // select.type("radio");
+
+                allScaleIDValues.push(["", weights[i]["weight"], date, time]);
+            }
+        } 
+        console.log("allscaleidvalues: ", allScaleIDValues);
+    
+ 
+        //Get the count of columns.
+        const columnCount = allScaleIDValues[0].length;
+ 
+        //Add the header row.
+        let row = table.insertRow(-1);
+        for (let i = 0; i < columnCount; i++) {
+            const headerCell = document.createElement("TH");
+            headerCell.innerHTML = allScaleIDValues[0][i];
+            row.appendChild(headerCell);
+        }
+ 
+        //Add the data rows.
+        for (let i = 1; i < allScaleIDValues.length; i++) {
+            row = table.insertRow(-1);
+            for (let j = 0; j < columnCount; j++) {
+                const cell = row.insertCell(-1);
+                console.log("cell: ", allScaleIDValues[i][j])
+                if (j == 0) {
+                    let select = document.createElement("input")
+                    select.setAttribute("type", "radio");
+                    select.setAttribute("name", "radio");
+                    
+                    cell.append(select);
+                } else {
+                    cell.innerHTML = allScaleIDValues[i][j];
+                }
+            }
+        }
+
+        return table;
+    };
+
+    useEffect(() => {
+        const renderManageUserBoardDiv = document.querySelector('.renderManageUserBoard');
+        if (renderManageUserBoardDiv.children.length === 0) {
+        const table = renderManageUserBoard();
+        renderManageUserBoardDiv.appendChild(table);
+        }
+    }, []);    
+    
+
     return (
       <div className="add-data-results-page">
           <NavBar/>
@@ -15,7 +89,7 @@ function AddDataResultsPage() {
           </div>
           <div className="results-container">
               <div>
-                  <table className="resultsTable" id="resultsTable">
+                  {/* <table className="resultsTable" id="resultsTable">
                       <thead>
                           <tr>
                               <th></th>
@@ -44,7 +118,12 @@ function AddDataResultsPage() {
                               <td>10:30 AM</td>        
                           </tr>
                       </tbody>
-                  </table>
+                  </table> */}
+                <table className="renderManageUserBoard">
+                {/* <tbody><tr><td><input id="weight-select" type="radio" name="radio" value="radio1" required/></td></tr>
+                <tr><td><input id="weight-select" type="radio" name="radio" value="radio1" required/></td></tr></tbody> */}
+                </table>
+
               </div>
               <div className="button-container">
                   <div className="buttons">

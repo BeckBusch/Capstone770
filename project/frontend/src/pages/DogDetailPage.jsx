@@ -31,7 +31,7 @@ function DogDetailPage() {
   }
 
   async function handleAddWeight() {
-      // await addWeight(2.5, 2, "staffName", "staffRole");
+      await addWeight(5.92, 2, "Ally", "Vet");
       console.log("addWeight")
   }
 
