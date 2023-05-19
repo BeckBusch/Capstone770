@@ -28,12 +28,27 @@ void init_reg() {
     gpio_put(REGEN_PIN, 1); 
 }
 
+bool tare_status = false;
+
+bool get_tare_status() {
+    return tare_status;
+}
+
+void update_tare(bool status) {
+    tare_status = status;
+}
+
+void init_tare() {
+    tare_status = false;
+}
+
 // ISR for tare button GP20 -> tare switch
 void tare_ISR(unsigned int gpio, uint32_t events) {
-    // write code for ISR for tare button press
-    tare_flag = 1;
-    enable_tare_LED();
-    printf("Tare interrupt occurred at PIN %d with event %d\n", gpio, events);
+    if (get_tare_status()) {    // this is so tare led is not enabled at start up
+        enable_tare_LED();
+    }
+    update_tare(true);
+    printf("Tare interrupt occurred at PIN %d with event %d\n", gpio, events);  // print to terminal
 }
 
 void init_button() {
@@ -62,7 +77,7 @@ int main() {
 
     //sprintf(request_body, "{\"%s\":\"%d\"}", "Weight", 15);
     //sendRequest("/Measurements/Dog1.json", request_body);
-
+    update_tare(false);
     sleep_ms(2000);
     
     while(1) {
@@ -72,23 +87,28 @@ int main() {
             // idle state - pico w is waiting for user input
             case idle:
                 printf("========== Current state: idle ==========\n");
+                printf("CURRENT TARE STATUS: %d\n", get_tare_status());
                 sleep_ms(1000);
+                disable_stable_LED();   // incase it is still on
                 // polling until set amount of weight is reached or other inputs
                 while(1) {
                     int check = 0;
 
-                    if (tare_flag == 1) {   // ISR will set tare_flag to 1
+                    // if (tare_flag == 1) {   // ISR will set tare_flag to 1
+                    if (get_tare_status()) {
+                        printf("CURRENT TARE STATUS inside the idle check: %d\n", get_tare_status());
                         FSM = tare_initialized;
                         break;
+                    } else {
+
+                        check = check_weights(save_weight_to_array());           // take 5 readings and save to global array and ensure weight readings are stable
+                        printf("Check value: %d\n", check);
+
+                        if (check == 1) {   // stable reading reached
+                            FSM = receive_data; // once steady amount of data is received
+                            break;
+                        } 
                     }
-
-                    check = check_weights(save_weight_to_array());           // take 5 readings and save to global array and ensure weight readings are stable
-                    printf("Check value: %d\n", check);
-
-                    if (check == 1) {   // stable reading reached
-                        FSM = receive_data; // once steady amount of data is received
-                        break;
-                    } 
 
                 }
                 break;
@@ -97,10 +117,11 @@ int main() {
             // not ready state - power is on but WiFi is disconnected
             case not_ready:
                 printf("========== Current state: not_ready ==========\n");
+                printf("CURRENT TARE STATUS: %d\n", get_tare_status());
                 sleep_ms(1000);
                 enable_power_LED();
-                if (wifi_connect()) {
-                //if (1) {    // for testing only
+                // if (wifi_connect()) {
+                if (1) {    // for testing only
                     // once connection is succesful
                     FSM = ready;
                     break;
@@ -110,6 +131,7 @@ int main() {
             // ready state - both power and WiFi is on
             case ready:
                 printf("========== Current state: ready ==========\n");
+                printf("CURRENT TARE STATUS: %d\n", get_tare_status());
                 sleep_ms(1000);
                 enable_wifi_LED();
                 FSM = idle; // poll for inputs
@@ -119,7 +141,9 @@ int main() {
             // tare_initialized state - tare button press detected, enable tare LED
             case tare_initialized:
                 printf("========== Current state: tare_initialized ==========\n");
+                printf("CURRENT TARE STATUS: %d\n", get_tare_status());
                 sleep_ms(1000);
+                // enable_tare_LED();
                 // update tare weight calculation here
                 check = check_weights(save_weight_to_array());           // take 5 readings and save to global array and ensure weight readings are stable
                 if (check == 1) {   // stable reading reached
@@ -128,7 +152,8 @@ int main() {
 
                 printf("\nTARE OFFSET VALUE = %f\n", get_tare_offset());
                 disable_tare_LED();
-                tare_flag = 0;      // reset tare flag
+                // tare_flag = 0;      // reset tare flag
+                update_tare(false);
                 FSM = receive_data; // go back to receive_data state to keep receiving data
                 break;
 
@@ -136,19 +161,19 @@ int main() {
             // receive data state - wait until set amount of data reached, enable steady weight LED
             case receive_data:
                 printf("========== Current state: receive_data ==========\n");
-                enable_stable_LED();
                 sleep_ms(1000);
                 // add code
                 // weight_mean_average contains the average of the last 5 (stable) readings
                 // add code to prepare data to send to server
 
                 // ensure the data received here is not faulty or zero (i.e. no weight on scale)
-                if (get_weight_mean_average() < 1.0) {
+                if (get_weight_mean_average() < 0.5) {
                     FSM = idle;
                     break;
                 } else {
-                FSM = send_data;
-                break;
+                    enable_stable_LED();
+                    FSM = send_data;
+                    break;
                 }
 
 
@@ -160,8 +185,8 @@ int main() {
 
                 
 
-                sprintf(request_body, "{\"location\":\"Auckland\", \"gender\":\"Male\", \"age\":4, \"breed\":\"breedTest\", \"name\":\"nameTest\"}");
-                sendRequest("unused argument :)", request_body);
+                // sprintf(request_body, "{\"location\":\"Auckland\", \"gender\":\"Male\", \"age\":4, \"breed\":\"breedTest\", \"name\":\"nameTest\"}");
+                // sendRequest("unused argument :)", request_body);
 
                 // add code
                 FSM = idle;
