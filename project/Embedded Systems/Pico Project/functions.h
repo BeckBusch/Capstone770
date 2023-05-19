@@ -8,6 +8,7 @@
 #define FUNCTIONS_H
 
 #include "pico_c.h"
+#define REGEN_PIN 28
 
 int check_weights(double * weight_value_array);
 double *save_weight_to_array();
@@ -18,6 +19,8 @@ double get_tare_offset();
 bool get_tare_status();
 void update_tare(bool status);
 void init_tare();
+
+void init_reg();
 
 #endif /* FUNCTIONS_H */
 /*** end of file ***/

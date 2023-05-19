@@ -15,6 +15,13 @@ int array_full_flag = 0;                            // set to 1 once array full
 double tare_offset = 0.0;
 bool tare_status = false;
 
+// function to enable the RegEn pin
+void init_reg() {
+    gpio_init(REGEN_PIN);
+    gpio_set_dir(REGEN_PIN, GPIO_OUT); 
+    gpio_put(REGEN_PIN, 1); 
+}
+
 bool get_tare_status() {
     return tare_status;
 }

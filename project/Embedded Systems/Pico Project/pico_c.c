@@ -17,17 +17,6 @@ int tare_flag = 0;
 int check = 0;
 enum states {idle, not_ready, ready, tare_initialized, receive_data, send_data};    // initialize states for the FSM
 
-#define REGEN_PIN 28
-
-
-void init_reg();
-
-void init_reg() {
-    gpio_init(REGEN_PIN);
-    gpio_set_dir(REGEN_PIN, GPIO_OUT); 
-    gpio_put(REGEN_PIN, 1); 
-}
-
 
 // ISR for tare button GP20 -> tare switch
 void tare_ISR(unsigned int gpio, uint32_t events) {
@@ -52,7 +41,7 @@ int main() {
     adc_init();
     adc_select_input(ADC_CHANNEL);
     init_button();  // initialize button ISR
-    init_reg();
+    init_reg();     // initialize RegEn pin
 
     if (cyw43_arch_init()) {
         printf("Wi-Fi init failed");
@@ -62,8 +51,6 @@ int main() {
     cyw43_arch_enable_sta_mode();
     enum states FSM = not_ready;    // set intial FSM state
 
-    //sprintf(request_body, "{\"%s\":\"%d\"}", "Weight", 15);
-    //sendRequest("/Measurements/Dog1.json", request_body);
     update_tare(false);
     sleep_ms(2000);
     
@@ -80,18 +67,14 @@ int main() {
                 // polling until set amount of weight is reached or other inputs
                 while(1) {
                     int check = 0;
-
-                    // if (tare_flag == 1) {   // ISR will set tare_flag to 1
                     if (get_tare_status()) {
                         printf("CURRENT TARE STATUS inside the idle check: %d\n", get_tare_status());
                         FSM = tare_initialized;
                         break;
                     } else {
-
-                        check = check_weights(save_weight_to_array());           // take 5 readings and save to global array and ensure weight readings are stable
+                        check = check_weights(save_weight_to_array());           // take 25 readings and save to global array and ensure weight readings are stable
                         printf("Check value: %d\n", check);
-
-                        if (check == 1) {   // stable reading reached
+                        if (check == 1) {       // stable reading reached
                             FSM = receive_data; // once steady amount of data is received
                             break;
                         } 
@@ -132,8 +115,8 @@ int main() {
                 sleep_ms(1000);
                 // enable_tare_LED();
                 // update tare weight calculation here
-                check = check_weights(save_weight_to_array());           // take 5 readings and save to global array and ensure weight readings are stable
-                if (check == 1) {   // stable reading reached
+                check = check_weights(save_weight_to_array());           // take 25 readings and save to global array and ensure weight readings are stable
+                if (check == 1) {           // stable reading reached
                     update_tare_offset();   // update tare_offset value -> tare_offset = weight_mean_average;
                 } 
 
@@ -149,10 +132,6 @@ int main() {
             case receive_data:
                 printf("========== Current state: receive_data ==========\n");
                 sleep_ms(1000);
-                // add code
-                // weight_mean_average contains the average of the last 5 (stable) readings
-                // add code to prepare data to send to server
-
                 // ensure the data received here is not faulty or zero (i.e. no weight on scale)
                 if (get_weight_mean_average() < 0.5) {
                     FSM = idle;
@@ -170,12 +149,9 @@ int main() {
                 sleep_ms(1000);
                 disable_stable_LED();
 
-                
-
                 // sprintf(request_body, "{\"location\":\"Auckland\", \"gender\":\"Male\", \"age\":4, \"breed\":\"breedTest\", \"name\":\"nameTest\"}");
                 // sendRequest("unused argument :)", request_body);
 
-                // add code
                 FSM = idle;
                 break;
         }
