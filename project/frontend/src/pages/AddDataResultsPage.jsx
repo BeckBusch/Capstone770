@@ -1,5 +1,5 @@
 import "../css/AddDataResultsPage.css";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
@@ -11,7 +11,15 @@ function AddDataResultsPage() {
         scaleID,
         weights,
         getWeights,
+        dogs,
+        updateDog,
+        getAllDogs,
+        dogID
     } = useContext(AppContext); 
+
+    const [errorMessage, setErrorMessage] = useState("");
+
+    var select = document.createElement("input");
 
     const renderManageUserBoard = () => { 
         const table = document.createElement('table');
@@ -33,7 +41,7 @@ function AddDataResultsPage() {
                 // const select = document.createElement("input");
                 // select.type("radio");
 
-                allScaleIDValues.push(["", weights[i]["weight"], date, time]);
+                allScaleIDValues.push(["", weights[i]["weight"], date, time, weights[i]["_id"]]);
             }
         } 
         console.log("allscaleidvalues: ", allScaleIDValues);
@@ -57,9 +65,10 @@ function AddDataResultsPage() {
                 const cell = row.insertCell(-1);
                 console.log("cell: ", allScaleIDValues[i][j])
                 if (j == 0) {
-                    let select = document.createElement("input")
+                    select = document.createElement("input")
                     select.setAttribute("type", "radio");
                     select.setAttribute("name", "radio");
+                    select.setAttribute("value", allScaleIDValues[i][columnCount]);
                     
                     cell.append(select);
                 } else {
@@ -78,6 +87,50 @@ function AddDataResultsPage() {
         renderManageUserBoardDiv.appendChild(table);
         }
     }, []);    
+
+
+    async function handleSelectedWeight() {
+        const radioButtons = document.querySelectorAll('input[name="radio"]');
+        let selectedValue;
+        radioButtons.forEach((radioButton) => {
+            if (radioButton.checked) {
+            selectedValue = radioButton.value;
+            }
+        });
+        
+        if (selectedValue) {
+            console.log('Selected value:', selectedValue);
+            // const newDogValues = getDogValues()
+            const newWeight = getWeightValue(selectedValue);
+            const previousDogWeight = getDogValues()
+            previousDogWeight.push(newWeight)
+            console.log("new add previous dog weight: ", previousDogWeight)
+            updateDog(dogID, previousDogWeight)
+        } else {
+            console.log('No radio button selected');
+            setErrorMessage("No weight selected.");
+        }  
+    }
+
+    function getWeightValue(selectedValue) {
+        for (let i = 0; i < weights.length; i++) {
+            if (weights[i]["_id"] == selectedValue) {
+                const test = [weights[i]["weight"], weights[i]["createdAt"], weights[i]["staffRole"]]
+                console.log("test = ", test)
+                return test;
+            }
+        }
+    }
+
+    function getDogValues() {
+        // await getAllDogs()
+        for (let i = 0; i < dogs.length; i++) {
+            if (dogs[i]["_id"] == dogID) {
+                const previousWeights = dogs[i]["prevWeights"]
+                return previousWeights
+            }
+        }
+    }
     
 
     return (
@@ -124,15 +177,22 @@ function AddDataResultsPage() {
                 <tr><td><input id="weight-select" type="radio" name="radio" value="radio1" required/></td></tr></tbody> */}
                 </table>
 
+                
               </div>
               <div className="button-container">
+                {/* Error Message */}
+                <div className="add-data-results-error-msg">
+                    <p> {errorMessage} </p>
+                </div>
                   <div className="buttons">
                       <Link to="/dog/:id/add-data/processing">
                           <button type="submit" id="reweighBtn" className="reweigh-btn">Reweigh</button>
                       </Link>
-                      <Link to="/dog/:id">
-                          <button type="submit" id="selectBtn" className="select-btn">Select</button>
-                      </Link>
+                      {/* <Link to="/dog/:id"> */}
+                          <button type="submit" id="selectBtn" className="select-btn"
+                          onClick={() => handleSelectedWeight()}
+                          >Select</button>
+                      {/* </Link> */}
                   </div>
               </div>
           </div>
