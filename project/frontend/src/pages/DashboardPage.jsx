@@ -16,18 +16,18 @@ function DashboardPage() {
     getAllDogs,
     sortDogAToZ,
     sortDogZToA,
-    searchDog
+    searchDog,
   } = useContext(AppContext);
 
-  const [searchValue, setSearchValue] = useState("");
-  const [currentDog, setcurrentDog] = useState(dogs);
+  const [searchValue, setSearchValue] = useState(false);
+  const [currentDogs, setcurrentDogs] = useState(dogs);
 
-  console.log("currentDog = ", currentDog);
-
-  AuthDetails();
+  window.onload = AuthDetails();
 
   const navigate = useNavigate();
-  function navigateToAddDog() { navigate("/add-dog"); }
+  function navigateToAddDog() {
+    navigate("/add-dog");
+  }
 
   function navigateToDogDetails(str) {
     setDogID(str);
@@ -41,25 +41,35 @@ function DashboardPage() {
     handleSortDogs();
   }
 
-  async function handleSortDogs() { 
-    sort ? setcurrentDog(await sortDogAToZ()) : setcurrentDog(await sortDogZToA()); 
+  async function handleSortDogs() {
+    sort
+      ? setcurrentDogs(await sortDogAToZ())
+      : setcurrentDogs(await sortDogZToA());
   }
-  
-  async function handleGetAllDogs() { await getAllDogs(); }
+
+  async function handleGetAllDogs() {
+    await getAllDogs();
+  }
 
   const handleSearch = (e) => {
-    console.log("inside search");
-    console.log("search value = ", searchValue);
+    setcurrentDogs(dogs);
     e.preventDefault();
     handleSearching();
-  }
+  };
 
   async function handleSearching() {
-    console.log(searchValue);
     const search = await searchDog(searchValue);
-    console.log("searchValue:: ", search);
-    setcurrentDog(search);
-    // console.log("search new dog = ", currentDog);
+    setcurrentDogs(search);
+  }
+
+  function updateSearchValue(value) {
+    console.log(value);
+    if (value == "") {
+      setSearchValue(false);
+    } else {
+      setcurrentDogs(dogs);
+      setSearchValue(value);
+    }
   }
 
   return loggedIn ? (
@@ -80,7 +90,7 @@ function DashboardPage() {
                 id="mySearch"
                 placeholder="Search by name, breed etc."
                 className="dashboard-search"
-                onChange={(e) => setSearchValue(e.target.value)}
+                onChange={(e) => updateSearchValue(e.target.value)}
               />
               <button className="dashboard-search-button"></button>
             </div>
@@ -99,23 +109,43 @@ function DashboardPage() {
       </div>
       {/* Dog Cards */}
       <div className="dog-cards-flex">
-        {currentDog.map(function (dog, i) {
-          return (
-            <button
-              className="dashboard-card-btn"
-              onClick={() => navigateToDogDetails(dog["_id"])}
-              key={i}
-            >
-              <DashboardCard
-                key={i}
-                className="dog-card"
-                name={dog["name"]}
-                breed={dog["breed"]}
-                age={dog["age"]}
-              />
-            </button>
-          );
-        })}
+        {searchValue
+          ? // Search Activated
+            currentDogs.map(function (dog, i) {
+              return (
+                <button
+                  className="dashboard-card-btn"
+                  onClick={() => navigateToDogDetails(dog["_id"])}
+                  key={i}
+                >
+                  <DashboardCard
+                    key={i}
+                    className="dog-card"
+                    name={dog["name"]}
+                    breed={dog["breed"]}
+                    age={dog["age"]}
+                  />
+                </button>
+              );
+            })
+          : // All Dogs
+            dogs.map(function (dog, i) {
+              return (
+                <button
+                  className="dashboard-card-btn"
+                  onClick={() => navigateToDogDetails(dog["_id"])}
+                  key={i}
+                >
+                  <DashboardCard
+                    key={i}
+                    className="dog-card"
+                    name={dog["name"]}
+                    breed={dog["breed"]}
+                    age={dog["age"]}
+                  />
+                </button>
+              );
+            })}
       </div>
     </div>
   ) : (
