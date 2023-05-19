@@ -54,10 +54,10 @@ function DashboardPage() {
   const handleSearch = (e) => {
     setcurrentDogs(dogs);
     e.preventDefault();
-    handleSearching();
+    getSearchResults();
   };
 
-  async function handleSearching() {
+  async function getSearchResults() {
     const search = await searchDog(searchValue);
     setcurrentDogs(search);
   }
