@@ -1,6 +1,6 @@
 import "../css/AddDataResultsPage.css";
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
 import NavBar from "../components/NavBar";
@@ -18,14 +18,12 @@ function AddDataResultsPage() {
     } = useContext(AppContext); 
 
     const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
 
     var select = document.createElement("input");
 
     const renderManageUserBoard = () => { 
         const table = document.createElement('table');
-
-        // var x = document.createElement("INPUT");
-        // x.setAttribute("type", "radio");
 
         const allScaleIDValues = new Array();
         allScaleIDValues.push(["", "Weight (kg)", "Date", "Time"]);
@@ -35,11 +33,6 @@ function AddDataResultsPage() {
                 var d = new Date(weights[i]["createdAt"]);
                 var date = d.toLocaleDateString('en-GB');
                 var time = d.toLocaleString('en-GB', { hour: 'numeric', minute: 'numeric', hour12: true })
-
-                // var x = document.createElement("INPUT");
-                // x.setAttribute("type", "radio");
-                // const select = document.createElement("input");
-                // select.type("radio");
 
                 allScaleIDValues.push(["", weights[i]["weight"], date, time, weights[i]["_id"]]);
             }
@@ -99,31 +92,26 @@ function AddDataResultsPage() {
         });
         
         if (selectedValue) {
-            console.log('Selected value:', selectedValue);
-            // const newDogValues = getDogValues()
-            const newWeight = getWeightValue(selectedValue);
-            const previousDogWeight = getDogValues()
-            previousDogWeight.push(newWeight)
-            console.log("new add previous dog weight: ", previousDogWeight)
-            updateDog(dogID, previousDogWeight)
+            const newWeight = getNewWeight(selectedValue);
+            const previousWeight = getPreviousWeight()
+            previousWeight.push(newWeight)
+            updateDog(dogID, newWeight, previousWeight)
+            navigate("/dog/:id");
         } else {
-            console.log('No radio button selected');
             setErrorMessage("No weight selected.");
         }  
     }
 
-    function getWeightValue(selectedValue) {
+    function getNewWeight(selectedValue) {
         for (let i = 0; i < weights.length; i++) {
             if (weights[i]["_id"] == selectedValue) {
-                const test = [weights[i]["weight"], weights[i]["createdAt"], weights[i]["staffRole"]]
-                console.log("test = ", test)
-                return test;
+                const newWeights = [weights[i]["weight"], weights[i]["createdAt"], weights[i]["staffRole"]]
+                return newWeights;
             }
         }
     }
 
-    function getDogValues() {
-        // await getAllDogs()
+    function getPreviousWeight() {
         for (let i = 0; i < dogs.length; i++) {
             if (dogs[i]["_id"] == dogID) {
                 const previousWeights = dogs[i]["prevWeights"]
@@ -142,42 +130,7 @@ function AddDataResultsPage() {
           </div>
           <div className="results-container">
               <div>
-                  {/* <table className="resultsTable" id="resultsTable">
-                      <thead>
-                          <tr>
-                              <th></th>
-                              <th>Weight (kg)</th>
-                              <th>Date</th>
-                              <th>Time</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td className="radio-button"><input type="radio" name="radio" value="radio1" required/></td>
-                              <td>6.25</td>
-                              <td>01/03/2023</td>
-                              <td>10:49 AM</td>
-                          </tr>
-                          <tr>
-                              <td className="radio-button"><input type="radio" name="radio" value="radio2" required/></td>
-                              <td>6.03</td>
-                              <td>02/03/2023</td>
-                              <td>3:10 PM</td>        
-                          </tr>
-                          <tr>
-                              <td className="radio-button"><input type="radio" name="radio" value="radio3" required/></td>
-                              <td>8.08</td>
-                              <td>03/03/2023</td>
-                              <td>10:30 AM</td>        
-                          </tr>
-                      </tbody>
-                  </table> */}
-                <table className="renderManageUserBoard">
-                {/* <tbody><tr><td><input id="weight-select" type="radio" name="radio" value="radio1" required/></td></tr>
-                <tr><td><input id="weight-select" type="radio" name="radio" value="radio1" required/></td></tr></tbody> */}
-                </table>
-
-                
+                <table className="renderManageUserBoard"></table>
               </div>
               <div className="button-container">
                 {/* Error Message */}
