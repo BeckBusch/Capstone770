@@ -121,11 +121,11 @@ function AppContextProvider({ children }) {
         return weightResponse.data;
     }
 
-    async function addChat(title, message, user) {
+    async function addChat(summary, discussion, user) {
 
         const chatToUpload = {
-            title,
-            message,
+            summary,
+            discussion,
             user
         };
 
