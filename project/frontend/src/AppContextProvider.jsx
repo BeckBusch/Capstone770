@@ -122,12 +122,13 @@ function AppContextProvider({ children }) {
         return weightResponse.data;
     }
 
-    async function addChat(summary, discussion, user) {
+    async function addChat(summary, discussion, userName, userRole) {
 
         const chatToUpload = {
             summary,
             discussion,
-            user
+            userName,
+            userRole,
         };
 
         const chatResponse = await axios.post(`${API_BASE_URL}/api/chats`, chatToUpload);
@@ -171,12 +172,26 @@ function AppContextProvider({ children }) {
         return weightResponse.data;
     }
 
-
     async function getCurrentChatData(id) {        
         const chatResponse = await axios.get(`${API_BASE_URL}/api/chats/${id}`);
         refreshChats();
         return chatResponse.data;
     }
+
+    async function updateReplies(id, reply) {
+        const chatToupdateReplies = {
+            replies: reply,
+        };
+    
+        const chatResponse = await axios.put(
+          `${API_BASE_URL}/api/chats/${id}`,
+          chatToupdateReplies
+        );
+        refreshChats();
+        return chatResponse.data;
+      }
+    
+    
 
     const [loggedIn, setLoggedIn] = useState(false)
     const [userName, setUserName] = useState("")
@@ -221,6 +236,7 @@ function AppContextProvider({ children }) {
         currentChatID,
         setCurrentChatID,
         getCurrentChatData,
+        updateReplies,
     }
 
     // Wraps the given child components in a Provider for the above context.

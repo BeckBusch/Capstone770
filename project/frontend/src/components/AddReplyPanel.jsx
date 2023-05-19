@@ -1,49 +1,43 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { AppContext } from "../AppContextProvider";
 import "../css/AddReplyPanel.css";
 import AuthDetails from "../AuthDetails";
 
 function AddReplyPanel() {
-
   AuthDetails();
 
-  const {
-    userName,
-    addChat
-  } = useContext(AppContext);
+  const { chats, currentChatID, updateReplies } = useContext(AppContext);
 
-  const [summary, setSummary] = useState("");
-  const [discussion, setDiscussion] = useState("");
-
+  const [reply, setReply] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (checkForm()) {
-      handleAddChat();
+      handleUpdateReplies();
       resetFields();
     }
+  };
+
+  //  function handleUpdateReplies() {
+    async function handleUpdateReplies() {
+      console.log(chats.slice(0).reverse()[currentChatID]["replies"])
+
+      const replies = chats.slice(0).reverse()[currentChatID]["replies"];
+      replies.push(reply);
+
+      console.log(chats.slice(0).reverse()[currentChatID]["_id"])
+      console.log(chats.slice(0).reverse()[currentChatID]["replies"])
+    await updateReplies(chats.slice(0).reverse()[currentChatID]["_id"], replies);
   }
 
-  async function handleAddChat() {
-    await addChat(summary, discussion, userName);
-  }
-  
   function resetFields() {
-    setSummary("");
-    setDiscussion("");
-    setErrorMessage("");
+    setReply("");
   }
 
   function checkForm() {
     if (isSummaryEmpty()) {
-      setErrorMessage("Summary cannot be empty.");
-      return false;
-    } else if (isDiscussionEmpty()) {
-      setErrorMessage("Discussion cannot be empty.");
+      setErrorMessage("Reply cannot be empty.");
       return false;
     } else {
       return true;
@@ -51,37 +45,29 @@ function AddReplyPanel() {
   }
 
   function isSummaryEmpty() {
-    return summary.trim().length == 0 ? true : false;
-  }
-
-  function isDiscussionEmpty() {
-    return discussion.trim().length == 0 ? true : false;
+    return reply.trim().length == 0 ? true : false;
   }
 
   return (
     <div className="add-reply-page">
-
-        <form onSubmit={handleSubmit}>
-
-          <textarea
-            className="reply-paragraph"
-            placeholder="Reply to discussion ..."
-            value={discussion}
-            onChange={(e) => setDiscussion(e.target.value)}
-          />
-
-          <div className="chat-submit-div">
-            <div className="error-msg-div">
-              <p>{errorMessage}</p>
-            </div>
-            <div className="button-div">
-              <button type="submit" id="postChatBtn" className="reply-btn">
-                Reply
-              </button>
-            </div>
+      <form onSubmit={handleSubmit}>
+        <textarea
+          className="reply-paragraph"
+          placeholder="Reply to discussion ..."
+          value={reply}
+          onChange={(e) => setReply(e.target.value)}
+        />
+        <div className="chat-submit-div">
+          <div className="error-msg-div">
+            <p>{errorMessage}</p>
           </div>
-        </form>
-      {/* </div> */}
+          <div className="button-div">
+            <button type="submit" id="postChatBtn" className="reply-btn">
+              Reply
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import AuthDetails from "../AuthDetails";
 function AddChatPanel() {
   AuthDetails();
 
-  const { userName, addChat } = useContext(AppContext);
+  const { userName, userRole, addChat } = useContext(AppContext);
 
   const [summary, setSummary] = useState("");
   const [discussion, setDiscussion] = useState("");
@@ -21,7 +21,7 @@ function AddChatPanel() {
   };
 
   async function handleAddChat() {
-    await addChat(summary, discussion, userName);
+    await addChat(summary, discussion, userName, userRole);
   }
 
   function resetFields() {

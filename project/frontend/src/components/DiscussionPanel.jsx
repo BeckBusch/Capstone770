@@ -1,5 +1,5 @@
 import "../css/DiscussionPanel.css";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 
 import AddChatPanel from "./AddChatPanel";
@@ -12,14 +12,10 @@ function DiscussionPanel() {
 
   return currentChatID >= 0 ? (
     <div className="discussion-panel">
-      
+    
       <ChatPanel />
-
-      {/* <ReplyPanel /> */}
-
-      <AddReplyPanel />
       <ReplyPanel />
-
+      <AddReplyPanel />
 
     </div>
   ) : (
