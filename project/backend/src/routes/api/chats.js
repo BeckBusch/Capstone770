@@ -18,55 +18,55 @@ const HTTP_NO_CONTENT = 204;
 
 const router = express.Router();
 
-// Create new weight
+// Create new chat
 router.post('/', async (req, res) => {
-    const newWeight = await createWeight(req.body);
+    const newChat = await createChat(req.body);
 
-    if (newWeight) return res.status(HTTP_CREATED)
-        .header('Location', `/api/weights/${newWeight._id}`)
-        .json(newWeight);
+    if (newChat) return res.status(HTTP_CREATED)
+        .header('Location', `/api/chats/${newChat._id}`)
+        .json(newChat);
 
     return res.sendStatus(422);
 })
 
-// Retrieve all weights
+// Retrieve all chats
 router.get('/', async (req, res) => {
 
     // Uncomment the following code to introduce an artificial delay before the response
     // is sent back to the client.
     // setTimeout(() => {
-    //     res.json(retrieveWeightList());
+    //     res.json(retrieveChatList());
     // }, 2000);
 
 
     // When introducing the artificial delay, also comment this line. It's an error to send
     // two responses.
-    res.json(await retrieveWeightList());
+    res.json(await retrieveChatList());
 });
 
-// Retrieve single weight
+// Retrieve single chat
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
 
-    const weight = await retrieveWeight(id);
+    const chat = await retrieveChat(id);
 
-    if (weight) return res.json(weight);
+    if (chat) return res.json(chat);
     return res.sendStatus(HTTP_NOT_FOUND);
 });
 
-// Update weight
+// Update chat
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    const weight = req.body;
-    weight._id = id;
-    const success = await updateWeight(weight);
+    const chat = req.body;
+    chat._id = id;
+    const success = await updateChat(chat);
     res.sendStatus(success ? HTTP_NO_CONTENT : HTTP_NOT_FOUND);
 });
 
-// Delete weight
+// Delete chat
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
-    await deleteWeight(id);
+    await deleteChat(id);
     res.sendStatus(HTTP_NO_CONTENT);
 });
 
