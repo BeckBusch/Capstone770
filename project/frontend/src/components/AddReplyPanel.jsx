@@ -1,15 +1,23 @@
 import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { AppContext } from "../AppContextProvider";
-import "../css/AddChatPanel.css";
+import "../css/AddReplyPanel.css";
 import AuthDetails from "../AuthDetails";
 
-function AddChatPanel() {
+function AddReplyPanel() {
+
   AuthDetails();
 
-  const { userName, addChat } = useContext(AppContext);
+  const {
+    userName,
+    addChat
+  } = useContext(AppContext);
 
   const [summary, setSummary] = useState("");
   const [discussion, setDiscussion] = useState("");
+
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (e) => {
@@ -18,12 +26,12 @@ function AddChatPanel() {
       handleAddChat();
       resetFields();
     }
-  };
+  }
 
   async function handleAddChat() {
     await addChat(summary, discussion, userName);
   }
-
+  
   function resetFields() {
     setSummary("");
     setDiscussion("");
@@ -51,28 +59,13 @@ function AddChatPanel() {
   }
 
   return (
-    <div className="add-chat-page">
-      <div className="add-chat-page-content">
-        <h1 className="add-chat-header ">New Discussion</h1>
+    <div className="add-reply-page">
 
-        {/* Form */}
         <form onSubmit={handleSubmit}>
-          <div className="summary-div">
-            <label htmlFor="ChatTitle">Summary</label>
-            <input
-              className="chat-input-styling"
-              type="text"
-              id="summary"
-              placeholder="Please provide a short summary of the discussion ..."
-              value={summary}
-              onChange={(e) => setSummary(e.target.value)}
-            />
-          </div>
 
-          <label htmlFor="Password">Discussion</label>
           <textarea
-            className="paragraph"
-            placeholder="Start discussion about ..."
+            className="reply-paragraph"
+            placeholder="Reply to discussion ..."
             value={discussion}
             onChange={(e) => setDiscussion(e.target.value)}
           />
@@ -82,15 +75,15 @@ function AddChatPanel() {
               <p>{errorMessage}</p>
             </div>
             <div className="button-div">
-              <button type="submit" id="postChatBtn" className="post-btn">
-                + Post
+              <button type="submit" id="postChatBtn" className="reply-btn">
+                Reply
               </button>
             </div>
           </div>
         </form>
-      </div>
+      {/* </div> */}
     </div>
   );
 }
 
-export default AddChatPanel;
+export default AddReplyPanel;

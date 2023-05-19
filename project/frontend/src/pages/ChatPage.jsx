@@ -1,7 +1,7 @@
 import "../css/ChatPage.css";
 import NavBar from "../components/NavBar";
 import ChatNavigationBar from "../components/ChatNavigationBar";
-import ChatPanel from "../components/ChatPanel";
+import DiscussionPanel from "../components/DiscussionPanel";
 
 function ChatPage() {
   return (
@@ -12,7 +12,7 @@ function ChatPage() {
           <ChatNavigationBar />
         </div>
         <div className="chat-panel-background">
-          <ChatPanel />
+          <DiscussionPanel />
         </div>
       </div>
     </div>

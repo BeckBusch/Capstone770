@@ -1,6 +1,10 @@
+.discussion-panel {
+    height: 100%;
+}
+
 .chat-panel-question {
     width: calc(100% - 30px);
-    height: 100%;
+    height: fit-content;
     background-color: #BDD3E8;
     border: 1px solid #BDD3E8;
     border-radius: 20px;

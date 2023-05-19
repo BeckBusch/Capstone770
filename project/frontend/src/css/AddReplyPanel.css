@@ -1,0 +1,31 @@
+.add-reply-page {
+    width: calc(100% - 10px);
+    height: fit-content;
+    color: black;
+    border-radius: 20px;
+    margin: 20px 0;
+}
+
+.reply-paragraph {
+    resize: none;
+    width: calc(100% - 20px);
+    height: 60px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #DBDBDB;
+    padding: 10px;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.reply-btn {
+    color: white;
+    background-color: #757575;
+    border: 1px solid #757575;
+    margin-top: 10px;
+}
+
+.reply-btn:hover {
+    background-color: white;
+    color: #757575;
+    border: 1px solid #757575;
+}
