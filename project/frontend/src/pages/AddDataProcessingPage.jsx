@@ -7,21 +7,21 @@ import NavBar from "../components/NavBar";
 import DogPaw from "../assets/icon-dog-paw.png";
 
 function AddDataProcessingPage() {
-  const { getWeightDate } = useContext(AppContext);
+  const { getWeightDate, scaleID, getWeights, addWeight } = useContext(AppContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     setInterval(function () {
-      var currentDateTime = new Date().toISOString;
+      const currentDateTime = new Date().toISOString();
       checkUpdatedWeight(currentDateTime);
     }, 10000);
   }, []);
 
   async function checkUpdatedWeight(currentDateTime) {
-    const updatedWeights = await getWeightDate();
+    const updatedWeights = await getWeights();
     for (const updatedWeight of updatedWeights) {
-      if (currentDateTime < updatedWeight["createdAt"]) {
+      if ((currentDateTime < updatedWeight["createdAt"]) && (scaleID == updatedWeight["scaleId"])) {
         navigate("/dog/:id/add-data/confirm");
       }
     }
