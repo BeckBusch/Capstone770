@@ -260,6 +260,7 @@ label {
     margin-top: 40px;
     overflow:scroll;
     overflow-x:hidden;
+    overflow-y:auto;
 }
 
 .chart-display {
