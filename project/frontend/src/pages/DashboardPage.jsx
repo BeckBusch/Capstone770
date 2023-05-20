@@ -77,13 +77,16 @@ function DashboardPage() {
   return loggedIn ? (
     <div className="dashboard-page">
       <NavBar />
-      {/* Search / Filter Container */}
+
       <div className="search-div">
+        {/* Add Dog */}
         <div className="add-dog-container-div">
           <button className="add-dog-btn" onClick={() => navigateToAddDog()}>
             + Add Dog
           </button>
         </div>
+
+        {/* Search */}
         <div className="search-container-div">
           <form className="form-styling" onSubmit={handleSearch}>
             <div className="search-container-div-align">
@@ -101,54 +104,60 @@ function DashboardPage() {
             </div>
           </form>
         </div>
+
+        {/* Sort */}
         <div className="filter-container-div">
-          <button
-            className="sort-btn"
-            onClick={() => sortAlphabetically()}
-          ></button>
-          <button
-            className="filter-btn"
-            onClick={() => handleGetAllDogs()}
-          ></button>
+          <select
+            className="select-sort"
+            name="sort-types"
+            id="sort"
+            defaultValue="none"
+          >
+            <option value="none" disabled hidden>
+              Sort: none
+            </option>
+            <option value="None">None</option>
+            <option value="AToZ">A to Z</option>
+            <option value="ZToA">Z to A</option>
+          </select>
         </div>
       </div>
+
       {/* Dog Cards */}
       <div className="dog-cards-flex">
         {reload
-          ? // Search Activated
+          ? // On Reload
             dogs.map(function (dog, i) {
               return (
-                <button
-                  className="dashboard-card-btn"
-                  onClick={() => navigateToDogDetails(dog["_id"])}
-                  key={i}
-                >
-                  <DashboardCard
-                    key={i}
-                    className="dog-card"
-                    name={dog["name"]}
-                    breed={dog["breed"]}
-                    age={dog["age"]}
-                  />
-                </button>
+                <div className="dog-card" key={i}>
+                  <button
+                    className="dashboard-card-btn"
+                    onClick={() => navigateToDogDetails(dog["_id"])}
+                  >
+                    <DashboardCard
+                      name={dog["name"]}
+                      breed={dog["breed"]}
+                      age={dog["age"]}
+                    />
+                  </button>
+                </div>
               );
             })
-          : // All Dogs
+          : // Sort/Search Activated
             currentDogs.map(function (dog, i) {
               return (
-                <button
-                  className="dashboard-card-btn"
-                  onClick={() => navigateToDogDetails(dog["_id"])}
-                  key={i}
-                >
-                  <DashboardCard
-                    key={i}
-                    className="dog-card"
-                    name={dog["name"]}
-                    breed={dog["breed"]}
-                    age={dog["age"]}
-                  />
-                </button>
+                <div className="dog-card" key={i}>
+                  <button
+                    className="dashboard-card-btn"
+                    onClick={() => navigateToDogDetails(dog["_id"])}
+                  >
+                    <DashboardCard
+                      name={dog["name"]}
+                      breed={dog["breed"]}
+                      age={dog["age"]}
+                    />
+                  </button>
+                </div>
               );
             })}
       </div>
