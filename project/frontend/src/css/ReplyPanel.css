@@ -55,7 +55,7 @@
 }
 
 .scroll-replies {
-    height: 45vh;
+    height: 40vh;
     overflow-x: hidden;
     overflow-y: auto;
     text-align: center;
