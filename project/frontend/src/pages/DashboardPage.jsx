@@ -57,8 +57,9 @@ function DashboardPage() {
   }
 
   function handleUpdateSearch(value) {
-    setCurrentDogs(dogs);
     setSearchValue(value);
+    setCurrentDogs(dogs);
+    setReload(false);
   }
 
   return loggedIn ? (

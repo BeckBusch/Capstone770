@@ -17,7 +17,7 @@ import AuthDetails from "../AuthDetails";
 function NavBar() {
   AuthDetails();
 
-  const { userRole, userName } = useContext(AppContext);
+  const { userRole, userName, setCurrentChatID } = useContext(AppContext);
 
   const [signOutPopUpVisible, setSignOutPopUpVisible] = useState(false);
 

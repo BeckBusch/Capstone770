@@ -7,11 +7,11 @@ import {
   createDog,
   retrieveDog,
   retrieveDogList,
-  updateDog,
-  deleteDog,
   sortAToZ,
   sortZToA,
   searchDog,
+  updateDog,
+  deleteDog,
 } from "../../service/dogs-dao";
 
 const HTTP_CREATED = 201;

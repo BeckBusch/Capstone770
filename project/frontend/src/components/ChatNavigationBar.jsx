@@ -7,9 +7,11 @@ import ChatPreviewCard from "../components/ChatPreviewCard";
 import ChatBlack from "../assets/icon-chat-black.png";
 
 function ChatNavigationBar() {
-  const { chats, setCurrentChatID } = useContext(AppContext);
+  const { chats, setCurrentChatID, searchChat } = useContext(AppContext);
 
   const [searchValue, setSearchValue] = useState("");
+  const [currentChats, setCurrentChats] = useState(chats);
+  const [reload, setReload] = useState(true);
 
   const navigate = useNavigate();
 
@@ -35,18 +37,19 @@ function ChatNavigationBar() {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    handleSearchDog();
+    handlesearchChat();
   };
 
-  async function handleSearchDog() {
+  async function handlesearchChat() {
     if (searchValue.trim().length != 0) {
-      // setCurrentDogs(await searchDog(searchValue));
+      setCurrentChats(await searchChat(searchValue));
     }
   }
 
-  function handleUpdateSearch() {
-    // setCurrentDogs(dogs);
-    // setSearchValue(value);
+  function handleUpdateSearch(value) {
+    setReload(false);
+    setCurrentChats(chats);
+    setSearchValue(value);
   }
 
   return (
@@ -58,7 +61,7 @@ function ChatNavigationBar() {
 
       <div className="add-chat-div">
         <button className="add-chat-btn" onClick={() => handleAddChat()}>
-          + Start New Discussion
+          + Start New Chat
         </button>
       </div>
 
@@ -67,7 +70,7 @@ function ChatNavigationBar() {
           <input
             type="search"
             id="mySearch"
-            placeholder="Search by name or breed ..."
+            placeholder="Search Chats ..."
             className="chat-search"
             onChange={(e) => handleUpdateSearch(e.target.value)}
           />
@@ -77,7 +80,27 @@ function ChatNavigationBar() {
 
       <div className="chat-preview-scroll-div">
         <div className="chat-preview-scroll">
-          {chats
+          {reload ? chats
+            .slice(0)
+            .reverse()
+            .map(function (chat, i) {
+              return (
+                <button
+                  className="chat-preview-btn"
+                  onClick={() => handlePreviewClick(chat["_id"], i)}
+                  id={`preview${i}`}
+                  key={i}
+                >
+                  <ChatPreviewCard
+                    key={i}
+                    className="chat-preview-btn"
+                    summary={chat["summary"]}
+                    discussion={chat["discussion"]}
+                    date={chat["createdAt"].slice(0, 10)}
+                  />
+                </button>
+              );
+            }) : currentChats
             .slice(0)
             .reverse()
             .map(function (chat, i) {

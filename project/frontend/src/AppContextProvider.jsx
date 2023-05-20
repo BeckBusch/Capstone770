@@ -212,6 +212,12 @@ function AppContextProvider({ children }) {
         refreshChats();
         return chatResponse.data;
       }
+
+    async function searchChat(search) {
+        const chatSearchResponse = await axios.get(`${API_BASE_URL}/api/chats/search/${search}`);
+        refreshChats();
+        return chatSearchResponse.data;
+    }
     
     const [loggedIn, setLoggedIn] = useState(false)
     const [userName, setUserName] = useState("")
@@ -259,6 +265,7 @@ function AppContextProvider({ children }) {
         setCurrentChatID,
         getCurrentChatData,
         updateReplies,
+        searchChat,
     }
 
     // Wraps the given child components in a Provider for the above context.
