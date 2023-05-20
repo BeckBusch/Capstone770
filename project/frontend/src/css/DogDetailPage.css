@@ -161,7 +161,7 @@ label {
     /* background-color: rebeccapurple; */
     /* width: 100%; */
     margin-top: 30px;
-    height: 500px;
+    height: 800px;
     /* position: absolute; */
     width: 90%;
     position: relative;   
@@ -177,11 +177,17 @@ label {
     transform: translate(-50%); */
 }
 
+.table-chart-container-2 {
+    background-color: #8BA5BD;
+    border-radius: 22px 22px 0px 0px;
+    width: 170px;
+    height: 100px;
+}
 
 .table-container {
     background-color: #8BA5BD;
     border-radius: 22px 22px 0px 0px;
-    width: 170px;
+    width: 85px;
     height: 100px;
     position: relative;   
     display: inline-block;
@@ -236,7 +242,7 @@ label {
 .graph {
     background-color: #BDD3E8;
     width: 100%;
-    height: 300px;
+    height: fit-content;
     /* padding: 10px; */
     position: absolute;   
     /* left: 50%;
@@ -247,6 +253,33 @@ label {
     left: 0;
     /* opacity: 0.8; */
     margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-display {
+    display: block;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas {
+    padding: 15px;
+}
+
+.table-display {
+    display: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 22px;    
+}
+
+.renderDogDetailsTable {
+    padding: 15px;
 }
 
 .weight-header {

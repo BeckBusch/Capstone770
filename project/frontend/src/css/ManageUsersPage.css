@@ -211,6 +211,7 @@ tr {
     height: 70%;
     border-radius: 22px;
     background-color: #DBDBDB;
+    padding: 15px;
   }
   
   th {
