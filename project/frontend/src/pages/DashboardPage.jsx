@@ -9,15 +9,8 @@ import NavBar from "../components/NavBar";
 import DashboardCard from "../components/DashboardCard";
 
 function DashboardPage() {
-  
-  const {
-    loggedIn,
-    dogs,
-    setDogID,
-    sortDogAToZ,
-    sortDogZToA,
-    searchDog,
-  } = useContext(AppContext);
+  const { loggedIn, dogs, setDogID, sortDogAToZ, sortDogZToA, searchDog } =
+    useContext(AppContext);
 
   window.onload = AuthDetails();
 
@@ -37,7 +30,6 @@ function DashboardPage() {
   }
 
   async function handleSortSelect() {
-
     const sortSelect = document.getElementById("sort");
     const sortValue = sortSelect.value;
 
@@ -49,7 +41,7 @@ function DashboardPage() {
     } else if (sortValue == "ZToA") {
       setCurrentDogs(await sortDogZToA());
     } else {
-      setCurrentDogs(dogs)
+      setCurrentDogs(dogs);
     }
   }
 
@@ -80,7 +72,6 @@ function DashboardPage() {
             + Add Dog
           </button>
         </div>
-
         {/* Search */}
         <div className="search-container-div">
           <form className="form-styling" onSubmit={handleSearchSubmit}>
@@ -99,24 +90,22 @@ function DashboardPage() {
             </div>
           </form>
         </div>
-
         {/* Sort */}
         <div className="filter-container-div">
-          <select
-            className="select-sort"
-            name="sort-types"
-            id="sort"
-            defaultValue="none"
-            onChange={() => handleSortSelect()}
-          >
-            <option value="none" disabled hidden>
-              Sort: none
-            </option>
-            <option value="None">None</option>
-            <option value="AToZ">A to Z</option>
-            <option value="ZToA">Z to A</option>
-          </select>
-        </div>
+          <div className="select-sort-outer">
+            <select
+              className="select-sort"
+              name="sort-types"
+              id="sort"
+              defaultValue="none"
+              onChange={() => handleSortSelect()}
+            >
+              <option value="None">Sort: None</option>
+              <option value="AToZ">Sort: A to Z</option>
+              <option value="ZToA">Sort: Z to A</option>
+            </select>
+          </div>
+        </div>{" "}
       </div>
 
       {/* Dog Cards */}
