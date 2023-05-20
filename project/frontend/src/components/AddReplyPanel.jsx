@@ -1,10 +1,8 @@
+import "../css/AddReplyPanel.css";
 import { useContext, useState } from "react";
 import { AppContext } from "../AppContextProvider";
-import "../css/AddReplyPanel.css";
-import AuthDetails from "../AuthDetails";
 
 function AddReplyPanel() {
-  AuthDetails();
 
   const { chats, currentChatID, updateReplies, userName, userRole } = useContext(AppContext);
 

@@ -5,10 +5,9 @@ import { AppContext } from "../AppContextProvider";
 import { useEffect } from 'react';
 
 import NavBar from "../components/NavBar";
-import SettingsBlackIcon from "../assets/settings-black-icon.png";
-import MyAccountIcon from "../assets/my-account-icon-black.png";
-import SearchIcon from "../assets/search-icon.png";
-import AddUserIcon from "../assets/add-user-icon.png";
+import SettingsBlackIcon from "../assets/icon-settings-black.png";
+import SearchIcon from "../assets/icon-search-dark-grey.png";
+import AddUserIcon from "../assets/icon-add-user-white.png";
 
 import AuthDetails from "../AuthDetails";
 

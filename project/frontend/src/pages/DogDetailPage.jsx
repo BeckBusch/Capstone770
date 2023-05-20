@@ -1,38 +1,37 @@
 import "../css/DogDetailPage.css";
 import { Link } from "react-router-dom";
-import { useEffect, useContext, useState } from "react";
+import { useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 
 import NavBar from "../components/NavBar";
-import StartIcon from "../assets/start-icon.png";
-import MyAccountIcon from "../assets/my-account-icon.png";
+import StartWhite from "../assets/icon-start-white.png";
+import MyAccountWhite from "../assets/icon-account-white.png";
 
 function DogDetailPage() {
-  const { dogs, dogID, addWeight, userRole, userName } = useContext(AppContext);
-
-  // const [dogBreed, setDogBreed] = useState("");
+  const { dogs, dogID, addWeight } = useContext(AppContext);
 
   console.log("inside dog detail page");
   console.log("dog id is ", dogID);
 
-  for (let i = 0; i < dogs.length; i++) {
-    if (dogs[i]["_id"] == dogID) {
-      var name = dogs[i]["name"];
-      var breed = dogs[i]["breed"];
-      var age = dogs[i]["age"];
-      var gender = dogs[i]["gender"];
-      var location = dogs[i]["location"];
-      console.log("name = ", name);
-      console.log("breed = ", breed);
-      console.log("age = ", age);
-      console.log("gender = ", breed);
-      console.log("location = ", breed);
+  var name;
+  var breed;
+  var age;
+  var gender;
+  var location;
+
+  for (const dog of dogs) {
+    if (dog["_id"] == dogID) {
+      name = dog["name"];
+      breed = dog["breed"];
+      age = dog["age"];
+      gender = dog["gender"];
+      location = dog["location"];
     }
   }
 
   async function handleAddWeight() {
-      await addWeight(5.92, 2, "Ally", "Vet");
-      console.log("addWeight")
+    await addWeight(5.92, 2, "Ally", "Vet");
+    console.log("addWeight");
   }
 
   return (
@@ -49,7 +48,7 @@ function DogDetailPage() {
                 className="start-weighing-btn"
                 onClick={() => handleAddWeight()}
               >
-                <img className="start-img" src={StartIcon} alt="start Image" />
+                <img className="start-img" src={StartWhite} alt="start Image" />
                 Start Weighing
               </button>
             </Link>
@@ -64,7 +63,7 @@ function DogDetailPage() {
               <div className="dog-image-container">
                 <img
                   className="profile-img"
-                  src={MyAccountIcon}
+                  src={MyAccountWhite}
                   alt="Profile Image"
                 />
               </div>

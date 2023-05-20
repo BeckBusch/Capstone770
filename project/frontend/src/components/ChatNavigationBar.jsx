@@ -1,10 +1,10 @@
 import "../css/ChatNavigationBar.css";
-import ChatPreviewCard from "../components/ChatPreviewCard";
-import ChatBlackIcon from "../assets/chat-black-icon.png";
-
 import { useContext } from "react";
-import { AppContext } from "../AppContextProvider";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../AppContextProvider";
+
+import ChatPreviewCard from "../components/ChatPreviewCard";
+import ChatBlack from "../assets/icon-chat-black.png";
 
 function ChatNavigationBar() {
   const { chats, setCurrentChatID } = useContext(AppContext);
@@ -34,7 +34,7 @@ function ChatNavigationBar() {
   return (
     <div className="chat-navigation-bar">
       <div className="chat-header-div">
-        <img src={ChatBlackIcon} className="chat-icon-align" alt="start" />
+        <img src={ChatBlack} className="chat-icon-align" alt="start" />
         <h1 className="chat-header">Chats</h1>
       </div>
 

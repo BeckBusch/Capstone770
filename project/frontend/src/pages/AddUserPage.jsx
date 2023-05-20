@@ -156,7 +156,7 @@ function AddUserPage() {
             {/* Buttons */}
             <div className="buttons-div">
               <div className="buttons">
-                <Link to="/dashboard">
+                <Link to="/manage-users">
                   <button className="cancel-btn">Cancel</button>
                 </Link>
                 <button type="submit" id="signUpBtn" className="add-btn">

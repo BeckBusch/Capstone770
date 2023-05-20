@@ -5,8 +5,8 @@ import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { AppContext } from "../AppContextProvider";
 
-import SPCALogo from "../assets/spca-logo.png";
-import LoginImage from "../assets/login-image.png";
+import SPCALogo from "../assets/logo-spca.png";
+import BackgroundImage from "../assets/background-login.png";
 
 function LoginPage() {
   const { setLoggedIn } = useContext(AppContext);
@@ -38,7 +38,7 @@ function LoginPage() {
   return (
     <div className="login-page">
       {/* Background Image */}
-      <img className="background-image" src={LoginImage} alt="SPCA Logo" />
+      <img className="background-image" src={BackgroundImage} alt="SPCA Logo" />
       {/* Login Container */}
       <div className="login-container-flex">
         <div className="login-container">

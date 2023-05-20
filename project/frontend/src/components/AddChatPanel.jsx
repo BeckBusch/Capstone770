@@ -1,10 +1,8 @@
+import "../css/AddChatPanel.css";
 import { useContext, useState } from "react";
 import { AppContext } from "../AppContextProvider";
-import "../css/AddChatPanel.css";
-import AuthDetails from "../AuthDetails";
 
 function AddChatPanel() {
-  AuthDetails();
 
   const { userName, userRole, addChat } = useContext(AppContext);
 

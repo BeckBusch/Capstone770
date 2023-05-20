@@ -5,38 +5,17 @@ import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 import { AppContext } from "../AppContextProvider";
 
-import DashboardLogo from "../assets/dashboard-logo.png";
-import DashboardIcon from "../assets/dashboard-icon.png";
-import ChatIcon from "../assets/chat-icon.png";
-import MyAccountIcon from "../assets/my-account-icon.png";
-import ManageUsersIcon from "../assets/settings-icon.png";
-import SignOutIcon from "../assets/exit.png";
+import SPCALogo from "../assets/nav-icon-spca-logo.png";
+import DashboardIcon from "../assets/nav-icon-dashboard.png";
+import ChatIcon from "../assets/nav-icon-chat-white.png";
+import MyAccountIcon from "../assets/icon-account-white.png";
+import ManageUsersIcon from "../assets/nav-icon-settings-white.png";
+import SignOutIcon from "../assets/icon-sign-out.png";
 
 import AuthDetails from "../AuthDetails";
 
 function NavBar() {
-  const { users, userRole, setUserRole, userName, setUserName, setLoggedIn } = useContext(AppContext);
-
-  // auth.onAuthStateChanged(function (user) {
-  //   if (user) {
-  //     setLoggedIn(true);
-  //     console.log("ONAUTHSTATE")
-  //     console.log(user)
-  //     getCurrentUser(user);
-
-  //   } else {
-  //     setLoggedIn(false);
-  //   }
-  // });
-
-  // function getCurrentUser(userImpl) {
-  //   for (const user of users) {
-  //     if (user["email"] == userImpl["email"]) {
-  //       setUserRole(user["role"]);
-  //       setUserName(user["name"]);
-  //     }
-  //   }
-  // }
+  const { userRole, userName } = useContext(AppContext);
 
   AuthDetails();
 
@@ -65,7 +44,7 @@ function NavBar() {
   return userRole == "Admin" ? (
     <div className="nav-bar">
       <div className="col-left">
-        <img className="navbar-logo" src={DashboardLogo} alt="SPCA Logo" />
+        <img className="navbar-logo" src={SPCALogo} alt="SPCA Logo" />
       </div>
 
       <div className="col-mid">
@@ -140,7 +119,7 @@ function NavBar() {
   ) : (
     <div className="nav-bar">
       <div className="col-left">
-        <img className="navbar-logo" src={DashboardLogo} alt="SPCA Logo" />
+        <img className="navbar-logo" src={SPCALogo} alt="SPCA Logo" />
       </div>
 
       <div className="col-mid">
