@@ -33,7 +33,6 @@ function AddDogPage() {
     const genderSelect = document.getElementById("gender");
     const genderValue = genderSelect.value;
     setGender(genderValue);
-    console.log(genderValue)
   }
 
   function isValidForm() {

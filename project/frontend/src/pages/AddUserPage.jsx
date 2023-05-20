@@ -1,18 +1,15 @@
+import "../css/AddUserPage.css";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { AppContext } from "../AppContextProvider";
 
-import "../css/AddUserPage.css";
 import NavBar from "../components/NavBar";
-import AddUserBlack from "../assets/add-user-black-icon.png";
-import MyAccount from "../assets/my-account-icon.png";
 
 function AddUserPage() {
   const { addUser } = useContext(AppContext);
 
-  const [validCredentials, setvalidCredentials] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,10 +22,8 @@ function AddUserPage() {
 
   const handleAddUser = (e) => {
     e.preventDefault();
-    getSelectedRole();
-    checkValidForm();
 
-    if (validCredentials) {
+    if (isValidForm()) {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           console.log("Successfully created user: " + userCredential);
@@ -41,40 +36,28 @@ function AddUserPage() {
     }
   };
 
-  function checkValidForm() {
-    if (!isValidEmail()) {
+  async function handleRoleSelect() {
+    const roleSelect = document.getElementById("role");
+    const roleValue = roleSelect.value;
+    setRole(roleValue);
+  }
+
+  function isValidForm() {
+    if (!email.includes("@")) {
       setErrorMessage("Provided email is invalid.");
-    } else if (!isValidPassword()) {
+      return false;
+    } else if (password.trim().length == 0) {
       setErrorMessage("Password must be at least 6 characters long.");
-    } else if (!confrimPasswordMatchPassword()) {
+      return false;
+    } else if (password != confirmPassword) {
       setErrorMessage("Passwords do not match.");
-    } else if (!isRoleSelected()) {
+      return false;
+    } else if (role == "none") {
       setErrorMessage("Please select a role.");
+      return false;
     } else {
-      setvalidCredentials(true);
+      return true;
     }
-  }
-
-  function isValidEmail() {
-    return email.includes("@") ? true : false;
-  }
-
-  function isValidPassword() {
-    return password.length >= 6 ? true : false;
-  }
-
-  function confrimPasswordMatchPassword() {
-    return password == confirmPassword ? true : false;
-  }
-
-  function isRoleSelected() {
-    return role != "none" ? true : false;
-  }
-
-  function getSelectedRole() {
-    const x = document.getElementById("role");
-    setRole(x.options[x.selectedIndex].value);
-    // console.log(role)
   }
 
   return (
@@ -82,133 +65,108 @@ function AddUserPage() {
       <NavBar />
 
       <div className="add-user-container">
-        {/* Add User Heading */}
+        {/* Add user Heading */}
         <div className="add-user-header">
-          <img src={AddUserBlack} className="add-user-icon" alt="add-user" />
-          <h1 className="add-user-header">Add User</h1>
+          <h1 className="add-user-header-line-1">Add</h1>
+          <h1 className="add-user-header-line-2">User</h1>
         </div>
 
         {/* Form */}
+        <div className="add-user-form-div">
+
         <div className="add-user-form">
-          {/* Profile Column */}
-          <div className="add-user-form-col-1">
-            <div className="profile-container">
-              <img
-                className="profile-img"
-                src={MyAccount}
-                alt="Profile Image"
-              />
-            </div>
-            <p className="add-photo-msg"></p>
-            <div className="add-file-input">
+
+          <form onSubmit={handleAddUser}>
+            <div className="add-user-two-columns-grid">
+              {/* Name */}
+              <label htmlFor="Name">Name</label>
               <input
-                type="file"
-                accept="image/png, image/jpg, image/gif, image/jpeg"
-                id="file-selector"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-              ></input>
+                className="user-input-styling"
+                type="text"
+                id="name"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              {/* Email */}
+              <label htmlFor="Email">Email</label>
+              <input
+                className="user-input-styling"
+                type="text"
+                id="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              {/* Password */}
+              <label htmlFor="Password">Password</label>
+              <input
+                className="user-input-styling"
+                type="number"
+                id="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {/* Confirm Password */}
+              <label htmlFor="ConfirmPassword">Confirm Password</label>
+              <input
+                className="user-input-styling"
+                type="ConfirmPassword"
+                id="confirmPassword"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+
+              {/* Role */}
+              <label htmlFor="Role">Role</label>
+              <div className="user-input-styling">
+                <select
+                  className="user-select-style"
+                  name="role-types"
+                  id="role"
+                  defaultValue="none"
+                  onChange={() => handleRoleSelect()}
+                >
+                  <option value="none" disabled hidden>
+                    Select an Option
+                  </option>
+                  <option value="Vet">Vet</option>
+                  <option value="Volunteer">Volunteer</option>
+                  <option value="Admin">Admin</option>
+                </select>
+              </div>
+              {/* Image */}
+              <label htmlFor="Image">Image</label>
+              <div className="user-image-input">
+                <input
+                  type="file"
+                  accept="image/png, image/jpg, image/gif, image/jpeg"
+                  id="file-selector"
+                  value={image}
+                  onChange={(e) => setImage(e.target.value)}
+                ></input>
+              </div>
             </div>
-          </div>
-
-          {/* Form Content */}
-          <div className="add-user-form-col-2">
-            <form onSubmit={handleAddUser}>
-              <div className="add-user-two-columns-grid">
-                <div>
-                  <label htmlFor="Name">Name</label>
-                </div>
-                <div>
-                  <input
-                    className="input-styling"
-                    type="text"
-                    id="name"
-                    placeholder="Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="Email">Email</label>
-                </div>
-                <div>
-                  <input
-                    className="input-styling"
-                    type="text"
-                    id="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="Password">Password</label>
-                </div>
-                <div>
-                  <input
-                    className="input-styling"
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="ConfirmPassword">Confirm Password</label>
-                </div>
-                <div>
-                  <input
-                    className="input-styling"
-                    type="password"
-                    id="confirmPassword"
-                    placeholder="Confirm Password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="Role">Role</label>
-                </div>
-                <div>
-                  <select
-                    className="select-style"
-                    name="role-types"
-                    id="role"
-                    defaultValue={role}
-                  >
-                    <option value="none" disabled hidden>
-                      Select an Option
-                    </option>
-                    <option value="Admin">Admin</option>
-                    <option value="Vet">Vet</option>
-                    <option value="Volunteer">Volunteer</option>
-                  </select>
-                </div>
+            {/* Error Message */}
+            <div className="add-user-error-msg text-align-right">
+              <p>{errorMessage}</p>
+            </div>
+            {/* Buttons */}
+            <div className="buttons-div">
+              <div className="buttons">
+                <Link to="/dashboard">
+                  <button className="cancel-btn">Cancel</button>
+                </Link>
+                <button type="submit" id="signUpBtn" className="add-btn">
+                  + Add
+                </button>
               </div>
-
-              <div className="add-user-error-msg text-align-right">
-                <p>{errorMessage}</p>
-              </div>
-
-              {/* Buttons */}
-              <div className="buttons-div">
-                <div className="buttons">
-                  <Link to="/manage-users">
-                    <button className="cancel-btn">Cancel</button>
-                  </Link>
-                  <button type="submit" id="signUpBtn" className="add-btn">
-                    + Add
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
+      </div>
       </div>
     </div>
   );

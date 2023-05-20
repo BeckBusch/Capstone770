@@ -7,7 +7,7 @@
     background-image: url("../assets/background-add-dog.png");
     background-repeat: no-repeat;
     background-position: bottom left;
-    background-size: 50%;
+    background-size: 100vh;
 }
 
 .add-dog-container {
@@ -28,10 +28,10 @@
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: top;
     margin: 0;
-    padding-right: 5%;
+    padding-right: 10%;
 }
 
 .add-dog-header h1 {
@@ -118,4 +118,14 @@
     height: fit-content;
     padding: 15px 50px 0 0;
     font-size: 20px;
+}
+
+.buttons {
+    width: 100%;
+    display: inline;
+}
+
+.buttons-div {
+    text-align: right;
+    margin-top: 50px;
 }
