@@ -1,8 +1,8 @@
 .reply-panel {
-    width: calc(100% );
-    margin-right: 10px;
+    width: 100%;
     height: fit-content;
 }
+
 .reply-panel-right {
     display: flex;
     flex-direction: column;
@@ -52,4 +52,14 @@
     line-height: 1.2;
     height: fit-content;
     padding-bottom: 5px;
+}
+
+.scroll-replies {
+    height: 45vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }
