@@ -32,7 +32,7 @@
     height: fit-content;
     display: flex;
     margin-left: 0;
-    padding: 20px 0;
+    padding: 20px 0 10px 0;
 }
 
 .add-chat-btn {
@@ -54,44 +54,50 @@
 }
 
 /* Chat Search */
-.chat-search-div {
-    height: fit-content;
+.chat-search-div-align {
     width: 100%;
+    background-color: white;
+    border: 1px solid white;
     position: relative;
-    left: 50%;
-    transform: translate(-50%);
-    padding: 0 0 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 20px;
+    padding: 3px 0;
+    margin-bottom: 10px;
 }
 
 .chat-search {
+    background-color: transparent;
+    outline: none;
+    height: 34px;
+    font-size: 15px;
+    border: 0;
+    padding-left: 5px;
     width: calc(100% - 35px);
-    height: 40px;
-    font-size: 16px;
-    background-color: #DBDBDB;
-    border: none;
-    border-radius: 20px;
-    padding: 0 20px 0 20px;
-    margin: 0;
+    color: black;
+    padding: 0 20px;
+}
+
+.chat-search::placeholder {
+    color: #757575;
 }
 
 .chat-search-button {
     height: 35px;
     width: 35px;
+    position: absolute;
+    right: 3px;
+    padding-bottom: 5px;
     border: none;
-    margin-left: 5px;
+    border-radius: 50%;
     background-color: transparent;
     background-image: url("../assets/icon-search-dark-grey.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 70%;
+    background-size: 50%;
 }
 
 .chat-search-button:hover {
-    background-color: transparent;
     border: none;
+    background-color: transparent;
 }
 
 /* Chat Preview Scroll */
@@ -126,10 +132,11 @@
 
 .chat-preview-btn:hover {
     color: black;
-    background-color: #BDD3E8;
+    background-color: #DBDBDB;
 }
 
 .preview-selected {
     color: black;
-    background-color: #BDD3E8;
+    background-color: #DBDBDB;
 }
+

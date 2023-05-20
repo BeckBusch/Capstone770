@@ -1,5 +1,5 @@
 import "../css/ChatNavigationBar.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
@@ -8,6 +8,8 @@ import ChatBlack from "../assets/icon-chat-black.png";
 
 function ChatNavigationBar() {
   const { chats, setCurrentChatID } = useContext(AppContext);
+
+  const [searchValue, setSearchValue] = useState("");
 
   const navigate = useNavigate();
 
@@ -19,7 +21,7 @@ function ChatNavigationBar() {
 
   function handlePreviewClick(id, i) {
     resetPreviewCards();
-    document.getElementById(`preview${i}`).style.backgroundColor = "#BDD3E8";
+    document.getElementById(`preview${i}`).style.backgroundColor = "#DBDBDB";
     setCurrentChatID(i);
     navigate(`/chat/${id}`);
   }
@@ -29,6 +31,22 @@ function ChatNavigationBar() {
       document.getElementsByClassName("chat-preview-btn")[i].style =
         "chat-preview-btn";
     }
+  }
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    handleSearchDog();
+  };
+
+  async function handleSearchDog() {
+    if (searchValue.trim().length != 0) {
+      // setCurrentDogs(await searchDog(searchValue));
+    }
+  }
+
+  function handleUpdateSearch() {
+    // setCurrentDogs(dogs);
+    // setSearchValue(value);
   }
 
   return (
@@ -44,10 +62,18 @@ function ChatNavigationBar() {
         </button>
       </div>
 
-      <div className="chat-search-div">
-        <input type="text" placeholder="Search Chats" className="chat-search" />
-        <button className="chat-search-button"></button>
-      </div>
+      <form className="form-styling" onSubmit={handleSearchSubmit}>
+        <div className="chat-search-div-align">
+          <input
+            type="search"
+            id="mySearch"
+            placeholder="Search by name or breed ..."
+            className="chat-search"
+            onChange={(e) => handleUpdateSearch(e.target.value)}
+          />
+          <button type="submit" className="chat-search-button"></button>
+        </div>
+      </form>
 
       <div className="chat-preview-scroll-div">
         <div className="chat-preview-scroll">
@@ -67,7 +93,7 @@ function ChatNavigationBar() {
                     className="chat-preview-btn"
                     summary={chat["summary"]}
                     discussion={chat["discussion"]}
-                    user={chat["user"]}
+                    date={chat["createdAt"].slice(0, 10)}
                   />
                 </button>
               );
