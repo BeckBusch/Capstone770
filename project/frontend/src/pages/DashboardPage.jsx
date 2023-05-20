@@ -88,7 +88,7 @@ function DashboardPage() {
               <input
                 type="search"
                 id="mySearch"
-                placeholder="Search by name, breed etc."
+                placeholder="Search by name or breed ..."
                 className="dashboard-search"
                 onChange={(e) => handleUpdateSearch(e.target.value)}
               />
