@@ -58,9 +58,9 @@ router.get("/sort-z-to-a", async (req, res) => {
 });
 
 // Retrieve search dogs
-router.get("/:search", async (req, res) => {
-  const { search } = req.params;
-  res.json(await searchDog(search));
+router.get("/search/:string", async (req, res) => {
+  const { string } = req.params;
+  res.json(await searchDog(string));
 });
 
 // Update dog

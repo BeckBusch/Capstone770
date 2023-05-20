@@ -155,7 +155,7 @@ function AppContextProvider({ children }) {
     }
 
     async function searchDog(search) {
-        const dogSearchResponse = await axios.get(`${API_BASE_URL}/api/dogs/${search}`);
+        const dogSearchResponse = await axios.get(`${API_BASE_URL}/api/dogs/search/${search}`);
         refreshDogs();
         return dogSearchResponse.data;
     }
