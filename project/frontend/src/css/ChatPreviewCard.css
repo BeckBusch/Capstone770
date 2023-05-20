@@ -6,6 +6,7 @@
 }
 
 .chat-preview-details {
+    width: calc(100% - 40px);
     padding: 15px 20px;
     display: inline-block;
     vertical-align: middle;
@@ -13,17 +14,32 @@
 
 .chat-preview-title {
     width: 100%;
-    height: 20px;
+    height: 14px;
     margin: 0;
-    font-size: 16px;
+    font-size: 14px;
     padding-bottom: 5px;
+    overflow-y: clip;
+}
+
+.chat-preview-date {
+    width: 100%;
+    height: fit-content;
+    /* padding-bottom: 5px; */
+    margin: 0;
+    font-style: italic;
+    font-size: 10px;
+    line-height: 1.2;
+    overflow-y: clip;
+    text-align: right;
 }
 
 .chat-preview-message {
     width: 100%;
     height: fit-content;
+    max-height: 24px;
     max-height: 45px;
     margin: 0;
     font-size: 12px;
     line-height: 1.2;
+    overflow-y: clip;
 }

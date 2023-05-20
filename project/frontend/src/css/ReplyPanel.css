@@ -1,8 +1,13 @@
 .reply-panel {
-    width: calc(100% );
-    margin-right: 10px;
+    width: 100%;
     height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: end;
+
 }
+
 .reply-panel-right {
     display: flex;
     flex-direction: column;
@@ -42,14 +47,26 @@
     line-height: 1;
     padding-top: 5px;
     height: fit-content;
+    text-align: right;
 }
 
 .reply-date {
     font-size: 14px;
+    text-align: right;
 }
 
 .reply-message {
     line-height: 1.2;
     height: fit-content;
     padding-bottom: 5px;
+}
+
+.scroll-replies {
+    height: 40vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }

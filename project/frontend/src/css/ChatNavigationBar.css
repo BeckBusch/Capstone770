@@ -1,12 +1,18 @@
 .chat-navigation-bar {
     width: 100%;
-    height: fit-content;
+    height: 100%;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Chat Header */
 .chat-header-div {
-    padding: 20px 0 0px 20px;
+    height: fit-content;
+    padding: 85px 0 0px 0;
+    justify-content: start;
+    align-items: top;
 }
 
 .chat-icon-align {
@@ -20,51 +26,13 @@
     vertical-align: middle;
 }
 
-.chat-search-div {
+/* Start New Discussion */
+.add-chat-div {
     width: 100%;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
-    padding: 0 0 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.chat-search {
-    width: calc(100% - 35px);
-    height: 40px;
-    font-size: 16px;
-    background-color: #DBDBDB;
-    border: none;
-    border-radius: 20px;
-    padding: 0 20px 0 20px;
-    margin: 0;
-}
-
-.chat-search-button {
-    height: 35px;
-    width: 35px;
-    border: none;
-    margin-left: 5px;
-    background-color: transparent;
-    background-image: url("../assets/icon-search-dark-grey.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 70%;
-}
-
-.chat-search-button:hover {
-    background-color: transparent;
-    border: none;
-}
-
-.add-chat-container-div {
-    width: 100%;
-    height: 40px;
+    height: fit-content;
     display: flex;
     margin-left: 0;
-    padding: 20px 0;
+    padding: 20px 0 10px 0;
 }
 
 .add-chat-btn {
@@ -85,8 +53,65 @@
     cursor: pointer;
 }
 
-.scroll {
-    height: 65vh;
+/* Chat Search */
+.chat-search-div-align {
+    width: 100%;
+    background-color: white;
+    border: 1px solid white;
+    position: relative;
+    border-radius: 20px;
+    padding: 3px 0;
+    margin-bottom: 10px;
+}
+
+.chat-search {
+    background-color: transparent;
+    outline: none;
+    height: 34px;
+    font-size: 15px;
+    border: 0;
+    padding-left: 5px;
+    width: calc(100% - 35px);
+    color: black;
+    padding: 0 20px;
+}
+
+.chat-search::placeholder {
+    color: #757575;
+}
+
+.chat-search-button {
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    right: 3px;
+    padding-bottom: 5px;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    background-image: url("../assets/icon-search-dark-grey.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+
+.chat-search-button:hover {
+    border: none;
+    background-color: transparent;
+}
+
+/* Chat Preview Scroll */
+.chat-preview-scroll-div {
+    height: 70%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.chat-preview-scroll {
+    height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
     text-align: center;
@@ -107,11 +132,11 @@
 
 .chat-preview-btn:hover {
     color: black;
-    background-color: #BDD3E8;
+    background-color: #DBDBDB;
 }
-
 
 .preview-selected {
     color: black;
-    background-color: #BDD3E8;
+    background-color: #DBDBDB;
 }
+
