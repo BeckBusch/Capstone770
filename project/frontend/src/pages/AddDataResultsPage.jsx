@@ -114,7 +114,7 @@ function AddDataResultsPage() {
     function getNewWeight(selectedValue) {
         for (let i = 0; i < weights.length; i++) {
             if (weights[i]["_id"] == selectedValue) {                
-                const newWeights = new Array(weights[i]["weight"], weights[i]["createdAt"], weights[i]["staff"])
+                const newWeights = new Array(weights[i]["weight"], weights[i]["createdAt"], weights[i]["staff"],  weights[i]["staffRole"])
                 return newWeights;
             }
         }
