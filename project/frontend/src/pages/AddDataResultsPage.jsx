@@ -100,7 +100,7 @@ function AddDataResultsPage() {
             console.log("getprevouscurrentweight: ", previousCurrentWeight)
             console.log("previouswegiht: ", previousWeight)
             updateDog(dogID, previousCurrentWeight, previousWeight)
-            removeWeight(scaleID);
+            // removeWeight(scaleID);
             // console.log("weights: ", weights);
             // const freshWeights = await getWeights()
             // console.log("fresh weights: ", freshWeights);
@@ -115,6 +115,7 @@ function AddDataResultsPage() {
         for (let i = 0; i < weights.length; i++) {
             if (weights[i]["_id"] == selectedValue) {                
                 const newWeights = new Array(weights[i]["weight"], weights[i]["createdAt"], weights[i]["staff"],  weights[i]["staffRole"])
+                console.log("newWeights: ", newWeights)
                 return newWeights;
             }
         }

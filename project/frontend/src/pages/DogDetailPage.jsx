@@ -18,6 +18,11 @@ function DogDetailPage() {
   var age;
   var gender;
   var location;
+  var prevWeights = [];
+  var lastWeight = "-";
+  var weighedOn =  "-";
+  var weighedBy =  "-";
+  var weighedByRole = ""
 
   for (const dog of dogs) {
     if (dog["_id"] == dogID) {
@@ -26,11 +31,27 @@ function DogDetailPage() {
       age = dog["age"];
       gender = dog["gender"];
       location = dog["location"];
+      prevWeights = dog["prevWeights"];
+      console.log("prevWeights: ", prevWeights)
     }
   }
 
+  if (prevWeights && prevWeights.length > 0) {
+    console.log("is not empty")
+    lastWeight = prevWeights[prevWeights.length-1][0]
+    // weighedOn = prevWeights[prevWeights.length-1][1].slice(0, 10)
+    var d = new Date(prevWeights[prevWeights.length-1][1]);
+    weighedOn = d.toLocaleDateString('en-GB');
+    weighedBy = prevWeights[prevWeights.length-1][2]
+    weighedByRole = "(" + prevWeights[prevWeights.length-1][3] + ")"
+  } else {
+    console.log("is empty")
+  }
+
+  // document.getElementById('weighedByLabel').innerHTML = weighedBy + " (" + weighedByRole + ")"; 
+
   async function handleAddWeight() {
-    await addWeight(5.92, 2, "Ally", "Vet");
+    // await addWeight(5.92, 2, "Ally", "Vet");
     console.log("addWeight");
   }
 
@@ -98,7 +119,7 @@ function DogDetailPage() {
                   <label htmlFor="last-weight">Last Weight:</label>
                 </div>
                 <div>
-                  <p>7.00kg</p>
+                  <p>{lastWeight}</p>
                 </div>
 
                 <div>
@@ -112,7 +133,7 @@ function DogDetailPage() {
                   <label htmlFor="weighed-on">Weighed on:</label>
                 </div>
                 <div>
-                  <p>03/03/2023</p>
+                  <p>{weighedOn}</p>
                 </div>
 
                 <div>
@@ -126,7 +147,7 @@ function DogDetailPage() {
                   <label htmlFor="weighed-by">Weighed by:</label>
                 </div>
                 <div>
-                  <p>Juwon Jung (Vet)</p>
+                  <p id="weighedByLabel">{weighedBy} {weighedByRole}</p>
                 </div>
               </div>
             </div>
