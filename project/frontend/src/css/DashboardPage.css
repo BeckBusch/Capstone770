@@ -93,7 +93,7 @@
     background-image: url("../assets/sort-icon.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 80%;
+    background-size: 70%;
 }
 
 .filter-btn {
@@ -117,7 +117,6 @@
     border-radius: 22px;
     color: #ffffff;
     font-size: 16px;
-    border: none;
     padding: 0;
 }
 
