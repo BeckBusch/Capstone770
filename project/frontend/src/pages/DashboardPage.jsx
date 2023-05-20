@@ -1,12 +1,12 @@
 import "../css/DashboardPage.css";
-import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthDetails from "../AuthDetails";
 import { AppContext } from "../AppContextProvider";
 
+import LoginPage from "./LoginPage";
 import NavBar from "../components/NavBar";
 import DashboardCard from "../components/DashboardCard";
-import LoginPage from "./LoginPage";
 
 function DashboardPage() {
   
@@ -14,7 +14,6 @@ function DashboardPage() {
     loggedIn,
     dogs,
     setDogID,
-    getAllDogs,
     sortDogAToZ,
     sortDogZToA,
     searchDog,
@@ -27,16 +26,23 @@ function DashboardPage() {
   const [reload, setReload] = useState(true);
 
   const navigate = useNavigate();
-  // Navigates to Add Dog Page
+
   function handleAddDog() {
     navigate("/add-dog");
   }
 
-  async function handleChange() {
-    setReload(false);
+  function handleDogDetails(dogID) {
+    setDogID(dogID);
+    navigate(`/dog/${dogID}`);
+  }
+
+  async function handleSortSelect() {
 
     const sortSelect = document.getElementById("sort");
     const sortValue = sortSelect.value;
+
+    setReload(false);
+    setSearchValue("");
 
     if (sortValue == "AToZ") {
       setCurrentDogs(await sortDogAToZ());
@@ -47,33 +53,18 @@ function DashboardPage() {
     }
   }
 
-  function handleSelect() {
-    console.log ("Just checkign")
-  }
-
-  function navigateToDogDetails(str) {
-    setDogID(str);
-    navigate(`/dog/${str}`);
-  }
-
-
-  const handleSubmit = (e) => {
-    console.log("Handle Search");
+  const handleSearchSubmit = (e) => {
     e.preventDefault();
-    getSearchResults();
+    handleSearchDog();
   };
 
-  async function getSearchResults() {
-    console.log(searchValue.trim().length);
+  async function handleSearchDog() {
     if (searchValue.trim().length != 0) {
-      console.log("Before Search");
-      const search = await searchDog(searchValue);
-      console.log("After Search");
-      setCurrentDogs(search);
+      setCurrentDogs(await searchDog(searchValue));
     }
   }
 
-  function updateSearchValue(value) {
+  function handleUpdateSearch(value) {
     setCurrentDogs(dogs);
     setSearchValue(value);
   }
@@ -92,14 +83,14 @@ function DashboardPage() {
 
         {/* Search */}
         <div className="search-container-div">
-          <form className="form-styling" onSubmit={handleSubmit}>
+          <form className="form-styling" onSubmit={handleSearchSubmit}>
             <div className="search-container-div-align">
               <input
                 type="search"
                 id="mySearch"
                 placeholder="Search by name, breed etc."
                 className="dashboard-search"
-                onChange={(e) => updateSearchValue(e.target.value)}
+                onChange={(e) => handleUpdateSearch(e.target.value)}
               />
               <button
                 type="submit"
@@ -116,8 +107,7 @@ function DashboardPage() {
             name="sort-types"
             id="sort"
             defaultValue="none"
-            onChange={() => handleChange()}
-            onClick={() => handleChange()}
+            onChange={() => handleSortSelect()}
           >
             <option value="none" disabled hidden>
               Sort: none
@@ -138,7 +128,7 @@ function DashboardPage() {
                 <div className="dog-card" key={i}>
                   <button
                     className="dashboard-card-btn"
-                    onClick={() => navigateToDogDetails(dog["_id"])}
+                    onClick={() => handleDogDetails(dog["_id"])}
                   >
                     <DashboardCard
                       name={dog["name"]}
@@ -155,7 +145,7 @@ function DashboardPage() {
                 <div className="dog-card" key={i}>
                   <button
                     className="dashboard-card-btn"
-                    onClick={() => navigateToDogDetails(dog["_id"])}
+                    onClick={() => handleDogDetails(dog["_id"])}
                   >
                     <DashboardCard
                       name={dog["name"]}

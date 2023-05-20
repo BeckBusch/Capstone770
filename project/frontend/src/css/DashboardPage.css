@@ -91,7 +91,7 @@
     background-image: url("../assets/search-icon-dark-grey.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size:50%;
+    background-size: 50%;
 }
 
 .dashboard-search-button:hover {
@@ -115,7 +115,6 @@
     outline: none;
 }
 
-
 /* Dog Cards  */
 .dog-cards-flex {
     display: grid;
@@ -124,24 +123,21 @@
     grid-template-columns: repeat(4, 25%);
     row-gap: 30px;
     padding-bottom: 50px;
-    /* background-color: purple; */
 }
 
 .dog-card {
-    width: calc(100%-10px);
+    width: calc(100% - 10px);
     background-color: transparent;
-    border:none;
+    border: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* padding: 10px; */
     margin: 0 15px;
-    /* background-color: red; */
-    /* margin: 5px; */
+
 }
 
 .dashboard-card-btn {
-    width: calc(100%-10px);
+    width: calc(100% - 10px);
     background-color: transparent;
     border: 1px solid #DBDBDB;
     border-radius: 20px;
