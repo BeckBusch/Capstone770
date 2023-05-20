@@ -20,7 +20,7 @@ function DashboardPage() {
   } = useContext(AppContext);
 
   const [searchValue, setSearchValue] = useState(false);
-  const [currentDogs, setcurrentDogs] = useState(dogs);
+  const [currentDogs, setCurrentDogs] = useState(dogs);
 
   window.onload = AuthDetails();
 
@@ -37,14 +37,15 @@ function DashboardPage() {
   const [sort, setSort] = useState(true);
 
   function sortAlphabetically() {
+    setSearchValue(true);
     setSort(!sort);
     handleSortDogs();
   }
 
   async function handleSortDogs() {
     sort
-      ? setcurrentDogs(await sortDogAToZ())
-      : setcurrentDogs(await sortDogZToA());
+      ? setCurrentDogs(await sortDogAToZ())
+      : setCurrentDogs(await sortDogZToA());
   }
 
   async function handleGetAllDogs() {
@@ -52,14 +53,17 @@ function DashboardPage() {
   }
 
   const handleSearch = (e) => {
-    setcurrentDogs(dogs);
+    console.log("Handle Search")
+    setCurrentDogs(dogs);
     e.preventDefault();
     getSearchResults();
   };
 
   async function getSearchResults() {
+    console.log("Before Search")
     const search = await searchDog(searchValue);
-    setcurrentDogs(search);
+    console.log("After Search")
+    setCurrentDogs(search);
   }
 
   function updateSearchValue(value) {
@@ -67,7 +71,7 @@ function DashboardPage() {
     if (value == "") {
       setSearchValue(false);
     } else {
-      setcurrentDogs(dogs);
+      setCurrentDogs(dogs);
       setSearchValue(value);
     }
   }

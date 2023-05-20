@@ -143,19 +143,19 @@ function AppContextProvider({ children }) {
     }
 
     async function sortDogAToZ() {
-        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort-a-to-z`);
+        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort/a-to-z`);
         refreshDogs();
         return dogSortResponse.data;
     }
 
     async function sortDogZToA() {
-        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort-z-to-a`);
+        const dogSortResponse = await axios.get(`${API_BASE_URL}/api/dogs/sort/z-to-a`);
         refreshDogs();
         return dogSortResponse.data;
     }
 
     async function searchDog(search) {
-        const dogSearchResponse = await axios.get(`${API_BASE_URL}/api/dogs/${search}`);
+        const dogSearchResponse = await axios.get(`${API_BASE_URL}/api/dogs/search/${search}`);
         refreshDogs();
         return dogSearchResponse.data;
     }
