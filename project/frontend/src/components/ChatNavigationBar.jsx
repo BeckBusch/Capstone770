@@ -38,7 +38,7 @@ function ChatNavigationBar() {
         <h1 className="chat-header">Chats</h1>
       </div>
 
-      <div className="add-chat-container-div">
+      <div className="add-chat-div">
         <button className="add-chat-btn" onClick={() => handleAddChat()}>
           + Start New Discussion
         </button>
@@ -49,28 +49,30 @@ function ChatNavigationBar() {
         <button className="chat-search-button"></button>
       </div>
 
-      <div className="scroll">
-        {chats
-          .slice(0)
-          .reverse()
-          .map(function (chat, i) {
-            return (
-              <button
-                className="chat-preview-btn"
-                onClick={() => handlePreviewClick(chat["_id"], i)}
-                id={`preview${i}`}
-                key={i}
-              >
-                <ChatPreviewCard
-                  key={i}
+      <div className="chat-preview-scroll-div">
+        <div className="chat-preview-scroll">
+          {chats
+            .slice(0)
+            .reverse()
+            .map(function (chat, i) {
+              return (
+                <button
                   className="chat-preview-btn"
-                  summary={chat["summary"]}
-                  discussion={chat["discussion"]}
-                  user={chat["user"]}
-                />
-              </button>
-            );
-          })}
+                  onClick={() => handlePreviewClick(chat["_id"], i)}
+                  id={`preview${i}`}
+                  key={i}
+                >
+                  <ChatPreviewCard
+                    key={i}
+                    className="chat-preview-btn"
+                    summary={chat["summary"]}
+                    discussion={chat["discussion"]}
+                    user={chat["user"]}
+                  />
+                </button>
+              );
+            })}
+        </div>
       </div>
     </div>
   );
