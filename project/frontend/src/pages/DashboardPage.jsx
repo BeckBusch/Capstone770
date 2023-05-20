@@ -19,8 +19,9 @@ function DashboardPage() {
     searchDog,
   } = useContext(AppContext);
 
-  const [searchValue, setSearchValue] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
   const [currentDogs, setCurrentDogs] = useState(dogs);
+  const [reload, setReload] = useState(true);
 
   window.onload = AuthDetails();
 
@@ -37,7 +38,7 @@ function DashboardPage() {
   const [sort, setSort] = useState(true);
 
   function sortAlphabetically() {
-    setSearchValue(true);
+    setReload(false);
     setSort(!sort);
     handleSortDogs();
   }
@@ -53,27 +54,24 @@ function DashboardPage() {
   }
 
   const handleSearch = (e) => {
-    console.log("Handle Search")
-    setCurrentDogs(dogs);
+    console.log("Handle Search");
     e.preventDefault();
     getSearchResults();
   };
 
   async function getSearchResults() {
-    console.log("Before Search")
-    const search = await searchDog(searchValue);
-    console.log("After Search")
-    setCurrentDogs(search);
+    console.log(searchValue.trim().length);
+    if (searchValue.trim().length != 0) {
+      console.log("Before Search");
+      const search = await searchDog(searchValue);
+      console.log("After Search");
+      setCurrentDogs(search);
+    }
   }
 
   function updateSearchValue(value) {
-    console.log(value);
-    if (value == "") {
-      setSearchValue(false);
-    } else {
-      setCurrentDogs(dogs);
-      setSearchValue(value);
-    }
+    setCurrentDogs(dogs);
+    setSearchValue(value);
   }
 
   return loggedIn ? (
@@ -96,7 +94,10 @@ function DashboardPage() {
                 className="dashboard-search"
                 onChange={(e) => updateSearchValue(e.target.value)}
               />
-              <button className="dashboard-search-button"></button>
+              <button
+                type="submit"
+                className="dashboard-search-button"
+              ></button>
             </div>
           </form>
         </div>
@@ -113,9 +114,9 @@ function DashboardPage() {
       </div>
       {/* Dog Cards */}
       <div className="dog-cards-flex">
-        {searchValue
+        {reload
           ? // Search Activated
-            currentDogs.map(function (dog, i) {
+            dogs.map(function (dog, i) {
               return (
                 <button
                   className="dashboard-card-btn"
@@ -133,7 +134,7 @@ function DashboardPage() {
               );
             })
           : // All Dogs
-            dogs.map(function (dog, i) {
+            currentDogs.map(function (dog, i) {
               return (
                 <button
                   className="dashboard-card-btn"
