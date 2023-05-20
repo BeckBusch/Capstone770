@@ -48,12 +48,12 @@ router.get("/:id", async (req, res) => {
 });
 
 // Retrieve sort dogs (A to Z)
-router.get("/sort-a-to-z", async (req, res) => {
+router.get("/sort/a-to-z", async (req, res) => {
   res.json(await sortAToZ());
 });
 
 // Retrieve sort dogs (Z to A)
-router.get("/sort-z-to-a", async (req, res) => {
+router.get("/sort/z-to-a", async (req, res) => {
   res.json(await sortZToA());
 });
 

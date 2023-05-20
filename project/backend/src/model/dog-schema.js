@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { Weight } from './weight-schema';
 
 const Schema = mongoose.Schema;
 

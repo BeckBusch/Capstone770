@@ -37,6 +37,7 @@ function DashboardPage() {
   const [sort, setSort] = useState(true);
 
   function sortAlphabetically() {
+    setSearchValue(true);
     setSort(!sort);
     handleSortDogs();
   }
