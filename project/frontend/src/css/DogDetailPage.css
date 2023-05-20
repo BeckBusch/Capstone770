@@ -248,7 +248,7 @@ label {
 .graph {
     background-color: #BDD3E8;
     width: 100%;
-    height: fit-content;
+    height: 600px;
     /* padding: 10px; */
     position: absolute;   
     /* left: 50%;
@@ -257,15 +257,12 @@ label {
     z-index: 9;
     top: 0;
     left: 0;
-    /* opacity: 0.8; */
     margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow:scroll;
+    overflow-x:hidden;
 }
 
 .chart-display {
-    display: block;
     width: 100%;
     height: 100%;
     display: flex;
@@ -274,14 +271,13 @@ label {
 }
 
 .canvas {
-    padding: 15px;
+    padding: 15px; 
 }
 
 .table-display {
     display: none;
     width: 100%;
-    height: 100%;
-    border-radius: 22px;    
+    border-radius: 22px;   
 }
 
 .renderDogDetailsTable {
