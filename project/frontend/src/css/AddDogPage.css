@@ -1,1 +1,131 @@
-/* All css for AddDogPage can be found from AddUserPage.css */
+.add-dog-page {
+    width: 100vw;
+    height: 100%;
+    min-height: 100vh;
+    background-color: white;
+    color: black;
+    background-image: url("../assets/background-add-dog.png");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 100vh;
+}
+
+.add-dog-container {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    padding-top: 5%;
+}
+
+.add-dog-header {
+    width: 100%;
+    justify-content: right;
+    padding-right: 5%;
+}
+
+.add-dog-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: top;
+    margin: 0;
+    padding-right: 10%;
+}
+
+.add-dog-header h1 {
+    text-align: right;
+    font-size: 150px;
+    line-height: .8;
+    color: black;
+}
+
+.add-dog-header-line-1 {
+    padding-right: 100px;
+}
+
+.add-dog-two-columns-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    row-gap: 10px;
+}
+
+.dog-input-styling {
+    width: calc(100% - 30px);
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #999999;
+    border-radius: 10px;
+    padding: 0 15px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dog-select-style  {
+    width: 100%;
+    font-size: 16px;
+    border: none;
+    color: #8e8e8e;
+}
+
+.dog-select-style:focus  {
+    outline: none;
+}
+
+.dog-select-style > option {
+    color: #8e8e8e;
+}
+
+.dog-image-input {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: left;
+}
+
+.dog-image-input input[type=file] {
+    width: fit-content;
+    color: #999999;
+    font-size: 16px;
+}
+
+.dog-image-input input[type=file]::file-selector-button {
+    width: 140px;
+    height: 40px;
+    color: #999999;
+    background-color: white;
+    border: 1px solid #999999;
+    border-radius: 50px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 5px 10px 0 0
+}
+
+.dog-image-input input[type=file]::file-selector-button:hover {
+    color: white;
+    background-color: #999999;
+    border: #999999 1px solid;
+}
+
+.add-dog-form label {
+    /* padding: 0; */
+    margin: 0;
+    line-height: 1;
+    height: fit-content;
+    padding: 15px 50px 0 0;
+    font-size: 20px;
+}
+
+.buttons {
+    width: 100%;
+    display: inline;
+}
+
+.buttons-div {
+    text-align: right;
+    margin-top: 50px;
+}

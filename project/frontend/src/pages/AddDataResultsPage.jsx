@@ -4,16 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
 import NavBar from "../components/NavBar";
-import StartBlackIcon from "../assets/start-black-icon.png";
+import StartBlack from "../assets/icon-start-black.png";
 
 function AddDataResultsPage() { 
     const {
         scaleID,
         weights,
-        getWeights,
         dogs,
         updateDog,
-        getAllDogs,
         dogID,
         removeWeight,
     } = useContext(AppContext); 
@@ -145,7 +143,7 @@ function AddDataResultsPage() {
       <div className="add-data-results-page">
           <NavBar/>
           <div className="add-data-results-header-container">
-              <img src={StartBlackIcon} className="settings-icon-align" alt="start" />
+              <img src={StartBlack} className="settings-icon-align" alt="start" />
               <h1 className="start-weighing-header">Start Weighing</h1>
           </div>
           <div className="results-container">

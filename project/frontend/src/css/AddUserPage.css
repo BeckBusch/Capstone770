@@ -1,172 +1,134 @@
 .add-user-page {
-    width: 100%;
+    width: 100vw;
     height: 100%;
     min-height: 100vh;
     background-color: white;
     color: black;
-}
-
-.corner-logo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    max-width: 100px;
-}
-
-.corner-logo:hover {
-    cursor: pointer;
-}
-
-.add-user-container-flex {
-    position: relative;
-    /* background-color: black; */
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-image: url("../assets/background-add-user.png");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 80vh;
 }
 
 .add-user-container {
-    width: 100%;
-    height: 550px;
-    padding: 20px 50px;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
-}
-
-.add-user-icon {
-    vertical-align: middle;
-    margin-right: 20px;
-    height: 50px;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    padding-top: 5%;
 }
 
 .add-user-header {
-    display: inline-block;
-    vertical-align: middle;
-    color: black;
-    font-size: 40px;
+    width: 100%;
+    justify-content: right;
+    padding-right: 5%;
 }
 
-.add-user-info {
-    padding: 30px 0;
-    color: black;
+.add-user-form-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: top;
+    margin: 0;
+    padding-right: 10%;
 }
 
 .add-user-form {
-    /* background-color: black; */
-    width: 100%;
-    height: 80%;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding: 0 30px 0 100px;
-}
-
-.add-user-form-col-1 {
-    width: fit-content;
-    padding: 0 10% 0 0;
-}
-
-.add-user-form-col-2 {
-    width: 500px
-}
-
-.profile-container {
-    width: 200px;
-    height: 200px;
-    background-color: #BDD3E8;
-    border: 5px solid #BDD3E8;
-    overflow: hidden;    
-    border-radius: 50%;
-    margin: auto;
-    margin-top: 20px;
-}
-
-.profile-img {
-    width: 100%;
+    width: 50%;
     height: 100%;
-    object-fit: cover;
-}
-
-.add-file-input {
-    width: 200px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0 0 0;
-    text-align: center;
+    justify-content: right;
+    align-items: top;
+    margin: 0;
+    /* padding-right: 10%; */
 }
 
-input[type=file] {
-    width: fit-content;
+.add-user-header h1 {
+    text-align: right;
+    font-size: 150px;
+    line-height: .8;
     color: black;
-  }
-
-  input[type=file]::file-selector-button {
-    width: 90px;
-    height: 30px;
-    color: black;
-    background-color: #BDD3E8;
-    border: #BDD3E8 1px solid;
-    border-radius: 50px;
-    font-size: 12px;
-    cursor: pointer;
-     margin: 0 10px 0 0
 }
 
-input[type=file]::file-selector-button:hover {
-    color: white;
-    background-color: #3479C0;
-    border: #3479C0 1px solid;
-}
-
-.add-user-page label {
-    color: black;
+.add-user-header-line-1 {
+    padding-right: 100px;
 }
 
 .add-user-two-columns-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap:1px;
+    grid-template-columns: 1fr 3fr;
     row-gap: 10px;
-    padding: 1px;
 }
 
-.add-user-two-columns-grid > * {
+.user-input-styling {
+    width: calc(100% - 30px);
     height: 40px;
+    font-size: 16px;
+    border: 1px solid #999999;
+    border-radius: 10px;
+    padding: 0 15px;
+    margin: 5px 0;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.input-styling {
-    width: 280px;
-    height: 40px;
-    font-size: 16px;
-    border: 1px solid #999999;
-    border-radius: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.select-style  {
+.user-select-style  {
     width: 100%;
-    height: 40px;
     font-size: 16px;
-    border: 1px solid #999999;
-    border-radius: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    border: none;
     color: #8e8e8e;
 }
 
-.select-style > option {
+.user-select-style:focus  {
+    outline: none;
+}
+
+.user-select-style > option {
     color: #8e8e8e;
+}
+
+.user-image-input {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: left;
+}
+
+.user-image-input input[type=file] {
+    width: fit-content;
+    color: #999999;
+    font-size: 16px;
+}
+
+.user-image-input input[type=file]::file-selector-button {
+    width: 140px;
+    height: 40px;
+    color: #999999;
+    background-color: white;
+    border: 1px solid #999999;
+    border-radius: 50px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 5px 10px 0 0
+}
+
+.user-image-input input[type=file]::file-selector-button:hover {
+    color: white;
+    background-color: #999999;
+    border: #999999 1px solid;
+}
+
+.add-user-form label {
+    /* padding: 0; */
+    margin: 0;
+    line-height: 1;
+    height: fit-content;
+    padding: 15px 40px 0 0;
+    font-size: 20px;
+    width: 180px;
 }
 
 .buttons {
@@ -176,47 +138,5 @@ input[type=file]::file-selector-button:hover {
 
 .buttons-div {
     text-align: right;
-}
-
-.cancel-btn {
-    width: 105px;
-    height: 40px;
-    color: #999999;
-    background-color: white;
-    border: #999999 1px solid;
-    border-radius: 50px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-.cancel-btn:hover {
-    color: white;
-    background-color: #999999;
-    border: 1px solid #999999;
-}
-
-.add-btn {
-    width: fit-content;
-    height: 40px;
-    color: white;
-    background-color: #3479C0;
-    border: #3479C0 1px solid;
-    border-radius: 50px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.add-btn:hover {
-    color: #3479C0;
-    background-color: #BDD3E8;
-    border: 1px solid #BDD3E8;
-}
-
-.add-user-error-msg {
-    height: 15px;
-    color: red;
-    font-size: 12px;
-    margin: 5px 0 10px 0 ;
-    text-align: right;
+    margin-top: 50px;
 }
