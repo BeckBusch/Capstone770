@@ -20,7 +20,7 @@ function AddDogPage() {
 
   const handleAddDog = (e) => {
     e.preventDefault();
-    console.log(gender)
+    console.log(gender);
     if (isValidForm()) {
       addDog(name, breed, age, gender, location, image);
       navigate("/dashboard");
@@ -69,7 +69,6 @@ function AddDogPage() {
 
         {/* Form */}
         <div className="add-dog-form">
-
           <form onSubmit={handleAddDog}>
             <div className="add-dog-two-columns-grid">
               {/* Name */}

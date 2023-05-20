@@ -7,6 +7,7 @@ import {
     createChat,
     retrieveChat,
     retrieveChatList,
+    searchChat,
     updateChat,
     deleteChat
 } from '../../service/chats-dao'
@@ -53,6 +54,12 @@ router.get('/:id', async (req, res) => {
     if (chat) return res.json(chat);
     return res.sendStatus(HTTP_NOT_FOUND);
 });
+
+// Retrieve search chats
+router.get("/search/:string", async (req, res) => {
+    const { string } = req.params;
+    res.json(await searchChat(string));
+  });
 
 // Update chat
 router.put('/:id', async (req, res) => {

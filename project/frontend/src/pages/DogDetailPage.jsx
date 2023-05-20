@@ -58,6 +58,8 @@ function DogDetailPage() {
   return (
     <div className="dog-detail-page">
       <NavBar />
+
+      <div className="dog-detail-page-content">
       <div className="outer-button-container">
         <div className="dog-detail-button-container">
           <div className="buttons">
@@ -189,6 +191,7 @@ function DogDetailPage() {
             time of measurement, vet/volunteer
           </p>
         </div>
+      </div>
       </div>
     </div>
   );

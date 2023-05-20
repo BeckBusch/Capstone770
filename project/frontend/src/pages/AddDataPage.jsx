@@ -40,6 +40,8 @@ function AddDataPage() {
   return (
     <div className="add-data-page">
       <NavBar />
+      <div className="add-data-page-content">
+
       <div className="add-data-header-container">
         <img src={StartBlack} className="start-icon-align" alt="start" />
         <h1 className="start-weighing-header">Start Weighing</h1>
@@ -98,6 +100,7 @@ function AddDataPage() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
