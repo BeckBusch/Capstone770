@@ -13,16 +13,9 @@ import AddUserIcon from "../assets/add-user-icon.png";
 import AuthDetails from "../AuthDetails";
 
 function ManageUsersPage() {  
-    const { loggedIn } =
     useContext(AppContext);
 
-
     AuthDetails();
-
-    var d = new Date();
-    console.log("d = ", d);
-    var date = d.toLocaleDateString('en-US');
-    console.log("date = ", date);
     
     const {
         users
@@ -39,10 +32,7 @@ function ManageUsersPage() {
         const allUsers = new Array();
         allUsers.push(["Name", "Email", "User Type", "Joined"]);
         for (const user of users) {
-            var d = new Date(user["createdAt"]);
-            var date = d.toLocaleDateString('en-GB');
-
-            allUsers.push([user["name"], user["email"], user["role"], date]);
+            allUsers.push([user["name"], user["email"], user["role"], user["createdAt"].slice(0, 10)]);
         }
     
  
