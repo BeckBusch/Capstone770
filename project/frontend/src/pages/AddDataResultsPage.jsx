@@ -100,10 +100,7 @@ function AddDataResultsPage() {
             console.log("getprevouscurrentweight: ", previousCurrentWeight)
             console.log("previouswegiht: ", previousWeight)
             updateDog(dogID, previousCurrentWeight, previousWeight)
-            // removeWeight(scaleID);
-            // console.log("weights: ", weights);
-            // const freshWeights = await getWeights()
-            // console.log("fresh weights: ", freshWeights);
+            removeWeight(scaleID);
 
             navigate("/dog/:id");
         } else {
