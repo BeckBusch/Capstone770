@@ -15,9 +15,9 @@ import SignOutIcon from "../assets/icon-sign-out.png";
 import AuthDetails from "../AuthDetails";
 
 function NavBar() {
-  const { userRole, userName } = useContext(AppContext);
-
   AuthDetails();
+
+  const { userRole, userName } = useContext(AppContext);
 
   const [signOutPopUpVisible, setSignOutPopUpVisible] = useState(false);
 
@@ -32,7 +32,7 @@ function NavBar() {
   }
 
   const navigate = useNavigate();
-
+  
   function signOutUser() {
     signOut(auth)
       .then(() => {

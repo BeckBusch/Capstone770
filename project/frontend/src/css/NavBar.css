@@ -1,9 +1,13 @@
 .nav-bar {
     width: 100vw;
-    height: fit-content;
+    height: 40px;
     background-color: #3479C0;
     padding: 15px 0 10px 0;
     display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
 }
 
 .col-left {
@@ -31,14 +35,13 @@
 }
 
 .navbar-icon {
-    max-height: 30px;
-    padding-right: 10px;
+    max-height: 40px;
     padding-bottom: 5px;
 }
 
 .navbar-link-text {
-    padding-top: 5px;
     color: white;
+    margin-left: 10px;
 }
 
 .navbar-link-button {
@@ -92,6 +95,7 @@
     display: block;
     font-size: 16px;
     text-align: right;
+    padding-top: 5px;
 }
 
 .line-2 {
@@ -102,8 +106,8 @@
 
 .b-container {
     display: flex;
-    align-items: center;
-    justify-content: center
+    align-items: start;
+    justify-content: center;
 }
 
 .my-account-icon-align-2 {
@@ -120,7 +124,6 @@
     border: none;
     padding: 0;
     text-align: left;
-    margin-right: 10px;
     cursor: pointer;
 }
 
