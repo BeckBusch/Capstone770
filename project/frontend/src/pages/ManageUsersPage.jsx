@@ -31,7 +31,10 @@ function ManageUsersPage() {
         const allUsers = new Array();
         allUsers.push(["Name", "Email", "User Type", "Joined"]);
         for (const user of users) {
-            allUsers.push([user["name"], user["email"], user["role"], user["createdAt"].slice(0, 10)]);
+            var d = new Date(user["createdAt"]);
+            var date = d.toLocaleDateString('en-GB');
+            allUsers.push([user["name"], user["email"], user["role"], date]);
+            // user["createdAt"].slice(0, 10)
         }
     
  
