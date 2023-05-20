@@ -9,6 +9,7 @@ import DashboardCard from "../components/DashboardCard";
 import LoginPage from "./LoginPage";
 
 function DashboardPage() {
+  
   const {
     loggedIn,
     dogs,
@@ -19,15 +20,35 @@ function DashboardPage() {
     searchDog,
   } = useContext(AppContext);
 
+  window.onload = AuthDetails();
+
   const [searchValue, setSearchValue] = useState("");
   const [currentDogs, setCurrentDogs] = useState(dogs);
   const [reload, setReload] = useState(true);
 
-  window.onload = AuthDetails();
-
   const navigate = useNavigate();
-  function navigateToAddDog() {
+  // Navigates to Add Dog Page
+  function handleAddDog() {
     navigate("/add-dog");
+  }
+
+  async function handleChange() {
+    setReload(false);
+
+    const sortSelect = document.getElementById("sort");
+    const sortValue = sortSelect.value;
+
+    if (sortValue == "AToZ") {
+      setCurrentDogs(await sortDogAToZ());
+    } else if (sortValue == "ZToA") {
+      setCurrentDogs(await sortDogZToA());
+    } else {
+      setCurrentDogs(dogs)
+    }
+  }
+
+  function handleSelect() {
+    console.log ("Just checkign")
   }
 
   function navigateToDogDetails(str) {
@@ -35,25 +56,8 @@ function DashboardPage() {
     navigate(`/dog/${str}`);
   }
 
-  const [sort, setSort] = useState(true);
 
-  function sortAlphabetically() {
-    setReload(false);
-    setSort(!sort);
-    handleSortDogs();
-  }
-
-  async function handleSortDogs() {
-    sort
-      ? setCurrentDogs(await sortDogAToZ())
-      : setCurrentDogs(await sortDogZToA());
-  }
-
-  async function handleGetAllDogs() {
-    await getAllDogs();
-  }
-
-  const handleSearch = (e) => {
+  const handleSubmit = (e) => {
     console.log("Handle Search");
     e.preventDefault();
     getSearchResults();
@@ -81,14 +85,14 @@ function DashboardPage() {
       <div className="search-div">
         {/* Add Dog */}
         <div className="add-dog-container-div">
-          <button className="add-dog-btn" onClick={() => navigateToAddDog()}>
+          <button className="add-dog-btn" onClick={() => handleAddDog()}>
             + Add Dog
           </button>
         </div>
 
         {/* Search */}
         <div className="search-container-div">
-          <form className="form-styling" onSubmit={handleSearch}>
+          <form className="form-styling" onSubmit={handleSubmit}>
             <div className="search-container-div-align">
               <input
                 type="search"
@@ -112,6 +116,8 @@ function DashboardPage() {
             name="sort-types"
             id="sort"
             defaultValue="none"
+            onChange={() => handleChange()}
+            onClick={() => handleChange()}
           >
             <option value="none" disabled hidden>
               Sort: none
