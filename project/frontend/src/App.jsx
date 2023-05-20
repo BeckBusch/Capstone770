@@ -10,7 +10,6 @@ import AddDataResultsPage from "./pages/AddDataResultsPage";
 import ChatPage from "./pages/ChatPage";
 import ManageUsersPage from "./pages/ManageUsersPage";
 import AddUserPage from "./pages/AddUserPage";
-import AccountSettingsPage from "./pages/AccountSettingsPage";
 import AddDogPage from "./pages/AddDogPage";
 
 function App() {
@@ -36,10 +35,6 @@ function App() {
           <Route path="/add-chat" element={<ChatPage />} />
           <Route path="/manage-users" element={<ManageUsersPage />} />
           <Route path="/add-user" element={<AddUserPage />} />
-          <Route
-            path="/account-settings/:id"
-            element={<AccountSettingsPage />}
-          />
         </Routes>
       </BrowserRouter>
     </div>

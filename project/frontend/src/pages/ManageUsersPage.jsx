@@ -74,6 +74,7 @@ function ManageUsersPage() {
     return (
       <div className="manage-users-page">
           <NavBar/>   
+          <div className="manage-users-page-content">
           <div className="manage-header-container">
               <img src={SettingsBlackIcon} className="settings-icon-align" alt="start" />
               <h1 className="manage-users-header">Manage Users</h1>
@@ -127,6 +128,7 @@ function ManageUsersPage() {
                 <table className="renderBoard"></table>
 
               </div>
+          </div>
           </div>
       </div>
     )

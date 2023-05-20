@@ -142,6 +142,7 @@ function AddDataResultsPage() {
     return (
       <div className="add-data-results-page">
           <NavBar/>
+          <div className="add-data-results-page-content">
           <div className="add-data-results-header-container">
               <img src={StartBlack} className="settings-icon-align" alt="start" />
               <h1 className="start-weighing-header">Start Weighing</h1>
@@ -166,6 +167,7 @@ function AddDataResultsPage() {
                       {/* </Link> */}
                   </div>
               </div>
+          </div>
           </div>
         </div>
     )

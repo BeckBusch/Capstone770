@@ -7,15 +7,19 @@
     background-image: url("../assets/background-add-user.png");
     background-repeat: no-repeat;
     background-position: bottom left;
-    background-size: 80vh;
+    background-size: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .add-user-container {
-    height: 60vh;
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: top;
-    padding-top: 5%;
+    padding-top: 10px;
 }
 
 .add-user-header {

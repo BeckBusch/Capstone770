@@ -3,6 +3,7 @@
     height: 100%;
     min-height: 100vh;
     background-color: white;
+    padding-top: 65px;
 }
 
 /* Search Div (Add Dog, Search, Sort) */
