@@ -59,7 +59,7 @@
     width: calc(100% - 30px);
     height: 40px;
     font-size: 16px;
-    border: 1px solid #999999;
+    border: 1px solid #757575;
     border-radius: 10px;
     padding: 0 15px;
     margin: 5px 0;
@@ -68,19 +68,35 @@
     justify-content: center;
 }
 
-.dog-select-style  {
+
+.dog-select-styling {
+    width: calc(100% - 20px);
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #757575;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dog-select  {
     width: 100%;
     font-size: 16px;
     border: none;
-    color: #8e8e8e;
+    color: #757575;
+    margin: 0;
+    padding: 0;
 }
 
-.dog-select-style:focus  {
+.dog-select:focus  {
     outline: none;
 }
 
-.dog-select-style > option {
-    color: #8e8e8e;
+.dog-select > option {
+    color: #757575;
 }
 
 .dog-image-input {
@@ -93,16 +109,16 @@
 
 .dog-image-input input[type=file] {
     width: fit-content;
-    color: #999999;
+    color: #757575;
     font-size: 16px;
 }
 
 .dog-image-input input[type=file]::file-selector-button {
     width: 140px;
     height: 40px;
-    color: #999999;
+    color: #757575;
     background-color: white;
-    border: 1px solid #999999;
+    border: 1px solid #757575;
     border-radius: 50px;
     font-size: 14px;
     cursor: pointer;
@@ -111,12 +127,11 @@
 
 .dog-image-input input[type=file]::file-selector-button:hover {
     color: white;
-    background-color: #999999;
-    border: #999999 1px solid;
+    background-color: #BDD3E8;
+    border: #BDD3E8 1px solid;
 }
 
 .add-dog-form label {
-    /* padding: 0; */
     margin: 0;
     line-height: 1;
     height: fit-content;
@@ -124,12 +139,35 @@
     font-size: 20px;
 }
 
-.buttons {
+.add-dog-error-msg {
+    height: 20px;
+    color: red;
+    margin-top: 20px;
+    font-size: 14px;
+    display: flex;
+    justify-content: right;
+    align-items: end;
+}
+
+.add-dog-buttons {
     width: 100%;
     display: inline;
 }
 
-.buttons-div {
+.add-dog-buttons-div {
     text-align: right;
-    margin-top: 50px;
+    margin-top: 10px;
+}
+
+.add-btn {
+    width: fit-content;
+    background-color: #3479C0;
+    border: 1px solid #3479C0;
+    color: white;
+}
+
+.add-btn:hover {
+    background-color: white;
+    border: 1px solid #3479C0;
+    color: #3479C0;
 }

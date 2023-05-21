@@ -102,7 +102,7 @@ function AddUserPage() {
               <label htmlFor="Password">Password</label>
               <input
                 className="user-input-styling"
-                type="number"
+                type="text"
                 id="password"
                 placeholder="Password"
                 value={password}
@@ -112,7 +112,7 @@ function AddUserPage() {
               <label htmlFor="ConfirmPassword">Confirm Password</label>
               <input
                 className="user-input-styling"
-                type="ConfirmPassword"
+                type="text"
                 id="confirmPassword"
                 placeholder="Confirm Password"
                 value={confirmPassword}
@@ -121,9 +121,9 @@ function AddUserPage() {
 
               {/* Role */}
               <label htmlFor="Role">Role</label>
-              <div className="user-input-styling">
+              <div className="user-select-styling">
                 <select
-                  className="user-select-style"
+                  className="user-select"
                   name="role-types"
                   id="role"
                   defaultValue="none"
@@ -154,8 +154,8 @@ function AddUserPage() {
               <p>{errorMessage}</p>
             </div>
             {/* Buttons */}
-            <div className="buttons-div">
-              <div className="buttons">
+            <div className="add-user-buttons-div">
+              <div className="add-user-buttons">
                 <Link to="/manage-users">
                   <button className="cancel-btn">Cancel</button>
                 </Link>
