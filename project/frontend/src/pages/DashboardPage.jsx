@@ -75,7 +75,7 @@ function DashboardPage() {
         </div>
         {/* Search */}
         <div className="search-container-div">
-          <form className="form-styling" onSubmit={handleSearchSubmit}>
+          <form onSubmit={handleSearchSubmit}>
             <div className="search-container-div-align">
               <input
                 type="search"
