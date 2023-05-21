@@ -17,13 +17,21 @@ int tare_flag = 0;
 int check = 0;
 enum states {idle, not_ready, ready, tare_initialized, receive_data, send_data};    // initialize states for the FSM
 
+void state_sleep();
+
+void state_sleep(){
+    sleep_ms(1000);
+}
+
 
 // ISR for tare button GP20 -> tare switch
 void tare_ISR(unsigned int gpio, uint32_t events) {
-    if (get_tare_status()) {    // this is so tare led is not enabled at start up
-        enable_tare_LED();
-    }
+    // if (get_tare_status()) {    // this is so tare led is not enabled at start up
+    //     enable_tare_LED();
+    // }
+    enable_tare_LED();
     update_tare(true);
+    tare_flag = 1;
     printf("Tare interrupt occurred at PIN %d with event %d\n", gpio, events);  // print to terminal
 }
 
@@ -62,7 +70,7 @@ int main() {
             case idle:
                 printf("========== Current state: idle ==========\n");
                 printf("CURRENT TARE STATUS: %d\n", get_tare_status());
-                sleep_ms(1000);
+                state_sleep();
                 disable_stable_LED();   // incase it is still on
                 // polling until set amount of weight is reached or other inputs
                 while(1) {
@@ -88,7 +96,7 @@ int main() {
             case not_ready:
                 printf("========== Current state: not_ready ==========\n");
                 printf("CURRENT TARE STATUS: %d\n", get_tare_status());
-                sleep_ms(1000);
+                state_sleep();
                 enable_power_LED();
                 // if (wifi_connect()) {
                 if (1) {    // for testing only
@@ -102,7 +110,7 @@ int main() {
             case ready:
                 printf("========== Current state: ready ==========\n");
                 printf("CURRENT TARE STATUS: %d\n", get_tare_status());
-                sleep_ms(1000);
+                state_sleep();
                 enable_wifi_LED();
                 FSM = idle; // poll for inputs
                 break;
@@ -112,7 +120,7 @@ int main() {
             case tare_initialized:
                 printf("========== Current state: tare_initialized ==========\n");
                 printf("CURRENT TARE STATUS: %d\n", get_tare_status());
-                sleep_ms(1000);
+                state_sleep();
                 // enable_tare_LED();
                 // update tare weight calculation here
                 check = check_weights(save_weight_to_array());           // take 25 readings and save to global array and ensure weight readings are stable
@@ -122,8 +130,8 @@ int main() {
 
                 printf("\nTARE OFFSET VALUE = %f\n", get_tare_offset());
                 disable_tare_LED();
-                // tare_flag = 0;      // reset tare flag
-                update_tare(false);
+                
+                // update_tare(false);
                 FSM = receive_data; // go back to receive_data state to keep receiving data
                 break;
 
@@ -131,9 +139,14 @@ int main() {
             // receive data state - wait until set amount of data reached, enable steady weight LED
             case receive_data:
                 printf("========== Current state: receive_data ==========\n");
-                sleep_ms(1000);
+                state_sleep();
                 // ensure the data received here is not faulty or zero (i.e. no weight on scale)
                 if (get_weight_mean_average() < 0.5) {
+                    FSM = idle;
+                    break;
+                } else if (get_tare_status()) {     // don't send weight measurement for tare
+                    tare_flag = 0;      // reset tare flag
+                    update_tare(false);
                     FSM = idle;
                     break;
                 } else {
@@ -146,7 +159,7 @@ int main() {
             // send data state - send data packet to server 
             case send_data:
                 printf("========== Current state: send_data ==========\n");
-                sleep_ms(1000);
+                state_sleep();
                 disable_stable_LED();
 
                 // sprintf(request_body, "{\"location\":\"Auckland\", \"gender\":\"Male\", \"age\":4, \"breed\":\"breedTest\", \"name\":\"nameTest\"}");
@@ -159,48 +172,3 @@ int main() {
     cyw43_arch_deinit();
     return 0;
 }
-
-// original code
-// int main() {
-//     // Code Init
-//     stdio_init_all();
-//     if (cyw43_arch_init()) {
-//         printf("Wi-Fi init failed");
-//         return 1;
-//     }
-
-//     adc_init();
-//     adc_select_input(ADC_CHANNEL);
-
-//     cyw43_arch_enable_sta_mode();
-
-//     //wifi_connect();
-    
-//     //sprintf(request_body, "{\"%s\":\"%d\"}", "Weight", 15);
-//     //sendRequest("/Measurements/Dog1.json", request_body);
-
-//     sleep_ms(100);
-
-//     // Code Main 
-//     while (1) {
-//         /*
-//         //Wait Function conditions//
-//         1.  flag to check if weight measurement is needed
-//         2.  Sample until adc reading becomes stable, every .5s
-//         /////*/
-
-//         double weightReading = adcConvert();
-//         printf("Weight reading: %f\n", weightReading);
-
-//         cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
-//         printf("LED ON!\n");
-//         sleep_ms(1000); // 0.5s delay
-
-//         cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 0);
-//         printf("LED OFF!\n");
-//         sleep_ms(1000); // 0.5s delay
-
-//     }
-//     cyw43_arch_deinit();
-//     return 0; // test
-// }

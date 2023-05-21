@@ -57,7 +57,7 @@ double *save_weight_to_array() {
     }
     array_full_flag = 1;
     printf("\nArray full\n");
-    sleep_ms(1000);
+    sleep_ms(1000);      // for testing purposes
     return weight_value_array;
 }
 
@@ -102,7 +102,7 @@ int check_weights(double * weight_value_array) {
     printf("\nlast index: %f", last_index);
     printf("\nsum: %f", sum);
     printf("\naverage: %f\n", weight_mean_average);
-    sleep_ms(3000);
+    sleep_ms(3000);  // for testing purposes
 
     if (stable_flag == 1) {
         // stable
