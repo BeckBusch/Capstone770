@@ -11,28 +11,40 @@ function AddDogPage() {
   const [name, setName] = useState("");
   const [breed, setBreed] = useState("");
   const [age, setAge] = useState("");
-  const [gender, setGender] = useState("none");
+  const [sex, setSex] = useState("none");
   const [location, setLocation] = useState("");
   const [image, setImage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const dogBreedOptions = ["Golden Retriever", "Poodle", "Maltese", "Welsh Corgis", "Dachshund", "Pug", "German Shepherd", "Pomeranian"]
+  const locationOptions = ["Auckland (Hobsonville) Centre", "Auckland (Mangere) Centre", "Christchurch Centre", "Dunedin Centre", "Gisborne Centre",
+  "Hamilton Centre", "Hastings Centre", "Invercargill Centre", "Kaitaia Centre", "Kerikeri Centre", "Napier Centre", "Nelson Centre", "New Plymouth Centre",
+  "Palmerston North Centre", "Rotorua Centre", "Taupo Centre", "Tauranga Centre", "Timaru Centre", "Wellington Centre", "Whangarei Centre"]
 
   const navigate = useNavigate();
 
   const handleAddDog = (e) => {
     e.preventDefault();
-    console.log(gender);
     if (isValidForm()) {
-      addDog(name, breed, age, gender, location, image);
-      navigate("/dashboard");
+      addDog(name, breed, age, sex, location, image);
+      setTimeout(() => {    
+        navigate("/dashboard");
+      }, 700);
     } else {
       console.log("Error: " + errorMessage);
     }
   };
 
-  async function handleGenderSelect() {
-    const genderSelect = document.getElementById("gender");
-    const genderValue = genderSelect.value;
-    setGender(genderValue);
+  async function handleBreedSelect() {
+    setBreed(document.getElementById("breed").value);
+  }
+
+  async function handleSexSelect() {
+    setSex(document.getElementById("sex").value);
+  }
+
+  async function handleLocationSelect() {
+    setLocation(document.getElementById("location").value);
   }
 
   function isValidForm() {
@@ -45,8 +57,8 @@ function AddDogPage() {
     } else if (age.length <= 0) {
       setErrorMessage("Please provide a valid age.");
       return false;
-    } else if (gender == "none") {
-      setErrorMessage("Please select a gender.");
+    } else if (sex == "none") {
+      setErrorMessage("Please select a sex.");
       return false;
     } else if (location.length <= 0) {
       setErrorMessage("Please provide a valid location.");
@@ -83,14 +95,31 @@ function AddDogPage() {
               />
               {/* Breed */}
               <label htmlFor="Breed">Breed</label>
-              <input
-                className="dog-input-styling"
-                type="text"
-                id="breed"
-                placeholder="Breed"
-                value={breed}
-                onChange={(e) => setBreed(e.target.value)}
-              />
+              <div className="dog-select-styling">
+                <select
+                  className="dog-select"
+                  name="breed-options"
+                  id="breed"
+                  defaultValue="none"
+                  onChange={() => handleBreedSelect()}
+                >
+                  <option value="none" disabled hidden>
+                    Select Dog Breed
+                  </option>
+                  <option value="Mixed">Mixed Breed</option>
+                  <option value="none" disabled>----------</option>
+                  {dogBreedOptions.sort().map(function (dogBreed, i) {
+                    return (
+                      <option value={dogBreed} key={i}>
+                        {dogBreed}
+                      </option>
+                    );
+                  })}
+                  <option value="none" disabled>----------</option>
+                  <option value="Mixed">Other</option>
+                </select>
+              </div>
+
               {/* Age */}
               <label htmlFor="Age">Age</label>
               <input
@@ -101,18 +130,18 @@ function AddDogPage() {
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
               />
-              {/* Gender */}
-              <label htmlFor="Gender">Gender</label>
-              <div className="dog-input-styling">
+              {/* Sex */}
+              <label htmlFor="Sex">Sex</label>
+              <div className="dog-select-styling">
                 <select
-                  className="dog-select-style"
-                  name="gender-types"
-                  id="gender"
+                  className="dog-select"
+                  name="sex-options"
+                  id="sex"
                   defaultValue="none"
-                  onChange={() => handleGenderSelect()}
+                  onChange={() => handleSexSelect()}
                 >
                   <option value="none" disabled hidden>
-                    Select an Option
+                    Select
                   </option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
@@ -120,14 +149,27 @@ function AddDogPage() {
               </div>
               {/* Location */}
               <label htmlFor="Location">Location</label>
-              <input
-                className="dog-input-styling"
-                type="Location"
-                id="location"
-                placeholder="Location"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-              />
+              <div className="dog-select-styling">
+                <select
+                  className="dog-select"
+                  name="location-options"
+                  id="location"
+                  defaultValue="none"
+                  onChange={() => handleLocationSelect()}
+                >
+                  <option value="none" disabled hidden>
+                    Select SPCA Location
+                  </option>
+                  {locationOptions.sort().map(function (location, i) {
+                    return (
+                      <option value={location} key={i}>
+                        {location}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+
               {/* Image */}
               <label htmlFor="Image">Image</label>
               <div className="dog-image-input">
@@ -141,12 +183,12 @@ function AddDogPage() {
               </div>
             </div>
             {/* Error Message */}
-            <div className="add-user-error-msg text-align-right">
+            <div className="add-dog-error-msg text-align-right">
               <p>{errorMessage}</p>
             </div>
             {/* Buttons */}
-            <div className="buttons-div">
-              <div className="buttons">
+            <div className="add-dog-buttons-div">
+              <div className="add-dog-buttons">
                 <Link to="/dashboard">
                   <button className="cancel-btn">Cancel</button>
                 </Link>
