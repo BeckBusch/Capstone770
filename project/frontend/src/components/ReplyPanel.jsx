@@ -1,5 +1,5 @@
 import "../css/ReplyPanel.css";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AppContext } from "../AppContextProvider";
 
 function ReplyPanel() {
@@ -20,7 +20,7 @@ function ReplyPanel() {
                     <p className="reply-user">
                       <b>{reply[1]}</b> <i>&#40;{reply[2]}</i>&#41;
                     </p>
-                    <p className="reply-date">{chatsReverse[currentChatID]["updatedAt"].slice(0, 10)}</p>
+                    <p className="reply-date">{reply[3]}</p>
                   </div>
                   <p className="reply-message">{reply[0]}</p>
                 </div>

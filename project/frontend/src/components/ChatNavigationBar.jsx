@@ -20,7 +20,7 @@ function ChatNavigationBar() {
     setCurrentChatID(-1);
     navigate("/add-chat");
   }
-
+  
   function handlePreviewClick(id, i) {
     resetPreviewCards();
     document.getElementById(`preview${i}`).style.backgroundColor = "#DBDBDB";
@@ -96,7 +96,7 @@ function ChatNavigationBar() {
                     className="chat-preview-btn"
                     summary={chat["summary"]}
                     discussion={chat["discussion"]}
-                    date={chat["createdAt"].slice(0, 10)}
+                    date={new Date(chat["createdAt"]).toLocaleDateString('en-GB')}
                   />
                 </button>
               );
@@ -116,7 +116,8 @@ function ChatNavigationBar() {
                     className="chat-preview-btn"
                     summary={chat["summary"]}
                     discussion={chat["discussion"]}
-                    date={chat["createdAt"].slice(0, 10)}
+                    date={new Date(chat["createdAt"]).toLocaleDateString('en-GB')}
+                            
                   />
                 </button>
               );

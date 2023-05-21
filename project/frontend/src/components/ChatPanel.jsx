@@ -20,7 +20,7 @@ function ReplyPanel() {
             Posted by {chatsReverse[currentChatID]["userName"]} &#40;{chatsReverse[currentChatID]["userRole"]}&#41;
           </p>
           <p className="chat-panel-date">
-            {chatsReverse[currentChatID]["createdAt"].slice(0, 10)}
+            {new Date(chatsReverse[currentChatID]["createdAt"]).toLocaleDateString('en-GB')}
           </p>
           <p className="chat-panel-discussion">
             {chatsReverse[currentChatID]["discussion"]}
