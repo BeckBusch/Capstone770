@@ -19,7 +19,8 @@ function AddReplyPanel() {
 
   async function handleUpdateReplies() {
     const replies = chats.slice(0).reverse()[currentChatID]["replies"];
-    replies.push([[reply], userName, userRole]);
+    
+    replies.push([[reply], userName, userRole, new Date().toLocaleDateString('en-GB')]);
     await updateReplies(
       chats.slice(0).reverse()[currentChatID]["_id"],
       replies
