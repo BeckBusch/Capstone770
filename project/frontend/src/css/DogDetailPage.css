@@ -110,29 +110,6 @@ label {
     margin-bottom: 10px;
 }  
 
-.start-weighing-btn {
-    width: fit-content;
-    height: 40px;
-    color: white;
-    background-color: #3479C0;
-    font-size: 16px;
-    display: inline-flex;
-    align-items: center; 
-    border: none;
-    padding: 10px;
-    border-radius: 22px;
-    /* margin-top: 20px; */
-    /* margin-right: 10px; */
-    /* margin-right: 20px; */
-}
-
-.start-weighing-btn:hover {
-    color: #3479C0;
-    border: #3479C0 1px solid;
-    background-color: white;
-    cursor: pointer;
-}
-
 .buttons {
     /* background-color: pink; */
     width: 200px;
@@ -184,14 +161,14 @@ label {
 }
 
 .table-chart-container-2 {
-    background-color: #8BA5BD;
+    background-color: #DBDBDB;
     border-radius: 22px 22px 0px 0px;
     width: 170px;
     height: 100px;
 }
 
 .table-container {
-    background-color: #8BA5BD;
+    background-color: #DBDBDB;
     border-radius: 22px 22px 0px 0px;
     width: 85px;
     height: 100px;
@@ -259,7 +236,7 @@ label {
     left: 0;
     margin-top: 40px;
     overflow:scroll;
-    overflow-x:hidden;
+    overflow-x:auto;
     overflow-y:auto;
 }
 
@@ -303,21 +280,7 @@ label {
     /* background-color: black; */
 }
 
-.table-btn {
-    font-size: 20px;
-    background-color: transparent;  
-    border: transparent;
-    color: black;
-}
-
-.table-btn:hover {
-    /* color: #3479C0; */
-    border: black 1px solid;
-    border-radius: 22px;
-    /* background-color: white; */
-    cursor: pointer;
-}
-
+.table-btn,
 .chart-btn {
     font-size: 20px;
     background-color: transparent;  
@@ -325,14 +288,13 @@ label {
     color: black;
 }
 
+.table-btn:hover,
 .chart-btn:hover {
-    /* color: #3479C0; */
-    border: black 1px solid;
-    border-radius: 22px;
-    /* background-color: white; */
+    color: white;
+    border: none;
     cursor: pointer;
+    background-color: transparent;
 }
-
 
 .extra-msg {
     font-size: 16px;
