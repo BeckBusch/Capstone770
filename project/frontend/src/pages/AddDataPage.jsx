@@ -4,37 +4,26 @@ import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
 import NavBar from "../components/NavBar";
-import StartBlack from "../assets/icon-start-black.png";
-import MyAccountWhite from "../assets/icon-account-white.png";
 
 function AddDataPage() {
-  const { setscaleID } = useContext(AppContext);
+  const { scaleID, setscaleID } = useContext(AppContext);
 
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
-  function checkValidSelection(x) {
-    const selectedValue =
-      x.options[x.selectedIndex].value == "none" ? true : false;
-
-    if (selectedValue) {
+  const processData = (e) => {
+    e.preventDefault();
+    if (scaleID == "none") {
       setErrorMessage("Please select scale.");
     } else {
       navigate("/dog/:id/add-data/processing");
+      console.log(scaleID)
     }
-  }
+  };
 
-  function getSelectedScale() {
-    const x = document.getElementById("scale");
-    setscaleID(x.options[x.selectedIndex].value);
-
-    return x;
-  }
-
-  async function handleScaleID() {
-    const selectedScale = getSelectedScale();
-    checkValidSelection(selectedScale);
+  async function handleScaleSelect() {
+    setscaleID(document.getElementById("scale").value);
   }
 
   return (
@@ -42,65 +31,53 @@ function AddDataPage() {
       <NavBar />
       <div className="add-data-page-content">
 
-      <div className="add-data-header-container">
-        <img src={StartBlack} className="start-icon-align" alt="start" />
-        <h1 className="start-weighing-header">Start Weighing</h1>
-      </div>
-      <div className="align-center-div">
-        <div className="details-container">
-          <div className="two-col-grid">
-            <div className="col1">
-              <div className="profile-container">
-                <img
-                  className="profile-img"
-                  src={MyAccountWhite}
-                  alt="Profile Image"
-                />
-              </div>
-            </div>
-            <div className="col2">
-              <h1>Name</h1>
-              <div className="scale-id-container">
-                <label className="scale-label">Scale ID</label>
+      <div className="add-data-header">
+          <h1 className="add-data-header-line-1">New</h1>
+          <h1 className="add-data-header-line-2">Weighing</h1>
+          <h1 className="add-data-header-line-3">Session</h1>
+        </div>
+
+        <div className="add-data-form">
+        <div className="add-data-form-card">
+          <form onSubmit={processData}>
+            <div className="add-data-two-columns-grid">
+              {/* Sex */}
+              <label htmlFor="Sex">Scale ID</label>
+              <div className="scale-select-styling">
                 <select
-                  className="select-scale"
-                  name="scale-id"
+                  className="scale-select"
+                  name="scale-options"
                   id="scale"
-                  defaultValue={"none"}
+                  defaultValue="none"
+                  onChange={() => handleScaleSelect()}
                 >
                   <option value="none" disabled hidden>
-                    Select ...
+                    Select
                   </option>
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
                 </select>
               </div>
-              {/* Error Message */}
-              <div className="add-data-error-msg">
-                <p> {errorMessage} </p>
-              </div>
-              <div className="button-container">
-                <div className="buttons">
-                  <Link to="/dog/:id">
-                    <button type="submit" id="cancelBtn" className="cancel-btn">
-                      Cancel
-                    </button>
-                  </Link>
-                  <button
-                    type="submit"
-                    id="saveBtn"
-                    className="save-btn"
-                    onClick={() => handleScaleID()}
-                  >
-                    Save
-                  </button>
-                </div>
+            </div>
+            {/* Error Message */}
+            <div className="add-data-error-msg text-align-right">
+              <p>{errorMessage}</p>
+            </div>
+            {/* Buttons */}
+            <div className="add-data-buttons-div">
+              <div className="add-data-buttons">
+                <Link to="/dog/:id">
+                  <button className="cancel-scale-btn">Cancel</button>
+                </Link>
+                <button type="submit" id="signUpBtn" className="select-btn">
+                  Select
+                </button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
-      </div>
+        </div>
       </div>
     </div>
   );

@@ -21,16 +21,6 @@ function ManageUsersPage() {
   const [searchValue, setSearchValue] = useState("");
   const [currentUsers, setCurrentUsers] = useState(users);
   const [reload, setReload] = useState(true);
-  const [rollCount, setRollCount] = useState(0);
-
-  async function reRender() {
-    setRollCount(rollCount + 1);
-    const renderBoardDiv = document.querySelector(".renderBoard");
-    if (renderBoardDiv.children.length === 0) {
-      const table = renderBoard();
-      renderBoardDiv.appendChild(table);
-    }
-  }
 
   async function handleRoleSelect() {
     const sortSelect = document.getElementById("selectRole");
@@ -42,13 +32,10 @@ function ManageUsersPage() {
       setCurrentUsers(await getAdmins());
     } else if (sortValue == "Vet") {
       setCurrentUsers(await getVets());
-      reRender();
     } else if (sortValue == "Volunteer") {
       setCurrentUsers(await getVolunteers());
-      reRender();
     } else {
       setCurrentUsers(users);
-      reRender();
     }
   }
 
@@ -66,79 +53,33 @@ function ManageUsersPage() {
 
   function handleUpdateSearch(value) {
     setSearchValue(value);
-    setCurrentUsers(dogs);
+    setCurrentUsers(users);
     setReload(false);
   }
-
-//   const renderBoard = () => {
-//     const table = document.createElement("table");
-
-//     const allUsers = new Array();
-//     allUsers.push(["Name", "Email", "User Type", "Joined"]);
-//     for (const user of currentUsers) {
-//       allUsers.push([
-//         user["name"],
-//         user["email"],
-//         user["role"],
-//         new Date(user["createdAt"]).toLocaleDateString("en-GB"),
-//       ]);
-//     }
-
-//     //Get the count of columns.
-//     const columnCount = allUsers[0].length;
-//     //Add the header row.
-//     let row = table.insertRow(-1);
-//     for (let i = 0; i < columnCount; i++) {
-//       const headerCell = document.createElement("TH");
-//       headerCell.innerHTML = allUsers[0][i];
-//       row.appendChild(headerCell);
-//     }
-
-//     //Add the data rows.
-//     for (let i = 1; i < allUsers.length; i++) {
-//       row = table.insertRow(-1);
-//       for (let j = 0; j < columnCount; j++) {
-//         const cell = row.insertCell(-1);
-//         cell.innerHTML = allUsers[i][j];
-//       }
-//     }
-//     return table;
-//   };
-
-//   useEffect(() => {
-//     const renderBoardDiv = document.querySelector(".renderBoard");
-//     if (renderBoardDiv.children.length === 0) {
-//       const table = renderBoard();
-//       renderBoardDiv.appendChild(table);
-//     }
-//   }, []);
 
   return (
     <div className="manage-users-page">
       <NavBar />
       <div className="manage-users-page-content">
-        <div className="manage-header-container">
+        {/* <div className="manage-header-container">
           <img
             src={SettingsBlackIcon}
             className="settings-icon-align"
             alt="start"
           />
           <h1 className="manage-users-header">Manage Users</h1>
-        </div>
+        </div> */}
         <div className="options-container">
           <div className="three-columns-grid">
             <div className="col-one">
-              <div>
-                <label htmlFor="Username/Email">Username/Email</label>
-              </div>
-              {/* Search  */}
+              <label htmlFor="Username/Email">Search Users</label>
               <div className="search-user-div">
                 <form onSubmit={handleSearchSubmit}>
                   <div className="manage-user-container-div-align">
                     <input
                       type="search"
                       id="manageUserSearch"
-                      placeholder="Search"
+                      placeholder="Search by name or email ..."
                       className="manage-user-search"
                       onChange={(e) => handleUpdateSearch(e.target.value)}
                     />
@@ -153,47 +94,32 @@ function ManageUsersPage() {
 
             <div className="col-two">
               {/* User type */}
-              <div>
-                <label htmlFor="UserType">User Type</label>
-              </div>
-              <div className="type">
-                <div className="select-role-outer">
-                  <select
-                    className="select-role"
-                    name="role-types"
-                    id="selectRole"
-                    defaultValue="All"
-                    onChange={() => handleRoleSelect()}
-                  >
-                    <option value="All">All</option>
-                    <option value="none" disabled>
-                      ----------
-                    </option>
-                    <option value="Admin">Admin</option>
-                    <option value="Vet">Vet</option>
-                    <option value="Volunteer">Volunteer</option>
-                  </select>
-                </div>
+              <label htmlFor="UserType">Role</label>
+              <div className="select-role-outer">
+                <select
+                  className="select-role"
+                  name="role-types"
+                  id="selectRole"
+                  defaultValue="All"
+                  onChange={() => handleRoleSelect()}
+                >
+                  <option value="All">All</option>
+                  <option value="none" disabled>
+                    ----------
+                  </option>
+                  <option value="Admin">Admin</option>
+                  <option value="Vet">Vet</option>
+                  <option value="Volunteer">Volunteer</option>
+                </select>
               </div>
             </div>
 
             <div className="col-three">
-              <div>
-                <label></label>
-              </div>
+              <label></label>
               <div>
                 <Link to="/add-user">
-                  <button
-                    type="submit"
-                    id="AddUserBtn"
-                    className="add-user-btn"
-                  >
-                    <img
-                      src={AddUserIcon}
-                      className="add-user-align"
-                      alt="start"
-                    />
-                    Add User
+                  <button className="add-user-btn">
+                    + Add User
                   </button>
                 </Link>
               </div>
@@ -201,37 +127,47 @@ function ManageUsersPage() {
           </div>
         </div>
 
-        <div className="pending-users-container">
+        <div className="all-users-div">
           <label id="num-of-users">Users ({currentUsers.length})</label>
-          <div className="p-users-container">
+          <div className="all-users-container">
+            <div className="user-info-header">
+              <p>Name</p>
+              <p>Role</p>
+              <p>Email</p>
+              <p>Joined</p>
+            </div>
+
+            <div className="hl" />
+
             <div className="user-table-container">
-            <div className="user-info">
-                        <p> Name </p>
-                        <p> Role </p>
-                        <p> Email </p>
-                        <p> Joined </p>
-                      </div>
-              {/* <table className="renderBoard" key={rollCount}></table> */}
               {reload
                 ? // On Reload
                   users.map(function (user, i) {
                     return (
                       <div className="user-info" key={i}>
-                        <p> {user["name"]} </p>
-                        <p> {user["role"]} </p>
-                        <p> {user["email"]} </p>
-                        <p> {new Date(user["createdAt"]).toLocaleDateString('en-GB')} </p>
+                        <p>{user["name"]}</p>
+                        <p>{user["role"]}</p>
+                        <p>{user["email"]}</p>
+                        <p>
+                          {new Date(user["createdAt"]).toLocaleDateString(
+                            "en-GB"
+                          )}
+                        </p>
                       </div>
                     );
                   })
                 : // Sort/Search Activated
                   currentUsers.map(function (user, i) {
                     return (
-                        <div className="user-info" key={i}>
-                        <p> {user["name"]} </p>
-                        <p> {user["role"]} </p>
-                        <p> {user["email"]} </p>
-                        <p> {new Date(user["createdAt"]).toLocaleDateString('en-GB')} </p>
+                      <div className="user-info" key={i}>
+                        <p>{user["name"]}</p>
+                        <p>{user["role"]}</p>
+                        <p>{user["email"]}</p>
+                        <p>
+                          {new Date(user["createdAt"]).toLocaleDateString(
+                            "en-GB"
+                          )}
+                        </p>
                       </div>
                     );
                   })}

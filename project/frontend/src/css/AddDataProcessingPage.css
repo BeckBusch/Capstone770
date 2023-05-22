@@ -11,7 +11,7 @@
 
 .outer-circle {
     width: 100%;
-    position: relative;   
+    position: relative;
     left: 50%;
     transform: translate(-50%);
     padding-top: 5%;
@@ -29,62 +29,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* animation-name: footprint-appear;
-    animation-duration: 4s;
-    animation-iteration-count: infinite; */
 }
 
 .circle-container {
-    /* background-color: aqua; */
     width: 200px;
     height: 240px;
     position: absolute;
-    /* position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center; */   
 }
 
 .footprint-container {
-    /* width: 183px;
-    height: 220px; */
     width: 100%;
     height: 80%;
-    /* background-color: orange; */
     position: relative;
-    /* margin: auto; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    /* opacity: 0.8; */
-}
-
-@keyframes footprint-appear {
-    0%   {background-color: red;}
-    25%  {background-color: yellow;}
-    50%  {background-color: blue;}
-    100% {background-color: green;}
-  }
-
-.text-container {
-    width: 100%;
-    padding-top: 10px;
-    /* height: 20%; */
-    /* height: 220px;
-    width: fit-content; */
-    text-align: center;
-    height: fit-content;
-    /* background-color: orange; */
-    position: absolute;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    /* opacity: 0.8; */
 }
 
 .processing-text {
     font-weight: bold;
     font-size: 24px;
+    text-align: center;
+    padding-top: 20px;
 }
 
 .dog-footprint-img {
@@ -93,16 +56,13 @@
 }
 
 .one {
-    /* background-color: red; */
     position: absolute;
     top: 100%;
     transform: translateY(-100%);
     animation: image-appear 3s linear infinite 1.25s;
-
 }
 
 .two {
-    /* background-color: purple; */
     z-index: 9;
     position: absolute;
     left: 50%;
@@ -111,7 +71,6 @@
 }
 
 .three {
-    /* background-color: pink; */
     z-index: 9;
     position: absolute;
     top: 70%;
@@ -121,8 +80,12 @@
 }
 
 @keyframes image-appear {
-  /* appear */
-  25%  {opacity: 1;}
-  /* disappear */
-  100% {opacity: 0;}
+    /* appear */
+    25% {
+        opacity: 1;
+    }
+    /* disappear */
+    100% {
+        opacity: 0;
+    }
 }
