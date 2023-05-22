@@ -160,10 +160,12 @@
 }
 
 .add-btn {
-    width: fit-content;
-    background-color: #3479C0;
-    border: 1px solid #3479C0;
+    width: 100px;
+    height: 40px;
     color: white;
+    background-color: #3479C0;
+    font-size: 16px;
+    border: 1px solid #3479C0;
 }
 
 .add-btn:hover {

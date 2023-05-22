@@ -210,7 +210,7 @@ function DogDetailPage() {
                 <button
                   type="submit"
                   id="startWeighingBtn"
-                  className="add-btn"
+                  className="add-weight-btn"
                   onClick={() => handleAddWeight()}
                 >
                   + Add Weight

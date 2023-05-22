@@ -318,3 +318,16 @@ label {
   td {
     height: 50px;
   }
+
+  .add-weight-btn {
+    width: fit-content;
+    background-color: #3479C0;
+    border: 1px solid #3479C0;
+    color: white;
+  }
+
+  .add-weight-btn:hover {
+    background-color: white;
+    border: 1px solid #3479C0;
+    color: #3479C0;
+}
