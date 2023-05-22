@@ -205,7 +205,7 @@ function DogDetailPage() {
       <div className="dog-detail-page-content">
         <div className="outer-button-container">
           <div className="dog-detail-button-container">
-            <div className="buttons">
+            <div className="buttons-container">
               <Link to="./add-data">
                 <button
                   type="submit"

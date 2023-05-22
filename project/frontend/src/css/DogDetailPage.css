@@ -110,10 +110,11 @@ label {
     margin-bottom: 10px;
 }  
 
-.buttons {
-    /* background-color: pink; */
+.buttons-container {
     width: 200px;
-}
+    display: inline;
+  }
+
 
 .dog-detail-button-container {
     text-align: right;
