@@ -99,13 +99,23 @@ function ManageUsersPage() {
                           <label htmlFor="UserType">User Type</label>
                       </div>
                       <div className="type">
-                          <div className="option-type-dropdown">
-                              <button className="dropdownbutton"><i className="option-type-arrow option-type-down"></i></button>
-                              <div className="option-type-dropdown-content">
-                                  <a href="#">Vet</a>
-                                  <a href="#">Volunteer</a>
-                              </div>
-                          </div> 
+                        <div className="user-type-select-styling">
+                            <select
+                            className="user-type-select"
+                            name="user-type-options"
+                            id="user-type-select"
+                            defaultValue="default"
+                            onChange={() => handleUserTypeSelect()}
+                            >
+                            <option value="default">
+                                Select
+                            </option>
+                            <option value="none" disabled>----------</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Vet">Vet</option>
+                            <option value="Volunteer">Volunteer</option>
+                            </select>
+                            </div>
                       </div> 
                   </div>
 
