@@ -228,7 +228,10 @@ function ManageUsersPage() {
                   currentUsers.map(function (user, i) {
                     return (
                         <div className="user-info" key={i}>
-                        {user["name"]} 
+                        <p> {user["name"]} </p>
+                        <p> {user["role"]} </p>
+                        <p> {user["email"]} </p>
+                        <p> {new Date(user["createdAt"]).toLocaleDateString('en-GB')} </p>
                       </div>
                     );
                   })}
