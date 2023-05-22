@@ -53,6 +53,7 @@ function DashboardPage() {
   async function handleSearchDog() {
     if (searchValue.trim().length != 0) {
       setCurrentDogs(await searchDog(searchValue));
+      console.log(currentDogs);
     }
   }
 
