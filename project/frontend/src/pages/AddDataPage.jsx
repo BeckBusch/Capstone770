@@ -70,7 +70,7 @@ function AddDataPage() {
                 <Link to="/dog/:id">
                   <button className="cancel-scale-btn">Cancel</button>
                 </Link>
-                <button type="submit" id="signUpBtn" className="select-btn">
+                <button type="submit" id="signUpBtn" className="add-data-select-btn">
                   Select
                 </button>
               </div>

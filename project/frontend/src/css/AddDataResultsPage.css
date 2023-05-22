@@ -80,7 +80,7 @@
   display: inline;
 }
 
-.select-btn {
+/* .select-btn {
   width: fit-content;
   background-color: #3479C0;
   border: 1px solid #3479C0;
@@ -91,7 +91,7 @@
   background-color: white;
   border: 1px solid #3479C0;
   color: #3479C0;
-}
+} */
 
 .reweigh-btn {
   width: 100px;
@@ -235,8 +235,8 @@ td {
 }
 
 input[type='radio'] {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
 }
 
 .radio-button {
