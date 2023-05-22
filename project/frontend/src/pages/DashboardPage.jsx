@@ -1,6 +1,6 @@
 import "../css/DashboardPage.css";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthDetails from "../AuthDetails";
 import { AppContext } from "../AppContextProvider";
 
@@ -19,10 +19,6 @@ function DashboardPage() {
   const [reload, setReload] = useState(true);
 
   const navigate = useNavigate();
-
-  function handleAddDog() {
-    navigate("/add-dog");
-  }
 
   function handleDogDetails(dogID) {
     setDogID(dogID);
@@ -70,9 +66,11 @@ function DashboardPage() {
       <div className="search-div">
         {/* Add Dog */}
         <div className="add-dog-container-div">
-          <button className="add-dog-btn" onClick={() => handleAddDog()}>
+        <Link to="/add-dog">
+          <button className="add-dog-btn">
             + Add Dog
           </button>
+          </Link>
         </div>
         {/* Search */}
         <div className="search-container-div">
