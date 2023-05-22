@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../AppContextProvider";
 
 import ChatPreviewCard from "../components/ChatPreviewCard";
-import ChatBlack from "../assets/icon-chat-black.png";
 
 function ChatNavigationBar() {
   const { chats, setCurrentChatID, searchChat } = useContext(AppContext);
@@ -24,6 +23,7 @@ function ChatNavigationBar() {
   function handlePreviewClick(id, i) {
     resetPreviewCards();
     document.getElementById(`preview${i}`).style.backgroundColor = "#DBDBDB";
+    document.getElementById(`preview${i}`).style.border = "1px solid #DBDBDB";
     setCurrentChatID(i);
     navigate(`/chat/${id}`);
   }
@@ -54,10 +54,6 @@ function ChatNavigationBar() {
 
   return (
     <div className="chat-navigation-bar">
-      <div className="chat-header-div">
-        <img src={ChatBlack} className="chat-icon-align" alt="start" />
-        <h1 className="chat-header">Chats</h1>
-      </div>
 
       <div className="add-chat-div">
         <button className="add-chat-btn" onClick={() => handleAddChat()}>
