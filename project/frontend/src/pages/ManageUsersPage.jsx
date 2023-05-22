@@ -15,7 +15,8 @@ function ManageUsersPage() {
 
   AuthDetails();
 
-  const { users, getAdmins, getVets, getVolunteers } = useContext(AppContext);
+  const { users, getAdmins, getVets, getVolunteers, searchUser } =
+    useContext(AppContext);
 
   const [searchValue, setSearchValue] = useState("");
   const [currentUsers, setCurrentUsers] = useState(users);
@@ -51,9 +52,22 @@ function ManageUsersPage() {
     }
   }
 
-  if (reload) {
-    setCurrentUsers(users);
-    setReload(false)
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    handleSearchUser();
+  };
+
+  async function handleSearchUser() {
+    if (searchValue.trim().length != 0) {
+      setCurrentUsers(await searchUser(searchValue));
+      console.log(currentUsers);
+    }
+  }
+
+  function handleUpdateSearch(value) {
+    setSearchValue(value);
+    setCurrentUsers(dogs);
+    setReload(false);
   }
 
   const renderBoard = () => {
@@ -62,7 +76,12 @@ function ManageUsersPage() {
     const allUsers = new Array();
     allUsers.push(["Name", "Email", "User Type", "Joined"]);
     for (const user of currentUsers) {
-      allUsers.push([user["name"], user["email"], user["role"], new Date(user["createdAt"]).toLocaleDateString("en-GB")]);
+      allUsers.push([
+        user["name"],
+        user["email"],
+        user["role"],
+        new Date(user["createdAt"]).toLocaleDateString("en-GB"),
+      ]);
     }
 
     //Get the count of columns.
@@ -114,13 +133,14 @@ function ManageUsersPage() {
               </div>
               {/* Search  */}
               <div className="search-user-div">
-                <form>
+                <form onSubmit={handleSearchSubmit}>
                   <div className="manage-user-container-div-align">
                     <input
                       type="search"
                       id="manageUserSearch"
                       placeholder="Search"
                       className="manage-user-search"
+                      onChange={(e) => handleUpdateSearch(e.target.value)}
                     />
                     <button
                       type="submit"
@@ -146,7 +166,9 @@ function ManageUsersPage() {
                     onChange={() => handleRoleSelect()}
                   >
                     <option value="All">All</option>
-                    <option value="none" disabled>----------</option>
+                    <option value="none" disabled>
+                      ----------
+                    </option>
                     <option value="Admin">Admin</option>
                     <option value="Vet">Vet</option>
                     <option value="Volunteer">Volunteer</option>

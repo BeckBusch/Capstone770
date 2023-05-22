@@ -41,15 +41,14 @@ async function getVolunteers() {
   return await volunteerUsers;
 }
 
-async function searchDog(searchValue) {
-  const searchedDog = await User.find({
+async function searchUser(searchValue) {
+  const searchedUser = await User.find({
     $or: [
       { name: { $regex: searchValue, $options: "i" } },
-      { breed: { $regex: searchValue, $options: "i" } },
-      { location: { $regex: searchValue, $options: "i" } },
+      { email: { $regex: searchValue, $options: "i" } },
     ],
   });
-  return await searchedDog;
+  return await searchedUser;
 }
 
 async function updateUser(user) {
@@ -68,6 +67,7 @@ export {
   getAdmins,
   getVets,
   getVolunteers,
+  searchUser,
   updateUser,
   deleteUser,
 };

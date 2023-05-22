@@ -10,6 +10,7 @@ import {
   getAdmins,
   getVets,
   getVolunteers,
+  searchUser,
   updateUser,
   deleteUser,
 } from "../../service/users-dao";
@@ -65,7 +66,7 @@ router.get("/filter/volunteers", async (req, res) => {
 // Retrieve search users
 router.get("/search/:string", async (req, res) => {
   const { string } = req.params;
-  res.json(await searchDog(string));
+  res.json(await searchUser(string));
 });
 
 // Update user
