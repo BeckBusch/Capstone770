@@ -103,6 +103,8 @@ function DogDetailPage() {
 
     const myLineChart = new Chart(ctx, config);
 
+    setTableContainerHeight();
+
     return () => {
       myLineChart.destroy();
     };
@@ -151,12 +153,20 @@ function DogDetailPage() {
     return table;
   };
 
+  function setTableContainerHeight() {
+    var heights = document.getElementById("graph").offsetHeight;
+    var tableHeight = document.getElementById("table-div-fixed")
+    tableHeight.style.height = heights+"px";
+  }
+
   function getGraph() {
     var targetDiv = document.getElementById("chart-display");
     var targetTableDiv = document.getElementById("table-display");
+    var targetTableDivOuter = document.getElementById("table-div-fixed");
 
     targetDiv.style.display = "flex";
     targetTableDiv.style.display = "none";
+    targetTableDivOuter.style.display = "none";
 
     var tableButton = document.getElementById("table-container");
     tableButton.style.backgroundColor = "#DBDBDB";
@@ -171,9 +181,11 @@ function DogDetailPage() {
   function getTable() {
     var targetDiv = document.getElementById("chart-display");
     var targetTableDiv = document.getElementById("table-display");
+    var targetTableDivOuter = document.getElementById("table-div-fixed");
 
     targetDiv.style.display = "none";
     targetTableDiv.style.display = "block";
+    targetTableDivOuter.style.display = "block";
 
     var tableButton = document.getElementById("table-container");
     tableButton.style.backgroundColor = "#BDD3E8";
@@ -185,6 +197,7 @@ function DogDetailPage() {
     extraMessage.style.display = "none";
   }
 
+  
   return (
     <div className="dog-detail-page">
       <NavBar />
@@ -284,8 +297,10 @@ function DogDetailPage() {
               <div className="chart-display" id="chart-display">
                 <canvas className="canvas" id="chartId"></canvas>
               </div>
-              <div className="table-display" id="table-display">
-                <table className="renderDogDetailsTable"></table>
+              <div className="table-div-fixed" id="table-div-fixed">
+                <div className="table-display" id="table-display">
+                  <table className="renderDogDetailsTable"></table>
+                </div>
               </div>
             </div>
           </div>
