@@ -263,6 +263,7 @@ label {
 
 .renderDogDetailsTable {
     padding: 20px;
+    width: 100%;
 }
 
 .weight-header {
@@ -305,3 +306,14 @@ label {
     bottom: 10%;
     /* background-color: white; */
 }
+
+  th {
+    height: 50px;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+    width: 25%;
+  }
+
+  td {
+    height: 50px;
+  }
