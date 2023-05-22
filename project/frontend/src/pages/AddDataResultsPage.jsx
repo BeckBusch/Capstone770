@@ -147,37 +147,44 @@ function AddDataResultsPage() {
   return (
     <div className="add-data-results-page">
       <NavBar />
-      <div className="add-data-results-page-content">
-        <div className="add-data-results-header">
-          <h1 className="add-data-header-results-line-1">Select</h1>
-          <h1 className="add-data-header-results-line-2">Weight</h1>
-        </div>
+      <div className="add-data-results-header">
+              <h1 className="add-data-header-results-line-1">Select</h1>
+              <h1 className="add-data-header-results-line-2">Weight</h1>
+            </div>
+      <div className="add-data-results-page-outer">
+        <div>
+          <div className="add-data-results-page-content">
+            {/* <div className="add-data-results-header">
+              <h1 className="add-data-header-results-line-1">Select</h1>
+              <h1 className="add-data-header-results-line-2">Weight</h1>
+            </div> */}
 
-        <div className="data-results-container">
-          <div>
-            <table className="renderWeightResultsBoard"></table>
+            <div className="data-results-container">
+              <div className="render-weight-container">
+                <table className="renderWeightResultsBoard"></table>
+              </div>
+            </div>
           </div>
+        </div>
+        <div>
           <div className="button-container">
             {/* Error Message */}
             <div className="add-data-results-error-msg">
               <p> {errorMessage} </p>
             </div>
-
             <div className="select-weight-buttons-div">
               <div className="select-weight-buttons">
                 <Link to="/dog/:id/add-data/processing">
                   <button className="reweigh-btn">Reweigh</button>
                 </Link>
-                {/* <Link to="/dog/:id"> */}
                 <button
                   type="submit"
                   id="signUpBtn"
                   className="select-btn"
                   onClick={() => handleSelectedWeight()}
-                >
+                  >
                   Select
                 </button>
-                {/* </Link> */}
               </div>
             </div>
           </div>
