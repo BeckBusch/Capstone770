@@ -29,8 +29,8 @@ void tare_ISR(unsigned int gpio, uint32_t events) {
     // if (get_tare_status()) {    // this is so tare led is not enabled at start up
     //     enable_tare_LED();
     // }
-    enable_tare_LED();
-    update_tare(true);
+    // enable_tare_LED();
+    // update_tare(true);
     tare_flag = 1;
     printf("Tare interrupt occurred at PIN %d with event %d\n", gpio, events);  // print to terminal
 }
@@ -61,6 +61,7 @@ int main() {
 
     update_tare(false);
     sleep_ms(2000);
+    tare_flag = 0;
     
     while(1) {
         // FSM switch cases
@@ -75,9 +76,12 @@ int main() {
                 // polling until set amount of weight is reached or other inputs
                 while(1) {
                     int check = 0;
-                    if (get_tare_status()) {
+
+                    // if (get_tare_status()) {
+                    if (tare_flag == 1) {
                         printf("CURRENT TARE STATUS inside the idle check: %d\n", get_tare_status());
                         FSM = tare_initialized;
+                        // enable_tare_LED();
                         break;
                     } else {
                         check = check_weights(save_weight_to_array());           // take 25 readings and save to global array and ensure weight readings are stable
@@ -121,7 +125,7 @@ int main() {
                 printf("========== Current state: tare_initialized ==========\n");
                 printf("CURRENT TARE STATUS: %d\n", get_tare_status());
                 state_sleep();
-                // enable_tare_LED();
+                enable_tare_LED();
                 // update tare weight calculation here
                 check = check_weights(save_weight_to_array());           // take 25 readings and save to global array and ensure weight readings are stable
                 if (check == 1) {           // stable reading reached
@@ -130,6 +134,7 @@ int main() {
 
                 printf("\nTARE OFFSET VALUE = %f\n", get_tare_offset());
                 disable_tare_LED();
+                // tare_flag = 0;
                 
                 // update_tare(false);
                 FSM = receive_data; // go back to receive_data state to keep receiving data
@@ -144,7 +149,8 @@ int main() {
                 if (get_weight_mean_average() < 0.5) {
                     FSM = idle;
                     break;
-                } else if (get_tare_status()) {     // don't send weight measurement for tare
+                // } else if (get_tare_status()) {     // don't send weight measurement for tare
+                } else if (tare_flag == 1) {
                     tare_flag = 0;      // reset tare flag
                     update_tare(false);
                     FSM = idle;
@@ -164,6 +170,9 @@ int main() {
 
                 // sprintf(request_body, "{\"location\":\"Auckland\", \"gender\":\"Male\", \"age\":4, \"breed\":\"breedTest\", \"name\":\"nameTest\"}");
                 // sendRequest("unused argument :)", request_body);
+                // arguments are the weight value to be sent, and the constant scale ID
+                sprintf(request_body, "{\"weight\":%f,\"scaleId\": %d}", get_weight_mean_average(), 1);
+                sendRequest("unused argument :)", request_body);
 
                 FSM = idle;
                 break;

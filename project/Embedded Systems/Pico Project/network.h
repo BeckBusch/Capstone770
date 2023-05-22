@@ -13,7 +13,7 @@
 //#define TLS_CLIENT_SERVER "capstone770-team-10-default-rtdb.firebaseio.com"
 //#define SERVER_URI "/api/pico/new/"
 #define TLS_CLIENT_SERVER "capstone-spca-10.uk"
-#define SERVER_URI "/api/dogs/"
+#define SERVER_URI "/api/weights/"
 
 int wifi_connect();
 void sendRequest(char* uri, char* body);

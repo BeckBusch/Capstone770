@@ -11,7 +11,8 @@
 
 float voltage_to_weight(double x) {
     float y = 0.0;
-    y = (1.66213 - x) / 0.0554958f;     // linear equation based on observed relationship between voltage and weight
+    // y = (1.66213 - x) / 0.0554958f;     // linear equation based on observed relationship between voltage and weight
+    y = (1.6 - x) / 0.055086f;      // accounts for 1-1.6kg offset 
     return y;
 }
 
