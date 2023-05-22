@@ -74,6 +74,9 @@ function ManageUsersPage() {
         }
     }, []);
 
+    async function handleUserTypeSelect() {
+    }
+
     return (
       <div className="manage-users-page">
           <NavBar/>   
@@ -88,13 +91,27 @@ function ManageUsersPage() {
                       <div>
                           <label htmlFor="Username/Email">Username/Email</label>
                       </div>
+                      {/* Search  */}
                       <div className="search-user-div">
-                          <input type="text" placeholder="Search" className="search-input"/>
-                          <button className="search-button"><img className="search-icon" src={SearchIcon} alt="Search" /></button>
+                        <form>
+                            <div className="manage-user-container-div-align">
+                            <input
+                                type="search"
+                                id="manageUserSearch"
+                                placeholder="Search"
+                                className="manage-user-search"
+                            />
+                            <button
+                                type="submit"
+                                className="manage-user-search-button"
+                            ></button>
+                            </div>
+                        </form>
                       </div>
                   </div>
 
                   <div className="col-two">
+                        {/* User type */}
                       <div>
                           <label htmlFor="UserType">User Type</label>
                       </div>
@@ -137,9 +154,9 @@ function ManageUsersPage() {
           <div className="pending-users-container">
               <label id="num-of-users">Users ({users.length})</label>
               <div className="p-users-container">
-
-                <table className="renderBoard"></table>
-
+                <div className="user-table-container">
+                    <table className="renderBoard"></table>
+                </div>
               </div>
           </div>
           </div>
