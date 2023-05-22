@@ -3,6 +3,7 @@ import "../css/DashboardCard.css";
 import DogImage from "../assets/dog-image.png";
 
 function DashboardCard(props) {
+
     return (            
             
         <div className="card-section">
@@ -18,7 +19,7 @@ function DashboardCard(props) {
 
                     <h1 className="dog-name">{props.name}</h1>
                     <h3 className="dog-breed">{props.breed}</h3>
-                    <h3 className="dog-age">{props.age} Years</h3>
+                    <h3 className="dog-age">{props.age} Years Old</h3>
                 </div>
             </div>
         </div>
