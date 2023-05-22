@@ -7,7 +7,7 @@ import NavBar from "../components/NavBar";
 import DogPaw from "../assets/icon-dog-paw.png";
 
 function AddDataProcessingPage() {
-  const { getWeightDate, scaleID, getWeights, addWeight } = useContext(AppContext);
+  const { scaleID, getWeights } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -50,9 +50,7 @@ function AddDataProcessingPage() {
                 alt="Dog Footprint Image"
               />
             </div>
-            <div className="text-container">
               <p className="processing-text">Processing...</p>
-            </div>
           </div>
         </div>
       </div>
