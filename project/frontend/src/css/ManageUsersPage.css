@@ -72,13 +72,32 @@
     /* display: inline-block; */
 }
 
-.select-container {
-    width: 250px;
+/* Sort Button */
+.select-role-outer {
+    width: 120px;
     height: 40px;
-    background-color: purple;
-    position: relative;
-    display: inline-block;
+    background-color: white;
+    border: 1px solid #3479C0;
+    border-radius: 22px;
+    color: #3479C0;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.select-role {
+    background-color: white;
+    color: #3479C0;
+    font-size: 16px;
+    border: none;
+    width: 90px;
+}
+
+.select-role:focus {
+    outline: none;
+}
+
 
 .search-container {
     width: 250px;

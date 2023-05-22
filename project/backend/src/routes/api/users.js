@@ -7,6 +7,9 @@ import {
   createUser,
   retrieveUser,
   retrieveUserList,
+  getAdmins,
+  getVets,
+  getVolunteers,
   updateUser,
   deleteUser,
 } from "../../service/users-dao";
@@ -42,6 +45,27 @@ router.get("/:id", async (req, res) => {
 
   if (user) return res.json(user);
   return res.sendStatus(HTTP_NOT_FOUND);
+});
+
+// Retrieve admin users
+router.get("/filter/admins", async (req, res) => {
+  res.json(await getAdmins());
+});
+
+// Retrieve vet users
+router.get("/filter/vets", async (req, res) => {
+  res.json(await getVets());
+});
+
+// Retrieve volunteer users
+router.get("/filter/volunteers", async (req, res) => {
+  res.json(await getVolunteers());
+});
+
+// Retrieve search users
+router.get("/search/:string", async (req, res) => {
+  const { string } = req.params;
+  res.json(await searchDog(string));
 });
 
 // Update user

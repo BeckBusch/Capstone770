@@ -213,10 +213,28 @@ function AppContextProvider({ children }) {
         return chatResponse.data;
       }
 
-    async function searchChat(search) {
+      async function searchChat(search) {
         const chatSearchResponse = await axios.get(`${API_BASE_URL}/api/chats/search/${search}`);
         refreshChats();
         return chatSearchResponse.data;
+    }
+
+    async function getAdmins() {
+        const userSelectResponse = await axios.get(`${API_BASE_URL}/api/users/filter/admins`);
+        refreshUsers();
+        return userSelectResponse.data;
+    }
+
+    async function getVets() {
+        const userSelectResponse = await axios.get(`${API_BASE_URL}/api/users/filter/vets`);
+        refreshUsers();
+        return userSelectResponse.data;
+    }
+
+    async function getVolunteers() {
+        const userSelectResponse = await axios.get(`${API_BASE_URL}/api/users/filter/volunteers`);
+        refreshUsers();
+        return userSelectResponse.data;
     }
     
     const [loggedIn, setLoggedIn] = useState(false)
@@ -248,6 +266,9 @@ function AppContextProvider({ children }) {
         setUserName,
         userRole,
         setUserRole,
+        getAdmins,
+        getVets,
+        getVolunteers,
 
         weights,
         weightsLoading,
