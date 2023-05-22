@@ -70,48 +70,48 @@ function ManageUsersPage() {
     setReload(false);
   }
 
-  const renderBoard = () => {
-    const table = document.createElement("table");
+//   const renderBoard = () => {
+//     const table = document.createElement("table");
 
-    const allUsers = new Array();
-    allUsers.push(["Name", "Email", "User Type", "Joined"]);
-    for (const user of currentUsers) {
-      allUsers.push([
-        user["name"],
-        user["email"],
-        user["role"],
-        new Date(user["createdAt"]).toLocaleDateString("en-GB"),
-      ]);
-    }
+//     const allUsers = new Array();
+//     allUsers.push(["Name", "Email", "User Type", "Joined"]);
+//     for (const user of currentUsers) {
+//       allUsers.push([
+//         user["name"],
+//         user["email"],
+//         user["role"],
+//         new Date(user["createdAt"]).toLocaleDateString("en-GB"),
+//       ]);
+//     }
 
-    //Get the count of columns.
-    const columnCount = allUsers[0].length;
-    //Add the header row.
-    let row = table.insertRow(-1);
-    for (let i = 0; i < columnCount; i++) {
-      const headerCell = document.createElement("TH");
-      headerCell.innerHTML = allUsers[0][i];
-      row.appendChild(headerCell);
-    }
+//     //Get the count of columns.
+//     const columnCount = allUsers[0].length;
+//     //Add the header row.
+//     let row = table.insertRow(-1);
+//     for (let i = 0; i < columnCount; i++) {
+//       const headerCell = document.createElement("TH");
+//       headerCell.innerHTML = allUsers[0][i];
+//       row.appendChild(headerCell);
+//     }
 
-    //Add the data rows.
-    for (let i = 1; i < allUsers.length; i++) {
-      row = table.insertRow(-1);
-      for (let j = 0; j < columnCount; j++) {
-        const cell = row.insertCell(-1);
-        cell.innerHTML = allUsers[i][j];
-      }
-    }
-    return table;
-  };
+//     //Add the data rows.
+//     for (let i = 1; i < allUsers.length; i++) {
+//       row = table.insertRow(-1);
+//       for (let j = 0; j < columnCount; j++) {
+//         const cell = row.insertCell(-1);
+//         cell.innerHTML = allUsers[i][j];
+//       }
+//     }
+//     return table;
+//   };
 
-  useEffect(() => {
-    const renderBoardDiv = document.querySelector(".renderBoard");
-    if (renderBoardDiv.children.length === 0) {
-      const table = renderBoard();
-      renderBoardDiv.appendChild(table);
-    }
-  }, []);
+//   useEffect(() => {
+//     const renderBoardDiv = document.querySelector(".renderBoard");
+//     if (renderBoardDiv.children.length === 0) {
+//       const table = renderBoard();
+//       renderBoardDiv.appendChild(table);
+//     }
+//   }, []);
 
   return (
     <div className="manage-users-page">
@@ -205,7 +205,33 @@ function ManageUsersPage() {
           <label id="num-of-users">Users ({currentUsers.length})</label>
           <div className="p-users-container">
             <div className="user-table-container">
-              <table className="renderBoard" key={rollCount}></table>
+            <div className="user-info">
+                        <p> Name </p>
+                        <p> Role </p>
+                        <p> Email </p>
+                        <p> Joined </p>
+                      </div>
+              {/* <table className="renderBoard" key={rollCount}></table> */}
+              {reload
+                ? // On Reload
+                  users.map(function (user, i) {
+                    return (
+                      <div className="user-info" key={i}>
+                        <p> {user["name"]} </p>
+                        <p> {user["role"]} </p>
+                        <p> {user["email"]} </p>
+                        <p> {new Date(user["createdAt"]).toLocaleDateString('en-GB')} </p>
+                      </div>
+                    );
+                  })
+                : // Sort/Search Activated
+                  currentUsers.map(function (user, i) {
+                    return (
+                        <div className="user-info" key={i}>
+                        {user["name"]} 
+                      </div>
+                    );
+                  })}
             </div>
           </div>
         </div>
