@@ -6,7 +6,7 @@ import { AppContext } from "../AppContextProvider";
 import NavBar from "../components/NavBar";
 
 function AddDataResultsPage() {
-  const { scaleID, weights, dogs, updateDog, dogID, removeWeight } =
+  const { scaleID, weights, dogs, updateDog, dogID, removeWeight, userName, userRole } =
     useContext(AppContext);
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -93,16 +93,18 @@ function AddDataResultsPage() {
       }
     });
 
+    console.log("BEFORE IF")
     if (selectedValue) {
+      console.log("INSIDE IF")
       const newWeight = getNewWeight(selectedValue);
-      const previousCurrentWeight = getPreviousCurrentWeight();
-      previousCurrentWeight.push(newWeight);
+      // const previousCurrentWeight = getPreviousCurrentWeight();
+      // previousCurrentWeight.push(newWeight);
       const previousWeight = getPreviousWeight();
       previousWeight.push(newWeight);
       console.log("getnewweight: ", newWeight);
-      console.log("getprevouscurrentweight: ", previousCurrentWeight);
+      // console.log("getprevouscurrentweight: ", previousCurrentWeight);
       console.log("previouswegiht: ", previousWeight);
-      updateDog(dogID, previousCurrentWeight, previousWeight);
+      updateDog(dogID, previousWeight);
       removeWeight(scaleID);
 
       navigate("/dog/:id");
@@ -117,8 +119,8 @@ function AddDataResultsPage() {
         const newWeights = new Array(
           weights[i]["weight"],
           weights[i]["createdAt"],
-          weights[i]["staff"],
-          weights[i]["staffRole"]
+          userName,
+          userRole,
         );
         console.log("newWeights: ", newWeights);
         return newWeights;
@@ -135,14 +137,14 @@ function AddDataResultsPage() {
     }
   }
 
-  function getPreviousCurrentWeight() {
-    for (let i = 0; i < dogs.length; i++) {
-      if (dogs[i]["_id"] == dogID) {
-        const previousWeights = dogs[i]["currentWeight"];
-        return previousWeights;
-      }
-    }
-  }
+  // function getPreviousCurrentWeight() {
+  //   for (let i = 0; i < dogs.length; i++) {
+  //     if (dogs[i]["_id"] == dogID) {
+  //       const previousWeights = dogs[i]["currentWeight"];
+  //       return previousWeights;
+  //     }
+  //   }
+  // }
 
   return (
     <div className="add-data-results-page">

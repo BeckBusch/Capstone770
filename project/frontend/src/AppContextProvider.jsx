@@ -171,10 +171,9 @@ function AppContextProvider({ children }) {
     return dogSearchResponse.data;
   }
 
-  async function updateDog(id, newWeight, previousWeight) {
+  async function updateDog(id, previousWeights) {
     const dogToUpdate = {
-      currentWeight: newWeight,
-      prevWeights: previousWeight,
+      prevWeights: previousWeights,
     };
 
     const dogResponse = await axios.put(
