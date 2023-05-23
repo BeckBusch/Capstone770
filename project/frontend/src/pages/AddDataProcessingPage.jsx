@@ -11,24 +11,25 @@ function AddDataProcessingPage() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
+  // useEffect(() => {
     const currentDateTime = new Date().toISOString();
-    setInterval(function () {
+    var intervalID = setInterval(function () {
       checkUpdatedWeight(currentDateTime);
     }, 10000);
-  }, []);
+  // }, []);
 
   async function checkUpdatedWeight(currentDateTime) {
     const updatedWeights = await getWeights();
     for (const updatedWeight of updatedWeights) {
       if ((currentDateTime < updatedWeight["createdAt"]) && (scaleID == updatedWeight["scaleId"])) {
+        clearInterval(intervalID);
         navigate("/dog/:id/add-data/confirm");
       }
     }
   }
 
   return (
-    <div className="add-dog-processing-page">
+    <div id="load" className="add-dog-processing-page">
       <NavBar />
       <div className="outer-circle">
         <div className="circle">
