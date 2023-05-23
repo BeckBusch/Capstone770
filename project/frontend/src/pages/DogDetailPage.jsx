@@ -26,8 +26,13 @@ function DogDetailPage() {
 
   if (prevWeights && prevWeights.length > 0) {
     lastWeight = prevWeights[prevWeights.length - 1][0] + " kg";
-    weighedDate = new Date(prevWeights[prevWeights.length - 1][1]).toLocaleDateString("en-GB");
-    weighedTime = "(" + prevWeights[prevWeights.length - 1][1].slice(11, 16) + ")";
+    var d = new Date(prevWeights[prevWeights.length - 1][1]);
+    weighedDate = d.toLocaleDateString("en-GB");
+    weighedTime = "(" + d.toLocaleString("en-GB", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    }) + ")";
     weighedBy = prevWeights[prevWeights.length - 1][2];
     weighedByRole = "(" + prevWeights[prevWeights.length - 1][3] + ")";
   } else {
