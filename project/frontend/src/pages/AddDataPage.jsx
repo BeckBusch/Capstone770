@@ -6,24 +6,26 @@ import { AppContext } from "../AppContextProvider";
 import NavBar from "../components/NavBar";
 
 function AddDataPage() {
-  const { scaleID, setscaleID } = useContext(AppContext);
+  const { setscaleID, setPrevWeights } = useContext(AppContext);
 
+  const [selectScaleID, setSelectScaleID] = useState("none");
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
   const processData = (e) => {
     e.preventDefault();
-    if (scaleID == "none") {
+    if (selectScaleID == "none") {
       setErrorMessage("Please select scale.");
     } else {
+      setscaleID(selectScaleID);
       navigate("/dog/:id/add-data/processing");
-      console.log(scaleID)
     }
   };
 
   async function handleScaleSelect() {
-    setscaleID(document.getElementById("scale").value);
+    setPrevWeights("");
+    setSelectScaleID(document.getElementById("scale").value);
   }
 
   return (

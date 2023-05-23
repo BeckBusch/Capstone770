@@ -171,10 +171,9 @@ function AppContextProvider({ children }) {
     return dogSearchResponse.data;
   }
 
-  async function updateDog(id, newWeight, previousWeight) {
+  async function updateDog(id, previousWeights) {
     const dogToUpdate = {
-      currentWeight: newWeight,
-      prevWeights: previousWeight,
+      prevWeights: previousWeights,
     };
 
     const dogResponse = await axios.put(
@@ -268,6 +267,7 @@ function AppContextProvider({ children }) {
   const [dogID, setDogID] = useState("");
   const [scaleID, setscaleID] = useState("none");
   const [currentChatID, setCurrentChatID] = useState(-1);
+  const [prevWeights, setPrevWeights] = useState("")
 
   // The context value that will be supplied to any descendants of this component.
   const context = {
@@ -304,6 +304,8 @@ function AppContextProvider({ children }) {
     removeWeight,
     scaleID,
     setscaleID,
+    prevWeights,
+    setPrevWeights,
 
     chats,
     chatsLoading,
