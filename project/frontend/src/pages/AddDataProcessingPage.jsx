@@ -12,8 +12,8 @@ function AddDataProcessingPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const currentDateTime = new Date().toISOString();
     setInterval(function () {
-      const currentDateTime = new Date().toISOString();
       checkUpdatedWeight(currentDateTime);
     }, 10000);
   }, []);

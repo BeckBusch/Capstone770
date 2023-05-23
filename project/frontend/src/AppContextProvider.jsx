@@ -267,6 +267,7 @@ function AppContextProvider({ children }) {
   const [dogID, setDogID] = useState("");
   const [scaleID, setscaleID] = useState("none");
   const [currentChatID, setCurrentChatID] = useState(-1);
+  const [prevWeights, setPrevWeights] = useState("")
 
   // The context value that will be supplied to any descendants of this component.
   const context = {
@@ -303,6 +304,8 @@ function AppContextProvider({ children }) {
     removeWeight,
     scaleID,
     setscaleID,
+    prevWeights,
+    setPrevWeights,
 
     chats,
     chatsLoading,

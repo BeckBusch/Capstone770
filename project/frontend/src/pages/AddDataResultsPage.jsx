@@ -6,11 +6,12 @@ import { AppContext } from "../AppContextProvider";
 import NavBar from "../components/NavBar";
 
 function AddDataResultsPage() {
-  const { scaleID, weights, dogs, updateDog, dogID, removeWeight, userName, userRole } =
+  const { scaleID, weights, dogs, updateDog, dogID, removeWeight, userName, userRole, prevWeights, setPrevWeights} =
     useContext(AppContext);
 
-  const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate();
+    // const prevWeights = [];
+    const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
 
   var select = document.createElement("input");
 
@@ -20,9 +21,9 @@ function AddDataResultsPage() {
     const allScaleIDValues = new Array();
     allScaleIDValues.push(["", "Weight (kg)", "Date", "Time"]);
 
-    for (let i = 0; i < weights.length; i++) {
-      if (scaleID == weights[i]["scaleId"]) {
-        var d = new Date(weights[i]["createdAt"]);
+    for (const weight of weights) {
+      if (scaleID == weight["scaleId"]) {
+        var d = new Date(weight["createdAt"]);
         var date = d.toLocaleDateString("en-GB");
         var time = d.toLocaleString("en-GB", {
           hour: "numeric",
@@ -32,10 +33,10 @@ function AddDataResultsPage() {
 
         allScaleIDValues.push([
           "",
-          weights[i]["weight"],
+          weight["weight"],
           date,
           time,
-          weights[i]["_id"],
+          weight["_id"],
         ]);
       }
     }
@@ -52,21 +53,33 @@ function AddDataResultsPage() {
       row.appendChild(headerCell);
     }
 
+    const temp = new Array()
+
+    if (allScaleIDValues.length > 1) {
+      for (let i = 0; i < prevWeights.length; i++) {
+        temp.push(prevWeights[i]);
+      }
+      temp.push(allScaleIDValues[allScaleIDValues.length - 1]);
+      setPrevWeights(temp);
+    }
+
+
     //Add the data rows.
-    for (let i = 1; i < allScaleIDValues.length; i++) {
+    for (let i = 0; i < temp.length; i++) {
       row = table.insertRow(-1);
+
       for (let j = 0; j < columnCount; j++) {
         const cell = row.insertCell(-1);
-        console.log("cell: ", allScaleIDValues[i][j]);
+        // console.log("cell: ", prevWeights[i][j]);
         if (j == 0) {
           select = document.createElement("input");
           select.setAttribute("type", "radio");
           select.setAttribute("name", "radio");
-          select.setAttribute("value", allScaleIDValues[i][columnCount]);
+          select.setAttribute("value", temp[i][columnCount]);
 
           cell.append(select);
         } else {
-          cell.innerHTML = allScaleIDValues[i][j];
+          cell.innerHTML = temp[i][j];
         }
       }
     }
@@ -105,8 +118,9 @@ function AddDataResultsPage() {
       // console.log("getprevouscurrentweight: ", previousCurrentWeight);
       console.log("previouswegiht: ", previousWeight);
       updateDog(dogID, previousWeight);
-      removeWeight(scaleID);
+      // removeWeight(scaleID);
 
+      setPrevWeights("")
       navigate("/dog/:id");
     } else {
       setErrorMessage("No weight selected.");

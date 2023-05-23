@@ -6,7 +6,7 @@ import { AppContext } from "../AppContextProvider";
 import NavBar from "../components/NavBar";
 
 function AddDataPage() {
-  const { setscaleID } = useContext(AppContext);
+  const { setscaleID, setPrevWeights } = useContext(AppContext);
 
   const [selectScaleID, setSelectScaleID] = useState("none");
   const [errorMessage, setErrorMessage] = useState("");
@@ -24,6 +24,7 @@ function AddDataPage() {
   };
 
   async function handleScaleSelect() {
+    setPrevWeights("");
     setSelectScaleID(document.getElementById("scale").value);
   }
 
