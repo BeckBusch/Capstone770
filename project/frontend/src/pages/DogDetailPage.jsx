@@ -10,8 +10,7 @@ import MyAccountWhite from "../assets/icon-account-white.png";
 function DogDetailPage() {
   const { dogs, dogID } = useContext(AppContext);
 
-  var name, breed, age, gender, location;
-  var lastWeight, weighedDate, weighedTime, weighedBy, weighedByRole = "-";
+  var name, breed, age, gender, location, lastWeight, weighedDate, weighedTime, weighedBy, weighedByRole;
   var prevWeights = [];
 
   for (const dog of dogs) {
@@ -31,6 +30,10 @@ function DogDetailPage() {
     weighedTime = "(" + prevWeights[prevWeights.length - 1][1].slice(11, 16) + ")";
     weighedBy = prevWeights[prevWeights.length - 1][2];
     weighedByRole = "(" + prevWeights[prevWeights.length - 1][3] + ")";
+  } else {
+    lastWeight = "-";
+    weighedDate = "-";
+    weighedBy = "-";
   }
 
   async function handleAddWeight() {
