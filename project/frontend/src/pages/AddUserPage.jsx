@@ -102,7 +102,7 @@ function AddUserPage() {
               <label htmlFor="Password">Password</label>
               <input
                 className="user-input-styling"
-                type="text"
+                type="password"
                 id="password"
                 placeholder="Password"
                 value={password}
@@ -112,7 +112,7 @@ function AddUserPage() {
               <label htmlFor="ConfirmPassword">Confirm Password</label>
               <input
                 className="user-input-styling"
-                type="text"
+                type="password"
                 id="confirmPassword"
                 placeholder="Confirm Password"
                 value={confirmPassword}
