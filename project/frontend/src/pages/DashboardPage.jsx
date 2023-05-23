@@ -37,6 +37,8 @@ function DashboardPage() {
       setCurrentDogs(await sortDogAToZ());
     } else if (sortValue == "ZToA") {
       setCurrentDogs(await sortDogZToA());
+    } else if (sortValue == "OldToNew") {
+      setCurrentDogs(dogs);
     } else {
       setCurrentDogs(dogs.slice(0).reverse());
     }
@@ -103,10 +105,11 @@ function DashboardPage() {
               className="select-sort"
               name="sort-types"
               id="sort"
-              defaultValue="recentlyAdded"
+              defaultValue="NewToOld"
               onChange={() => handleSortSelect()}
             >
-              <option value="RecentlyAdded">Recent</option>
+              <option value="NewToOld">New to Old</option>
+              <option value="OldToNew">Old to New</option>
               <option value="AToZ">A to Z</option>
               <option value="ZToA">Z to A</option>
             </select>
