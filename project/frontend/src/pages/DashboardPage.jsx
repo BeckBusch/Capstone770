@@ -15,7 +15,7 @@ function DashboardPage() {
   window.onload = AuthDetails();
 
   const [searchValue, setSearchValue] = useState("");
-  const [currentDogs, setCurrentDogs] = useState(dogs);
+  const [currentDogs, setCurrentDogs] = useState(dogs.slice(0).reverse(0));
   const [reload, setReload] = useState(true);
 
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ function DashboardPage() {
     } else if (sortValue == "ZToA") {
       setCurrentDogs(await sortDogZToA());
     } else {
-      setCurrentDogs(dogs);
+      setCurrentDogs(dogs.slice(0).reverse());
     }
   }
 
@@ -56,7 +56,7 @@ function DashboardPage() {
 
   function handleUpdateSearch(value) {
     setSearchValue(value);
-    setCurrentDogs(dogs);
+    setCurrentDogs(dogs.slice(0).reverse());
     setReload(false);
   }
 
@@ -103,12 +103,12 @@ function DashboardPage() {
               className="select-sort"
               name="sort-types"
               id="sort"
-              defaultValue="none"
+              defaultValue="recentlyAdded"
               onChange={() => handleSortSelect()}
             >
-              <option value="None">Sort: None</option>
-              <option value="AToZ">Sort: A to Z</option>
-              <option value="ZToA">Sort: Z to A</option>
+              <option value="RecentlyAdded">Recent</option>
+              <option value="AToZ">A to Z</option>
+              <option value="ZToA">Z to A</option>
             </select>
           </div>
         </div>{" "}
@@ -118,7 +118,7 @@ function DashboardPage() {
       <div className="dog-cards-flex">
         {reload
           ? // On Reload
-            dogs.map(function (dog, i) {
+            dogs.slice(0).reverse().map(function (dog, i) {
               return (
                 <div className="dog-card" key={i}>
                   <button
