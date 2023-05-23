@@ -5,14 +5,13 @@ import { AppContext } from "../AppContextProvider";
 import Chart from "chart.js/auto";
 
 import NavBar from "../components/NavBar";
-import StartWhite from "../assets/icon-start-white.png";
 import MyAccountWhite from "../assets/icon-account-white.png";
 
 function DogDetailPage() {
   const { dogs, dogID } = useContext(AppContext);
 
   var name, breed, age, gender, location;
-  var lastWeight, weighedDate, weighedTime, weighedBy, weighedByRole = "";
+  var lastWeight, weighedDate, weighedTime, weighedBy, weighedByRole = "-";
   var prevWeights = [];
 
   for (const dog of dogs) {
