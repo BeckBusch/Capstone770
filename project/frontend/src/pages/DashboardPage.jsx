@@ -22,6 +22,7 @@ function DashboardPage() {
 
   function handleDogDetails(dogID) {
     setDogID(dogID);
+    scrollToTop();
     navigate(`/dog/${dogID}`);
   }
 
@@ -57,6 +58,11 @@ function DashboardPage() {
     setSearchValue(value);
     setCurrentDogs(dogs);
     setReload(false);
+  }
+
+  function scrollToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
   return loggedIn ? (
