@@ -17,9 +17,27 @@ import AuthDetails from "../AuthDetails";
 function NavBar() {
   AuthDetails();
 
-  const { userRole, userName, setCurrentChatID } = useContext(AppContext);
+  const { userRole, userName, setCurrentChatID, users } = useContext(AppContext);
 
   const [signOutPopUpVisible, setSignOutPopUpVisible] = useState(false);
+
+  console.log("loggined in user Name = ", userName)
+  var count = 0;
+  for (const user of users) {
+    if (userName == user["name"]) {
+      const userNotification = user["notification"]
+      console.log("user: ", user["name"])
+      console.log("userNotificationArray: ", userNotification)
+      console.log("usernofication length: ", userNotification.length)
+      for (let i = 0; i < userNotification.length; i++) {
+        if (userNotification[i][1] == true) {
+          count = count + 1
+        }
+      }
+      console.log("count = ", count)
+    }
+  }
+  
 
   function handlePopUpDisplay() {
     if (signOutPopUpVisible) {
@@ -137,6 +155,12 @@ function NavBar() {
             <img className="navbar-icon" src={ChatIcon} alt="Dashboard" />
             <p className="navbar-link-text">Chat</p>
           </button>
+        </Link>
+      </div>
+
+      <div className="col-mid">
+        <Link to="/notification">
+          <button>Notification ({count})</button>
         </Link>
       </div>
 

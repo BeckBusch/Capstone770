@@ -11,6 +11,7 @@ import ChatPage from "./pages/ChatPage";
 import ManageUsersPage from "./pages/ManageUsersPage";
 import AddUserPage from "./pages/AddUserPage";
 import AddDogPage from "./pages/AddDogPage";
+import NotificationPage from "./pages/NotificationPage";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/add-chat" element={<ChatPage />} />
           <Route path="/manage-users" element={<ManageUsersPage />} />
           <Route path="/add-user" element={<AddUserPage />} />
+          <Route path="/notification" element={<NotificationPage />} />
         </Routes>
       </BrowserRouter>
     </div>

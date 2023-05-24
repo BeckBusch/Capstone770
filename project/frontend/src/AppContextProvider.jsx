@@ -261,6 +261,19 @@ function AppContextProvider({ children }) {
     return userSearchResponse.data;
 }
 
+async function updateUser(id, notification) {
+  const userToUpdate = {
+    notification: notification,
+  };
+
+  const userResponse = await axios.put(
+    `${API_BASE_URL}/api/users/${id}`,
+    userToUpdate
+  );
+  refreshUsers();
+  return userResponse.data;
+}
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
   const [userRole, setUserRole] = useState("");
@@ -295,6 +308,7 @@ function AppContextProvider({ children }) {
     getVets,
     getVolunteers,
     searchUser,
+    updateUser,
 
     weights,
     weightsLoading,

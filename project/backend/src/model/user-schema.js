@@ -8,7 +8,8 @@ const userSchema = new Schema({
     password: { type: String},
     role: { type: String},
     joined: { type: Date},
-    image: { type: String}
+    image: { type: String},
+    notification : {type: Array, additionalItems: true }
 }, {
     timestamps: {}
 });

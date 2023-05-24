@@ -4,7 +4,7 @@ import { AppContext } from "../AppContextProvider";
 
 function AddReplyPanel() {
 
-  const { chats, currentChatID, updateReplies, userName, userRole } = useContext(AppContext);
+  const { chats, currentChatID, updateReplies, userName, userRole, users, updateUser } = useContext(AppContext);
 
   const [reply, setReply] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -14,6 +14,30 @@ function AddReplyPanel() {
     if (checkForm()) {
       handleUpdateReplies();
       resetFields();
+
+      
+    console.log("currentChatID: ", currentChatID)
+    const currentChatIDID = chats.slice(0).reverse()[currentChatID]["_id"];
+    console.log("currentChatID[_id]: ", currentChatIDID)
+    const currentChatIDIDUsername = chats.slice(0).reverse()[currentChatID]["userName"]
+    console.log("currentChatID[_id] userName: ", currentChatIDIDUsername)
+    for (const user of users) {
+      console.log("user match: ", user["name"])
+      if (currentChatIDIDUsername == user["name"]) {
+        console.log("EQUAL")
+        console.log("user id: ", user["_id"])
+        const noficationArray = new Array(currentChatIDID, true);
+        console.log("notification array: ", noficationArray)
+        console.log("user id nofication current: ", user["notification"]);
+        var saveArray = new Array();
+        for (let i = 0; i < user["notification"].length; i++) {
+          saveArray.push(user["notification"][i])
+        }
+        saveArray.push(noficationArray)
+        console.log("SAVE ARRAY: ", saveArray)
+        updateUser(user["_id"], saveArray)
+      }
+  } 
     }
   };
 
