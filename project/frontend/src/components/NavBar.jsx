@@ -11,6 +11,7 @@ import ChatIcon from "../assets/nav-icon-chat-white.png";
 import MyAccountIcon from "../assets/icon-account-white.png";
 import ManageUsersIcon from "../assets/nav-icon-settings-white.png";
 import SignOutIcon from "../assets/icon-sign-out.png";
+import NotificationIcon from "../assets/notification.png";
 
 import AuthDetails from "../AuthDetails";
 
@@ -86,6 +87,15 @@ function NavBar() {
         </Link>
       </div>
 
+      <div className="col-mid-right">
+        <Link to="/notification">
+          <button type="submit" id="logInBtn" className="navbar-link-button-2">
+            <img className="navbar-icon" src={NotificationIcon} alt="Dashboard" />
+            ({count})
+          </button>
+        </Link>
+      </div>
+
       <div className="col-right">
         <div className="account-settings-align">
           <div className="dropdown">
@@ -148,9 +158,12 @@ function NavBar() {
         </Link>
       </div>
 
-      <div className="col-mid">
+      <div className="col-mid-right">
         <Link to="/notification">
-          <button>Notification ({count})</button>
+          <button type="submit" id="logInBtn" className="navbar-link-button-2">
+            <img className="navbar-icon" src={NotificationIcon} alt="Dashboard" />
+            ({count})
+          </button>
         </Link>
       </div>
 
