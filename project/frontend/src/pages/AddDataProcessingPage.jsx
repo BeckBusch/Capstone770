@@ -7,7 +7,7 @@ import NavBar from "../components/NavBar";
 import DogPaw from "../assets/icon-dog-paw.png";
 
 function AddDataProcessingPage() {
-  const { scaleID, getWeights } = useContext(AppContext);
+  const { dogID, scaleID, getWeights } = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ function AddDataProcessingPage() {
     for (const updatedWeight of updatedWeights) {
       if ((currentDateTime < updatedWeight["createdAt"]) && (scaleID == updatedWeight["scaleId"])) {
         clearInterval(intervalID);
-        navigate("/dog/:id/add-data/confirm");
+        navigate(`/dog/${dogID}/add-data/confirm`);
       }
     }
   }
@@ -55,7 +55,7 @@ function AddDataProcessingPage() {
           </div>
         </div>
       </div>
-      <Link to="/dog/:id/add-data/confirm">
+      <Link to={`/dog/${dogID}/add-data/confirm`}>
         <button type="submit" id="cancelBtn" className="next-btn">
           Next
         </button>

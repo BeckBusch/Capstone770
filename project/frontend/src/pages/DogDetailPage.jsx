@@ -311,13 +311,6 @@ function DogDetailPage() {
               </div>
             </div>
           </div>
-
-          <div className="extra-msg" id="extra-msg">
-            <p>
-              ** Hover over points to see details - precise measurements, date
-              and time of measurement, vet/volunteer
-            </p>
-          </div>
         </div>
       </div>
     </div>

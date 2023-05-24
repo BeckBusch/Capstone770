@@ -121,7 +121,7 @@ function AddDataResultsPage() {
       // removeWeight(scaleID);
 
       setPrevWeights("")
-      navigate("/dog/:id");
+      navigate(`/dog/${dogID}`);
     } else {
       setErrorMessage("No weight selected.");
     }
@@ -190,7 +190,7 @@ function AddDataResultsPage() {
             </div>
             <div className="select-weight-buttons-div">
               <div className="select-weight-buttons">
-                <Link to="/dog/:id/add-data/processing">
+                <Link to={`/dog/${dogID}/add-data/processing`}>
                   <button className="reweigh-btn">Reweigh</button>
                 </Link>
                 <button

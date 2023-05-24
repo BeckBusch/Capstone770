@@ -6,7 +6,7 @@ import { AppContext } from "../AppContextProvider";
 import NavBar from "../components/NavBar";
 
 function AddDataPage() {
-  const { setscaleID, setPrevWeights } = useContext(AppContext);
+  const { dogID, setscaleID, setPrevWeights } = useContext(AppContext);
 
   const [selectScaleID, setSelectScaleID] = useState("none");
   const [errorMessage, setErrorMessage] = useState("");
@@ -19,7 +19,7 @@ function AddDataPage() {
       setErrorMessage("Please select scale.");
     } else {
       setscaleID(selectScaleID);
-      navigate("/dog/:id/add-data/processing");
+      navigate(`/dog/${dogID}/add-data/processing`);
     }
   };
 
