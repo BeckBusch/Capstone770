@@ -16,6 +16,11 @@ float voltage_to_weight(double x) {
     return y;
 }
 
+// float voltage_to_weight(double x) {
+//     float y = 0.0;
+
+// }
+
 
 double adcConvert() {
      /*
@@ -61,7 +66,9 @@ double adcConvert() {
 
     // conversion = abs(reading - 2048) / 70.0f; 
     // printf("adc reading check: %f\n", reading); //PRINTER
+
     output_result = voltage_to_weight(converted_adc);
+    // output_result = converted_adc;
 
 
     return output_result;

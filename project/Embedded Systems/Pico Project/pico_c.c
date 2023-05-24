@@ -17,6 +17,12 @@ int tare_flag = 0;
 int check = 0;
 enum states {idle, not_ready, ready, tare_initialized, receive_data, send_data};    // initialize states for the FSM
 
+double weight1 = 0.0;
+double weight2 = 0.0;
+double compare_ratio = 0.0;
+double lower_bound = 0.97;  // constant
+double upper_bound = 1.03;  // constant
+
 void state_sleep();
 
 void state_sleep(){
@@ -32,7 +38,7 @@ void tare_ISR(unsigned int gpio, uint32_t events) {
     // enable_tare_LED();
     // update_tare(true);
     tare_flag = 1;
-    printf("Tare interrupt occurred at PIN %d with event %d\n", gpio, events);  // print to terminal
+    printf("\nTare interrupt occurred at PIN %d with event %d\n", gpio, events);  // print to terminal
 }
 
 void init_button() {
@@ -41,7 +47,6 @@ void init_button() {
     gpio_pull_up(TARE_BUTTON);
     gpio_set_irq_enabled_with_callback(TARE_BUTTON, 0x04, 1, tare_ISR);  // attach interrupt to tare button pin
 }
-
 
 int main() {
     // initialize everything
@@ -69,13 +74,14 @@ int main() {
 
             // idle state - pico w is waiting for user input
             case idle:
+                init_reg();
                 printf("========== Current state: idle ==========\n");
                 printf("CURRENT TARE STATUS: %d\n", get_tare_status());
                 state_sleep();
-                disable_stable_LED();   // incase it is still on
+                // disable_stable_LED();   // incase it is still on
                 // polling until set amount of weight is reached or other inputs
                 while(1) {
-                    int check = 0;
+                    check = 0;
 
                     // if (get_tare_status()) {
                     if (tare_flag == 1) {
@@ -84,12 +90,47 @@ int main() {
                         // enable_tare_LED();
                         break;
                     } else {
-                        check = check_weights(save_weight_to_array());           // take 25 readings and save to global array and ensure weight readings are stable
-                        printf("Check value: %d\n", check);
-                        if (check == 1) {       // stable reading reached
+                        // check = check_weights(save_weight_to_array());           // take 25 readings and save to global array and ensure weight readings are stable
+                        weight1 = check_weights(save_weight_to_array());
+                        if (tare_flag == 1) {
+                            sleep_ms(100);
+                            FSM = tare_initialized;
+                            break;
+                        }
+                        weight2 = check_weights(save_weight_to_array());
+                        if (tare_flag == 1) {
+                            sleep_ms(100);
+                            FSM = tare_initialized;
+                            break;
+                        }
+
+                        compare_ratio = weight1/weight2;
+
+                        if ((lower_bound < compare_ratio) || (compare_ratio > upper_bound)) {
+                            // printf("Check value: %d\n", check);
+                            printf("\nWeight1 value: %f", weight1);
+                            printf("\nWeight2 value: %f", weight2);
+                            printf("\nWeight to send to server: %f\n", average_2_weights(weight1, weight2));
+                            printf("\nCOMPARE VALUE = %f\n", compare_ratio);
+                            sleep_ms(2000);
                             FSM = receive_data; // once steady amount of data is received
                             break;
+                        } else {
+                            FSM = idle; // signal not stable, poll for more inputs
+                            break;
+                        }
+
+                        
+                        if (tare_flag == 1) {
+                            sleep_ms(100);
+                            FSM = tare_initialized;
+                            break;
                         } 
+                        
+                        // if (check == 1) {       // stable reading reached
+                        //     FSM = receive_data; // once steady amount of data is received
+                        //     break;
+                        // } 
                     }
 
                 }
@@ -128,16 +169,27 @@ int main() {
                 enable_tare_LED();
                 // update tare weight calculation here
                 check = check_weights(save_weight_to_array());           // take 25 readings and save to global array and ensure weight readings are stable
-                if (check == 1) {           // stable reading reached
-                    update_tare_offset();   // update tare_offset value -> tare_offset = weight_mean_average;
-                } 
+                
+                weight1 = check_weights_true(save_weight_to_array());   // excludes offset calculation
+                weight2 = check_weights_true(save_weight_to_array());
+                // printf("Check value: %d\n", check);
+                printf("\nWeight1 value: %f", weight1);
+                printf("\nWeight2 value: %f\n", weight2);
+                sleep_ms(2000);
 
+                compare_ratio = weight1/weight2;
+
+                if ((lower_bound < compare_ratio) || (compare_ratio > upper_bound)) {
+                    update_tare_offset(average_2_weights(weight1, weight2));
+                } 
+                        
                 printf("\nTARE OFFSET VALUE = %f\n", get_tare_offset());
+                printf("\nCOMPARE VALUE = %f\n", compare_ratio);
                 disable_tare_LED();
-                // tare_flag = 0;
+                tare_flag = 0;  // once everything is complete
                 
                 // update_tare(false);
-                FSM = receive_data; // go back to receive_data state to keep receiving data
+                FSM = idle; // go back to receive_data state to keep receiving data
                 break;
 
 
@@ -146,16 +198,17 @@ int main() {
                 printf("========== Current state: receive_data ==========\n");
                 state_sleep();
                 // ensure the data received here is not faulty or zero (i.e. no weight on scale)
-                if (get_weight_mean_average() < 0.5) {
+                if (get_weight_mean_average() < 0.30) {
+                    tare_flag = 0; // in case the tare
                     FSM = idle;
                     break;
                 // } else if (get_tare_status()) {     // don't send weight measurement for tare
-                } else if (tare_flag == 1) {
+                } /*else if (tare_flag == 1) {
                     tare_flag = 0;      // reset tare flag
                     update_tare(false);
                     FSM = idle;
-                    break;
-                } else {
+                    break;**/
+                else {
                     enable_stable_LED();
                     FSM = send_data;
                     break;
@@ -166,13 +219,18 @@ int main() {
             case send_data:
                 printf("========== Current state: send_data ==========\n");
                 state_sleep();
+                // disable_stable_LED();
+                void disable_reg();
+                printf("\nSIMULATING SENDING DATA - REG PIN DISABLED");
+                sleep_ms(5000);
                 disable_stable_LED();
 
                 // sprintf(request_body, "{\"location\":\"Auckland\", \"gender\":\"Male\", \"age\":4, \"breed\":\"breedTest\", \"name\":\"nameTest\"}");
                 // sendRequest("unused argument :)", request_body);
+                
                 // arguments are the weight value to be sent, and the constant scale ID
-                sprintf(request_body, "{\"weight\":%f,\"scaleId\": %d}", get_weight_mean_average(), 1);
-                sendRequest("unused argument :)", request_body);
+                // sprintf(request_body, "{\"weight\":%f,\"scaleId\": %d}", get_weight_mean_average(), 1);
+                // sendRequest("unused argument :)", request_body);
 
                 FSM = idle;
                 break;
