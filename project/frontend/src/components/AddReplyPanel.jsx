@@ -14,32 +14,25 @@ function AddReplyPanel() {
     if (checkForm()) {
       handleUpdateReplies();
       resetFields();
+      sendNotification();
+    }
+  };
 
-      
-    console.log("currentChatID: ", currentChatID)
-    const currentChatIDID = chats.slice(0).reverse()[currentChatID]["_id"];
-    console.log("currentChatID[_id]: ", currentChatIDID)
-    const currentChatIDIDUsername = chats.slice(0).reverse()[currentChatID]["userName"]
-    console.log("currentChatID[_id] userName: ", currentChatIDIDUsername)
+  function sendNotification() {
+    const discussionID = chats.slice(0).reverse()[currentChatID]["_id"];
+    const discussionIDUser = chats.slice(0).reverse()[currentChatID]["userName"]
     for (const user of users) {
-      console.log("user match: ", user["name"])
-      if (currentChatIDIDUsername == user["name"]) {
-        console.log("EQUAL")
-        console.log("user id: ", user["_id"])
-        const noficationArray = new Array(currentChatIDID);
-        console.log("notification array: ", noficationArray)
-        console.log("user id nofication current: ", user["notification"]);
+      if (discussionIDUser == user["name"]) {
+        const noficationArray = new Array(discussionID);
         var saveArray = new Array();
         for (let i = 0; i < user["notification"].length; i++) {
           saveArray.push(user["notification"][i])
         }
         saveArray.push(noficationArray)
-        console.log("SAVE ARRAY: ", saveArray)
         updateUser(user["_id"], saveArray)
       }
-  } 
-    }
-  };
+    } 
+  }
 
   async function handleUpdateReplies() {
     const replies = chats.slice(0).reverse()[currentChatID]["replies"];
