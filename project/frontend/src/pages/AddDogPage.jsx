@@ -13,7 +13,7 @@ function AddDogPage() {
   const [age, setAge] = useState("");
   const [sex, setSex] = useState("none");
   const [location, setLocation] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState("default.png");
   const [errorMessage, setErrorMessage] = useState("");
 
   const dogBreedOptions = ["Golden Retriever", "Poodle", "Maltese", "Welsh Corgis", "Dachshund", "Pug", "German Shepherd", "Pomeranian"]
@@ -24,6 +24,7 @@ function AddDogPage() {
   const navigate = useNavigate();
 
   const handleAddDog = (e) => {
+
     e.preventDefault();
     if (isValidForm()) {
       addDog(name, breed, age, sex, location, image);
@@ -45,6 +46,12 @@ function AddDogPage() {
 
   async function handleLocationSelect() {
     setLocation(document.getElementById("location").value);
+  }
+
+  function handleImageSelect() {
+    console.log(document.getElementById("file-selector").value);
+    console.log(document.getElementById("file-selector").files[0]["name"]);
+    setImage(document.getElementById("file-selector").files[0]["name"])
   }
 
   function isValidForm() {
@@ -177,8 +184,8 @@ function AddDogPage() {
                   type="file"
                   accept="image/png, image/jpg, image/gif, image/jpeg"
                   id="file-selector"
-                  value={image}
-                  onChange={(e) => setImage(e.target.value)}
+                  // value={image}
+                  onChange={() => handleImageSelect()}
                 ></input>
               </div>
             </div>

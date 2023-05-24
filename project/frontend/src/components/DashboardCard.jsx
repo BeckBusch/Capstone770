@@ -1,7 +1,5 @@
 import "../css/DashboardCard.css";
 
-import DogImage from "../assets/dog-image.png";
-
 function DashboardCard(props) {
 
     return (            
@@ -11,7 +9,7 @@ function DashboardCard(props) {
             <div className="dashboard-card">
 
                 <div className="div-dog-image">
-                <img src={DogImage} className="dog-image" alt="Dog"/>
+                <img src={`/src/assets/dog_images/${props.image}`} className="dog-image" alt="Dog"/>
                 {/* <img src={require({props.dogImage})} className="dog-image" alt={props.dogName}}/> */}
                 </div>
 

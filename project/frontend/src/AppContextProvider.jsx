@@ -40,27 +40,7 @@ function AppContextProvider({ children }) {
     refresh: refreshChats,
   } = useGet(`${API_BASE_URL}/api/chats`, []);
 
-  /**
-   * First, uploads the given image to the server, and retrieves the URL pointing to that image.
-   * Then, saves the article itself, and returns the server representation of the article which
-   * will ahve the id and date assigned.
-   *
-   * TODO Error handling...
-   */
   async function addDog(name, breed, age, gender, location, image) {
-    // const imgUploadConfig = {
-    //     headers: {
-    //         'content-encoding': 'base64',
-    //         'content-type': 'image/png'
-    //     }
-    // };
-
-    // const imgFormData = new FormData();
-    // imgFormData.append('image', image);
-    // const imgUploadResponse = await axios.post(`${API_BASE_URL}/api/images`, imgFormData, imgUploadConfig);
-
-    // const imageUrl = imgUploadResponse.headers['location'];
-
     const dogToUpload = {
       name,
       breed,
@@ -79,19 +59,6 @@ function AppContextProvider({ children }) {
   }
 
   async function addUser(name, email, password, role, image) {
-    // const imgUploadConfig = {
-    //     headers: {
-    //         'content-encoding': 'base64',
-    //         'content-type': 'image/png'
-    //     }
-    // };
-
-    // const imgFormData = new FormData();
-    // imgFormData.append('image', image);
-    // const imgUploadResponse = await axios.post(`${API_BASE_URL}/api/images`, imgFormData, imgUploadConfig);
-
-    // const imageUrl = imgUploadResponse.headers['location'];
-
     const userToUpload = {
       name,
       email,
@@ -112,7 +79,6 @@ function AppContextProvider({ children }) {
     const weightToUpload = {
       weight,
       scaleId,
-      // dateWeighed,
       staff,
       staffRole,
     };

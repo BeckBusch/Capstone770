@@ -132,6 +132,7 @@ function DashboardPage() {
                       name={dog["name"]}
                       breed={dog["breed"]}
                       age={dog["age"]}
+                      image={dog["image"]}
                     />
                   </button>
                 </div>
