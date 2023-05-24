@@ -10,7 +10,7 @@ import MyAccountWhite from "../assets/icon-account-white.png";
 function DogDetailPage() {
   const { dogs, dogID } = useContext(AppContext);
 
-  var name, breed, age, gender, location, lastWeight, weighedDate, weighedTime, weighedBy, weighedByRole;
+  var name, breed, age, gender, location, image, lastWeight, weighedDate, weighedTime, weighedBy, weighedByRole;
   var prevWeights = [];
 
   for (const dog of dogs) {
@@ -21,6 +21,7 @@ function DogDetailPage() {
       gender = dog["gender"];
       location = dog["location"];
       prevWeights = dog["prevWeights"];
+      image = dog["image"];
     }
   }
 
@@ -234,7 +235,7 @@ function DogDetailPage() {
                 <div className="dog-image-container">
                   <img
                     className="profile-img"
-                    src={MyAccountWhite}
+                    src={`/src/assets/dog_images/${image}`}
                     alt="Profile Image"
                   />
                 </div>
