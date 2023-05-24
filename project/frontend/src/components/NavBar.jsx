@@ -29,11 +29,11 @@ function NavBar() {
       console.log("user: ", user["name"])
       console.log("userNotificationArray: ", userNotification)
       console.log("usernofication length: ", userNotification.length)
-      for (let i = 0; i < userNotification.length; i++) {
-        if (userNotification[i][1] == true) {
-          count = count + 1
-        }
-      }
+      // for (let i = 0; i < userNotification.length; i++) {
+      //   if (userNotification[i][1] == true) {
+          count = userNotification.length
+      //   }
+      // }
       console.log("count = ", count)
     }
   }

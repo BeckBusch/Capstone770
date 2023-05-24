@@ -26,7 +26,7 @@ function AddReplyPanel() {
       if (currentChatIDIDUsername == user["name"]) {
         console.log("EQUAL")
         console.log("user id: ", user["_id"])
-        const noficationArray = new Array(currentChatIDID, true);
+        const noficationArray = new Array(currentChatIDID);
         console.log("notification array: ", noficationArray)
         console.log("user id nofication current: ", user["notification"]);
         var saveArray = new Array();
