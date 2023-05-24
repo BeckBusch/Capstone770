@@ -1,0 +1,73 @@
+.notification-page {
+    width: 100vw;
+    height: 100%;
+    min-height: 100vh;
+    background-color: white;
+    color: black;
+}
+
+.notification-page-content {
+    width: 100%;
+    height: 100%;
+    padding-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-panel-question {
+    width: 100%;
+    height: fit-content;
+    background-color: #BDD3E8;
+    border: 1px solid #BDD3E8;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.notification-panel-details {
+    padding: 15px 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.notification-panel-title {
+    width: 100%;
+    height: fit-content;
+    margin: 0;
+    font-size: 24px;
+}
+
+.notification-panel-user {
+    width: 100%;
+    height: fit-content;
+    margin: 0;
+    font-size: 14px;
+    font-style: italic;
+    padding: 10px 0 0 0;
+    line-height: 1;
+}
+
+.notification-panel-date {
+    width: 100%;
+    height: fit-content;
+    margin: 0;
+    font-size: 14px;
+    padding: 10px 0;
+    line-height: 1;
+}
+
+.notification-panel-discussion {
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.2;
+    padding-bottom: 10px;
+    overflow-y: scroll;
+    display: flex;
+    align-items: top;
+}
+
+.chat-notification-button {
+    color: black;
+}
