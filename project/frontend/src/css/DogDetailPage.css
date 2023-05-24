@@ -11,51 +11,16 @@
     height: 100%;
     padding-top: 65px;
 }
-/* 
-.dog-detail-container {
-    background-color: lightblue;
-    width: 100%;
-    height: 40%;
-    position: relative;   
-    left: 50%;
-    transform: translate(-50%);
-} */
-
-.dog-info-container {
-    /* position: relative;
-    top: 50%;
-    transform: translateY(-50%); */
-    /* display: inline-block; */
-    /* background-color: red; */
-}
 
 .name-header {
-    /* background-color: blue; */
     margin-top: 0;
     margin-bottom: 30px;
 }
 
 .two-columns-grid {
-    /* position: absolute; */
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-gap: 80px;
-    /* background-color: red; */
-}
-
-.two-columns-grid > * {
-    /* background-color: orange; */
-}
-
-.detail-col-one {
-    /* background-color: green; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-}
-
-.detail-col-two {
-    /* background-color: orange; */
 }
 
 .container-div {
@@ -64,20 +29,17 @@
     position: relative;   
     left: 50%;
     transform: translate(-50%);
-    /* background-color: aqua; */
 }
 
 .four-columns-grid {
-    /* background-color: green; */
     display: grid;
     grid-gap: 1px;
     row-gap: 10px;
     padding: 1px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
 }
 
 .four-columns-grid > * {
-    /* background-color: lightblue; */
     height: 30px;
     display: flex;
     align-items: center;
@@ -86,12 +48,9 @@
 .dog-image-container {
     width: 250px;
     height: 250px;
-    /* background-color: #BDD3E8; */
     border: 5px solid #BDD3E8;
     overflow: hidden;    
     border-radius: 50%;
-    /* margin: 40px; */
-    /* margin-top: 20px; */
 }
 
 .profile-img {
@@ -103,7 +62,6 @@
 label {
     display: inline-block;
     font-weight: bold;
-    /* width: 150px; */
 }
 
 .details-spacing {
@@ -111,41 +69,39 @@ label {
 }  
 
 .buttons {
-    /* background-color: pink; */
     width: 200px;
 }
 
 .dog-detail-button-container {
     text-align: right;
-    /* background-color: black;    */
 }
 
 .outer-button-container {
-    /* position: relative; */
-    /* background-color: blue;
-    width: 100%;
-    height: 90px; */
-
-    /* background-color: red; */
     width: 90%;
     position: relative;   
     left: 50%;
     transform: translate(-50%);
     padding-top: 32px;
-    /* padding-bottom: 20px; */
 }
 
-.start-img {
-    vertical-align: middle;
-    margin-right: 5px;
+.add-weight-btn {
+    width: 150px;
+    height: 40px;
+    color: white;
+    background-color: #3479C0;
+    font-size: 16px;
+    border: 1px solid #3479C0;
+}
+
+.add-weight-btn:hover {
+    background-color: white;
+    border: 1px solid #3479C0;
+    color: #3479C0;
 }
 
 .graph-container {
-    /* background-color: rebeccapurple; */
-    /* width: 100%; */
     margin-top: 30px;
     height: 800px;
-    /* position: absolute; */
     width: 90%;
     position: relative;   
     left: 50%;
@@ -153,11 +109,8 @@ label {
 }
 
 .table-chart-container {
-    /* background-color: aqua; */
     width: 100%;
     position: absolute;
-    /* left: 50%;
-    transform: translate(-50%); */
 }
 
 .table-chart-container-2 {
@@ -268,10 +221,7 @@ label {
 
 .weight-header {
     text-align: center;
-    /* margin-top: 60px;
-    margin-bottom: 0; */
     font-size: 20px;
-    /* background-color: red; */
 }
 
 
@@ -281,7 +231,6 @@ label {
 
 .graph-button-container {
     text-align: right;
-    /* background-color: black; */
 }
 
 .table-btn,
@@ -304,10 +253,5 @@ label {
     font-size: 16px;
     position: absolute;
     bottom: 10%;
-    /* background-color: white; */
 }
 
-
-/* th, td {
-    width: 100%;
-} */
