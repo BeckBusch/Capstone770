@@ -86,7 +86,7 @@
 .dog-image-container {
     width: 250px;
     height: 250px;
-    background-color: #BDD3E8;
+    /* background-color: #BDD3E8; */
     border: 5px solid #BDD3E8;
     overflow: hidden;    
     border-radius: 50%;
@@ -110,11 +110,10 @@ label {
     margin-bottom: 10px;
 }  
 
-.buttons-container {
+.buttons {
+    /* background-color: pink; */
     width: 200px;
-    display: inline;
-  }
-
+}
 
 .dog-detail-button-container {
     text-align: right;
@@ -264,7 +263,7 @@ label {
 
 .renderDogDetailsTable {
     padding: 20px;
-    width: 100%;
+    margin: 0q;
 }
 
 .weight-header {
@@ -308,26 +307,7 @@ label {
     /* background-color: white; */
 }
 
-  th {
-    height: 50px;
-    text-align: left;
-    border-bottom: 1px solid #000000;
-    width: 25%;
-  }
 
-  td {
-    height: 50px;
-  }
-
-  .add-weight-btn {
-    width: fit-content;
-    background-color: #3479C0;
-    border: 1px solid #3479C0;
-    color: white;
-  }
-
-  .add-weight-btn:hover {
-    background-color: white;
-    border: 1px solid #3479C0;
-    color: #3479C0;
-}
+/* th, td {
+    width: 100%;
+} */
