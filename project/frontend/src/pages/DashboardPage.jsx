@@ -87,7 +87,7 @@ function DashboardPage() {
               <input
                 type="search"
                 id="mySearch"
-                placeholder="Search by name or breed ..."
+                placeholder="Search by name, breed or location ..."
                 className="dashboard-search"
                 onChange={(e) => handleUpdateSearch(e.target.value)}
               />
@@ -131,7 +131,7 @@ function DashboardPage() {
                     <DashboardCard
                       name={dog["name"]}
                       breed={dog["breed"]}
-                      age={dog["age"]}
+                      location={dog["location"]}
                       image={dog["image"]}
                     />
                   </button>
@@ -149,7 +149,7 @@ function DashboardPage() {
                     <DashboardCard
                       name={dog["name"]}
                       breed={dog["breed"]}
-                      age={dog["age"]}
+                      location={dog["location"]}
                       image={dog["image"]}
                     />
                   </button>
