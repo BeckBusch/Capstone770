@@ -3,6 +3,10 @@
     height: 100%;
     min-height: 100vh;
     background-color: white;
+    background-image: url("../assets/background-notification.png");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 100vh;
     color: black;
 }
 
@@ -11,63 +15,89 @@
     height: 100%;
     padding-top: 100px;
     display: flex;
+    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
 }
 
-.notification-panel-question {
-    width: 100%;
-    height: fit-content;
-    background-color: #BDD3E8;
-    border: 1px solid #BDD3E8;
-    border-radius: 20px;
-    margin-bottom: 20px;
-}
-
-.notification-panel-details {
-    padding: 15px 20px;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.notification-panel-title {
-    width: 100%;
-    height: fit-content;
-    margin: 0;
-    font-size: 24px;
-}
-
-.notification-panel-user {
-    width: 100%;
-    height: fit-content;
-    margin: 0;
-    font-size: 14px;
-    font-style: italic;
-    padding: 10px 0 0 0;
-    line-height: 1;
-}
-
-.notification-panel-date {
-    width: 100%;
-    height: fit-content;
-    margin: 0;
-    font-size: 14px;
-    padding: 10px 0;
-    line-height: 1;
-}
-
-.notification-panel-discussion {
-    width: 100%;
-    height: 40px;
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.2;
-    padding-bottom: 10px;
-    overflow-y: scroll;
+.notification-page-left {
+    width: 50%;
+    height: 100%;
     display: flex;
-    align-items: top;
+    justify-content: center;
+    align-items: center;
 }
 
-.chat-notification-button {
+.notification-page-right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notification-header {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-right: 80px;
+}
+
+.notification-header-line-1 {
+    height: 100px;
+    text-align: left;
+    margin-left: 100px;
+    font-size: 200px;
+    color: #3479C0;
+    /* background-color: #BDD3E8; */
+}
+
+
+.notification-header-line-2 {
+    text-align: right;
+    margin-left: 100px;
+    font-size: 100px;
     color: black;
+    /* background-color: #BDD3E8; */
+}
+
+
+.notification-header-line-3 {
+    width: 100%;
+    text-align: right;
+    /* margin-left: 100px; */
+    font-size: 80px;
+    color: black;
+    /* background-color: #BDD3E8; */
+}
+
+.notification-panel {
+    margin: 0 30px;
+    width: calc(100%);
+    height: 100%;
+    background-color: #BDD3E8;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.notification-button {
+    width: 100%;
+    height: fit-content;
+    color: black;
+    background-color: transparent;
+    border-radius: 0;
+    border: 1px solid transparent;
+    overflow-y: clip;
+    text-align: left;
+    margin: 0;
+    padding: 15px 10px;
+
+}
+
+.notification-summary {
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: bold;
+    overflow-x: clip;
+    text-align: left;
 }

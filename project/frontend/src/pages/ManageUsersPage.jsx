@@ -118,9 +118,7 @@ function ManageUsersPage() {
               <label></label>
               <div>
                 <Link to="/add-user">
-                  <button className="add-user-btn">
-                    + Add User
-                  </button>
+                  <button className="add-user-btn">+ Add User</button>
                 </Link>
               </div>
             </div>
@@ -131,6 +129,7 @@ function ManageUsersPage() {
           <label id="num-of-users">Users ({currentUsers.length})</label>
           <div className="all-users-container">
             <div className="user-info-header">
+              <p></p>
               <p>Name</p>
               <p>Role</p>
               <p>Email</p>
@@ -145,6 +144,11 @@ function ManageUsersPage() {
                   users.map(function (user, i) {
                     return (
                       <div className="user-info" key={i}>
+                        <img
+                          src={`/src/assets/user_images/${user["image"]}`}
+                          className="user-image"
+                          alt="Dog"
+                        />
                         <p>{user["name"]}</p>
                         <p>{user["role"]}</p>
                         <p>{user["email"]}</p>
@@ -160,6 +164,11 @@ function ManageUsersPage() {
                   currentUsers.map(function (user, i) {
                     return (
                       <div className="user-info" key={i}>
+                        <img
+                          src={`/src/assets/user_images/${user["image"]}`}
+                          className="user-image"
+                          alt="Dog"
+                        />
                         <p>{user["name"]}</p>
                         <p>{user["role"]}</p>
                         <p>{user["email"]}</p>
