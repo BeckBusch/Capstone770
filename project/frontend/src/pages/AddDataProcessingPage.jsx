@@ -11,18 +11,21 @@ function AddDataProcessingPage() {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
+
+  useEffect(() => {
     const currentDateTime = new Date().toISOString();
-    var intervalID = setInterval(function () {
+    const intervalID = setInterval(() => {
       checkUpdatedWeight(currentDateTime);
-    }, 10000);
-  // }, []);
+
+    }, 1000);
+    return () => clearInterval(intervalID);
+  }, []);
 
   async function checkUpdatedWeight(currentDateTime) {
+    console.log("check")
     const updatedWeights = await getWeights();
     for (const updatedWeight of updatedWeights) {
       if ((currentDateTime < updatedWeight["createdAt"]) && (scaleID == updatedWeight["scaleId"])) {
-        clearInterval(intervalID);
         navigate(`/dog/${dogID}/add-data/confirm`);
       }
     }
@@ -51,7 +54,7 @@ function AddDataProcessingPage() {
                 alt="Dog Footprint Image"
               />
             </div>
-              <p className="processing-text">Processing...</p>
+            <p className="processing-text">Processing...</p>
           </div>
         </div>
       </div>

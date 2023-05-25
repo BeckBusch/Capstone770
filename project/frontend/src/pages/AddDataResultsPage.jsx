@@ -6,22 +6,35 @@ import { AppContext } from "../AppContextProvider";
 import NavBar from "../components/NavBar";
 
 function AddDataResultsPage() {
-  const { scaleID, weights, dogs, updateDog, dogID, removeWeight, userName, userRole, prevWeights, setPrevWeights} =
+  const { scaleID, weights, dogs, updateDog, dogID, removeWeight, userName, userRole, prevWeights, setPrevWeights, getWeights, refreshWeights } =
     useContext(AppContext);
 
-    // const prevWeights = [];
-    const [errorMessage, setErrorMessage] = useState("");
-    const navigate = useNavigate();
+  // const prevWeights = [];
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+  var updatedWeights = new Array();
 
   var select = document.createElement("input");
 
+
+  // async function checkUpdatedWeight() {
+  //   updatedWeights = await getWeights();
+  //     console.log("updatedweights: ", updatedWeights);
+  // }
+
   const renderWeightResultsBoard = () => {
+
+    // checkUpdatedWeight();
+
+  
+    console.log("updatedweights222222: ", updatedWeights);
+
     const table = document.createElement("table");
 
     const allScaleIDValues = new Array();
     allScaleIDValues.push(["", "Weight (kg)", "Date", "Time"]);
 
-    for (const weight of weights) {
+    for (const weight of updatedWeights) {
       if (scaleID == weight["scaleId"]) {
         var d = new Date(weight["createdAt"]);
         var date = d.toLocaleDateString("en-GB");
@@ -31,6 +44,7 @@ function AddDataResultsPage() {
           hour12: true,
         });
 
+        console.log(weight["weight"]);
         allScaleIDValues.push([
           "",
           weight["weight"],
@@ -40,7 +54,7 @@ function AddDataResultsPage() {
         ]);
       }
     }
-    console.log("allscaleidvalues: ", allScaleIDValues);
+    //console.log("allscaleidvalues: ", allScaleIDValues);
 
     //Get the count of columns.
     const columnCount = allScaleIDValues[0].length;
@@ -88,6 +102,24 @@ function AddDataResultsPage() {
   };
 
   useEffect(() => {
+    // const renderWeightResultsBoardDiv = document.querySelector(
+    //   ".renderWeightResultsBoard"
+    // );
+    // if (renderWeightResultsBoardDiv.children.length === 0) {
+    //   const table = renderWeightResultsBoard();
+    //   renderWeightResultsBoardDiv.appendChild(table);
+    // }
+    async function checkUpdatedWeight() {
+      updatedWeights = await getWeights();
+        console.log("updatedweights: ", updatedWeights);
+        newFunction()
+    }
+
+    checkUpdatedWeight();//.then(newFunction);
+
+  }, []);
+
+  function newFunction() {
     const renderWeightResultsBoardDiv = document.querySelector(
       ".renderWeightResultsBoard"
     );
@@ -95,7 +127,7 @@ function AddDataResultsPage() {
       const table = renderWeightResultsBoard();
       renderWeightResultsBoardDiv.appendChild(table);
     }
-  }, []);
+  }
 
   async function handleSelectedWeight() {
     const radioButtons = document.querySelectorAll('input[name="radio"]');
@@ -164,9 +196,9 @@ function AddDataResultsPage() {
     <div className="add-data-results-page">
       <NavBar />
       <div className="add-data-results-header">
-              <h1 className="add-data-header-results-line-1">Select</h1>
-              <h1 className="add-data-header-results-line-2">Weight</h1>
-            </div>
+        <h1 className="add-data-header-results-line-1">Select</h1>
+        <h1 className="add-data-header-results-line-2">Weight</h1>
+      </div>
       <div className="add-data-results-page-outer">
         <div>
           <div className="add-data-results-page-content">
@@ -198,7 +230,7 @@ function AddDataResultsPage() {
                   id="signUpBtn"
                   className="select-btn"
                   onClick={() => handleSelectedWeight()}
-                  >
+                >
                   Select
                 </button>
               </div>
