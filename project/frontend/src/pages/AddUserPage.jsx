@@ -15,7 +15,7 @@ function AddUserPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("none");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState("default.png");
   const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
@@ -40,6 +40,10 @@ function AddUserPage() {
     const roleSelect = document.getElementById("role");
     const roleValue = roleSelect.value;
     setRole(roleValue);
+  }
+
+  function handleImageSelect() {
+    setImage(document.getElementById("file-selector").files[0]["name"])
   }
 
   function isValidForm() {
@@ -140,12 +144,11 @@ function AddUserPage() {
               {/* Image */}
               <label htmlFor="Image">Image</label>
               <div className="user-image-input">
-                <input
+              <input
                   type="file"
                   accept="image/png, image/jpg, image/gif, image/jpeg"
                   id="file-selector"
-                  value={image}
-                  onChange={(e) => setImage(e.target.value)}
+                  onChange={() => handleImageSelect()}
                 ></input>
               </div>
             </div>

@@ -11,18 +11,18 @@ import ChatIcon from "../assets/nav-icon-chat-white.png";
 import MyAccountIcon from "../assets/icon-account-white.png";
 import ManageUsersIcon from "../assets/nav-icon-settings-white.png";
 import SignOutIcon from "../assets/icon-sign-out.png";
-import NotificationIcon from "../assets/notification.png";
+import NotificationIcon from "../assets/icon-notification.png";
 
 import AuthDetails from "../AuthDetails";
 
 function NavBar() {
   AuthDetails();
 
-  const { userRole, userName, setCurrentChatID, users } = useContext(AppContext);
+  const { userRole, userName, users } = useContext(AppContext);
 
   const [signOutPopUpVisible, setSignOutPopUpVisible] = useState(false);
 
-  var count = 0;
+  let count = 0;
   for (const user of users) {
     if (userName == user["name"]) {
       const userNotification = user["notification"]
@@ -68,7 +68,7 @@ function NavBar() {
       <div className="col-mid">
         <Link to="/chat">
           <button type="submit" id="logInBtn" className="navbar-link-button">
-            <img className="navbar-icon" src={ChatIcon} alt="Dashboard" />
+            <img className="navbar-icon" src={ChatIcon} alt="Chat" />
             <p className="navbar-link-text">Chat</p>
           </button>
         </Link>
@@ -80,9 +80,9 @@ function NavBar() {
             <img
               className="navbar-icon"
               src={ManageUsersIcon}
-              alt="Dashboard"
+              alt="Users"
             />
-            <p className="navbar-link-text">Manage Users</p>
+            <p className="navbar-link-text">Users</p>
           </button>
         </Link>
       </div>
@@ -90,8 +90,8 @@ function NavBar() {
       <div className="col-mid-right">
         <Link to="/notification">
           <button type="submit" id="logInBtn" className="navbar-link-button-2">
-            <img className="navbar-icon" src={NotificationIcon} alt="Dashboard" />
-            ({count})
+            <img className="navbar-icon" src={NotificationIcon} alt="Notifications" />
+            <p className="navbar-link-text">({count})</p>
           </button>
         </Link>
       </div>
@@ -112,7 +112,7 @@ function NavBar() {
                   <img
                     className="navbar-icon"
                     src={MyAccountIcon}
-                    alt="Dashboard"
+                    alt="My Account"
                   />
                 </div>
               </div>
@@ -152,7 +152,7 @@ function NavBar() {
       <div className="col-mid">
         <Link to="/chat">
           <button type="submit" id="logInBtn" className="navbar-link-button">
-            <img className="navbar-icon" src={ChatIcon} alt="Dashboard" />
+            <img className="navbar-icon" src={ChatIcon} alt="Chat" />
             <p className="navbar-link-text">Chat</p>
           </button>
         </Link>
@@ -161,8 +161,8 @@ function NavBar() {
       <div className="col-mid-right">
         <Link to="/notification">
           <button type="submit" id="logInBtn" className="navbar-link-button-2">
-            <img className="navbar-icon" src={NotificationIcon} alt="Dashboard" />
-            ({count})
+            <img className="navbar-icon" src={NotificationIcon} alt="Notifications" />
+            <p className="navbar-link-text">({count})</p>
           </button>
         </Link>
       </div>
@@ -183,7 +183,7 @@ function NavBar() {
                   <img
                     className="navbar-icon"
                     src={MyAccountIcon}
-                    alt="Dashboard"
+                    alt="My Account"
                   />
                 </div>
               </div>

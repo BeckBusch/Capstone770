@@ -186,7 +186,7 @@
 
 .user-info-header {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 0fr;
+    grid-template-columns: 1fr 2fr 2fr 3fr 1fr;
     width: calc(100% - 40px);
     height: 30px;
     padding: 10px;
@@ -198,9 +198,15 @@
 
 .user-info {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 0fr;
-    height: 30px;
+    grid-template-columns: 1fr 2fr 2fr 3fr 1fr;
+    height: 50px;
     padding: 10px;
+}
+
+.user-image {
+    width: 40px;
+    height: calc(width);
+    border-radius: 50%;
 }
 
 .hl {

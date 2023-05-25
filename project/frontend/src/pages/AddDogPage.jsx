@@ -49,8 +49,6 @@ function AddDogPage() {
   }
 
   function handleImageSelect() {
-    console.log(document.getElementById("file-selector").value);
-    console.log(document.getElementById("file-selector").files[0]["name"]);
     setImage(document.getElementById("file-selector").files[0]["name"])
   }
 
@@ -184,7 +182,6 @@ function AddDogPage() {
                   type="file"
                   accept="image/png, image/jpg, image/gif, image/jpeg"
                   id="file-selector"
-                  // value={image}
                   onChange={() => handleImageSelect()}
                 ></input>
               </div>
