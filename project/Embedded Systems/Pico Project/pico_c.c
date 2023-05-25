@@ -22,8 +22,12 @@ double weight2 = 0.0;
 double compare_ratio = 0.0;
 double lower_bound = 0.97;  // constant
 double upper_bound = 1.03;  // constant
-
 double weight_to_server = 0.0;
+
+// for initial calibration
+double cal_weight1 = 0.0;
+double cal_weight2 = 0.0;
+double cal_weight_avg = 0.0;
 
 void state_sleep();
 
@@ -88,6 +92,7 @@ int main() {
                     // if (get_tare_status()) {
                     if (tare_flag == 1) {
                         printf("CURRENT TARE STATUS inside the idle check: %d\n", get_tare_status());
+                        cal_weight_avg = 0.0;
                         FSM = tare_initialized;
                         // enable_tare_LED();
                         break;
@@ -96,18 +101,20 @@ int main() {
                         weight1 = check_weights(save_weight_to_array());
                         if (tare_flag == 1) {
                             sleep_ms(100);
+                            cal_weight_avg = 0.0;
                             FSM = tare_initialized;
                             break;
                         }
                         weight2 = check_weights(save_weight_to_array());
                         if (tare_flag == 1) {
                             sleep_ms(100);
+                            cal_weight_avg = 0.0;
                             FSM = tare_initialized;
                             break;
                         }
 
                         compare_ratio = weight1/weight2;
-                        weight_to_server = average_2_weights(weight1, weight2);
+                        weight_to_server = average_2_weights(weight1, weight2) - cal_weight_avg;
 
                         if ((lower_bound < compare_ratio) || (compare_ratio > upper_bound)) {
                             // printf("Check value: %d\n", check);
@@ -126,6 +133,7 @@ int main() {
                         
                         if (tare_flag == 1) {
                             sleep_ms(100);
+                            cal_weight_avg = 0.0;
                             FSM = tare_initialized;
                             break;
                         } 
@@ -159,6 +167,13 @@ int main() {
                 printf("========== Current state: ready ==========\n");
                 printf("CURRENT TARE STATUS: %d\n", get_tare_status());
                 state_sleep();
+
+                // calibration
+                cal_weight1 = check_weights(save_weight_to_array());
+                cal_weight2 = check_weights(save_weight_to_array());
+                cal_weight_avg = average_2_weights(cal_weight1, cal_weight2);
+                printf("CALIBRATION WEIGHT: %f\n", cal_weight_avg);
+                sleep_ms(250);
                 enable_wifi_LED();
                 FSM = idle; // poll for inputs
                 break;
@@ -201,7 +216,7 @@ int main() {
                 printf("========== Current state: receive_data ==========\n");
                 state_sleep();
                 // ensure the data received here is not faulty or zero (i.e. no weight on scale)
-                if (get_weight_mean_average() < 0.30) {
+                if (weight_to_server < 0.30) {
                     tare_flag = 0; // in case the tare
                     FSM = idle;
                     break;
@@ -235,7 +250,7 @@ int main() {
                 // sprintf(request_body, "{\"weight\":%f,\"scaleId\": %d}", get_weight_mean_average(), 1);
                 sprintf(request_body, "{\"weight\":%f,\"scaleId\": %d}", weight_to_server, 1);
                 sendRequest("unused argument :)", request_body);
-                sleep_ms(50);
+                // sleep_ms(50);
                 disable_stable_LED();
 
                 FSM = idle;
