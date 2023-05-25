@@ -277,7 +277,7 @@ async function updateUser(id, notification) {
     updateUser,
 
     weights,
-    
+    refreshWeights,
     weightsLoading,
     addWeight,
     getWeights,
