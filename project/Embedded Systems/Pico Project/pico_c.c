@@ -23,6 +23,8 @@ double compare_ratio = 0.0;
 double lower_bound = 0.97;  // constant
 double upper_bound = 1.03;  // constant
 
+double weight_to_server = 0.0;
+
 void state_sleep();
 
 void state_sleep(){
@@ -105,12 +107,13 @@ int main() {
                         }
 
                         compare_ratio = weight1/weight2;
+                        weight_to_server = average_2_weights(weight1, weight2);
 
                         if ((lower_bound < compare_ratio) || (compare_ratio > upper_bound)) {
                             // printf("Check value: %d\n", check);
                             printf("\nWeight1 value: %f", weight1);
                             printf("\nWeight2 value: %f", weight2);
-                            printf("\nWeight to send to server: %f\n", average_2_weights(weight1, weight2));
+                            printf("\nWeight to send to server: %f\n", weight_to_server);
                             printf("\nCOMPARE VALUE = %f\n", compare_ratio);
                             sleep_ms(2000);
                             FSM = receive_data; // once steady amount of data is received
@@ -143,8 +146,8 @@ int main() {
                 printf("CURRENT TARE STATUS: %d\n", get_tare_status());
                 state_sleep();
                 enable_power_LED();
-                // if (wifi_connect()) {
-                if (1) {    // for testing only
+                if (wifi_connect()) {
+                // if (1) {    // for testing only
                     // once connection is succesful
                     FSM = ready;
                     break;
@@ -221,16 +224,19 @@ int main() {
                 state_sleep();
                 // disable_stable_LED();
                 void disable_reg();
-                printf("\nSIMULATING SENDING DATA - REG PIN DISABLED");
-                sleep_ms(5000);
+                // printf("\nSIMULATING SENDING DATA - REG PIN DISABLED");
+                // sleep_ms(5000);
                 disable_stable_LED();
 
                 // sprintf(request_body, "{\"location\":\"Auckland\", \"gender\":\"Male\", \"age\":4, \"breed\":\"breedTest\", \"name\":\"nameTest\"}");
                 // sendRequest("unused argument :)", request_body);
-                
+
                 // arguments are the weight value to be sent, and the constant scale ID
                 // sprintf(request_body, "{\"weight\":%f,\"scaleId\": %d}", get_weight_mean_average(), 1);
-                // sendRequest("unused argument :)", request_body);
+                sprintf(request_body, "{\"weight\":%f,\"scaleId\": %d}", weight_to_server, 1);
+                sendRequest("unused argument :)", request_body);
+                sleep_ms(50);
+                disable_stable_LED();
 
                 FSM = idle;
                 break;
