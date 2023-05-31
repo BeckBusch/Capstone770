@@ -243,9 +243,6 @@ int main() {
                 // sleep_ms(5000);
                 disable_stable_LED();
 
-                // sprintf(request_body, "{\"location\":\"Auckland\", \"gender\":\"Male\", \"age\":4, \"breed\":\"breedTest\", \"name\":\"nameTest\"}");
-                // sendRequest("unused argument :)", request_body);
-
                 // arguments are the weight value to be sent, and the constant scale ID
                 // sprintf(request_body, "{\"weight\":%f,\"scaleId\": %d}", get_weight_mean_average(), 1);
                 sprintf(request_body, "{\"weight\":%f,\"scaleId\": %d}", weight_to_server, 1);
