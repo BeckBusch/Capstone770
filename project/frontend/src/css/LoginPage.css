@@ -1,0 +1,81 @@
+.login-page {
+    width: 100%;
+    height: 100vh;
+    background-color: #3479C0;
+}
+
+.background-image {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 90vh;
+    z-index: 1;
+}
+
+.login-container-flex {
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    padding-right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    position: relative;
+    width: 250px;
+    height: fit-content;
+    background-color: white;
+    text-align: center;
+    border-radius: 40px;
+    padding: 50px;
+    border: #3479C0 10px solid;
+    z-index: 2;
+}
+
+.spca-logo {
+    width: 100%;
+}
+
+.login-input{
+    width: 90%;
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #999999;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.login-btn {
+    width: 100%;
+    height: 40px;
+    color: #3479C0;
+    background-color: #BDD3E8;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.login-btn:hover {
+    color: white;
+    background-color: #3479C0;
+    cursor: pointer;
+}
+
+.sign-up-msg {
+    color: black;
+    margin-bottom: 0;
+}
+
+.login-error-msg {
+    height: 15px;
+    color: red;
+    font-size: 12px;
+    margin: 5px 0 10px 0 ;
+}

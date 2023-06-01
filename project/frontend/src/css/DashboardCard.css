@@ -1,0 +1,61 @@
+.card-section {
+    width: 100%;
+    /* background-color: black; */
+    /* padding: 15px; */
+}
+
+.dashboard-card {
+    width: 100%;
+    height: fit-content;
+    border-radius: 20px;
+    padding: 30px 0 20px 0;
+    color: black;
+}
+
+@media (max-width: 700px) {
+    .card-section {
+        min-width: 50%;
+    }     
+}
+
+.div-dog-image {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.dog-image {
+    width: 80%;
+    height: calc(width);
+    border-radius: 50%;
+    /* background-color: #BDD3E8; */
+    /* border: 1px solid black; */
+}
+
+.temp-image {
+    background-color: #BDD3E8;
+}
+
+.div-dog-details {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.dog-name{
+    padding-top: 30px 0;
+    font-size: 24px;
+}
+
+.dog-breed {
+    font-style: italic;
+    font-weight: normal;
+    padding: 10px;
+    font-size: 18px;
+
+}
+
+.dog-age {
+    font-weight: normal;
+    font-size: 16px;
+}
