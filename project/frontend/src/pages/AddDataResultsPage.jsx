@@ -16,18 +16,9 @@ function AddDataResultsPage() {
 
   var select = document.createElement("input");
 
-
-  // async function checkUpdatedWeight() {
-  //   updatedWeights = await getWeights();
-  //     console.log("updatedweights: ", updatedWeights);
-  // }
-
   const renderWeightResultsBoard = () => {
-
-    // checkUpdatedWeight();
-
   
-    console.log("updatedweights222222: ", updatedWeights);
+    //PRINTER:console.log("updatedweights222222: ", updatedWeights);
 
     const table = document.createElement("table");
 
@@ -44,7 +35,7 @@ function AddDataResultsPage() {
           hour12: true,
         });
 
-        console.log(weight["weight"]);
+        //PRINTER:console.log(weight["weight"]);
         allScaleIDValues.push([
           "",
           weight["weight"],
@@ -54,7 +45,7 @@ function AddDataResultsPage() {
         ]);
       }
     }
-    //console.log("allscaleidvalues: ", allScaleIDValues);
+    //PRINTER:console.log("allscaleidvalues: ", allScaleIDValues);
 
     //Get the count of columns.
     const columnCount = allScaleIDValues[0].length;
@@ -84,7 +75,7 @@ function AddDataResultsPage() {
 
       for (let j = 0; j < columnCount; j++) {
         const cell = row.insertCell(-1);
-        // console.log("cell: ", prevWeights[i][j]);
+        //PRINTER:console.log("cell: ", prevWeights[i][j]);
         if (j == 0) {
           select = document.createElement("input");
           select.setAttribute("type", "radio");
@@ -102,20 +93,12 @@ function AddDataResultsPage() {
   };
 
   useEffect(() => {
-    // const renderWeightResultsBoardDiv = document.querySelector(
-    //   ".renderWeightResultsBoard"
-    // );
-    // if (renderWeightResultsBoardDiv.children.length === 0) {
-    //   const table = renderWeightResultsBoard();
-    //   renderWeightResultsBoardDiv.appendChild(table);
-    // }
     async function checkUpdatedWeight() {
       updatedWeights = await getWeights();
-        console.log("updatedweights: ", updatedWeights);
         newFunction()
     }
 
-    checkUpdatedWeight();//.then(newFunction);
+    checkUpdatedWeight();
 
   }, []);
 
@@ -138,17 +121,17 @@ function AddDataResultsPage() {
       }
     });
 
-    console.log("BEFORE IF")
+    //PRINTER:console.log("BEFORE IF")
     if (selectedValue) {
-      console.log("INSIDE IF")
+      //PRINTER:console.log("INSIDE IF")
       const newWeight = getNewWeight(selectedValue);
       // const previousCurrentWeight = getPreviousCurrentWeight();
       // previousCurrentWeight.push(newWeight);
       const previousWeight = getPreviousWeight();
       previousWeight.push(newWeight);
-      console.log("getnewweight: ", newWeight);
+      //PRINTER:console.log("getnewweight: ", newWeight);
       // console.log("getprevouscurrentweight: ", previousCurrentWeight);
-      console.log("previouswegiht: ", previousWeight);
+      //PRINTER:console.log("previouswegiht: ", previousWeight);
       updateDog(dogID, previousWeight);
       // removeWeight(scaleID);
 
@@ -168,7 +151,7 @@ function AddDataResultsPage() {
           userName,
           userRole,
         );
-        console.log("newWeights: ", newWeights);
+        //PRINTER:console.log("newWeights: ", newWeights);
         return newWeights;
       }
     }
