@@ -2,33 +2,243 @@
 %	Business Case: Introduction
 %----------------------------------------------------------------------------------------
 
-\chapter{Overview}
+\chapter{Introduction}
 
-TODO: Introduce the project and what it will deliver
+The Royal New Zealand Society for the Prevention of Cruelty of Animals (SPCA) plays a pivotal role in ensuring the health and well-being of animals across New Zealand. With a dedicated workforce of 600 staff members and the responsibility of caring for over 31,000 animals annually, the SPCA faces the ongoing challenge of efficiently managing the increasing number of animals in their care.
 
-You can add and remove the sections below, these are just some starting \textit{suggestions}.
+As part of its commitment to providing optimal care for animals, the SPCA recognizes the need to adapt its operations to accommodate the growing number of animals. One crucial task performed by SPCA staff is the regular weighing of animals, which serves as an indicator of their physical health. However, the weighing process often causes stress for the animals, making it more challenging to obtain accurate measurements and resulting in prolonged procedures and occasional data loss. 
 
-\chapter{Deliverables}
+In response to these challenges, the SPCA has issued a Request for Proposals seeking an intelligent scale system capable of accurately weighing animals and automatically tracking changes in their weight. The primary objective of this report is to present a comprehensive proposal that addresses the specific requirements of the SPCA and supports its mission to improve the health and well-being of animals under it's care. 
 
-TODO: What are the main deliverables, how will they be achieved, how does it meet the project requirements
+Our proposed solution leverages advanced technologies, such as sensors and digital connectivity, to provide real-time weight measurements and seamless data tracking capabilities. By automating the weighing process, our solution aims to empower SPCA staff to focus more effectively on the health and well-being of the animals, rather than being burdened with the technical aspects of measuring and recording weights. 
 
-\chapter{Requirements}
+Throughout this report, we will outline the architecture and functionality of our proposed system, along with the underlying technologies that enable us to achieve the desired outcomes. Additionally, we will explore the anticipated impact of implementing this intelligent scale system on the efficiency and effectiveness of the SPCA’s animal care practices. 
 
-TODO: This chapter should review the different areas and explain how they are met
+Our report is driven by a commitment to innovation and leveraging cutting-edge technologies. Our ultimate aim is to provide SPCA with a robust and user-friendly solution that precisely meets their specified requirements. Moreover, our report is guided by a deep understanding of the challenges faced by the SPCA and a commitment to supporting their ongoing efforts in caring for the well-being of animals in their custody.
 
+In terms of the methodology, this report will employ a combination of research, analysis, and practical implementation to develop a comprehensive proposal for the intelligent scale system. We will conduct a thorough review of existing technologies, analyze the specific requirements of the SPCA, and leverage our expertise in software development and data management to design and implement the proposed solution. The report will be structured into the following main sections: 1) Problem Definition, 2) Implementation Plan, 3) Considerations, 4) Technical Components and 5) Conclusion. Each section will provide detailed insights into the respective aspects of the project and contribute to a comprehensive understanding of our proposed solution.
+
+\chapter{Problem Definition}
+\section{Statement}
+The Royal New Zealand Society for the Prevention of Cruelty to Animals (SPCA) is a significant organization in New Zealand, responsible for the health and well being of animals. Currently, the SPCA has 600 staff and is responsible for the care of 31,000 animals annually. The number of animals requiring care is ever-increasing, which means that the SPCA is always looking for more streamlined and efficient methods for animal care.
+
+One aspect of animal care that the SPCA wishes to streamline is the process of weighing dogs. Stress in the animals can lead to the process taking a long time and sometimes data can be lost. The SPCA has issued a Request for Proposals (RFP) for an intelligent scale system that can weigh animals and automatically track changes in their weight.
+
+\section{Identification}
+\subsection{Customer Sector}
+Examining the customer segment and market value of our project, just about 2/3 of the average households in New Zealand have pets. Based on 2020 data, this would mean that the maximum coverage of this project would be 4.3 million pets\cite{pd1}\cite{pd2} given that it is limited nationally.
+
+However, when narrowing down the intended use from the problem statement, this would mean our product would be most in use for pet associations. This solution targets associations and franchises that would require rapid and numerous weightings of animals in a short period of time. When looking at major leading companies in New Zealand, this would include primarily, SPCA with 31k animals annually but also secondary companies such as Pet Rescue and Pet Refuge (300 annually  \cite{pd4}.). Furthermore, the government's animal management sector reports numerous animals being brought in. The dogs category alone already has 5492 dogs impounded in the year from 2019-2020's report \cite{pd5}.
+
+These results help emphasize the growing sector of pet animals as the population and households increase  \cite{pd3}.. This contributes to an increase in the number of pets and, as an effect, increases the number of pets that are sent to shelters. The need for faster logistics in registering a larger amount of animals is apparent with this increase and brings us to the solution of our pet scale.
+
+\subsection{Existing Products}
+It is important, asides from looking at the existing market size, to also analyze existing products that our competitors are outputting. Our main competitors are evaluated through price, web traffic, and the tool Similar Web to show how successful they are:
+
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c| } 
+ \hline
+ Company & Visits in a month & Average duration & Cost & Documentation \\ 
+ \hline
+Tru-Test & 4.7k & 00:00:32 & \$1075 &  \cite{pd6}. \\ 
+ \hline
+ AgriEID Heavy Duty Load Bar & 5.1k & N/A & \$1395 &  \cite{pd7}. \\ 
+ \hline
+ MCSM adam equipment animal scale & 13.6k & 00:00:57 & \$1095 &  \cite{pd8}. \\ 
+ \hline
+ Gallagher SmartScale system & 46.7k & 00:03:40 & \$773 &  \cite{pd9}. \\ 
+ \hline
+\end{tabular}
+\end{center}
+
+Our biggest competitor from some of the collected data is Gallagher's SmartScale system, available at a significantly smaller price than the other two and, from visits in a month, far more known. The company itself has a strong backing and is branched into New Zealand with other branches of the company in many parts of the world.
+
+Another competitor is the AgriEID Heavy Duty Load Bar digital livestock weight system. It is available for purchase at the price of \$1395. The product is enclosed in stainless steel with four different dimensions depending on the specific model; some important technical specifications are summarised in Table 1. This product is capable of measuring the weight of any size or type of animal up to its maximum capacity, the display monitor has seven functional keys allowing users to choose what they want to do. The main functionalities are date display, weight unit exchange, weight records retrieval, tare, and zero. However, it requires heavy-duty 5m length dual cables to connect the digital display to the load bars, exposing tripping hazards to both staff and the animals. The weighing platform does not come with the product, and the company does not sell them; customers have to consult a local engineering firm and this adds an extra cost of \$500 to \$800. Moving on to the available software for the scale, the Livestock Management. The software stores weight measurements over time, and provides powerful data analysis and secure digital record keeping, but only the first 12 months are free, which makes it a continued cost that must be paid yearly afterward.
+
+\section{Requirements}
+In order to make an effective product, the first step is to look at the requirements that are needed to be fulfilled;
+\begin{itemize}
+\item \textbf{Effective Cost Scheme}
+
+We are targeting a market that has relatively high-cost scales from Table 1. and thus want to lower the price point in order to solve this price strangle in the market.
+
+\item \textbf{Environmentally Friendly Materials}
+
+Making materials that have little or no effect on the environment is essential in maintaining good practise and helping justify environmental concerns. On top of that, it is also important to consider ROHS, Restriction of Hazardous Substances and WEEE, Waste Electrical and Electronic Equipment to make sure we keep safety of the environment and abide by legal laws in supplying, modifying and disposing of the equipment on hand.
+
+\item \textbf{Common Power Supply and Small Power Usage}
+
+It's important to set a standard power source that is manufactured in large quantities and available in most suppliers. This means effectively there is a small range of power external batteries that can be used and as such we have selected the most common one, 4 AA batteries. It is also important to make sure that when the scale is not in use from the problem definition that power drainage is minimised to lower upkeep cost. This would necessitate additional thinking in both the composition of the electrical circuit and the firmware.
+
+\item \textbf{Weight Range}
+
+The selected weight range should be inclusive of most pet animals and satisfy an average range. With this in mind we have decided on between 0 and 25 kilograms as our weight range to help us adjust to this boundary from \cite{pd6}.
+
+\item \textbf{Accuracy}
+
+In order to make an efficient business model our product needs to excel at its intended usage. With this in mind, the accuracy should be limited to 0.5kg which is a suitable boundary within 10\% of the ideal value.
+
+\item \textbf{Input Voltage}
+
+We need to make sure that the voltage output for the Pico is between 0 to 3V. Our computer the Raspberry PI Pico where our firmware is programmed into is fixed so we need to accommodate accordingly in order to not damage the Pico.
+
+\item \textbf{Size and Additional Conditions}
+
+The scale should physically be limited to the dimensions of regular scales, unlike one of the competitors, AgriEID Heavy Duty Load Bar.It needs to have reasonable dimensions that can take readings roughly from an average sized animal.
+
+Another additional consideration is the temperature range. The scale should function at a temperature equivalent to both the lowest and highest temperatures that could be reached in an urban city of New Zealand. This does not include cold or heat snaps and ideally between the range of 0 - 40 degrees Celsius. 
+
+\item \textbf{ROHS and WEEE}
+
+Restriction of Hazardous Substances” and WEEE stands for “Waste Electrical and Electronic Equipment.
+\end{itemize}
+
+
+
+\chapter{Implementation Plan}
+\section{Feedback}
+We received a lot of good feedback from our peers and instructors that has helped us improve on our business plan and report structure. The main feedback helped us to improve how we utilise different sections in our report, and identify important content that may be missing. Some of the key improvements are as follows:
+The introduction and conclusion of a report can sometimes seem like they are restating content but they are essential for communicating the message to a reader. In our final report we have made sure to properly utilise these sections to…
+Considering the Te Tiriti o Waitangi is an essential part of any engineering project in New Zealand. In our past report we focused too narrowly the main aspect of our treaty obligations and neglected the wider implications of the treaty. In our final report we have worked on widening our view of the treaty.
+Legal and privacy focus is extremely important for a project of this scale since these topics have a large impact on the success of any business plan that goes to market. These matters are very precise and specific, and our report needs to reflect that. In this report we have taken care to be specific when communicating our preparations for legal matters.
+Overall there was feedback on a number of areas that we are focusing on the development project and not the final product. In this report we have made sure to turn our attention to how different topics apply to the finished product, and now our process of developing it. 
+
+\section{Stakeholders}
+We identified the following list of stakeholders:
+\begin{enumerate}
+    \item SPCA staff, volunteer
+    \begin{itemize}
+        \item Role: End users (outwards)
+        \item Interest: A  good system can satisfy “end users” needs more. They need to use it in their everyday job. Thus, they may be particularly interested in how  our system helps automate the weighing process.
+        \item Influence: They decide whether the system adds benefits to their job, satisfaction of them can lead to increased deployment of the system in the future.
+    \end{itemize}
+    \item Vet
+    \begin{itemize}
+        \item Role: End users (outwards)
+        \item Interest: Vet uses the system to monitor animals’ health and well-being, as well as communicate with staff at various SPCA centres. They care about how many platforms the system runs across, and how data is present to them.
+        \item Influence: They decide whether the system adds benefits to their job, satisfaction of them can lead to increased deployment of the system in the future.
+    \end{itemize}
+    \item Local government
+    \begin{itemize}
+        \item Role: Regulator, policy maker (outwards)
+        \item Interest: Local governments encourage businesses that have a positive impact on the society to grow.
+        \item Influence: Governments can restrict the use of the website if it does not comply with policies such as data privacy.
+    \end{itemize}
+    \item SPCA
+    \begin{itemize}
+        \item Role: Shareholders (upwards)
+        \item Interest: The investor cares about the development cost, maintenance cost, and lifespan of the system, as well as its ability to expand to a larger scale.
+        \item They invest in the project, and have a set of requirements to measure success of the project. They also have the power to continue or stop the development.
+    \end{itemize}
+    \item Animal welfare administrator
+    \begin{itemize}
+        \item Role: End users (outwards)
+        \item Interest: They use the system to track what is happening to animals at different centres, and generate reports for management. They care about how easily they can access data and the reduction in human input in analysing data.
+        \item Influence: They decide whether the system adds benefits to their job, satisfaction of them can lead to increased deployment of the system in the future.
+    \end{itemize}
+    \item Hardware engineer, embedded system engineer, software engineer
+    \begin{itemize}
+        \item Role: Project team (downwards)
+        \item Interest: They are easily affected by business decisions, they want reasonable pay. A system that functions well may lead to a pay rise in their career.
+        \item Influence: They have an impact on the operational nature of the system. They make sure different parts of the system seamlessly integrate together, and solve any technical issues.
+    \end{itemize}
+\end{enumerate}
+
+\section{Scope}
+\subsection{Goals}
+The project goal is to develop an intelligent system to automate the process of weighing dogs, during which human input is reduced and staff could focus on the well-being of the animal, while also allowing for easy access to the recorded data online. The system should be low cost and robust, providing stable and accurate reading with long service life, while minimising expenses on maintenance. The developed user interface should be user friendly to reduce the amount of training required. The short term goal is to have our system installed and used across all 31 SPCA centres. Thus, we can collect user feedback from their staff and volunteers, and work on improving user experience and fix any potential issues. The first long term goal is to gain \$10 million profit at the end of the 5th year in present value.
+
+\subsection{Total Available Market}
+The scale is suitable for weighing animals to monitor their health and growth, any organisation or business that needs to weigh animals and record data repeatedly is our potential customer. We are targeting these businesses in Australia and New Zealand. There are approximately 270 million dairy cattle in the world today\cite{ip1}, of which 6.3 million are in New Zealand with an average herd size of 440\cite{ip2}, another 1.34 million are in Australia\cite{ip3}. As a business located in New Zealand, sheep and beef farms will also be our target customers. There are 23,403 sheep and beef farms in New Zealand, and the total number of sheep and beef cattle is 31.3 million\cite{ip4}. Approximately 7.64 million dairy cattle in Australia and New Zealand need to be weighed regularly to track their health and growth. The total number of farms in New Zealand is 49,530 as of 2019, approximately 22.2\% of these are dairy farms\cite{ip5}, while Australia only has 4,420 dairy farm businesses\cite{ip6}. There are a total of 49,530 x 22.2\% + 4,420 + 23,403 = 38,823 target farms across Australia and New Zealand.
+We will sell the scale at a price of NZD \$500, and a subscription fee of NZD \$50 per scale per year to access the data online. According to these prices, our total available market for the scale will be 38.94 million / 200 cattle per scale x \$500 = \$97,350,000 in Australia and New Zealand. The total available market for annual subscription of the website will be 38.94 million / 200 cattle per scale x \$50 = \$9,735,000 per year.
+
+\subsection{Serviceable Available Market}
+
+Assuming 80\% of these farms are reasonably large and have money to spend on an intelligent system, this means 38,823 x 80\% = 31,058 farms will be our serviceable available market, with 38.94 million x 80\% = 31.152 million cattle.
+With the set scale price of NZD \$500, and a subscription fee of NZD \$50 per scale per year to access the data online, our serviceable available market for the scale will be 31.152 million / 200 cattle per scale x \$500 = \$77,880,000 in Australia and New Zealand. The serviceable available market for annual subscription of the website will be 31.152 million / 200 cattle per scale x \$50 = \$7,788,000 per year.
+
+\subsection{Serviceable Obtainable Market}
+
+Assuming 50\% of the serviceable available market actually cares about the statistical data of the growth of their cattle, this brings the number of farms willing to pay for the scale to 31,058 x 50\% = 15,529 farms, and the number of cattle they own is 31.152 million x 50\% = 15.576 million.
+With the set scale price of NZD \$500, and a subscription fee of NZD \$50 per scale per year to access the data online, our serviceable obtainable market for the scale will be 15.576 million / 200 cattle per scale x \$500 = \$38,940,000 in Australia and New Zealand. The serviceable obtainable market for annual subscription of the website will be 15.576 million / 200 cattle per scale x \$50 = \$3,894,000 per year.
+
+\subsection{Requirements}
+
+Requirements are the conditions a product must satisfy to be accepted by users and customers. These requirements help us to avoid unexpected results and ensure customer satisfaction.
+
+Must have:
+\begin{itemize}
+    \item Accurately measure and record an animal's weight.
+    \item Data securely stored online and exposed to staff.
+    \item Indication of successful weight measurement.
+\end{itemize}
+
+Nice to have:
+\begin{itemize}
+    \item Power saving.
+    \item Visual indicators on the scale (power, WiFi, tare).
+\end{itemize}
+
+\section{Assumptions}
+\begin{itemize}
+    \item One scale can only be used to weigh up to 200 animals.
+    \item The use of the website is charged annually by a subscription fee.
+    \item Assume the system does not require any maintenance other than battery replacement during service life.
+    \item Scale is charged in a one-off payment.
+    \item The number of cattle is evenly distributed across all farms.
+\end{itemize}
+
+\chapter{Considerations}
 \section{Te Tiriti o Waitangi}
+Te Tiriti o Waitangi is one of New Zealand’s founding documents, protecting the rights of Māori culture and values. Signed in 1840 by the British Crown and Māori chiefs, the treaty established a partnership between the two parties, preserving Māori sovereignty while granting the Crown governance over New Zealand. In the design of the dog weighing product, Te Tiriti o Waitangi must be considered to ensure equitable access and use of the product for Māori, and that the design process does not violate any core Māori values or beliefs. 
 
-TODO: How are the Te Tiriti o Waitangi goals met
+Māori communities may be included in the development process by allowing them to review and test earlier iterations of our product and providing us with valuable feedback. This also helps us ensure our product is does not violate any of the values of Te Tiriti o Waitangi and further promoting strong Pātuitanga (Partnership).
 
-\section{Sustaintability and Environmental}
+Another consideration of Te Tiriti o Waitangi is data sovereignty. The treaty and associated laws state that any data or information relating to the Māori people should be treated fairly and be open to oversight and control. We will interact with these values through the storage of data generated from Māori owned farms and vet practices. It would be important to consult with the relevant owners and authorities on how this data is managed and used.
 
-TODO: How are the sustaintability goals met
+Additionally, it is important to ensure that the user interface is designed to uphold Te Tiriti values. This includes ensuring that no symbols are misused or deemed offensive according to Māori values, and that inclusive and non-discriminatory language is used throughout.
 
-\section{Legal and Privacy}
 
-TODO: How are the legal and privacy goals met
+\section{Sustainability and Environmental}
+For the design of our weight scale product, it is important to take into consideration any potential sustainability issues that we may come across, including technical and ethical implications. Sustainability can be classified into three different categories; environment, economy, and equity. Ideally our solution should benefit all three areas equally, however this can be quite difficult to achieve. The primary aspect of sustainability that has been considered is  the environment (biosphere). The product life-cycle; including the initial resources, manufacturing, storage and use, and ultimately disposal, can be considered in order to gauge the environmental impacts of the product.
 
-\section{Other Ethical Issues}
+\subsection{Resources}
+We endeavored to ensure our product was made from sustainable materials where possible. As most of the materials used in PCB development are not biodegradable, we ensured that excessive amount of components we not ordered in order to reduce waste and the design with only vital components and extra parts in case of failure. Furthermore, the components used in our PCB design are RoHS compliant meaning they are free from RoHS restricted substances reducing further environmental harm.
 
-TODO: How are the ethical goals met
+\subsection{Energy Consumption}
+The weighing scale product was designed to minimise the amount of energy consumption. Ideally, renewable power sources could have been such as solar energy, but due to the scale of our product and available resources, this was not possible. Therefore in order to reduce the carbon footprint, we optimized the design to maximise the life cycle of the batteries, in order to reduce the frequency of battery replacement and disposal. Power consumption was also reduced by 
+cutting power to the circuit when the scale is not in use, reducing overall power consumption.
+
+\subsection{Durability and Maintenance}
+The durability of a product correlates to the amount of waste that may be contributed to the environment. The product was designed to be long-lasting and easy to maintain, especially regarding components that are more susceptible to breakages. This reduces the need for frequent replacements, saving on resources and minimising E-waste (electronic waste). The components used in our design are surface mount type meaning they can be more easily removed and replaced in the event of a malfunction. Furthermore, connectors and cables used are of high quality to minimize the frequency of failures. Our product's functional blocks were designed to be modular, allowing easy replacement of faulty smaller parts (in the event they are not serviceable) instead of wasting entire sections. 
+
+\subsection{Product End-of-life Stage}
+Although a lot of effort was put into ensuring that the product is durable, modular, and easily serviceable, all products have an end-of-life stage. Unfortunately, due to the small scale of our product, we could not find a viable re purpose for the PCB components after their life cycle. Instead we ensured that the PCB components were able to be easily recycled. This was done by the usage of RoHS compliant surface mount components that can be easily removed, along with small form factor PCB designs to reduce waste. Ideally, these should be recycled at E-waste collection centres instead of general landfills.
+
+
+\section{Ethical and Legal}
+
+\subsection{Ethical}
+One of the major ethical considerations that must be considered in the design of the weighing system is the health and well being of the animals. We ensured that our product did not have any exposed wiring in the circuit as well as potential sharp edges that may harm the user (i.e. SPCA staff) and/or animals. 
+
+\subsection{Legal}
+The weighing scale product is designed to adhere to all data privacy principles within the Privacy Act 2022. This includes the principles relating to the fair and transparent use, collection and storage of data and data privacy.
+
+\textbf{Collecting Data}\\
+The information that is being collected during usage of the product falls into three categories; information provided by the user (SPCA staff member), analytical information to maintain the stability of the system and information received from third parties. 
+
+\textbf{Information Provided by the User}\\
+User input (i.e. SPCA staff) is necessary in order to use the weighing system. This includes: email addresses and account credentials (passwords and related security authentication information). Furthermore, as our system has a chat system, chat message data also falls into this category.
+
+\textbf{Information collected for Stability}\\
+When using the weighing system, information is collected relating to how the product and services are used. This information is then used to provide an efficient and reliable product that is bug free and fully operational.
+
+\textbf{Information Received from Third Parties}\\
+Third parties may share information about the usage of the product and services. This is limited to information from third parties such as a social media or email account that helps us to identify the holder of particular accounts when accessing the online service via a third party login.
+
+\textbf{Holding Data}\\
+All data which is held will be kept in a secure online database to ensure that there is no risk of exposure or leakage. Also, as a general policy, only authorised SPCA have access to any personal details, such as account holders, customer service teams and legal authorities. Additionally only the user will be able to see their own data held within the system. Our organisation will hold data for consumer accounts for ten years from the last instance of accessing the services. Afterwards, all collected user data will be securely disposed of.
+
+\textbf{Disclosing Data}\\
+All personal data will not be disclosed unless requested or authorised by the individual holder of a particular account. However, there are exceptions to this policy when required by legal authorities.
 

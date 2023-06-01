@@ -3,5 +3,12 @@
 %----------------------------------------------------------------------------------------
 
 \chapter{Technical Overview}
+The technical aspect was divided into three distinct sections - hardware, firmware, and software. This was to maximise efficiently and productivity by working in parallel. Note that with the actual development, there were essentials that required handling between hardware and firmware, and firmware and software.
 
-TODO: Provide a technical overview of the whole project
+The hardware section was responsible for designing, building and maintaining the physical components of the project, such as the circuit boards and sensors. The voltage signal retrieved from the Wheatstone bridge within the scale is passed to an instrumentation amplifier, generating a suitable voltage for digital signal processing. The circuit gets its power from a linear voltage regulator, which can be turned off by the embedded program for power saving. Input filters and output filter are used to obtain clean signals, improving accuracy. LEDs are included as visual aids to help communicate system status. A tare button is also included in our design.
+
+The embedded firmware runs on a Raspberry Pi Pico W and controls the operation of the scale. It consists of three main parts: the ADC register, the state machine, and the network interface. The output voltage is read from the Pico, then converted to a value using the ADC register, An id is also assigned through the finite state machine before the data is sent to the software backend for handling.
+
+For the software architecture, MongoDB was used as the database for data storage and management. MongoDB's document-oriented model allows for flexible and scalable data storage. The database has four collections: dogs, users, weights, and chats which interact with each other. User authentication is handled using Firebase Authentication, which provides secure verification of user credentials. The backend server is implemented using Node.js and Express.js, handling requests from clients, executing logic, interacting with the database, and generating responses to send to the frontend. The frontend is developed using React and Vite, providing a user-friendly interface for interacting with the system. The frontend communicates with the backend via HTTP requests and responses.
+
+Overall, the integrated system combines hardware, embedded firmware, and software components to provide an accurate and user-friendly proposed solution.

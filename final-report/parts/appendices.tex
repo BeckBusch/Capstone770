@@ -4,12 +4,193 @@
 
 \part{Appendices}
 
-\chapter{Optional}
 
-TODO: you can include as many optional appendices as required, these should contain any extra details for the project that haven't been included previously. 
+\chapter{Simulation Results}
 
-Do NOT include code.
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/0kg_sim.png}
+\caption{Voltage output when weight = 0kg.}
+\end{figure}
 
-Only include the appendices if NEEDED.
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/5kg_sim.png}
+\caption{Voltage output when weight = 4.86kg.}
+\end{figure}
 
-\textbf{Important:} if there are no appendices, delete all the content for this file. \textbf{DO NOT} delete the file!
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/10kg_sim.png}
+\caption{Voltage output when weight = 9.76kg.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/15kg_sim.png}
+\caption{Voltage output when weight = 14.77kg.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/20kg_sim.png}
+\caption{Voltage output when weight = 20.79kg.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/25kg_sim.png}
+\caption{Voltage output when weight = 24.72kg.}
+\end{figure}
+
+
+\chapter{Experimental Results}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/0kg_exp.png}
+\caption{Voltage output when weight = 0kg.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/5kg_exp.png}
+\caption{Voltage output when weight = 4.86kg.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/10kg_exp.png}
+\caption{Voltage output when weight = 9.76kg.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/15kg_exp.png}
+\caption{Voltage output when weight = 14.77kg.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/25kg_exp.png}
+\caption{Voltage output when weight = 24.72kg.}
+\end{figure}
+
+
+\chapter{Endpoints}
+\section{Users API Endpoints}
+\begin{itemize}
+    \item POST /api/users
+    \item GET /api/users
+    \item GET /api/users/\{user\_id\}
+    \item GET /api/users/filter/\{user\_role\}
+    \item GET /api/users/search/\{user\_search\}
+\end{itemize}
+
+\section{Dogs API Endpoints}
+\begin{itemize}
+    \item POST /api/dogs
+    \item GET /api/dogs
+    \item GET /api/dogs/\{dog\_id\}
+    \item GET /api/dogs/sort/\{dog\_sort\}
+    \item GET /api/dogs/search/\{dog\_search\}
+    \item PUT /api/dogs/\{dog\_id\}
+\end{itemize}
+
+\section{Weights API Endpoints}
+\begin{itemize}
+    \item GET /api/weights/\{scale\_id\}
+    \item GET /api/weights/\{scale\_id\}/date
+    \item DELETE /api/weights/\{scale\_id\}
+\end{itemize}
+
+\section{Chats API Endpoints}
+\begin{itemize}
+    \item POST /api/chats
+    \item GET /api/chats
+    \item GET /api/chats/\{chat\_id\}
+    \item GET /api/chats/search/\{chat\_summary\}
+    \item PUT /api/chats/\{chat\_id\}
+\end{itemize}
+
+
+\chapter{Web Platform}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/web_login.png}
+\caption{Login Page}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/web_dashboard.png}
+\caption{Dashboard Page}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/web_add_dog.png}
+\caption{Add Dog Form}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/web_dog_details.png}
+\caption{Dog Details Page}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/web_add_weight.png}
+\caption{Add Weight Page}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/web_add_weight_processing.png}
+\caption{Add Weight: Processing Page}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/web_select_weight.png}
+\caption{Add Weight: Results Page}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/web_new-chat.png}
+\caption{Chat Page}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/web_chat.png}
+\caption{Chat Page: Existing Discussion}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/web_notifications.png}
+\caption{Notifications Centre}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/web_manage_users.png}
+\caption{Manage Users Page (Administrators Only)}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/web_add_user.png}
+\caption{Add User Form (Administrators Only)}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{final-report/assets/web_sign_out.png}
+\caption{Sign Out Pop Up}
+\end{figure}
